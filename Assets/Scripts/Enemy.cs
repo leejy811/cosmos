@@ -10,22 +10,32 @@ public class Enemy : MonoBehaviour
     private float enemyHealth;
 
     Rigidbody2D rigid;
+    bool isEnemyLive;
 
-    void Start()
+
+    void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        LookPlayer();
     }
-
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
-
+    
     private void Move()
     {
         Vector2 dirVector = Vector2.zero - rigid.position;
         Vector2 nextVector = dirVector.normalized * enemySpeed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVector);
         rigid.velocity = Vector2.zero;
+    }
+    
+    private void LookPlayer()
+    {
+        Vector2 dirVector = Vector2.zero - rigid.position;
+        float lookAngle = Mathf.Atan2(dirVector.y, dirVector.x) * Mathf.Rad2Deg;
+        Quaternion angleAxis = Quaternion.AngleAxis(lookAngle - 90f, Vector3.forward);
+        transform.rotation = angleAxis;
     }
 }
