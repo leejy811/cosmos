@@ -136,4 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa70ae8ab2f521e41a89b8182de73eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 3641342884771215201, guid: a67a522c88b038d48a0af4529ff85c52, type: 3}
   enemySpeed: 2
