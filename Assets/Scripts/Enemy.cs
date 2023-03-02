@@ -42,14 +42,14 @@ public class Enemy : MonoBehaviour
     
     public void LookPlayer()
     {
-        Debug.Log("target Position : " + player.position);
-        Debug.Log("this Position : " + rigid.position);
-        Debug.Log("this transform position " + this.gameObject.name);
+        //Debug.Log("target Position : " + player.position);
+        //Debug.Log("this Position : " + rigid.position);
+        //Debug.Log("this transform position " + this.gameObject.name);
         Vector2 dirVector = player.position - rigid.position;
         float lookAngle = Mathf.Atan2(dirVector.y, dirVector.x) * Mathf.Rad2Deg;
         Quaternion angleAxis = Quaternion.AngleAxis(lookAngle - 90f, Vector3.forward);
         transform.rotation = angleAxis;
-        Debug.Log("This Rotation  : " + transform.rotation);
+        //Debug.Log("This Rotation  : " + transform.rotation);
 
     }
 }

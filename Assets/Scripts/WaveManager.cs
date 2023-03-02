@@ -32,7 +32,8 @@ public class WaveManager: MonoBehaviour
     }
     void EnemySpawn()
     {
-        GameObject enemy = GameManger.instance.poolManager.GetEnemy(Random.Range(0, 2));
+        string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
+        GameObject enemy = GameManger.instance.poolManager.GetPool(ranType);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
     }
    

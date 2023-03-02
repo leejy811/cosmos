@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,9 +13,6 @@ public class PlayerController : MonoBehaviour
     private float maxPlayerHealth;
     private float playerHealth;
     private float playerHealthRecorvery;
-
-    [SerializeField]
-    private GameObject bullet;
 
     [SerializeField]
     private float attackRange;
@@ -44,10 +42,12 @@ public class PlayerController : MonoBehaviour
                 continue;
             }
 
+            
             Vector3 directionPosition = nearestTarget.position - transform.position;
 
-            Bullet InstanceBullet = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
-            InstanceBullet.Init(directionPosition.normalized);
+            GameObject bullet = GameManger.instance.poolManager.GetPool("Bullet");
+            bullet.transform.position = transform.position;
+            bullet.GetComponent<Bullet>().Init(directionPosition.normalized);
 
             yield return new WaitForSeconds(playerAttackSpeed);
         }
