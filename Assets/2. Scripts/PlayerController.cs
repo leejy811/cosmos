@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask targetLayer;
     private RaycastHit2D[] targets;
     private Transform nearestTarget;
-
+    
     void Start()
     {
         StartCoroutine(Shoot());
@@ -41,8 +41,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForFixedUpdate();
                 continue;
             }
-
-            
+             
             Vector3 directionPosition = nearestTarget.position - transform.position;
 
             GameObject bullet = GameManger.instance.poolManager.GetPool("Bullet");
