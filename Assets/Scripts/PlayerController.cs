@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GetDamage(10f);
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }

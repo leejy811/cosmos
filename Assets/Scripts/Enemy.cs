@@ -7,7 +7,9 @@ public class Enemy : MonoBehaviour
     Rigidbody2D player;
     [SerializeField]
     private float enemySpeed;
+    [SerializeField]
     private float enemyDamage;
+    [SerializeField]
     private float enemyHealth;
 
     Rigidbody2D rigid;
@@ -22,9 +24,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-    }
     void FixedUpdate()
     {
         Move();
@@ -50,6 +49,23 @@ public class Enemy : MonoBehaviour
         Quaternion angleAxis = Quaternion.AngleAxis(lookAngle - 90f, Vector3.forward);
         transform.rotation = angleAxis;
         //Debug.Log("This Rotation  : " + transform.rotation);
-
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Bullet")
+        {
+            GetDamage(3f);
+            other.gameObject.SetActive(false);
+        }
+    }
+    public void GetDamage(float damage)
+    {
+        if (enemyHealth - damage <= 0)
+        {
+            enemyHealth = 0;
+            this.gameObject.SetActive(false);
+        }
+        else
+            enemyHealth -= damage;
     }
 }
