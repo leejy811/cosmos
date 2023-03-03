@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1688113037077333957}
   - component: {fileID: 2283731832940388155}
   - component: {fileID: 3292730067630614883}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyCircle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -137,3 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  enemyDamage: 1
+  enemyHealth: 4
