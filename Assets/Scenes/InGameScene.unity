@@ -838,7 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902917367}
   m_Layer: 0
-  m_Name: enemyCircle
+  m_Name: EnemyCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,13 +950,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0e730b2a33b2c498949afba741a1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4849560090531141656, guid: e6c1b7c9f4c8fa043a32f9cddb7a94f7, type: 3}
-  - {fileID: 7975429674559266930, guid: dfc963f8212ea064693d34149fe95cd7, type: 3}
-  bulletPrefab: {fileID: 3786519555057558283, guid: 3d3e62859126f05478cb43aa06222bd5, type: 3}
-  enemyTrianglePoolParent: {fileID: 1721284316}
-  enemyCirclePoolParent: {fileID: 902917367}
-  bulletPoolParent: {fileID: 1664945415}
+  pools:
+  - name: EnemyCircle
+    container: {fileID: 902917367}
+    component: {fileID: 3292730067630614883, guid: dfc963f8212ea064693d34149fe95cd7, type: 3}
+  - name: EnemyTriangle
+    container: {fileID: 1721284316}
+    component: {fileID: 750013283499252122, guid: e6c1b7c9f4c8fa043a32f9cddb7a94f7, type: 3}
+  - name: Bullet
+    container: {fileID: 1664945415}
+    component: {fileID: 3786519555057558282, guid: 3d3e62859126f05478cb43aa06222bd5, type: 3}
 --- !u!4 &1186448686
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,7 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664945415}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,8 +1344,6 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  nearestTarget: {fileID: 0}
-  gameManger: {fileID: 239584090}
 --- !u!1 &1693703659
 GameObject:
   m_ObjectHideFlags: 0
