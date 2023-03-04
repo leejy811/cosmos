@@ -35,6 +35,7 @@ public class WaveManager: MonoBehaviour
         string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
         GameObject enemy = GameManger.instance.poolManager.GetPool(ranType);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        enemy.GetComponent<Enemy>().EnemyLookPlayer();
     }
    
 }

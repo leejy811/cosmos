@@ -25,13 +25,12 @@ public class Enemy : MonoBehaviour
         transform.Rotate(new Vector3(0, 0, targetAngle));
     }
 
-    private void OnEnable()
+    public void EnemyLookPlayer()
     {
         float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
         targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
         transform.Rotate(new Vector3(0, 0, targetAngle));
     }
-
     void FixedUpdate()
     {
         transform.position += transform.up * Time.deltaTime * enemySpeed;
@@ -50,8 +49,10 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth - damage <= 0)
         {
+            transform.localEulerAngles = new Vector3(0, 0, 0);
             enemyHealth = 0;
             this.gameObject.SetActive(false);
+
         }
         else
             enemyHealth -= damage;
