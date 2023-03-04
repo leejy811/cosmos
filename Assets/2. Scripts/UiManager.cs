@@ -23,6 +23,11 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TMP_Text hpUpRocks;
     [SerializeField] private TMP_Text currentRecovery;
     [SerializeField] private TMP_Text recoveryUpRocks;
+    [SerializeField] private Animation bottomUiAnim;
+    #endregion
+
+    #region Member Variables
+    private bool isFold = false;
     #endregion
 
     public void PauseGame()
@@ -68,6 +73,15 @@ public class UiManager : MonoBehaviour
     public void OnRecoveryUpButton()
     {
 
+    }
+
+    public void SetBottomUi()
+    {
+        if (isFold)
+            bottomUiAnim.Play("BottomUiUpAnim");
+        else
+            bottomUiAnim.Play("BottomUiCloseAnim");
+        isFold = !isFold;
     }
 
 }
