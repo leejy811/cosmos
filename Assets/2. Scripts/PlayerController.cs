@@ -107,8 +107,20 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            GetDamage(10f);
-            collision.gameObject.SetActive(false);
+            Enemy enemy = collision.GetComponent<Enemy>();
+            float damage = enemy.GetEnemyDamage();
+
+            Debug.Log("Enemy Damage : " + damage);
+
+            GetDamage(damage);
+            enemy.EnemyDie();
+            Debug.Log("Player health : " + playerHealth);
+
         }
+    }
+
+    public float GetPlayerDamage()
+    {
+        return playerDamage;
     }
 }

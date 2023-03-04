@@ -837,7 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManager: {fileID: 1186448685}
-  player: {fileID: 1666084030}
+  player: {fileID: 1666084034}
 --- !u!4 &239584091
 Transform:
   m_ObjectHideFlags: 0
@@ -2116,7 +2116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &568352302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2729,9 +2729,9 @@ RectTransform:
   m_Father: {fileID: 97514098}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1058, y: -84}
   m_SizeDelta: {x: 628, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674366691
@@ -3474,9 +3474,9 @@ RectTransform:
   m_Father: {fileID: 434702447}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 382, y: -164}
   m_SizeDelta: {x: 628, y: 328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1189311423
@@ -4270,9 +4270,9 @@ RectTransform:
   m_Father: {fileID: 319049160}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1058, y: -164}
   m_SizeDelta: {x: 628, y: 328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474256894
@@ -4483,9 +4483,9 @@ RectTransform:
   m_Father: {fileID: 97514098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 382, y: -84}
   m_SizeDelta: {x: 628, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483480156
@@ -4562,9 +4562,9 @@ RectTransform:
   m_Father: {fileID: 434702447}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1058, y: -164}
   m_SizeDelta: {x: 628, y: 328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520959834
@@ -4787,9 +4787,9 @@ RectTransform:
   m_Father: {fileID: 319049160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 382, y: -164}
   m_SizeDelta: {x: 628, y: 328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610629891
@@ -5000,6 +5000,7 @@ GameObject:
   - component: {fileID: 1666084031}
   - component: {fileID: 1666084033}
   - component: {fileID: 1666084034}
+  - component: {fileID: 1666084035}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -5109,11 +5110,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 5
   playerAttackSpeed: 0.5
-  maxPlayerHealth: 3
-  attackRange: 5
+  maxPlayerHealth: 1000
+  attackRange: 2
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!70 &1666084035
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666084030}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.026646173, y: 0}
+  m_Size: {x: 1.0440286, y: 2.4099998}
+  m_Direction: 0
 --- !u!1 &1668345519
 GameObject:
   m_ObjectHideFlags: 0
@@ -5588,7 +5605,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.742, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

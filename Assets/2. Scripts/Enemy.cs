@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D player;
     [SerializeField]
     private float enemySpeed;
     [SerializeField]
     private float enemyDamage;
     [SerializeField]
+    private float maxEnemyHealth;
+    [SerializeField]
     private float enemyHealth;
 
+    public PlayerController playerController;
     Rigidbody2D rigid;
     bool isEnemyLive;
 
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
         float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
         targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
         transform.Rotate(new Vector3(0, 0, targetAngle));
+        enemyHealth = maxEnemyHealth;
     }
 
     public void EnemyLookPlayer()
@@ -36,25 +39,40 @@ public class Enemy : MonoBehaviour
         transform.position += transform.up * Time.deltaTime * enemySpeed;
     }
 
- 
+    private void OnEnable()
+    {
+        enemyHealth = maxEnemyHealth;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Bullet")
         {
-            GetDamage(3f);
+            float damage = playerController.GetPlayerDamage();
+            Debug.Log("Bullet Damage : " + damage);
+            GetDamage(damage);
             other.gameObject.SetActive(false);
         }
     }
+
     public void GetDamage(float damage)
     {
         if (enemyHealth - damage <= 0)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 0);
-            enemyHealth = 0;
-            this.gameObject.SetActive(false);
-
+            EnemyDie();
         }
         else
             enemyHealth -= damage;
+    }
+
+    public float GetEnemyDamage()
+    {
+        return enemyDamage;
+    }
+    public void EnemyDie()
+    {
+        transform.localEulerAngles = new Vector3(0, 0, 0);
+        enemyHealth = 0;
+        this.gameObject.SetActive(false);
     }
 }

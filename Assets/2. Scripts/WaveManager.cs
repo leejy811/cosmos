@@ -36,6 +36,7 @@ public class WaveManager: MonoBehaviour
         GameObject enemy = GameManger.instance.poolManager.GetPool(ranType);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().EnemyLookPlayer();
+        enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
     }
    
 }
