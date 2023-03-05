@@ -15,11 +15,11 @@ public class WaveManager: MonoBehaviour
     [SerializeField]
     private Transform[] spawnPoint;
 
-    private IWave[] waves;
+    public IWave[] waves;
 
     float spawntimer;
-    int currentWave = 0;
-    bool isWaveEnd = false;
+    public int currentWave;
+    public bool isWaveEnd;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class WaveManager: MonoBehaviour
         for(int i=0; i<40;i++)
         {
             waves[i].enemyACount = (i * 10) + 10;
-            waves[i].enemyBCount = (i * 12) * 10;
+            waves[i].enemyBCount = (i * 12) + 10;
         }
     }
     private void Awake()
@@ -60,16 +60,12 @@ public class WaveManager: MonoBehaviour
     {
         yield return new WaitForSeconds(10);
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyACount;
-        bool isSpawnEnd = false;
+
         while (currentACount != 0 && currentBCount != 0)
         {
-            string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
-            GameObject enemy = GameManger.instance.poolManager.GetPool(ranType);
-            enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-            enemy.GetComponent<Enemy>().EnemyLookPlayer();
-            enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
-            
-            if(ranType == "EnemyTriangle")
+            string ranType = EnemySpawn();
+
+            if (ranType == "EnemyTriangle")
             {
                 currentACount--;
             }
@@ -80,12 +76,15 @@ public class WaveManager: MonoBehaviour
             yield return new WaitForSeconds(0.7f);
         }
     }
-    void EnemySpawn()
+    string EnemySpawn()
     {
         string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
         GameObject enemy = GameManger.instance.poolManager.GetPool(ranType);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().EnemyLookPlayer();
         enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
+        enemy.GetComponent<Enemy>().waveManager = this;
+
+        return ranType;
     }
 }

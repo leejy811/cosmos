@@ -3899,6 +3899,9 @@ MonoBehaviour:
   - {fileID: 765476228}
   - {fileID: 2011746721}
   - {fileID: 1206676598}
+  waves: []
+  currentWave: -1
+  isWaveEnd: 1
 --- !u!4 &1302566967
 Transform:
   m_ObjectHideFlags: 0

@@ -115,10 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa70ae8ab2f521e41a89b8182de73eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: EnemyB
   enemySpeed: 2
   enemyDamage: 1
   maxEnemyHealth: 10
   enemyHealth: 10
+  enemyGold: 0
+  playerController: {fileID: 0}
+  waveManager: {fileID: 0}
 --- !u!50 &8679914002937931058
 Rigidbody2D:
   serializedVersion: 4

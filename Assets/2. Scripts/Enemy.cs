@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private string enemyType;
+    [SerializeField]
     private float enemySpeed;
     [SerializeField]
     private float enemyDamage;
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
     private float enemyGold;
 
     public PlayerController playerController;
+    public WaveManager waveManager;
     bool isEnemyLive;
 
     Vector2 playerPos = new Vector2(0.0f, 1.3f);
@@ -80,5 +83,13 @@ public class Enemy : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, 0, 0);
         enemyHealth = 0;
         this.gameObject.SetActive(false);
+
+        if (enemyType == "EnemyA")
+            waveManager.waves[waveManager.currentWave].enemyACount--;
+        else
+            waveManager.waves[waveManager.currentWave].enemyBCount--;
+
+        if(waveManager.waves[waveManager.currentWave].enemyACount == 0 && waveManager.waves[waveManager.currentWave].enemyBCount == 0)
+            waveManager.isWaveEnd = true;
     }
 }
