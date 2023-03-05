@@ -5109,7 +5109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 5
-  playerAttackSpeed: 0.5
+  playerAttackSpeed: 0.1
   maxPlayerHealth: 1000
   attackRange: 2
   targetLayer:

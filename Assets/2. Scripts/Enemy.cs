@@ -12,36 +12,42 @@ public class Enemy : MonoBehaviour
     private float maxEnemyHealth;
     [SerializeField]
     private float enemyHealth;
+    [SerializeField]
+    private float enemyGold;
 
     public PlayerController playerController;
-    Rigidbody2D rigid;
     bool isEnemyLive;
 
     Vector2 playerPos = new Vector2(0.0f, 1.3f);
     
-
     private void Start()
     {
-        float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
-        targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
-        transform.Rotate(new Vector3(0, 0, targetAngle));
-        enemyHealth = maxEnemyHealth;
+        EnemyLookPlayer();
+        SetEnemyState();
     }
+    private void SetEnemyState()
+    {
+        enemyHealth = maxEnemyHealth;
 
+    }
     public void EnemyLookPlayer()
     {
         float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
         targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
         transform.Rotate(new Vector3(0, 0, targetAngle));
     }
-    void FixedUpdate()
+    private void MoveEnemy()
     {
         transform.position += transform.up * Time.deltaTime * enemySpeed;
+    }
+    void FixedUpdate()
+    {
+        MoveEnemy();
     }
 
     private void OnEnable()
     {
-        enemyHealth = maxEnemyHealth;
+        SetEnemyState();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
