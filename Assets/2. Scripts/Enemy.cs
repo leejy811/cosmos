@@ -58,7 +58,6 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.tag == "Bullet")
         {
             float damage = playerController.GetPlayerDamage();
-            Debug.Log("Bullet Damage : " + damage);
             GetDamage(damage);
             other.gameObject.SetActive(false);
         }

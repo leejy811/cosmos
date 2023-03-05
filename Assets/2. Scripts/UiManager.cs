@@ -57,22 +57,26 @@ public class UiManager : MonoBehaviour
 
     public void OnAttackUpButton()
     {
-
+        GameManger.instance.player.PlayerDamageLevelUp();
+        Debug.Log(this.name);
     }
 
     public void OnSpeedUpButton()
     {
-
+        GameManger.instance.player.PlayerAttackSpeedLevelUp();
+        Debug.Log(this.transform.name);
     }
 
     public void OnHpUpButton()
     {
-
+        GameManger.instance.player.PlayerMaxHealthLevelUp();
+        Debug.Log(this.transform.name);
     }
 
     public void OnRecoveryUpButton()
     {
-
+        GameManger.instance.player.PlayerHealthRecorveryLevelUp();
+        Debug.Log(this.transform.name);
     }
 
     public void SetBottomUi()

@@ -48,7 +48,7 @@ public class WaveManager: MonoBehaviour
         //currentwave 증가시키고 코루틴 실행
         if(isWaveEnd)
         {
-            Debug.Log("Stage : " + currentWave + 1); 
+            Debug.Log("Stage : " + currentWave); 
             currentWave++;
             isWaveEnd = false;
             StartCoroutine("StartWave");

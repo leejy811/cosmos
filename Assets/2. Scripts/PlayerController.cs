@@ -20,6 +20,22 @@ public class PlayerController : MonoBehaviour
     private RaycastHit2D[] targets;
     private Transform nearestTarget;
     
+    public void PlayerDamageLevelUp()
+    {
+        playerDamage += 3f;
+    }
+    public void PlayerAttackSpeedLevelUp()
+    {
+        playerAttackSpeed += 0.5f;
+    }
+    public void PlayerMaxHealthLevelUp()
+    {
+        playerHealth += 5f;
+    }
+    public void PlayerHealthRecorveryLevelUp()
+    {
+        playerHealthRecorvery += 3f;
+    }
     void Start()
     {
         StartCoroutine(Shoot());
@@ -66,6 +82,11 @@ public class PlayerController : MonoBehaviour
     private void PlayerDie()
     {
         //플레이어 사망 로직
+        if(playerHealth <= 0)
+        {
+            this.gameObject.SetActive(false);
+            GameManger.instance.GameOver();
+        }
     }
 
     private void Recovery()
@@ -110,12 +131,8 @@ public class PlayerController : MonoBehaviour
             Enemy enemy = collision.GetComponent<Enemy>();
             float damage = enemy.GetEnemyDamage();
 
-            Debug.Log("Enemy Damage : " + damage);
-
             GetDamage(damage);
             enemy.EnemyDie();
-            Debug.Log("Player health : " + playerHealth);
-
         }
     }
 
