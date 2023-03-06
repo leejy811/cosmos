@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public WaveManager waveManager;
     bool isEnemyLive;
 
-    Vector2 playerPos = new Vector2(0.0f, 1.3f);
+    Vector2 playerPos = new Vector2(0.0f, 1.0f);
     
     private void Start()
     {
