@@ -12,17 +12,17 @@ public class UiManager : MonoBehaviour
 
     #region UI Components
     [SerializeField] private TMP_Text jemCount;
-    [SerializeField] private TMP_Text rocksCount;
+    [SerializeField] private TMP_Text goldCount;
     [SerializeField] private Scrollbar hpScrollbar;
     [SerializeField] private TMP_Text waveLevel;
     [SerializeField] private TMP_Text currentAtk;
-    [SerializeField] private TMP_Text atkUpRocks;
+    [SerializeField] private TMP_Text atkUpGold;
     [SerializeField] private TMP_Text currentSpeed;
-    [SerializeField] private TMP_Text speedUpRocks;
+    [SerializeField] private TMP_Text speedUpGold;
     [SerializeField] private TMP_Text currentHp;
-    [SerializeField] private TMP_Text hpUpRocks;
+    [SerializeField] private TMP_Text hpUpGold;
     [SerializeField] private TMP_Text currentRecovery;
-    [SerializeField] private TMP_Text recoveryUpRocks;
+    [SerializeField] private TMP_Text recoveryUpGold;
     [SerializeField] private Animation bottomUiAnim;
     #endregion
 
@@ -42,7 +42,7 @@ public class UiManager : MonoBehaviour
 
     public void SetRock(int num=0)
     {
-        rocksCount.SetText(Convert.ToString(num));
+        goldCount.SetText(Convert.ToString(num));
     }
 
     public void SetHp(float value=0.0f)
