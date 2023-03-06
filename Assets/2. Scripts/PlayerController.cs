@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float attackRange;
     public LayerMask targetLayer;
     private RaycastHit2D[] targets;
-    private Transform nearestTarget;
+    public Transform nearestTarget;
     
     public void PlayerDamageLevelUp()
     {

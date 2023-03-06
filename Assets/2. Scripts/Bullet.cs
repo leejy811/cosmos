@@ -5,16 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private float bulletSpeed;
-    private Vector3 attckDirection;
-    Rigidbody2D rigid;
+    protected float bulletSpeed;
+    protected Vector3 attckDirection;
 
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-    }
-
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (attckDirection == null)
             return;

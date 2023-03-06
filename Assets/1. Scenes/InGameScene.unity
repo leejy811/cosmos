@@ -3420,6 +3420,9 @@ MonoBehaviour:
   - name: Bullet
     container: {fileID: 1664945415}
     component: {fileID: 3786519555057558282, guid: 3d3e62859126f05478cb43aa06222bd5, type: 3}
+  - name: Missile
+    container: {fileID: 1598073560}
+    component: {fileID: 3694672848499666852, guid: b95888dca517be44a99e009b082381d8, type: 3}
 --- !u!4 &1186448686
 Transform:
   m_ObjectHideFlags: 0
@@ -3435,6 +3438,7 @@ Transform:
   - {fileID: 1721284316}
   - {fileID: 902917367}
   - {fileID: 1664945415}
+  - {fileID: 1598073560}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4754,6 +4758,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582115286}
   m_CullTransparentMesh: 1
+--- !u!1 &1598073559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598073560}
+  m_Layer: 0
+  m_Name: Missile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598073560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598073559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1186448686}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610629889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,6 +5038,7 @@ GameObject:
   - component: {fileID: 1666084031}
   - component: {fileID: 1666084033}
   - component: {fileID: 1666084034}
+  - component: {fileID: 1666084036}
   - component: {fileID: 1666084035}
   m_Layer: 3
   m_Name: Player
@@ -5118,6 +5154,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  nearestTarget: {fileID: 0}
 --- !u!70 &1666084035
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5134,6 +5171,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.026646173, y: 0}
   m_Size: {x: 1.0440286, y: 2.4099998}
   m_Direction: 0
+--- !u!114 &1666084036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666084030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9857626bbb24e324f9f356fe07c8a9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts: {fileID: 3694672848499666852, guid: b95888dca517be44a99e009b082381d8, type: 3}
 --- !u!1 &1668345519
 GameObject:
   m_ObjectHideFlags: 0
