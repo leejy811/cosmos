@@ -37,29 +37,22 @@ public class WaveManager: MonoBehaviour
     }
     void Update()
     {
-        //spawntimer += Time.deltaTime;
-
-        //if (spawntimer > 0.7f)
-        //{
-        //    EnemySpawn();
-        //    spawntimer = 0;
-        //}
         //만약 적이 하나도 남아있지 않다면 ~~deltatime만큼 보낸 뒤
         //currentwave 증가시키고 코루틴 실행
         if(isWaveEnd)
         {
             Debug.Log("Stage : " + currentWave); 
-            currentWave++;
             isWaveEnd = false;
             StartCoroutine("StartWave");
         }
-
     }
 
     IEnumerator StartWave()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyACount;
+        //Debug.Log("Current Wave A Count : " + currentACount);
+        //Debug.Log("Current Wave B Count : " + currentBCount);
 
         while (currentACount != 0 && currentBCount != 0)
         {
@@ -73,8 +66,11 @@ public class WaveManager: MonoBehaviour
             {
                 currentBCount--;
             }
+            //Debug.Log("Current Wave A Count : " + currentACount + "  Current Wave B Count : " + currentBCount);
+
             yield return new WaitForSeconds(0.7f);
         }
+        currentWave++;
     }
     string EnemySpawn()
     {
@@ -84,7 +80,6 @@ public class WaveManager: MonoBehaviour
         enemy.GetComponent<Enemy>().EnemyLookPlayer();
         enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
         enemy.GetComponent<Enemy>().waveManager = this;
-
         return ranType;
     }
 }

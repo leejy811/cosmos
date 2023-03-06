@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     {
         playerDamage += 3f;
     }
+    public string GPD()
+    {
+        return playerDamage.ToString();
+    }
     public void PlayerAttackSpeedLevelUp()
     {
         playerAttackSpeed += 0.5f;

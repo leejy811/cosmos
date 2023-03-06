@@ -58,25 +58,26 @@ public class UiManager : MonoBehaviour
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
-        Debug.Log(this.name);
+        //this.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshPro>().text = GameManger.instance.player.GPD();
+        Debug.Log(this.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(1).GetChild(0).name);
     }
 
     public void OnSpeedUpButton()
     {
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
-        Debug.Log(this.transform.name);
+        Debug.Log(this.transform.GetChild(2).GetChild(2).GetChild(1).name);
     }
 
     public void OnHpUpButton()
     {
         GameManger.instance.player.PlayerMaxHealthLevelUp();
-        Debug.Log(this.transform.name);
+        Debug.Log(this.transform.GetChild(2).GetChild(3).GetChild(2).name);
     }
 
     public void OnRecoveryUpButton()
     {
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
-        Debug.Log(this.transform.name);
+        Debug.Log(this.transform.GetChild(2).GetChild(2).GetChild(2).name);
     }
 
     public void SetBottomUi()
