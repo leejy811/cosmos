@@ -11,18 +11,18 @@ public class UiManager : MonoBehaviour
     // Contains functions for each Button
 
     #region UI Components
-    [SerializeField] private TMP_Text jemCount;
-    [SerializeField] private TMP_Text goldCount;
+    [SerializeField] private Text jemCount;
+    [SerializeField] private Text goldCount;
     [SerializeField] private Scrollbar hpScrollbar;
-    [SerializeField] private TMP_Text waveLevel;
-    [SerializeField] private TMP_Text currentAtk;
-    [SerializeField] private TMP_Text atkUpGold;
-    [SerializeField] private TMP_Text currentSpeed;
-    [SerializeField] private TMP_Text speedUpGold;
-    [SerializeField] private TMP_Text currentHp;
-    [SerializeField] private TMP_Text hpUpGold;
-    [SerializeField] private TMP_Text currentRecovery;
-    [SerializeField] private TMP_Text recoveryUpGold;
+    [SerializeField] private Text waveLevel;
+    [SerializeField] private Text currentAtk;
+    [SerializeField] private Text atkUpGold;
+    [SerializeField] private Text currentSpeed;
+    [SerializeField] private Text speedUpGold;
+    [SerializeField] private Text currentHp;
+    [SerializeField] private Text hpUpGold;
+    [SerializeField] private Text currentRecovery;
+    [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Animation bottomUiAnim;
     #endregion
 
@@ -37,12 +37,12 @@ public class UiManager : MonoBehaviour
 
     public void AddJem(int num=0)
     {
-        jemCount.SetText(Convert.ToString(num));
+        jemCount.text=(Convert.ToString(num));
     }
 
     public void SetRock(int num=0)
     {
-        goldCount.SetText(Convert.ToString(num));
+        goldCount.text = (Convert.ToString(num));
     }
 
     public void SetHp(float value=0.0f)
@@ -52,7 +52,7 @@ public class UiManager : MonoBehaviour
 
     public void IncreaseWave(int num)
     {
-        waveLevel.SetText(Convert.ToString(num));
+        waveLevel.text = (Convert.ToString(num));
     }
 
     public void OnAttackUpButton()
