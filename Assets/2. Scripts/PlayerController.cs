@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float maxPlayerHealth;
     private float playerHealth;
     private float playerHealthRecorvery;
+    private int playerGold;
 
     [SerializeField]
     private float attackRange;
@@ -23,19 +24,32 @@ public class PlayerController : MonoBehaviour
     public void PlayerDamageLevelUp()
     {
         playerDamage += 3f;
+        PayGold(1);
     }
     public void PlayerAttackSpeedLevelUp()
     {
         playerAttackSpeed += 0.5f;
+        PayGold(1);
     }
     public void PlayerMaxHealthLevelUp()
     {
         playerHealth += 5f;
+        PayGold(1);
     }
     public void PlayerHealthRecorveryLevelUp()
     {
         playerHealthRecorvery += 3f;
+        PayGold(1);
     }
+
+    private void PayGold(int gold)
+    {
+        if (playerGold - gold < 0)
+            return;
+
+        playerGold -= gold;
+    }
+
     void Start()
     {
         StartCoroutine(Shoot());
