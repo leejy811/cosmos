@@ -29,6 +29,18 @@ public class UiManager : MonoBehaviour
     private bool isFold = false;
     #endregion
 
+    private void Awake()
+    {
+        SetPlayerState();
+    }
+    private void Update()
+    {
+        SetHpUI();
+    }
+    void SetHpUI()
+    {
+        hpScrollbar.size = GameManger.instance.player.PlayerMaxHealthPerCurHealth();
+    }
     public void PauseGame()
     {
 
@@ -53,7 +65,13 @@ public class UiManager : MonoBehaviour
     {
         waveLevel.text = (Convert.ToString(num));
     }
-
+    private void SetPlayerState()
+    {
+        currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
+        currentSpeed.text = GameManger.instance.player.GetPlayerAtkSpeed().ToString();
+        currentHp.text = GameManger.instance.player.GetPlayerHealth().ToString();
+        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString();
+    }
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
@@ -75,7 +93,7 @@ public class UiManager : MonoBehaviour
     public void OnRecoveryUpButton()
     {
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
-        Debug.Log(this.transform.name);
+        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString();
     }
 
     public void SetBottomUi()

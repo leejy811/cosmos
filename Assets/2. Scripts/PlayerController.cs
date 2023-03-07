@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
     private float playerAttackSpeed;
     [SerializeField]
     private float maxPlayerHealth;
+    [SerializeField]
     private float playerHealth;
+    [SerializeField]
     private float playerHealthRecorvery;
     private int playerGold;
 
@@ -26,6 +28,10 @@ public class PlayerController : MonoBehaviour
         playerDamage += 3f;
         PayGold(1);
     }
+    public float PlayerMaxHealthPerCurHealth()
+    {
+        return (float)playerHealth / maxPlayerHealth;
+    }
     public void PlayerAttackSpeedLevelUp()
     {
         playerAttackSpeed += 0.5f;
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerMaxHealthLevelUp()
     {
         playerHealth += 5f;
+        maxPlayerHealth += 5f;
         PayGold(1);
     }
     public void PlayerHealthRecorveryLevelUp()
@@ -160,6 +167,10 @@ public class PlayerController : MonoBehaviour
     }
     public float GetPlayerHealth()
     {
-        return playerHealth;
+        return maxPlayerHealth;
+    }
+    public float GetPlayerHealthRecorvery()
+    {
+        return playerHealthRecorvery;
     }
 }

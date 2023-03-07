@@ -4372,7 +4372,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1733991723}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.742
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4569,7 +4569,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 5
   playerAttackSpeed: 0.1
-  maxPlayerHealth: 1000
+  maxPlayerHealth: 5
+  playerHealth: 5
+  playerHealthRecorvery: 0.01
   attackRange: 2
   targetLayer:
     serializedVersion: 2
