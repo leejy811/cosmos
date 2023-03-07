@@ -140,4 +140,12 @@ public class PlayerController : MonoBehaviour
     {
         return playerDamage;
     }
+    public float GetPlayerAtkSpeed()
+    {
+        return playerAttackSpeed;
+    }
+    public float GetPlayerHealth()
+    {
+        return playerHealth;
+    }
 }

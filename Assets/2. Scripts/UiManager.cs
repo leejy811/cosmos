@@ -9,7 +9,6 @@ public class UiManager : MonoBehaviour
 {
     // Manages all UI component
     // Contains functions for each Button
-
     #region UI Components
     [SerializeField] private Text jemCount;
     [SerializeField] private Text goldCount;
@@ -58,19 +57,19 @@ public class UiManager : MonoBehaviour
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
-        Debug.Log(this.name);
+        currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
     }
 
     public void OnSpeedUpButton()
     {
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
-        Debug.Log(this.transform.name);
+        currentSpeed.text = GameManger.instance.player.GetPlayerAtkSpeed().ToString();
     }
 
     public void OnHpUpButton()
     {
         GameManger.instance.player.PlayerMaxHealthLevelUp();
-        Debug.Log(this.transform.name);
+        currentHp.text = GameManger.instance.player.GetPlayerHealth().ToString();
     }
 
     public void OnRecoveryUpButton()
