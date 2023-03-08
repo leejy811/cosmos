@@ -101,7 +101,7 @@ MonoBehaviour:
   bulletSpeed: 5
   partsType: Missile
   partsRange: 5
-  partsDamage: 50
+  partsDamage: 5
   partsAttackSpeed: 1
 --- !u!70 &1004508296226519673
 CapsuleCollider2D:

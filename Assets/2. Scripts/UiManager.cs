@@ -24,6 +24,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Animation bottomUiAnim;
+    [SerializeField] private GameObject gameOverUI;
     #endregion
 
     #region Member Variables
@@ -121,6 +122,21 @@ public class UiManager : MonoBehaviour
         else
             bottomUiAnim.Play("BottomUiCloseAnim");
         isFold = !isFold;
+    }
+
+    public void ActiveGameOverUI()
+    {
+        gameOverUI.SetActive(true);
+    }
+
+    public void PushRetryButton()
+    {
+        GameManger.instance.RestartGame();
+    }
+
+    public void PushLobbyButton()
+    {
+        GameManger.instance.GoLobby();
     }
 
 }

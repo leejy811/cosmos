@@ -36,7 +36,7 @@ public class WaveManager: MonoBehaviour
             waves[i].enemyBHp = (i * 5) + 5;
             waves[i].enemyBDamage = (i * 6) + 6;
         }
-        Debug.Log("Stage : " + currentWave + 1);
+        Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
     private void Awake()
@@ -54,7 +54,7 @@ public class WaveManager: MonoBehaviour
         if (waves[currentWave].enemyACount <= 0 && waves[currentWave].enemyBCount <= 0)
         {
             currentWave++;
-            Debug.Log("Stage : " + currentWave + 1);
+            Debug.Log("Stage : " + (currentWave + 1));
             GameManger.instance.UiManager.IncreaseWave(currentWave + 1);
             StartCoroutine("StartWave");
         }
