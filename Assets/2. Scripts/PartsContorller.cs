@@ -21,7 +21,7 @@ public class PartsContorller : Bullet
         base.FixedUpdate();
     }
 
-    private void MissileAttack()
+    public void MissileAttack()
     {
         LayerMask targetLayer = LayerMask.GetMask("Enemy");
         RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, partsRange, Vector2.zero, 0, targetLayer); 
@@ -31,14 +31,6 @@ public class PartsContorller : Bullet
             Enemy enemy = target.transform.gameObject.GetComponent<Enemy>();
             enemy.GetDamage(partsDamage);
             gameObject.SetActive(false);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            MissileAttack();
         }
     }
 }

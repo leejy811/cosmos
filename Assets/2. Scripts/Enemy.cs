@@ -61,6 +61,10 @@ public class Enemy : MonoBehaviour
             GetDamage(damage);
             other.gameObject.SetActive(false);
         }
+        else if(other.gameObject.tag == "Missile")
+        {
+            other.gameObject.GetComponent<PartsContorller>().MissileAttack();
+        }
     }
 
     public void GetDamage(float damage)
