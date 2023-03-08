@@ -4568,10 +4568,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 5
+  playerDamageCost: 2
   playerAttackSpeed: 0.1
+  playerAtkSpeedCost: 2
   maxPlayerHealth: 5
+  playerMaxHealthCost: 2
   playerHealth: 5
   playerHealthRecorvery: 0.01
+  playerHealthRecorveryCost: 2
+  playerGold: 3
   attackRange: 2
   targetLayer:
     serializedVersion: 2

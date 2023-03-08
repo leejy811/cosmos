@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UiManager : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         SetHpUI();
+        SetGold();
+    }
+    void SetGold()
+    {
+        goldCount.text = GameManger.instance.player.playerGold.ToString();
     }
     void SetHpUI()
     {
@@ -68,32 +74,44 @@ public class UiManager : MonoBehaviour
     private void SetPlayerState()
     {
         currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
+        atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
         currentSpeed.text = GameManger.instance.player.GetPlayerAtkSpeed().ToString();
+        speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
         currentHp.text = GameManger.instance.player.GetPlayerHealth().ToString();
-        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString();
+        hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
+        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString() + " /sec";
+        recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
         currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
+        atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
+
     }
 
     public void OnSpeedUpButton()
     {
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
         currentSpeed.text = GameManger.instance.player.GetPlayerAtkSpeed().ToString();
+        speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
+
     }
 
     public void OnHpUpButton()
     {
         GameManger.instance.player.PlayerMaxHealthLevelUp();
         currentHp.text = GameManger.instance.player.GetPlayerHealth().ToString();
+        hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
+
     }
 
     public void OnRecoveryUpButton()
     {
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
-        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString();
+        currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString() + " /sec";
+        recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
+
     }
 
     public void SetBottomUi()

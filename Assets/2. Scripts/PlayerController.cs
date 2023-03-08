@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,14 +9,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerDamage;
     [SerializeField]
+    public int playerDamageCost;
+    [SerializeField]
     private float playerAttackSpeed;
     [SerializeField]
+    public int playerAtkSpeedCost;
+    [SerializeField]
     private float maxPlayerHealth;
+    [SerializeField]
+    public int playerMaxHealthCost;
     [SerializeField]
     private float playerHealth;
     [SerializeField]
     private float playerHealthRecorvery;
-    private int playerGold;
+    [SerializeField]
+    public int playerHealthRecorveryCost;
+
+    public int playerGold;
 
     [SerializeField]
     private float attackRange;
@@ -25,35 +35,42 @@ public class PlayerController : MonoBehaviour
     
     public void PlayerDamageLevelUp()
     {
+        if (playerGold < playerDamageCost)
+            return;
+        PayGold(playerDamageCost);
         playerDamage += 3f;
-        PayGold(1);
+        playerDamageCost += 5;
     }
-    public float PlayerMaxHealthPerCurHealth()
-    {
-        return (float)playerHealth / maxPlayerHealth;
-    }
+
     public void PlayerAttackSpeedLevelUp()
     {
+        if (playerGold < playerAtkSpeedCost)
+            return;
+        PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.5f;
-        PayGold(1);
+        playerAtkSpeedCost += 5;
+
     }
     public void PlayerMaxHealthLevelUp()
     {
+        if (playerGold < playerMaxHealthCost)
+            return;
+        PayGold(playerMaxHealthCost);
         playerHealth += 5f;
         maxPlayerHealth += 5f;
-        PayGold(1);
+        playerMaxHealthCost += 10;
     }
     public void PlayerHealthRecorveryLevelUp()
     {
+        if (playerGold < playerHealthRecorveryCost)
+            return;
+        PayGold(playerHealthRecorveryCost);
         playerHealthRecorvery += 3f;
-        PayGold(1);
+        playerHealthRecorveryCost += 10; 
     }
 
     private void PayGold(int gold)
     {
-        if (playerGold - gold < 0)
-            return;
-
         playerGold -= gold;
     }
 
@@ -99,7 +116,6 @@ public class PlayerController : MonoBehaviour
         else
             playerHealth -= damage;
     }
-
     private void PlayerDie()
     {
         //플레이어 사망 로직
@@ -172,5 +188,9 @@ public class PlayerController : MonoBehaviour
     public float GetPlayerHealthRecorvery()
     {
         return playerHealthRecorvery;
+    }
+    public float PlayerMaxHealthPerCurHealth()
+    {
+        return (float)playerHealth / maxPlayerHealth;
     }
 }
