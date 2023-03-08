@@ -5587,7 +5587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 5
   playerDamageCost: 2
-  playerAttackSpeed: 2
+  playerAttackSpeed: 1
   playerAtkSpeedCost: 2
   maxPlayerHealth: 5
   playerMaxHealthCost: 2

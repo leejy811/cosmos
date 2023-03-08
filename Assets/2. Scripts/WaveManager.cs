@@ -29,11 +29,11 @@ public class WaveManager: MonoBehaviour
         waves = new IWave[40];
         for(int i=0; i<40;i++)
         {
-            waves[i].enemyACount = (i * 10) + 10;
-            waves[i].enemyAHp = (i * 3) + 3;
+            waves[i].enemyACount = (i * 5) + 5;
+            waves[i].enemyAHp = (i * 5) + 3;
             waves[i].enemyADamage = (i * 2) + 2;
-            waves[i].enemyBCount = (i * 12) + 10;
-            waves[i].enemyBHp = (i * 5) + 5;
+            waves[i].enemyBCount = (i * 7) + 5;
+            waves[i].enemyBHp = (i * 4) + 5;
             waves[i].enemyBDamage = (i * 6) + 6;
         }
         Debug.Log("Stage : " + (currentWave + 1));
@@ -51,7 +51,7 @@ public class WaveManager: MonoBehaviour
     }
     private void CheckWaveEnd()
     {
-        if (waves[currentWave].enemyACount <= 0 && waves[currentWave].enemyBCount <= 0)
+        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0)
         {
             currentWave++;
             Debug.Log("Stage : " + (currentWave + 1));
@@ -61,35 +61,33 @@ public class WaveManager: MonoBehaviour
     }
     IEnumerator StartWave()
     {
+        int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         yield return new WaitForSeconds(5);
-        int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyACount;
+        Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
+        Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + currentACount + " Enemy B count : " + currentBCount);
 
         while (true)
         {
+            yield return new WaitForSeconds(0.5f);
+
             string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
 
-            if (currentACount <= 0 && currentBCount <= 0)
+            if (currentACount == 0 && currentBCount == 0)
                 break;
-            if(currentACount <= 0)
-            {
+            if(currentACount == 0)
                 ranType = "EnemyCircle";
-            }
-            else if(currentBCount <= 0)
-            {
+            else if(currentBCount == 0)
                 ranType = "EnemyTriangle";
-            }
-
-            EnemySpawn(ranType);
 
             if (ranType == "EnemyTriangle")
-            {
                 currentACount--;
-            }
-            else
-            {
+            else if(ranType == "EnemyCircle")
                 currentBCount--;
-            }
-            yield return new WaitForSeconds(0.5f);
+
+            Debug.Log("1.Enemy A count : " + currentACount + " Enemy B count : " + currentBCount);
+            Debug.Log("2.Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
+
+            EnemySpawn(ranType);
         }
         Debug.Log("Wave Spawn End");
     }

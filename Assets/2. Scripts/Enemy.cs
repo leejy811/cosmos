@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
         GameManger.instance.player.playerGold += 3;
         if (enemyType == "EnemyA")
             waveManager.waves[waveManager.currentWave].enemyACount--;
-        else
+        else if(enemyType == "EnemyB")
             waveManager.waves[waveManager.currentWave].enemyBCount--;
 
     }

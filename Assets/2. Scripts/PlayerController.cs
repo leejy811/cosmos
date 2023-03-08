@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerAtkSpeedCost)
             return;
         PayGold(playerAtkSpeedCost);
-        playerAttackSpeed += 0.5f;
+        playerAttackSpeed += 0.2f;
         playerAtkSpeedCost += 5;
 
     }
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             bullet.transform.position = transform.position;
             bullet.GetComponent<Bullet>().Init(directionPosition.normalized);
 
-            yield return new WaitForSeconds(playerAttackSpeed);
+            yield return new WaitForSeconds((float)1 / playerAttackSpeed);
         }
     }
 
