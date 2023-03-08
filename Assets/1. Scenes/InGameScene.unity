@@ -943,6 +943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolManager: {fileID: 1186448685}
   player: {fileID: 1666084034}
+  UiManager: {fileID: 568352306}
 --- !u!4 &239584091
 Transform:
   m_ObjectHideFlags: 0
@@ -4569,7 +4570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 5
   playerDamageCost: 2
-  playerAttackSpeed: 0.1
+  playerAttackSpeed: 2
   playerAtkSpeedCost: 2
   maxPlayerHealth: 5
   playerMaxHealthCost: 2

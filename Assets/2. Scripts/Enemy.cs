@@ -26,11 +26,11 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         EnemyLookPlayer();
-        SetEnemyState();
     }
-    private void SetEnemyState()
+    public void SetEnemyState(float enemyHealth, float enemyDamage)
     {
-        enemyHealth = maxEnemyHealth;
+        this.enemyHealth = enemyHealth;
+        this.enemyDamage = enemyDamage;
 
     }
     public void EnemyLookPlayer()
@@ -50,7 +50,6 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        SetEnemyState();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -93,7 +92,5 @@ public class Enemy : MonoBehaviour
         else
             waveManager.waves[waveManager.currentWave].enemyBCount--;
 
-        if(waveManager.waves[waveManager.currentWave].enemyACount == 0 && waveManager.waves[waveManager.currentWave].enemyBCount == 0)
-            waveManager.isWaveEnd = true;
     }
 }
