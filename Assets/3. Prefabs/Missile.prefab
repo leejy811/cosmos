@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b2f61713b8e744bffd578a5643f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
+  bulletSpeed: 0.5
   partsType: Missile
   partsRange: 5
-  partsDamage: 5
-  partsAttackSpeed: 1
+  partsDamage: 0
+  partsAttackSpeed: 3
 --- !u!70 &1004508296226519673
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
