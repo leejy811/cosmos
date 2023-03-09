@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LobbyUiManager : MonoBehaviour
 {
@@ -10,16 +11,33 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;
     [SerializeField] private Animation fragmentChangeAnim;
+    [SerializeField] private Image panel;     
     #endregion
 
     #region Member Variables
     private GameObject target;
     private bool isConvertingFragment = false;
+    private float currentTime = 0f;  
+    private float fadeoutTime = 1f;  
     #endregion
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("InGameScene");  
+        StartCoroutine("FadeOut");
+    }
+
+    IEnumerator FadeOut()
+    {
+        panel.gameObject.SetActive(true);
+        Color alpha = panel.color;
+        while (alpha.a < 1)
+        {
+            currentTime += Time.deltaTime / fadeoutTime;
+            alpha.a = Mathf.Lerp(0, 1, currentTime);
+            panel.color = alpha;
+            yield return null;
+        }
+        SceneManager.LoadScene("InGameScene");
     }
 
     public void OnClickFragmentChange(GameObject targetFragment)

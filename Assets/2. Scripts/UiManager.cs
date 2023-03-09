@@ -25,20 +25,39 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Animation bottomUiAnim;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private Image panel;
     #endregion
 
     #region Member Variables
     private bool isFold = false;
+    private float currentTime = 0f;
+    private float fadeInTime = 2f;
     #endregion
 
     private void Awake()
     {
         SetPlayerState();
     }
+    private void Start()
+    {
+        StartCoroutine("FadeIn");
+    }
     private void Update()
     {
         SetHpUI();
         SetGold();
+    }
+    IEnumerator FadeIn()
+    {
+        Color alpha = panel.color;
+        while (alpha.a > 0)
+        {
+            currentTime += Time.deltaTime / fadeInTime;
+            alpha.a = Mathf.Lerp(1, 0, currentTime);
+            panel.color = alpha;
+            yield return null;
+        }
+        panel.gameObject.SetActive(false);
     }
     void SetGold()
     {
