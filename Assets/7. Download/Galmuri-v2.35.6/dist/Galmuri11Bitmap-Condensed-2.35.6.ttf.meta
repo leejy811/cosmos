@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1b0f0932840c0b34b922b0a770705e71
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Galmuri11Bitmap
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7200a97a90dada843a9042092e029c0f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

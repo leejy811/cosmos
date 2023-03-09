@@ -12,7 +12,10 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Animation fragmentChangeAnim;
     #endregion
 
+    #region Member Variables
     private GameObject target;
+    private bool isConvertingFragment = false;
+    #endregion
 
     public void ChangeScene()
     {
@@ -21,8 +24,9 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OnClickFragmentChange(GameObject targetFragment)
     {
-        if (currentFragment.transform.GetChild(0) == targetFragment.transform)
+        if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingFragment)
             return;
+        isConvertingFragment = true;
         target = targetFragment;
         targetFragment.transform.parent = nextFragment.transform;
         targetFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
@@ -41,5 +45,6 @@ public class LobbyUiManager : MonoBehaviour
 
         target.transform.parent = currentFragment.transform;
         target.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        isConvertingFragment = false;
     }
 }
