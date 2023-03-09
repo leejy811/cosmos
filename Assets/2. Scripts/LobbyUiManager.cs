@@ -35,7 +35,7 @@ public class LobbyUiManager : MonoBehaviour
         Invoke("OnEndChangeAnimation", 1f);
     }
 
-    public void OnEndChangeAnimation()
+    private void OnEndChangeAnimation()
     {
         target.transform.parent = mainUI.transform;
         currentFragment.transform.GetChild(0).transform.parent = mainUI.transform;
