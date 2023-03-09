@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public int playerGold;
 
-    [SerializeField]
-    private float attackRange;
+    public float attackRange;
     public LayerMask targetLayer;
     private RaycastHit2D[] targets;
     public Transform nearestTarget;
@@ -170,6 +169,12 @@ public class PlayerController : MonoBehaviour
 
             GetDamage(damage);
             enemy.EnemyDie();
+        }
+        if (collision.gameObject.tag == "Boss")
+        {
+            BossB bossB = collision.GetComponent<BossB>();
+            bossB.BossDie();
+            PlayerDie();
         }
     }
 
