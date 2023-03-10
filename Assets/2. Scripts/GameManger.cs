@@ -22,6 +22,7 @@ public class GameManger : MonoBehaviour
     public void GameOver()
     {
         UiManager.ActiveGameOverUI();
+        UiManager.SaveGameResult();
         Time.timeScale = 0;
     }
 

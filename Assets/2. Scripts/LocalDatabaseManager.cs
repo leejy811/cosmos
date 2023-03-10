@@ -7,7 +7,11 @@ public class LocalDatabaseManager : MonoBehaviour
     public static LocalDatabaseManager instance;
 
     public int JemCount { get; set; } = 0;
-    public int HighScore { get; set; } = 0;
+    private int highScore = 0;
+    public int HighScore {
+        get { return highScore; }
+        set { highScore = Mathf.Max(value, highScore); }
+     }
     public int Parts1 { get; set; } = 0;
     public int Parts2 { get; set; } = 0;
     public int Parts3 { get; set; } = 0;
@@ -21,13 +25,10 @@ public class LocalDatabaseManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);     
         }
         else
-            Destroy(this.gameObject);   
-    } 
+            Destroy(this.gameObject);
 
-    void Start()
-    {
         LoadData();
-    }
+    } 
 
     public void LoadData()
     {
@@ -45,7 +46,7 @@ public class LocalDatabaseManager : MonoBehaviour
             Parts4 = PlayerPrefs.GetInt("Parts4");
     }
 
-    public void SetData()
+    public void SaveData()
     {
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetInt("HighScore", HighScore);

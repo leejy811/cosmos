@@ -21,6 +21,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text speedUpGold;
     [SerializeField] private Text currentHp;
     [SerializeField] private Text hpUpGold;
+    [SerializeField] private Text resultJem;
+    [SerializeField] private Text resultScore;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Animation bottomUiAnim;
@@ -146,6 +148,15 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
+        resultScore.text = "High Score : "+waveLevel.text;
+        resultJem.text = "Jem : "+jemCount.text;
+    }
+
+    public void SaveGameResult()
+    {
+        LocalDatabaseManager.instance.JemCount += int.Parse(jemCount.text);
+        LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
+        LocalDatabaseManager.instance.SaveData();
     }
 
     public void PushRetryButton()

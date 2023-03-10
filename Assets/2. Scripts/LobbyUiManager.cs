@@ -11,15 +11,28 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;
     [SerializeField] private Animation fragmentChangeAnim;
-    [SerializeField] private Image panel;     
+    [SerializeField] private Image panel;
+    [SerializeField] private Text jemCount;
+    [SerializeField] private Text highScore;
     #endregion
 
     #region Member Variables
     private GameObject target;
     private bool isConvertingFragment = false;
     private float currentTime = 0f;  
-    private float fadeoutTime = 1f;  
+    private float fadeoutTime = 1f;
     #endregion
+
+    private void Start()
+    {
+        SetUi();
+    }
+
+    private void SetUi()
+    {
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+        highScore.text = "High Score : "+LocalDatabaseManager.instance.HighScore.ToString();
+    }
 
     public void ChangeScene()
     {
