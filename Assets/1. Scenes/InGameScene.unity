@@ -5694,7 +5694,7 @@ MonoBehaviour:
   playerHealthRecorvery: 0.01
   playerHealthRecorveryCost: 2
   playerGold: 3
-  attackRange: 2
+  attackRange: 4
   targetLayer:
     serializedVersion: 2
     m_Bits: 64

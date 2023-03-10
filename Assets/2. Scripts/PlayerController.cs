@@ -94,12 +94,10 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForFixedUpdate();
                 continue;
             }
-             
-            Vector3 directionPosition = nearestTarget.position - transform.position;
 
             GameObject bullet = GameManger.instance.poolManager.GetPool("Bullet");
             bullet.transform.position = transform.position;
-            bullet.GetComponent<Bullet>().Init(directionPosition.normalized);
+            bullet.GetComponent<Bullet>().Init(nearestTarget);
 
             yield return new WaitForSeconds((float)1 / playerAttackSpeed);
         }

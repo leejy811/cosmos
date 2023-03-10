@@ -33,7 +33,7 @@ public class SkillManager : MonoBehaviour
 
             GameObject missile = GameManger.instance.poolManager.GetPool("Missile");
             missile.transform.position = transform.position;
-            missile.GetComponent<PartsContorller>().Init(directionPosition.normalized);
+            missile.GetComponent<PartsContorller>().Init(nearestTarget);
 
             yield return new WaitForSeconds(missile.GetComponent<PartsContorller>().partsAttackSpeed);
         }
