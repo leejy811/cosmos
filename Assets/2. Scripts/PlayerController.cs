@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             return;
         PayGold(playerDamageCost);
         playerDamage += 3f;
-        playerDamageCost += 5;
+        playerDamageCost += 4;
     }
 
     public void PlayerAttackSpeedLevelUp()
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             return;
         PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.2f;
-        playerAtkSpeedCost += 5;
+        playerAtkSpeedCost += 8;
 
     }
     public void PlayerMaxHealthLevelUp()
@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerHealthRecorveryCost)
             return;
         PayGold(playerHealthRecorveryCost);
-        playerHealthRecorvery += 3f;
-        playerHealthRecorveryCost += 10; 
+        playerHealthRecorvery += 0.1f;
+        playerHealthRecorveryCost += 8; 
     }
 
     private void PayGold(int gold)
@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        GameManger.instance.cameraResolution.Shake();
         if (playerHealth - damage <= 0)
         {
             playerHealth = 0;
@@ -118,11 +119,9 @@ public class PlayerController : MonoBehaviour
     private void PlayerDie()
     {
         //플레이어 사망 로직
-        if(playerHealth <= 0)
-        {
+        GameManger.instance.cameraResolution.Shake();
             this.gameObject.SetActive(false);
             GameManger.instance.GameOver();
-        }
     }
 
     private void Recovery()
@@ -174,6 +173,7 @@ public class PlayerController : MonoBehaviour
         {
             BossB bossB = collision.GetComponent<BossB>();
             bossB.BossDie();
+           
             PlayerDie();
         }
     }

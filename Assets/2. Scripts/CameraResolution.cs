@@ -8,6 +8,8 @@ public class CameraResolution : MonoBehaviour
     void Start()
     {
         Camera camera = GetComponent<Camera>();
+        originPos = transform.localPosition;
+
         Rect rect = camera.rect;
         float scaleHeight = ((float)Screen.width / Screen.height) / ((float)9 / 19);
         float scaleWidth = 1f / scaleHeight;
@@ -31,4 +33,23 @@ public class CameraResolution : MonoBehaviour
     {
         
     }
+    Vector3 originPos;
+    public void Shake()
+    {
+        StartCoroutine("CameraShake");
+    }
+
+    private IEnumerator CameraShake()
+    {
+
+        float timer = 0;
+        while(timer <= 0.5)
+        {
+            transform.localPosition = (Vector3)Random.insideUnitCircle * 0.3f + originPos;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = originPos;
+    }
+    
 }

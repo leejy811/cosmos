@@ -29,12 +29,12 @@ public class WaveManager: MonoBehaviour
         waves = new IWave[40];
         for(int i=0; i<40;i++)
         {
-            waves[i].enemyACount = (i * 5) + 5;
-            waves[i].enemyAHp = (i * 5) + 3;
-            waves[i].enemyADamage = (i * 2) + 2;
-            waves[i].enemyBCount = (i * 7) + 5;
-            waves[i].enemyBHp = (i * 4) + 5;
-            waves[i].enemyBDamage = (i * 6) + 6;
+            waves[i].enemyACount = (i * 3) + 5;
+            waves[i].enemyAHp = (i * 2) + 3;
+            waves[i].enemyADamage = i;
+            waves[i].enemyBCount = (i * 4) + 5;
+            waves[i].enemyBHp = (i * 3) + 5;
+            waves[i].enemyBDamage = i;
         }
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");

@@ -9,7 +9,7 @@ public class GameManger : MonoBehaviour
     public PoolManager poolManager;
     public PlayerController player;
     public UiManager UiManager;
-
+    public CameraResolution cameraResolution;
     void Awake()
     {
         instance = this;

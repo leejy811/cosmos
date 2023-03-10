@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyB
-  enemySpeed: 2
+  enemySpeed: 1
   enemyDamage: 1
   maxEnemyHealth: 10
   enemyHealth: 10
