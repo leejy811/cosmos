@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public int playerGold;
 
+    [SerializeField]
+    private LayerMask targetLayer;
+    private Collider2D[] targets;
     public float attackRange;
-    public LayerMask targetLayer;
-    private RaycastHit2D[] targets;
     public Transform nearestTarget;
     
     public void PlayerDamageLevelUp()
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckEnemy()
     {
-        targets = Physics2D.CircleCastAll(transform.position, attackRange, Vector2.zero, 0, targetLayer);
+        targets = Physics2D.OverlapCircleAll((Vector2)transform.position, attackRange, targetLayer.value);
         nearestTarget = GetNearest();
     }
 
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
         Transform resultTransform = null;
         float distance = 100;
 
-        foreach (RaycastHit2D target in targets)
+        foreach (Collider2D target in targets)
         {
             Vector3 playerPosition = transform.position;
             Vector3 targetPosition = target.transform.position;
