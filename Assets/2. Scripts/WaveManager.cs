@@ -20,9 +20,9 @@ public class WaveManager: MonoBehaviour
     private Transform[] spawnPoint;
     public IWave[] waves;
 
-    float spawntimer;
     public int currentWave = -1;
-    public bool isWaveEnd;
+    [SerializeField]
+    private GameObject[] boss;
 
     void Start()
     {
@@ -41,23 +41,22 @@ public class WaveManager: MonoBehaviour
     }
     private void Awake()
     {
-        spawnPoint = GetComponentsInChildren<Transform>();
+        //spawnPoint = GetComponentsInChildren<Transform>();
 
     }
     void Update()
     {
-        CheckWaveEnd();
-
-    }
-    private void CheckWaveEnd()
-    {
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0)
         {
+            CheckWaveEnd();
+        }
+    }
+    public void CheckWaveEnd()
+    {
             currentWave++;
             Debug.Log("Stage : " + (currentWave + 1));
             GameManger.instance.UiManager.IncreaseWave(currentWave + 1);
             StartCoroutine("StartWave");
-        }
     }
     IEnumerator StartWave()
     {
@@ -69,7 +68,16 @@ public class WaveManager: MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-
+            //if ((currentWave +1)% 10 == 1 && (currentWave + 1) >= 10)
+            //{
+            //    BossSpawn(1);
+            //    break;
+            //}
+            if(currentWave == 3)
+            {
+                BossSpawn(1);
+                break;
+            }
             string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
 
             if (currentACount == 0 && currentBCount == 0)
@@ -104,5 +112,14 @@ public class WaveManager: MonoBehaviour
         enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
         enemy.GetComponent<Enemy>().waveManager = this;
 
+    }
+
+    void BossSpawn(int bossType)
+    {
+        Boss boss = Instantiate(this.boss[bossType - 1]).GetComponent<Boss>();
+        boss.transform.position = spawnPoint[0].position;
+        boss.BossLookPlayer();
+        boss.playerController = GameManger.instance.player;
+        boss.waveManager = this;
     }
 }

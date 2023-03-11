@@ -12,7 +12,9 @@ public class Bullet : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (!target.gameObject.activeSelf)
+        if (target == null) return;
+
+        if (!target.gameObject.activeSelf && gameObject.tag != "Missile")
         {
             gameObject.SetActive(false);
             return;

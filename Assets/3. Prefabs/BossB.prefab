@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6431229781790029410}
   - component: {fileID: 6431229781790029409}
-  - component: {fileID: 6431229781790029408}
   - component: {fileID: 6431229781790029436}
   - component: {fileID: 6431229781790029411}
+  - component: {fileID: 3704735204959859034}
   m_Layer: 6
   m_Name: BossB
   m_TagString: Boss
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6431229781790029408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431229781790029415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938c4c7de9f49d744a174ff4e895e66f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossType: B
-  bossHealth: 100
-  bossSpeed: 3
-  playerController: {fileID: 0}
 --- !u!50 &6431229781790029436
 Rigidbody2D:
   serializedVersion: 4
@@ -140,3 +124,20 @@ CapsuleCollider2D:
   m_Offset: {x: -0.7083249, y: 0}
   m_Size: {x: 8.222269, y: 12}
   m_Direction: 0
+--- !u!114 &3704735204959859034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431229781790029415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c8ea667f10bf641a5300772910c36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossType: 0
+  bossHealth: 50
+  bossSpeed: 2
+  playerController: {fileID: 0}
+  waveManager: {fileID: 0}

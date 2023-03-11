@@ -29,7 +29,15 @@ public class PartsContorller : Bullet
         foreach(RaycastHit2D target in targets)
         {
             Enemy enemy = target.transform.gameObject.GetComponent<Enemy>();
-            enemy.GetDamage(partsDamage);
+
+            if (enemy == null)
+            {
+                Boss boss = target.transform.gameObject.GetComponent<Boss>();
+                boss.GetDamage(partsDamage);
+            }
+            else
+                enemy.GetDamage(partsDamage);
+
             gameObject.SetActive(false);
         }
     }

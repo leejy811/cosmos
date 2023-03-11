@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Boss")
         {
-            BossB bossB = collision.GetComponent<BossB>();
+            Boss bossB = collision.GetComponent<Boss>();
             bossB.BossDie();
            
             PlayerDie();

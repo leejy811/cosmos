@@ -2,48 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractBoss : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     [SerializeField]
-    protected string bossType;
+    private int bossType;
     [SerializeField]
-    protected float bossHealth;
+    private float bossHealth;
     [SerializeField]
-    protected float bossSpeed;
+    private float bossSpeed;
 
     public PlayerController playerController;
+    public WaveManager waveManager;
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
 
-    protected void Start()
+    public void Start()
     {
         BossLookPlayer();
     }
 
-    protected void BossLookPlayer()
+    public void BossLookPlayer()
     {
         float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
         targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
         transform.Rotate(new Vector3(0, 0, targetAngle));
     }
 
-    protected void MoveBoss()
+    public void MoveBoss()
     {
+        CheckPlayer();
         transform.position += transform.up * Time.deltaTime * bossSpeed;
     }
 
-    protected void CheckPlayer(float changeSpeed)
+    public void CheckPlayer()
     {
+        float changeSpeed = 0;
+
         if (transform.position.y - playerPos.y <= playerController.attackRange)
+        {
+            switch (bossType)
+            {
+                case 0:
+                    changeSpeed = 0.3f;
+                break;
+                case 1:
+                    changeSpeed = 0;
+                    break;
+                case 2:
+                    changeSpeed = 0;
+                    break;
+                case 3:
+                    changeSpeed = 0;
+                    break;
+            }
+
             bossSpeed = changeSpeed;
+        }
     }
 
-    protected void FixedUpdate()
+    public void FixedUpdate()
     {
         MoveBoss();
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")
         {
@@ -57,7 +79,7 @@ public abstract class AbstractBoss : MonoBehaviour
         }
     }
 
-    protected void GetDamage(float damage)
+    public void GetDamage(float damage)
     {
         if (bossHealth - damage <= 0)
         {
@@ -70,8 +92,11 @@ public abstract class AbstractBoss : MonoBehaviour
     public void BossDie()
     {
         bossHealth = 0;
+        waveManager.CheckWaveEnd();
         Destroy(gameObject);
     }
 
-    protected abstract void BossPattern();
+    public void BossPattern()
+    { }
+
 }
