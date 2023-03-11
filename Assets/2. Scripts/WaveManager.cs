@@ -62,8 +62,8 @@ public class WaveManager: MonoBehaviour
     {
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         yield return new WaitForSeconds(5);
-        Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
-        Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + currentACount + " Enemy B count : " + currentBCount);
+        //Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
+        //Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + currentACount + " Enemy B count : " + currentBCount);
 
         while (true)
         {
@@ -92,12 +92,12 @@ public class WaveManager: MonoBehaviour
             else if(ranType == "EnemyCircle")
                 currentBCount--;
 
-            Debug.Log("1.Enemy A count : " + currentACount + " Enemy B count : " + currentBCount);
-            Debug.Log("2.Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
+            //Debug.Log("1.Enemy A count : " + currentACount + " Enemy B count : " + currentBCount);
+            //Debug.Log("2.Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
 
             EnemySpawn(ranType);
         }
-        Debug.Log("Wave Spawn End");
+       // Debug.Log("Wave Spawn End");
     }
     void EnemySpawn(string type)
     {

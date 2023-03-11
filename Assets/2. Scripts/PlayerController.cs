@@ -133,14 +133,14 @@ public class PlayerController : MonoBehaviour
 
     private void CheckEnemy()
     {
-        targets = Physics2D.OverlapCircleAll((Vector2)transform.position, attackRange, targetLayer.value);
+        targets = Physics2D.OverlapCircleAll(new Vector2(0, 1), attackRange, targetLayer.value);
         nearestTarget = GetNearest();
     }
 
     Transform GetNearest()
     {
         Transform resultTransform = null;
-        float distance = 100;
+        float distance = attackRange;
 
         foreach (Collider2D target in targets)
         {

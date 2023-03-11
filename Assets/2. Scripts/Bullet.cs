@@ -12,7 +12,11 @@ public class Bullet : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            transform.position += attckDirection * bulletSpeed * Time.fixedDeltaTime;
+            return;
+        }
 
         if (!target.gameObject.activeSelf && gameObject.tag != "Missile")
         {
