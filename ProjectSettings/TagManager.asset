@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Missile
   - Boss
+  - Protocol
   layers:
   - Default
   - TransparentFX

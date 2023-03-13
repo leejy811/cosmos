@@ -4915,8 +4915,8 @@ MonoBehaviour:
   partsType: Missile
   partsRange: 1
   partsDamage: 10
-  partsAttackSpeed: 3
-  particle: {fileID: 1149652277042537459}
+  partsAttackSpeed: 0.5
+  missileParticle: {fileID: 1149652277042537459}
   player: {fileID: 0}
 --- !u!70 &1004508296226519673
 CapsuleCollider2D:

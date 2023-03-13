@@ -457,7 +457,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133022735
 GameObject:
@@ -3134,9 +3134,11 @@ GameObject:
   m_Component:
   - component: {fileID: 894511549}
   - component: {fileID: 894511550}
+  - component: {fileID: 894511551}
+  - component: {fileID: 894511552}
   m_Layer: 0
   m_Name: AttackRange
-  m_TagString: Untagged
+  m_TagString: Protocol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3149,12 +3151,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894511548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.7, y: 5.7, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 2.85, y: 2.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1666084032}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &894511550
 SpriteRenderer:
@@ -3208,6 +3210,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &894511551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894511548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876b2f61713b8e744bffd578a5643f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 0
+  partsType: Protocol
+  partsRange: 0
+  partsDamage: 50
+  partsAttackSpeed: 1
+  partsValue: 0.7
+  missileParticle: {fileID: 0}
+  player: {fileID: 1666084034}
+--- !u!58 &894511552
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894511548}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.385
 --- !u!1 &896331386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,7 +4009,7 @@ Transform:
   - {fileID: 1664945415}
   - {fileID: 1598073560}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189311421
 GameObject:
@@ -4295,7 +4333,7 @@ Transform:
   - {fileID: 1050849265}
   - {fileID: 608211827}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316662433
 GameObject:
@@ -5733,8 +5771,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 894511549}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5773,7 +5810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 5
   playerDamageCost: 2
-  playerAttackSpeed: 1
+  playerAttackSpeed: 2
   playerAtkSpeedCost: 2
   maxPlayerHealth: 5
   playerMaxHealthCost: 2
@@ -5781,9 +5818,6 @@ MonoBehaviour:
   playerHealthRecorvery: 0.01
   playerHealthRecorveryCost: 2
   playerGold: 3
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
   attackRange: 4
   nearestTarget: {fileID: 0}
 --- !u!70 &1666084035

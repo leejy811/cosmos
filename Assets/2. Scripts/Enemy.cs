@@ -54,15 +54,27 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
             float damage = playerController.GetPlayerDamage();
             GetDamage(damage);
             other.gameObject.SetActive(false);
         }
-        else if(other.gameObject.tag == "Missile")
+        else if (other.gameObject.tag == "Missile")
         {
             other.gameObject.GetComponent<PartsContorller>().MissileAttack();
+        }
+        else if (other.gameObject.tag == "Protocol")
+        {
+            enemySpeed *= other.gameObject.GetComponent<PartsContorller>().partsValue;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Protocol")
+        {
+            enemySpeed *= 1 / other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
     }
 
