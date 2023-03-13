@@ -55,7 +55,7 @@ public class WaveManager: MonoBehaviour
     {
             currentWave++;
             Debug.Log("Stage : " + (currentWave + 1));
-            GameManger.instance.UiManager.IncreaseWave(currentWave + 1);
+            GameManger.instance.UiManager.WaveClear(currentWave+1);
             StartCoroutine("StartWave");
     }
     IEnumerator StartWave()

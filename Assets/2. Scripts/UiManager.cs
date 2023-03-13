@@ -25,8 +25,11 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text resultScore;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
+    [SerializeField] private Text waveCleaeAnimText;
     [SerializeField] private Animation bottomUiAnim;
+    [SerializeField] private Animator waveClearAnim;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject waveClearAnimBase;
     [SerializeField] private Image panel;
     #endregion
 
@@ -42,7 +45,7 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine("FadeIn");
+        StartCoroutine("FadeIn"); 
     }
     private void Update()
     {
@@ -89,10 +92,6 @@ public class UiManager : MonoBehaviour
         hpScrollbar.value = value;
     }
 
-    public void IncreaseWave(int num)
-    {
-        waveLevel.text = (Convert.ToString(num));
-    }
     private void SetPlayerState()
     {
         currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
@@ -109,7 +108,6 @@ public class UiManager : MonoBehaviour
         GameManger.instance.player.PlayerDamageLevelUp();
         currentAtk.text = GameManger.instance.player.GetPlayerDamage().ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
-
     }
 
     public void OnSpeedUpButton()
@@ -117,7 +115,6 @@ public class UiManager : MonoBehaviour
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
         currentSpeed.text = GameManger.instance.player.GetPlayerAtkSpeed().ToString();
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
-
     }
 
     public void OnHpUpButton()
@@ -125,7 +122,6 @@ public class UiManager : MonoBehaviour
         GameManger.instance.player.PlayerMaxHealthLevelUp();
         currentHp.text = GameManger.instance.player.GetPlayerHealth().ToString();
         hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
-
     }
 
     public void OnRecoveryUpButton()
@@ -133,7 +129,6 @@ public class UiManager : MonoBehaviour
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
         currentRecovery.text = GameManger.instance.player.GetPlayerHealthRecorvery().ToString() + " /sec";
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
-
     }
 
     public void SetBottomUi()
@@ -169,4 +164,24 @@ public class UiManager : MonoBehaviour
         GameManger.instance.GoLobby();
     }
 
+    public void WaveClear(int num)
+    {
+        waveLevel.text = Convert.ToString(num);
+        StartCoroutine("WaveClearAnim");
+    }
+
+    IEnumerator WaveClearAnim()
+    {
+        string[] texts =new string[] { "Wave Clear !", "5", "4", "3", "2", "1", "" };
+        texts[texts.Length - 1] = "Wave " + waveLevel.text;
+
+        waveClearAnimBase.SetActive(true);
+        foreach (string s in texts)
+        {
+            waveCleaeAnimText.text = s;
+            waveClearAnim.SetTrigger("ChangeString");
+            yield return new WaitForSeconds(1f);
+        }
+        waveClearAnimBase.SetActive(false);
+    }
 }
