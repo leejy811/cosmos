@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     public PlayerController playerController;
     public WaveManager waveManager;
 
-    private float bossAPatterntime;
+    private float bossPatternTime;
     private bool enterBossPlayerRange;
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
@@ -39,10 +39,11 @@ public class Boss : MonoBehaviour
         transform.position += transform.up * Time.deltaTime * bossSpeed;
     }
 
-    // 보스의 타입에 따라서 플레이어의 사거리까지 간 뒤 속도 조절
     // 보스 A : 사거리에서 멈춘 뒤 보스 A의 패턴을 시작
     // 보스 B : 플레이어의 사거리 전에는 빠른 속도로 접근하다가 사거리에 도착하면 느린 속도로 접근
+    // 보스 C : Player를 중심으로 일정한 속도로 공전하면서 적 C 생성
 
+    // 보스의 타입에 따라서 플레이어의 사거리까지 간 뒤 속도 조절
     public void CheckPlayer()
     {
         float changeSpeed = 0;
@@ -72,13 +73,19 @@ public class Boss : MonoBehaviour
 
     public void FixedUpdate()
     {
+        bossPatternTime += Time.deltaTime;
         MoveBoss();
-        if(enterBossPlayerRange && bossAPatterntime > 10)
+        if(enterBossPlayerRange && bossPatternTime > 5 && bossType == 0)
         {
             BossAPattern();
-            bossAPatterntime = 0;
+            bossPatternTime = 0;
         }
-        bossAPatterntime += Time.deltaTime;
+
+        if(enterBossPlayerRange && bossPatternTime > 1 && bossType == 2)
+        {
+            BossCPattern();
+
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -141,4 +148,10 @@ public class Boss : MonoBehaviour
             enemy.GetComponent<Enemy>().waveManager = this.waveManager;
         }
     }
+    void BossCPattern()
+    {
+        Debug.Log("Boss C Pattern Start");
+        this.gameObject.transform.RotateAround(playerPos, Vector3.forward, 10 * Time.deltaTime);
+    }
+
 }

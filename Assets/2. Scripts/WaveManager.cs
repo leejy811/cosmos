@@ -72,7 +72,7 @@ public class WaveManager: MonoBehaviour
             }
             //if (currentWave == 0)
             //{
-            //    BossSpawn(0);
+            //    BossSpawn(2);
             //    break;
             //}
             //else if(currentWave == 4)

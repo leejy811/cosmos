@@ -4371,8 +4371,9 @@ MonoBehaviour:
   waves: []
   currentWave: 0
   boss:
-  - {fileID: 6431229781790029415, guid: 4ab3766331a974e429c1b09f8e82c566, type: 3}
+  - {fileID: 513460135526730806, guid: 4ab3766331a974e429c1b09f8e82c566, type: 3}
   - {fileID: 6431229781790029415, guid: e77ad2c8432411244915a5e15e3e4b0d, type: 3}
+  - {fileID: 8119299994556774598, guid: c32794497f0e4f34ebe44839e59892fd, type: 3}
 --- !u!4 &1302566967
 Transform:
   m_ObjectHideFlags: 0
@@ -5893,15 +5894,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e1c10b7b2f794fb002296885df338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: 5
-  playerDamageCost: 2
-  playerAttackSpeed: 2
-  playerAtkSpeedCost: 2
+  playerDamage: 1
+  playerDamageCost: 3
+  playerAttackSpeed: 1
+  playerAtkSpeedCost: 3
   maxPlayerHealth: 5
-  playerMaxHealthCost: 2
+  playerMaxHealthCost: 5
   playerHealth: 5
-  playerHealthRecorvery: 0.01
-  playerHealthRecorveryCost: 2
+  playerHealthRecorvery: 0
+  playerHealthRecorveryCost: 5
   playerGold: 3
   attackRange: 4
   nearestTarget: {fileID: 0}

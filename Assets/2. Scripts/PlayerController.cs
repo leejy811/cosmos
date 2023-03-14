@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerDamageCost)
             return;
         PayGold(playerDamageCost);
-        playerDamage += 3f;
-        playerDamageCost += 4;
+        playerDamage += 0.05f;
+        playerDamageCost += 2;
     }
 
     public void PlayerAttackSpeedLevelUp()
@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerAtkSpeedCost)
             return;
         PayGold(playerAtkSpeedCost);
-        playerAttackSpeed += 0.2f;
-        playerAtkSpeedCost += 8;
+        playerAttackSpeed += 0.05f;
+        playerAtkSpeedCost += 2;
 
     }
     public void PlayerMaxHealthLevelUp()
@@ -56,15 +56,15 @@ public class PlayerController : MonoBehaviour
         PayGold(playerMaxHealthCost);
         playerHealth += 5f;
         maxPlayerHealth += 5f;
-        playerMaxHealthCost += 10;
+        playerMaxHealthCost += 5;
     }
     public void PlayerHealthRecorveryLevelUp()
     {
         if (playerGold < playerHealthRecorveryCost)
             return;
         PayGold(playerHealthRecorveryCost);
-        playerHealthRecorvery += 0.1f;
-        playerHealthRecorveryCost += 8; 
+        playerHealthRecorvery += 0.01f;
+        playerHealthRecorveryCost += 5; 
     }
 
     private void PayGold(int gold)
