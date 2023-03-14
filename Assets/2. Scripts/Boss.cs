@@ -138,6 +138,7 @@ public class Boss : MonoBehaviour
             enemy.transform.position = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();
             enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
+            enemy.GetComponent<Enemy>().waveManager = this.waveManager;
         }
     }
 }
