@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
 
     public int playerGold;
 
-    [SerializeField]
-    private LayerMask targetLayer;
     private Collider2D[] targets;
     public float attackRange;
     public Transform nearestTarget;
@@ -133,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckEnemy()
     {
-        targets = Physics2D.OverlapCircleAll(new Vector2(0, 1), attackRange, targetLayer.value);
+        targets = Physics2D.OverlapCircleAll(new Vector2(0, 1), attackRange, LayerMask.GetMask("Enemy"));
         nearestTarget = GetNearest();
     }
 
