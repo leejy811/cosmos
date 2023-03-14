@@ -41,7 +41,6 @@ public class WaveManager: MonoBehaviour
     }
     private void Awake()
     {
-        //spawnPoint = GetComponentsInChildren<Transform>();
 
     }
     void Update()
@@ -62,22 +61,25 @@ public class WaveManager: MonoBehaviour
     {
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         yield return new WaitForSeconds(5);
-        //Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
-        //Debug.Log("Wave : " + (currentWave + 1) + " Enemy A Cout : " + currentACount + " Enemy B count : " + currentBCount);
 
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
-            //if ((currentWave +1)% 10 == 1 && (currentWave + 1) >= 10)
+            if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
+            {
+                BossSpawn((currentWave + 1) / 10);
+                break;
+            }
+            if (currentWave == 0)
+            {
+                BossSpawn(0);
+                break;
+            }
+            //else if(currentWave == 4)
             //{
             //    BossSpawn(1);
             //    break;
             //}
-            if(currentWave == 3)
-            {
-                BossSpawn(1);
-                break;
-            }
             string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
 
             if (currentACount == 0 && currentBCount == 0)
@@ -92,14 +94,10 @@ public class WaveManager: MonoBehaviour
             else if(ranType == "EnemyCircle")
                 currentBCount--;
 
-            //Debug.Log("1.Enemy A count : " + currentACount + " Enemy B count : " + currentBCount);
-            //Debug.Log("2.Enemy A Cout : " + waves[currentWave].enemyACount + " Enemy B count : " + waves[currentWave].enemyBCount);
-
             EnemySpawn(ranType);
         }
-       // Debug.Log("Wave Spawn End");
     }
-    void EnemySpawn(string type)
+    public void EnemySpawn(string type)
     {
         GameObject enemy = GameManger.instance.poolManager.GetPool(type);
         if (type == "EnemyTriangle")
@@ -116,7 +114,7 @@ public class WaveManager: MonoBehaviour
 
     void BossSpawn(int bossType)
     {
-        Boss boss = Instantiate(this.boss[bossType - 1]).GetComponent<Boss>();
+        Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
         boss.transform.position = spawnPoint[0].position;
         boss.BossLookPlayer();
         boss.playerController = GameManger.instance.player;

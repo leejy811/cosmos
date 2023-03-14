@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6431229781790029411}
   - component: {fileID: 3704735204959859034}
   m_Layer: 6
-  m_Name: BossB
+  m_Name: Boss B
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c8ea667f10bf641a5300772910c36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossType: 0
+  bossType: 1
   bossHealth: 50
   bossSpeed: 2
   playerController: {fileID: 0}

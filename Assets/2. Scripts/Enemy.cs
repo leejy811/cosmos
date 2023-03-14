@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private string enemyType;
     [SerializeField]
-    private float enemySpeed;
+    public float enemySpeed;
     [SerializeField]
     private float enemyDamage;
     [SerializeField]
