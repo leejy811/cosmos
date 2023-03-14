@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8679914002937931058}
   - component: {fileID: 7495639002913390756}
   m_Layer: 6
-  m_Name: EnemyCircle
+  m_Name: EnemyB
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyB
-  enemySpeed: 1
+  enemySpeed: 1.5
   enemyDamage: 1
   maxEnemyHealth: 10
   enemyHealth: 10

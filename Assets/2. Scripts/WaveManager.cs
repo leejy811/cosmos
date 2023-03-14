@@ -80,18 +80,18 @@ public class WaveManager: MonoBehaviour
             //    BossSpawn(1);
             //    break;
             //}
-            string ranType = Random.Range(0, 2) == 0 ? "EnemyTriangle" : "EnemyCircle";
+            string ranType = Random.Range(0, 2) == 0 ? "EnemyA" : "EnemyB";
 
             if (currentACount == 0 && currentBCount == 0)
                 break;
             if(currentACount == 0)
-                ranType = "EnemyCircle";
+                ranType = "EnemyB";
             else if(currentBCount == 0)
-                ranType = "EnemyTriangle";
+                ranType = "EnemyA";
 
-            if (ranType == "EnemyTriangle")
+            if (ranType == "EnemyA")
                 currentACount--;
-            else if(ranType == "EnemyCircle")
+            else if(ranType == "EnemyB")
                 currentBCount--;
 
             EnemySpawn(ranType);
@@ -100,7 +100,7 @@ public class WaveManager: MonoBehaviour
     public void EnemySpawn(string type)
     {
         GameObject enemy = GameManger.instance.poolManager.GetPool(type);
-        if (type == "EnemyTriangle")
+        if (type == "EnemyA")
             enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyAHp, waves[currentWave].enemyADamage);
         else
             enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage);

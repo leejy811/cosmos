@@ -51,6 +51,7 @@ public class UiManager : MonoBehaviour
     {
         SetHpUI();
         SetGold();
+        SetJem();
     }
     IEnumerator FadeIn()
     {
@@ -76,7 +77,10 @@ public class UiManager : MonoBehaviour
     {
 
     }
-
+    void SetJem()
+    {
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+    }
     public void AddJem(int num=0)
     {
         jemCount.text=(Convert.ToString(num));

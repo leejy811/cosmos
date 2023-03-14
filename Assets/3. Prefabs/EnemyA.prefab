@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2216958727011963303}
   - component: {fileID: 1479226772366589886}
   m_Layer: 6
-  m_Name: EnemyTriangle
+  m_Name: EnemyA
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyA
-  enemySpeed: 0.5
-  enemyDamage: 3
+  enemySpeed: 1
+  enemyDamage: 2
   maxEnemyHealth: 10
   enemyHealth: 10
   enemyGold: 0

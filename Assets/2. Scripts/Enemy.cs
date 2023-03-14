@@ -98,11 +98,16 @@ public class Enemy : MonoBehaviour
         enemyHealth = 0;
         this.gameObject.SetActive(false);
 
-        GameManger.instance.player.playerGold += 3;
         if (enemyType == "EnemyA")
+        {
             waveManager.waves[waveManager.currentWave].enemyACount--;
+            GameManger.instance.player.playerGold += 1;
+        }
         else if(enemyType == "EnemyB")
+        {
             waveManager.waves[waveManager.currentWave].enemyBCount--;
+            LocalDatabaseManager.instance.JemCount += 1;
+        }
 
     }
 }
