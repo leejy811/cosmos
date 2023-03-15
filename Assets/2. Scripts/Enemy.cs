@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float enemyDamage;
     [SerializeField]
-    private float maxEnemyHealth;
-    [SerializeField]
     private float enemyHealth;
     [SerializeField]
     private float enemyGold;
@@ -20,6 +18,7 @@ public class Enemy : MonoBehaviour
     public PlayerController playerController;
     public WaveManager waveManager;
     bool isEnemyLive;
+
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     
@@ -46,10 +45,6 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         MoveEnemy();
-    }
-
-    private void OnEnable()
-    {
     }
 
     private void OnTriggerEnter2D(Collider2D other)

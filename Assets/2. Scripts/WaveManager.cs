@@ -75,9 +75,14 @@ public class WaveManager: MonoBehaviour
             //    BossSpawn(2);
             //    break;
             //}
-            //else if(currentWave == 4)
+            //else if (currentWave == 1)
             //{
             //    BossSpawn(1);
+            //    break;
+            //}
+            //else if(currentWave == 2)
+            //{
+            //    BossSpawn(2);
             //    break;
             //}
             string ranType = Random.Range(0, 2) == 0 ? "EnemyA" : "EnemyB";
