@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 5262318790640946401}
   - component: {fileID: 5262318790640946402}
   - component: {fileID: 5262318790640946431}
-  - component: {fileID: 5262318790640946400}
+  - component: {fileID: 3093994621740968050}
   - component: {fileID: 2534980600562027481}
   m_Layer: 6
   m_Name: Boss A
@@ -215,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 5262318790640946404}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0.11, y: 4.89, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4829786545661655802}
@@ -272,7 +272,7 @@ SpriteRenderer:
   m_SortingLayerID: 213710519
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e66a26e068128b4d9be39cb2e465549, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da2311313438b6145bbf7d5daa2b1215, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -304,8 +304,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &5262318790640946400
-CapsuleCollider2D:
+--- !u!61 &3093994621740968050
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -314,12 +314,22 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.7083249, y: 0}
-  m_Size: {x: 8.222269, y: 12}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.37, y: 2.22}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.37, y: 2.22}
+  m_EdgeRadius: 0
 --- !u!114 &2534980600562027481
 MonoBehaviour:
   m_ObjectHideFlags: 0

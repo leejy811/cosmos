@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     private float enemyHealth;
     [SerializeField]
     private float enemyGold;
+    [SerializeField]
+    private Transform[] transforms;
 
     public PlayerController playerController;
     public WaveManager waveManager;
@@ -89,20 +91,36 @@ public class Enemy : MonoBehaviour
     }
     public void EnemyDie()
     {
-        transform.localEulerAngles = new Vector3(0, 0, 0);
-        enemyHealth = 0;
-        this.gameObject.SetActive(false);
-
         if (enemyType == "EnemyA")
         {
-            waveManager.waves[waveManager.currentWave].enemyACount--;
+            if(waveManager.waves[waveManager.currentWave].enemyACount > 0)
+                waveManager.waves[waveManager.currentWave].enemyACount--;
             GameManger.instance.player.playerGold += 1;
         }
         else if(enemyType == "EnemyB")
         {
-            waveManager.waves[waveManager.currentWave].enemyBCount--;
+            if (waveManager.waves[waveManager.currentWave].enemyBCount > 0)
+                waveManager.waves[waveManager.currentWave].enemyBCount--;
             LocalDatabaseManager.instance.JemCount += 1;
         }
+        else if(enemyType == "EnemyD")
+        {
+            for(int i=0; i<2; i++)
+            {
+                waveManager.waves[waveManager.currentWave].enemyDCount--;
+                GameManger.instance.player.playerGold += 3;
+                GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
+                enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage);
+                enemy.transform.position = transforms[i].position;
+                enemy.GetComponent<Enemy>().EnemyLookPlayer();
+                enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
+                enemy.GetComponent<Enemy>().waveManager = this.waveManager;
+            }
+        }
+
+        transform.localEulerAngles = new Vector3(0, 0, 0);
+        enemyHealth = 0;
+        this.gameObject.SetActive(false);
 
     }
 }

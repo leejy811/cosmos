@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3172653041726753789}
   - component: {fileID: 6252209780346912881}
   - component: {fileID: 8679914002937931058}
-  - component: {fileID: 7495639002913390756}
+  - component: {fileID: 2451429956059851417}
   - component: {fileID: 3292730067630614883}
   m_Layer: 6
   m_Name: EnemyB
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7975429674559266930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 213710519
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cf23528fa609bda429802e851f445cac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77c28915620c2004aa186d60f38ecb90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7495639002913390756
+--- !u!58 &2451429956059851417
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 1.1
 --- !u!114 &3292730067630614883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   enemyType: EnemyB
   enemySpeed: 1.5
   enemyDamage: 1
-  maxEnemyHealth: 10
   enemyHealth: 10
   enemyGold: 2
   playerController: {fileID: 0}

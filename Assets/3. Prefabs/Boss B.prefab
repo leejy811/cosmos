@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6431229781790029410}
   - component: {fileID: 6431229781790029409}
   - component: {fileID: 6431229781790029436}
-  - component: {fileID: 6431229781790029411}
+  - component: {fileID: 4629625978173342829}
   - component: {fileID: 3704735204959859034}
   m_Layer: 6
   m_Name: Boss B
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6431229781790029415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 213710519
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e66a26e068128b4d9be39cb2e465549, type: 3}
+  m_Sprite: {fileID: 21300000, guid: feaa474230cd5d14c9bbee2b11d0b5f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,8 +108,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &6431229781790029411
-CapsuleCollider2D:
+--- !u!61 &4629625978173342829
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,12 +118,22 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.7083249, y: 0}
-  m_Size: {x: 8.222269, y: 12}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.69, y: 1.66}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.69, y: 1.66}
+  m_EdgeRadius: 0
 --- !u!114 &3704735204959859034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,5 +149,6 @@ MonoBehaviour:
   bossType: 1
   bossHealth: 50
   bossSpeed: 2
+  spawnPoints: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
