@@ -30,7 +30,7 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetUi()
     {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
         highScore.text = "High Score : "+LocalDatabaseManager.instance.HighScore.ToString();
     }
 
