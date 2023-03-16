@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    private bool isHaveParts = true;
     private Transform nearestTarget;
 
     private void Start()
     {
-        if (isHaveParts)
-            StartCoroutine(ShootMissile());
+        StartCoroutine(ShootParts("Missile"));
+        StartCoroutine(ShootParts("Laser"));
     }
 
     private void Update()
@@ -19,7 +18,7 @@ public class SkillManager : MonoBehaviour
         nearestTarget = GameManger.instance.player.nearestTarget;
     }
 
-    IEnumerator ShootMissile()
+    IEnumerator ShootParts(string partsType)
     {
         while (true)
         {
@@ -29,14 +28,12 @@ public class SkillManager : MonoBehaviour
                 continue;
             }
 
-            Vector3 directionPosition = nearestTarget.position - transform.position;
+            PartsContorller parts = GameManger.instance.poolManager.GetPool(partsType).GetComponent<PartsContorller>();
+            parts.transform.position = transform.position;
+            parts.Init(nearestTarget);
+            parts.player = GameManger.instance.player;
 
-            GameObject missile = GameManger.instance.poolManager.GetPool("Missile");
-            missile.transform.position = transform.position;
-            missile.GetComponent<PartsContorller>().Init(nearestTarget);
-            missile.GetComponent<PartsContorller>().player = GameManger.instance.player;
-
-            yield return new WaitForSeconds(1 / missile.GetComponent<PartsContorller>().partsAttackSpeed);
+            yield return new WaitForSeconds(1 / parts.partsAttackSpeed);
         }
     }
 }

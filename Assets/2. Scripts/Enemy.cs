@@ -65,6 +65,11 @@ public class Enemy : MonoBehaviour
         {
             enemySpeed *= other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
+        else if (other.gameObject.tag == "Laser")
+        {
+            float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
+            GetDamage(damage);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
