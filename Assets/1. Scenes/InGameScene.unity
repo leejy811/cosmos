@@ -3460,7 +3460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894511548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 2.85, y: 2.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3539,6 +3539,8 @@ MonoBehaviour:
   partsValue: 0.7
   missileParticle: {fileID: 0}
   player: {fileID: 1666084034}
+  LaserStart: {fileID: 0}
+  LaserEnd: {fileID: 0}
 --- !u!58 &894511552
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4443,25 +4445,25 @@ MonoBehaviour:
   pools:
   - name: EnemyA
     container: {fileID: 1721284316}
-    component: {fileID: 750013283499252122, guid: e6c1b7c9f4c8fa043a32f9cddb7a94f7, type: 3}
+    prefab: {fileID: 4849560090531141656, guid: e6c1b7c9f4c8fa043a32f9cddb7a94f7, type: 3}
   - name: EnemyB
     container: {fileID: 902917367}
-    component: {fileID: 3292730067630614883, guid: dfc963f8212ea064693d34149fe95cd7, type: 3}
+    prefab: {fileID: 7975429674559266930, guid: dfc963f8212ea064693d34149fe95cd7, type: 3}
   - name: EnemyC
     container: {fileID: 156936738}
-    component: {fileID: 7945393331485662032, guid: 0ba450b27c648f24da94245eb8821968, type: 3}
+    prefab: {fileID: 8966464243605448631, guid: 0ba450b27c648f24da94245eb8821968, type: 3}
   - name: EnemyD
     container: {fileID: 1790646784}
-    component: {fileID: 8524025391270942163, guid: e67ff5079ef0cd04982466a90ed8c5da, type: 3}
+    prefab: {fileID: 6348828832167084676, guid: e67ff5079ef0cd04982466a90ed8c5da, type: 3}
   - name: Bullet
     container: {fileID: 1664945415}
-    component: {fileID: 3786519555057558282, guid: 3d3e62859126f05478cb43aa06222bd5, type: 3}
+    prefab: {fileID: 3786519555057558283, guid: 3d3e62859126f05478cb43aa06222bd5, type: 3}
   - name: Missile
     container: {fileID: 1598073560}
-    component: {fileID: 3694672848499666852, guid: b95888dca517be44a99e009b082381d8, type: 3}
+    prefab: {fileID: 3694672848499666853, guid: b95888dca517be44a99e009b082381d8, type: 3}
   - name: Laser
     container: {fileID: 302252044}
-    component: {fileID: 4161909491668316002, guid: 103f685316c4e3a4d8cdec9719bf119f, type: 3}
+    prefab: {fileID: 1009225688092800605, guid: 103f685316c4e3a4d8cdec9719bf119f, type: 3}
 --- !u!4 &1186448686
 Transform:
   m_ObjectHideFlags: 0

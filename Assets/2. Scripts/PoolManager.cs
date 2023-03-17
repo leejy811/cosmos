@@ -8,7 +8,7 @@ public struct IPool
 {
     public string name;
     public Transform container;
-    public Component component;
+    public GameObject prefab;
 }
 
 public class PoolManager : MonoBehaviour
@@ -56,7 +56,7 @@ public class PoolManager : MonoBehaviour
         }
         if (selectObject == null)
         {
-            selectObject = Instantiate(pools[poolIndex].component.gameObject, pools[poolIndex].container);
+            selectObject = Instantiate(pools[poolIndex].prefab, pools[poolIndex].container);
             poolLists[poolIndex].Add(selectObject);
         }
 

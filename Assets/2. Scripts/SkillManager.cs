@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    private Transform nearestTarget;
+    private Transform Target;
 
     private void Start()
     {
@@ -15,14 +15,14 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        nearestTarget = GameManger.instance.player.nearestTarget;
+        Target = gameObject.GetComponent<PlayerController>().GetTarget(false);
     }
 
     IEnumerator ShootParts(string partsType)
     {
         while (true)
         {
-            if (nearestTarget == null)
+            if (Target == null)
             {
                 yield return new WaitForFixedUpdate();
                 continue;
@@ -30,7 +30,7 @@ public class SkillManager : MonoBehaviour
 
             PartsContorller parts = GameManger.instance.poolManager.GetPool(partsType).GetComponent<PartsContorller>();
             parts.transform.position = transform.position;
-            parts.Init(nearestTarget);
+            parts.Init(Target);
             parts.player = GameManger.instance.player;
 
             yield return new WaitForSeconds(1 / parts.partsAttackSpeed);
