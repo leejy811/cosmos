@@ -12,6 +12,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject nextFragment;
     [SerializeField] private Animation fragmentChangeAnim;
     [SerializeField] private Image panel;
+    [SerializeField] private Image[] fragmentButtons;
     [SerializeField] private Text jemCount;
     [SerializeField] private Text highScore;
     #endregion
@@ -53,8 +54,31 @@ public class LobbyUiManager : MonoBehaviour
         SceneManager.LoadScene("InGameScene");
     }
 
+    private void ButtonAlphaChange(Image image, float a)
+    {
+        Color alpha = image.color;
+        alpha.a = a;
+        image.color = alpha;
+    }
+
     public void OnClickFragmentChange(GameObject targetFragment)
     {
+        foreach (Image i in fragmentButtons)
+            ButtonAlphaChange(i, 0.3f);
+        switch (targetFragment.transform.name)
+        {
+            case "TitleFragment":
+                Debug.Log("111");
+                ButtonAlphaChange(fragmentButtons[0], 1f);
+                break;
+            case "PartsFragment":
+                ButtonAlphaChange(fragmentButtons[1], 1f);
+                break;
+            case "ExtraFragment":
+                ButtonAlphaChange(fragmentButtons[2], 1f);
+                break;
+        }
+        
         if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingFragment)
             return;
         isConvertingFragment = true;
