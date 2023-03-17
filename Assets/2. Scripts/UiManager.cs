@@ -67,7 +67,7 @@ public class UiManager : MonoBehaviour
     }
     void SetGold()
     {
-        goldCount.text = GameManger.instance.player.playerGold.ToString();
+        goldCount.text = GameManger.instance.player.playerGold.ToString() + " G";
     }
     void SetHpUI()
     {
@@ -79,7 +79,7 @@ public class UiManager : MonoBehaviour
     }
     void SetJem()
     {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
     }
     public void AddJem(int num=0)
     {
