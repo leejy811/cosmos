@@ -6,29 +6,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    public float playerDamage { get; private set; }
-    [SerializeField]
-    public int playerDamageCost { get; private set; }
-    [SerializeField]
-    public float playerAttackSpeed { get; private set; }
-    [SerializeField]
-    public int playerAtkSpeedCost { get; private set; }
-    [SerializeField]
-    public float maxPlayerHealth { get; private set; }
-    [SerializeField]
-    public int playerMaxHealthCost { get; private set; }
-    [SerializeField]
-    public float playerHealth { get; private set; }
-    [SerializeField]
-    public float playerHealthRecorvery { get; private set; }
-    [SerializeField]
-    public int playerHealthRecorveryCost { get; private set; }
+    public float playerDamage { get; private set; } = 1;
+    public int playerDamageCost { get; private set; } = 3;
+    public float playerAttackSpeed { get; private set; } = 2;
+    public int playerAtkSpeedCost { get; private set; } = 3;
+    public float maxPlayerHealth { get; private set; } = 5;
+    public int playerMaxHealthCost { get; private set; } = 5;
+    public float playerHealth { get; private set; } = 5;
+    public float playerHealthRecorvery { get; private set; } = 0;
+    public int playerHealthRecorveryCost { get; private set; } = 5;
 
-    public int playerGold { get; set; }
+    public int playerGold { get; set; } = 0;
 
     private Collider2D[] targets;
-    public float attackRange { get; private set; }
+    public float attackRange { get; private set; } = 4;
     public Transform nearestTarget { get; private set; }
     
     public void PlayerDamageLevelUp()
