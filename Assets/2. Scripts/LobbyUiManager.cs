@@ -68,7 +68,6 @@ public class LobbyUiManager : MonoBehaviour
         switch (targetFragment.transform.name)
         {
             case "TitleFragment":
-                Debug.Log("111");
                 ButtonAlphaChange(fragmentButtons[0], 1f);
                 break;
             case "PartsFragment":
@@ -78,7 +77,7 @@ public class LobbyUiManager : MonoBehaviour
                 ButtonAlphaChange(fragmentButtons[2], 1f);
                 break;
         }
-        
+
         if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingFragment)
             return;
         isConvertingFragment = true;

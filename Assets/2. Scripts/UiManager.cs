@@ -155,7 +155,7 @@ public class UiManager : MonoBehaviour
     {
         LocalDatabaseManager.instance.JemCount += int.Parse(jemCount.text);
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
-        LocalDatabaseManager.instance.SaveData();
+        LocalDatabaseManager.instance.SaveGameData();
     }
 
     public void PushRetryButton()
