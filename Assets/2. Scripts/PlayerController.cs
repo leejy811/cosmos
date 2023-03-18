@@ -47,15 +47,14 @@ public class PlayerController : MonoBehaviour
         PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.05f;
         playerAtkSpeedCost += 2;
-
     }
     public void PlayerMaxHealthLevelUp()
     {
         if (playerGold < playerMaxHealthCost)
             return;
         PayGold(playerMaxHealthCost);
-        playerHealth += 5f;
         maxPlayerHealth += 5f;
+        playerHealth += 5f;
         playerMaxHealthCost += 5;
     }
     public void PlayerHealthRecorveryLevelUp()
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerHealthRecorveryCost)
             return;
         PayGold(playerHealthRecorveryCost);
-        playerHealthRecorvery += 0.01f;
+        playerHealthRecorvery += 0.1f;
         playerHealthRecorveryCost += 5; 
     }
 
@@ -94,9 +93,10 @@ public class PlayerController : MonoBehaviour
                 continue;
             }
 
-            GameObject bullet = GameManger.instance.poolManager.GetPool("Bullet");
+            Bullet bullet = GameManger.instance.poolManager.GetPool("Bullet").GetComponent<Bullet>();
+            bullet.bulletSpeed = playerAttackSpeed * 3;
             bullet.transform.position = transform.position;
-            bullet.GetComponent<Bullet>().Init(nearestTarget);
+            bullet.Init(nearestTarget);
 
             yield return new WaitForSeconds((float)1 / playerAttackSpeed);
         }

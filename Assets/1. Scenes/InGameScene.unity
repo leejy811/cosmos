@@ -6287,14 +6287,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 1
   playerDamageCost: 3
-  playerAttackSpeed: 1
+  playerAttackSpeed: 2
   playerAtkSpeedCost: 3
   maxPlayerHealth: 5
   playerMaxHealthCost: 5
   playerHealth: 5
   playerHealthRecorvery: 0
   playerHealthRecorveryCost: 5
-  playerGold: 3
+  playerGold: 0
   attackRange: 4
   nearestTarget: {fileID: 0}
 --- !u!70 &1666084035

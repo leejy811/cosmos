@@ -50,7 +50,7 @@ MonoBehaviour:
   bulletSpeed: 1
   partsType: Laser
   partsRange: 14
-  partsDamage: 10
+  partsDamage: 1
   partsAttackSpeed: 1
   partsValue: 0
   missileParticle: {fileID: 0}
