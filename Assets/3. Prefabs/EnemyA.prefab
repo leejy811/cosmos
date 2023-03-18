@@ -140,6 +140,7 @@ MonoBehaviour:
   enemySpeed: 1
   enemyDamage: 2
   enemyHealth: 10
-  enemyGold: 1
+  enemyPrice: 1
+  transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}

@@ -7,15 +7,25 @@ using UnityEngine;
 public struct IWave
 {
     public int enemyACount;
-    public float enemyADamage;
     public float enemyAHp;
+    public float enemyADamage;
+    public int enemyAPrice;
+
     public int enemyBCount;
     public float enemyBHp;
     public float enemyBDamage;
+    public int enemyBPrice;
+
+    public int enemyCCount;
+    public float enemyCHp;
+    public float enemyCDamage;
+    public int enemyCPrice;
 
     public int enemyDCount;
     public float enemyDHp;
     public float enemyDDamage;
+    public int enemyDPrice;
+
 }
 public class WaveManager: MonoBehaviour
 {
@@ -30,19 +40,22 @@ public class WaveManager: MonoBehaviour
 
     void Start()
     {
-        waves = new IWave[40];
-        for(int i=0; i<40;i++)
-        {
-            waves[i].enemyACount = (i * 3) + 5;
-            waves[i].enemyAHp = (i * 2) + 1;
-            waves[i].enemyADamage = i;
-            waves[i].enemyBCount = (i * 4) + 5;
-            waves[i].enemyBHp = (i * 3) + 5;
-            waves[i].enemyBDamage = i;
-            waves[i].enemyDCount = (i * 4) + 10;
-            waves[i].enemyDHp = (i * 3) + 5;
-            waves[i].enemyDDamage = i;
-        }
+        //waves = new IWave[40];
+        //for(int i=0; i<40;i++)
+        //{
+        //    waves[i].enemyACount = (i * 3) + 5;
+        //    waves[i].enemyAHp = (i * 2) + 1;
+        //    waves[i].enemyADamage = i;
+        //    waves[i].enemyBCount = (i * 4) + 5;
+        //    waves[i].enemyBHp = (i * 3) + 5;
+        //    waves[i].enemyBDamage = i;
+        //    waves[i].enemyCCount = (i * 4) + 10;
+        //    waves[i].enemyCHp = (i * 3) + 5;
+        //    waves[i].enemyCDamage = i;
+        //    waves[i].enemyDCount = (i * 4) + 10;
+        //    waves[i].enemyDHp = (i * 3) + 5;
+        //    waves[i].enemyDDamage = i;
+        //}
 
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
@@ -73,17 +86,16 @@ public class WaveManager: MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
             if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
             {
                 BossSpawn(currentWave / 10);
                 break;
             }
-            //if (currentWave == 0)
-            //{
-            //    BossSpawn(2);
-            //    break;
-            //}
+            if (currentWave == 0)
+            {
+                BossSpawn(0);
+                break;
+            }
             //else if (currentWave == 1)
             //{
             //    BossSpawn(1);
@@ -134,18 +146,22 @@ public class WaveManager: MonoBehaviour
                 currentDCount--;
 
             EnemySpawn(ranType);
+            yield return new WaitForSeconds(1f);
+
         }
     }
     public void EnemySpawn(string type)
     {
         GameObject enemy = GameManger.instance.poolManager.GetPool(type);
         if (type == "EnemyA")
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyAHp, waves[currentWave].enemyADamage);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyAHp, waves[currentWave].enemyADamage, waves[currentWave].enemyAPrice);
         else if(type == "EnemyB")
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage);
-        else if(type == "EnemyD")
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage, waves[currentWave].enemyBPrice);
+        else if(type == "EnemyC")
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyCHp, waves[currentWave].enemyCDamage, waves[currentWave].enemyCPrice);
+        else if (type == "EnemyD")
         {
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage, waves[currentWave].enemyDPrice);
             waves[currentWave].enemyACount += 2;
         }
 
