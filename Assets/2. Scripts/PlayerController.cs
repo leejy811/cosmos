@@ -4,24 +4,33 @@ using System.Diagnostics.Contracts;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/* PlayerController Class
+ * 이 클래스는 Player의 단발성 변수를 관리하고 기본 공격을 구현하는 클래스다.
+ */
 public class PlayerController : MonoBehaviour
 {
+    //Player 스탯
     public float playerDamage { get; private set; } = 1;
-    public int playerDamageCost { get; private set; } = 3;
     public float playerAttackSpeed { get; private set; } = 2;
-    public int playerAtkSpeedCost { get; private set; } = 3;
     public float maxPlayerHealth { get; private set; } = 5;
-    public int playerMaxHealthCost { get; private set; } = 5;
     public float playerHealth { get; private set; } = 5;
     public float playerHealthRecorvery { get; private set; } = 0;
+
+    //Player 스탯 업그레이드 Cost
+    public int playerDamageCost { get; private set; } = 3;
+    public int playerAtkSpeedCost { get; private set; } = 3;
+    public int playerMaxHealthCost { get; private set; } = 5;
     public int playerHealthRecorveryCost { get; private set; } = 5;
 
+    //플레이어 현재 골드
     public int playerGold { get; set; } = 0;
 
+    //타겟 관련 변수
     private Collider2D[] targets;
     public float attackRange { get; private set; } = 4;
     public Transform nearestTarget { get; private set; }
-    
+
+    //Player 스탯 LevelUp 관련 함수들
     public void PlayerDamageLevelUp()
     {
         if (playerGold < playerDamageCost)
@@ -30,7 +39,6 @@ public class PlayerController : MonoBehaviour
         playerDamage += 0.5f;
         playerDamageCost += 2;
     }
-
     public void PlayerAttackSpeedLevelUp()
     {
         if (playerGold < playerAtkSpeedCost)
@@ -57,23 +65,27 @@ public class PlayerController : MonoBehaviour
         playerHealthRecorveryCost += 5; 
     }
 
+    //PayGold는 playerGold를 지불하는 함수이다.
     private void PayGold(int gold)
     {
         playerGold -= gold;
     }
 
+    //Start 함수는 Bullet을 발사하는 코루틴과 체력을 초기화 해준다.
     void Start()
     {
         StartCoroutine(Shoot());
         playerHealth = maxPlayerHealth;
     }
 
+    //FixedUpdate는 체력재생과 타겟을 최신화 해준다.
     void FixedUpdate()
     {
         Recovery();
-        CheckEnemy();
+        nearestTarget = GetTarget(true);
     }
 
+    //Shoot 코루틴은 총알을 공격속도마다 발사해주는 코루틴이다.
     IEnumerator Shoot()
     {
         while (true)
@@ -93,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //GetDamage는 PlayerHealth를 감소시키는 함수로 데미지를 입는 함수이다.
     public void GetDamage(float damage)
     {
         GameManger.instance.cameraResolution.Shake();
@@ -104,6 +117,8 @@ public class PlayerController : MonoBehaviour
         else
             playerHealth -= damage;
     }
+
+    //PlayerDie는 플레이어 사망 로직을 작성하는 함수이다.
     private void PlayerDie()
     {
         //플레이어 사망 로직
@@ -112,6 +127,7 @@ public class PlayerController : MonoBehaviour
             GameManger.instance.GameOver();
     }
 
+    //Recovery는 체력을 재생하는 함수이다.
     private void Recovery()
     {
         if (playerHealth + playerHealthRecorvery * Time.deltaTime >= maxPlayerHealth)
@@ -120,11 +136,8 @@ public class PlayerController : MonoBehaviour
             playerHealth += playerHealthRecorvery * Time.deltaTime;
     }
 
-    private void CheckEnemy()
-    {
-        nearestTarget = GetTarget(true);
-    }
-
+    //GetTarget은 가장 가까운 타겟을 타겟팅할지를 받아오는 매개변수로 판단하여 가장 가깝거나 가장 먼 타겟을 가져온다.
+    //그리고 결과로 가져온 타겟의 Transform을 반환한다.
     public Transform GetTarget(bool nearest)
     {
         targets = Physics2D.OverlapCircleAll(new Vector2(0, 1), attackRange, LayerMask.GetMask("Enemy"));
