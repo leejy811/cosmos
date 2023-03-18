@@ -43,8 +43,7 @@ public class WaveManager: MonoBehaviour
             waves[i].enemyDHp = (i * 3) + 5;
             waves[i].enemyDDamage = i;
         }
-        waves[0].enemyACount = 0;
-        waves[0].enemyBCount = 0;
+
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
@@ -77,7 +76,7 @@ public class WaveManager: MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
             {
-                BossSpawn((currentWave + 1) / 10);
+                BossSpawn(currentWave / 10);
                 break;
             }
             //if (currentWave == 0)
@@ -113,12 +112,19 @@ public class WaveManager: MonoBehaviour
 
             if (currentACount == 0 && currentBCount == 0 && currentDCount == 0)
                 break;
-            if(currentACount == 0)
-                ranType = "EnemyB";
-            else if(currentBCount == 0)
-                ranType = "EnemyA";
+            //if(currentACount == 0 && currentDCount == 0)
+            //    ranType = "EnemyB";
+            //else if(currentBCount == 0 && currentDCount == 0)
+            //    ranType = "EnemyA";
+            //else if(currentACount == 0 && currentBCount == 0)
+            //    ranType = "EnemyD";
 
-            ranType = "EnemyD";
+            if (currentACount == 0 && ranType == "EnemyA")
+                continue;
+            else if (currentBCount == 0 && ranType == "EnemyB")
+                continue;
+            else if (currentDCount == 0 && ranType == "EnemyD")
+                continue;
 
             if (ranType == "EnemyA")
                 currentACount--;
@@ -138,7 +144,10 @@ public class WaveManager: MonoBehaviour
         else if(type == "EnemyB")
             enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage);
         else if(type == "EnemyD")
+        {
             enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage);
+            waves[currentWave].enemyACount += 2;
+        }
 
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
         enemy.GetComponent<Enemy>().EnemyLookPlayer();
