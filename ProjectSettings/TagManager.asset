@@ -51,8 +51,17 @@ TagManager:
   - name: Background
     uniqueID: 3989781049
     locked: 0
-  - name: Object
+  - name: Enemy
     uniqueID: 213710519
+    locked: 0
+  - name: Boss
+    uniqueID: 335803983
+    locked: 0
+  - name: Bullet
+    uniqueID: 2766076619
+    locked: 0
+  - name: Parts
+    uniqueID: 3227136175
     locked: 0
   - name: Player
     uniqueID: 2556242509

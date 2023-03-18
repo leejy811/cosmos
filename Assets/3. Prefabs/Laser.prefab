@@ -54,8 +54,8 @@ MonoBehaviour:
   partsDamage: 10
   partsAttackSpeed: 1
   partsValue: 0
-  missileParticle: {fileID: 0}
   player: {fileID: 0}
+  missileParticle: {fileID: 0}
   lasers:
   - {fileID: 4626385862595406769}
   - {fileID: 1009225688645328408}
@@ -175,8 +175,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 213710519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1067831121
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -306,8 +306,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 213710519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1067831121
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}

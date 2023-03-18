@@ -3584,8 +3584,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 213710519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1067831121
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2ae2da47e0c3eca42b1cbedf973dd811, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3616,10 +3616,9 @@ MonoBehaviour:
   partsDamage: 0.2
   partsAttackSpeed: 1
   partsValue: 0.7
-  missileParticle: {fileID: 0}
   player: {fileID: 1666084034}
-  LaserStart: {fileID: 0}
-  LaserEnd: {fileID: 0}
+  missileParticle: {fileID: 0}
+  lasers: []
 --- !u!58 &894511552
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7023,7 +7022,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738724787
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 34d71ce9e883c29468ec60f4a5e61d57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

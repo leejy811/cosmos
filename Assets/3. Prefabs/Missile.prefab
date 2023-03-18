@@ -4885,8 +4885,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 213710519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1067831121
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 957f1f5c579787b44aff6c504ed36da5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4917,10 +4917,9 @@ MonoBehaviour:
   partsDamage: 1
   partsAttackSpeed: 0.5
   partsValue: 0
-  missileParticle: {fileID: 1149652277042537459}
   player: {fileID: 0}
-  LaserStart: {fileID: 0}
-  LaserEnd: {fileID: 0}
+  missileParticle: {fileID: 1149652277042537459}
+  lasers: []
 --- !u!70 &1004508296226519673
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
