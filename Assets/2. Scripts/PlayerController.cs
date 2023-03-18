@@ -169,25 +169,4 @@ public class PlayerController : MonoBehaviour
             PlayerDie();
         }
     }
-
-    public float GetPlayerDamage()
-    {
-        return playerDamage;
-    }
-    public float GetPlayerAtkSpeed()
-    {
-        return playerAttackSpeed;
-    }
-    public float GetPlayerHealth()
-    {
-        return maxPlayerHealth;
-    }
-    public float GetPlayerHealthRecorvery()
-    {
-        return playerHealthRecorvery;
-    }
-    public float PlayerMaxHealthPerCurHealth()
-    {
-        return (float)playerHealth / maxPlayerHealth;
-    }
 }

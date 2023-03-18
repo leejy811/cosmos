@@ -56,8 +56,9 @@ MonoBehaviour:
   partsValue: 0
   missileParticle: {fileID: 0}
   player: {fileID: 0}
-  LaserStart: {fileID: 4626385862595406769}
-  LaserEnd: {fileID: 1009225688645328408}
+  lasers:
+  - {fileID: 4626385862595406769}
+  - {fileID: 1009225688645328408}
 --- !u!61 &1361620100942055633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 14, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -310,7 +311,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 14, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

@@ -62,9 +62,4 @@ public class PoolManager : MonoBehaviour
 
         return selectObject;
     }
-
-    public void TakeToPool(GameObject takeObject)
-    {
-        takeObject.SetActive(false);
-    }
 }
