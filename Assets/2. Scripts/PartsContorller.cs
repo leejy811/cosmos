@@ -37,7 +37,7 @@ public class PartsContorller : Bullet
     {
         if (partsType == "Protocol")
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
             partsRange = player.attackRange;
             StartCoroutine(ProtocolAttack());
         }

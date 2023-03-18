@@ -52,7 +52,7 @@ MonoBehaviour:
   partsType: Laser
   partsRange: 0
   partsDamage: 10
-  partsAttackSpeed: 1
+  partsAttackSpeed: 0.3
   partsValue: 0
   player: {fileID: 0}
   missileParticle: {fileID: 0}
