@@ -201,10 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyD
-  enemySpeed: 1.5
-  enemyDamage: 1
-  enemyHealth: 10
-  enemyGold: 0
+  enemySpeed: 1
+  enemyDamage: 10
+  enemyHealth: 6
+  enemyGold: 20
   transforms:
   - {fileID: 2989242160689174013}
   - {fileID: 8651176904867318714}

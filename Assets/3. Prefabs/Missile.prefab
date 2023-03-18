@@ -4914,11 +4914,13 @@ MonoBehaviour:
   bulletSpeed: 5
   partsType: Missile
   partsRange: 1
-  partsDamage: 5
-  partsAttackSpeed: 0.5
+  partsDamage: 1
+  partsAttackSpeed: 1
   partsValue: 0
   missileParticle: {fileID: 1149652277042537459}
   player: {fileID: 0}
+  LaserStart: {fileID: 0}
+  LaserEnd: {fileID: 0}
 --- !u!70 &1004508296226519673
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

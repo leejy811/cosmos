@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Protocol
   - Laser
+  - Emp
   layers:
   - Default
   - TransparentFX

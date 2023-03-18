@@ -5,8 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    protected float bulletSpeed;
+    public float bulletSpeed;
     protected Transform target;
     protected Vector3 attckDirection;
 
