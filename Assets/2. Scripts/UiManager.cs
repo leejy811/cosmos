@@ -79,7 +79,7 @@ public class UiManager : MonoBehaviour
     }
     void SetJem()
     {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
     }
     public void AddJem(int num=0)
     {
