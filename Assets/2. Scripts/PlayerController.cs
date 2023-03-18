@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerDamageCost)
             return;
         PayGold(playerDamageCost);
-        playerDamage += 0.05f;
+        playerDamage += 0.5f;
         playerDamageCost += 2;
     }
 

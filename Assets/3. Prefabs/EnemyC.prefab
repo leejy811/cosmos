@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyC
-  enemySpeed: 0.5
-  enemyDamage: 10
-  enemyHealth: 20
-  enemyGold: 100
+  enemySpeed: 0.3
+  enemyDamage: 1
+  enemyHealth: 10
+  enemyPrice: 2
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}

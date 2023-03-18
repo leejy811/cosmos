@@ -155,7 +155,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
-            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage);
+            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice);
             enemy.transform.position = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();
             enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
@@ -176,7 +176,7 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GameObject enemyC = GameManger.instance.poolManager.GetPool("EnemyC");
-        enemyC.GetComponent<Enemy>().SetEnemyState(5, 3);
+        enemyC.GetComponent<Enemy>().SetEnemyState(5, 3, enemyC.GetComponent<Enemy>().enemyPrice);
         enemyC.transform.position = this.transform.position;
         enemyC.GetComponent<Enemy>().EnemyLookPlayer();
         enemyC.GetComponent<Enemy>().playerController = GameManger.instance.player;
