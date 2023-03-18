@@ -110,10 +110,12 @@ public class Enemy : MonoBehaviour
         }
         else if(enemyType == "EnemyD")
         {
-            for(int i=0; i<2; i++)
-            {
+            if (waveManager.waves[waveManager.currentWave].enemyDCount > 0)
                 waveManager.waves[waveManager.currentWave].enemyDCount--;
-                GameManger.instance.player.playerGold += 3;
+            GameManger.instance.player.playerGold += 3;
+
+            for (int i=0; i<2; i++)
+            {
                 GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
                 enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage);
                 enemy.transform.position = transforms[i].position;
