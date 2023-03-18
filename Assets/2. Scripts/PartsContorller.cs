@@ -34,10 +34,6 @@ public class PartsContorller : Bullet
             partsRange = player.attackRange;
             StartCoroutine(ProtocolAttack());
         }
-        else if (partsType == "Laser")
-        {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * partsRange, transform.localScale.z);
-        }
     }
 
     private new void FixedUpdate()
@@ -54,7 +50,7 @@ public class PartsContorller : Bullet
         base.Init(nearTarget);
 
         if (partsType == "Laser")
-            StartCoroutine(LaserAttack());
+            LaserInit();
     }
 
     private void CheckRange()
@@ -114,29 +110,21 @@ public class PartsContorller : Bullet
         }
     }
 
-    public IEnumerator LaserAttack()
+    public void LaserInit()
     {
-        Vector3[] Vec3points = new Vector3[] { transform.position, target.transform.position * 10 };
+        Vector3[] Vec3points = new Vector3[] { transform.position, target.transform.position * 10 - Vector3.up * 10 };
 
         LaserStart.SetPositions(Vec3points);
-        LaserStart.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.45f);
-        LaserStart.gameObject.SetActive(false);
-
         LaserEnd.SetPositions(Vec3points);
-        LaserEnd.gameObject.SetActive(true);
-
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        yield return new WaitForFixedUpdate();
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        yield return new WaitForSeconds(0.95f);
-        LaserEnd.gameObject.SetActive(false);
-        gameObject.SetActive(false);
     }
 
     public float GetPartsDamage()
     {
         return partsDamage;
+    }
+
+    public void EndLaser()
+    {
+        gameObject.SetActive(false);
     }
 }

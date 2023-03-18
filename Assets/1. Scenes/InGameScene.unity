@@ -3613,7 +3613,7 @@ MonoBehaviour:
   bulletSpeed: 0
   partsType: Protocol
   partsRange: 0
-  partsDamage: 1
+  partsDamage: 0.2
   partsAttackSpeed: 1
   partsValue: 0.7
   missileParticle: {fileID: 0}
@@ -6444,18 +6444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e1c10b7b2f794fb002296885df338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: 1
-  playerDamageCost: 3
-  playerAttackSpeed: 2
-  playerAtkSpeedCost: 3
-  maxPlayerHealth: 5
-  playerMaxHealthCost: 5
-  playerHealth: 5
-  playerHealthRecorvery: 0
-  playerHealthRecorveryCost: 5
-  playerGold: 0
-  attackRange: 4
-  nearestTarget: {fileID: 0}
 --- !u!70 &1666084035
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

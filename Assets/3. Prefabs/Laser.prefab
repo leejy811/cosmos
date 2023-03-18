@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1009225688092800602}
   - component: {fileID: 8221330148023033405}
   - component: {fileID: 1361620100942055633}
+  - component: {fileID: 2857148772647280473}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -49,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 1
   partsType: Laser
-  partsRange: 14
-  partsDamage: 1
+  partsRange: 0
+  partsDamage: 10
   partsAttackSpeed: 1
   partsValue: 0
   missileParticle: {fileID: 0}
@@ -83,6 +84,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 14}
   m_EdgeRadius: 0
+--- !u!95 &2857148772647280473
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009225688092800605}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3404783239a4da44b8d8c3820f6b425, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1009225688645328410
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1009225688645328411}
   - component: {fileID: 1009225688645328408}
-  - component: {fileID: 4228989302560692209}
   m_Layer: 0
   m_Name: LaserEnd
   m_TagString: Untagged
@@ -159,7 +179,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 5, z: 0}
+  - {x: 0, y: 14, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -167,8 +187,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.003929138
-        value: 0.5085466
+        time: 0
+        value: 0.49596572
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -215,26 +235,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!95 &4228989302560692209
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009225688645328410}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 95efe1ab7e6b48a4bb85e35e47c91f53, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6982123403389909161
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +245,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3273021678279176355}
   - component: {fileID: 4626385862595406769}
-  - component: {fileID: 6925910564895268094}
   m_Layer: 0
   m_Name: LaserStart
   m_TagString: Untagged
@@ -311,7 +310,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 14, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -367,23 +366,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!95 &6925910564895268094
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982123403389909161}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a73d90f216540a4b9bf48efd786bd2c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0

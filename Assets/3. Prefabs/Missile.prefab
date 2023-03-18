@@ -4915,7 +4915,7 @@ MonoBehaviour:
   partsType: Missile
   partsRange: 1
   partsDamage: 1
-  partsAttackSpeed: 1
+  partsAttackSpeed: 0.5
   partsValue: 0
   missileParticle: {fileID: 1149652277042537459}
   player: {fileID: 0}
