@@ -4576,7 +4576,7 @@ MonoBehaviour:
     prefab: {fileID: 1009225688092800605, guid: 103f685316c4e3a4d8cdec9719bf119f, type: 3}
   - name: Emp
     container: {fileID: 1204619607}
-    prefab: {fileID: 1009225688092800605, guid: 103f685316c4e3a4d8cdec9719bf119f, type: 3}
+    prefab: {fileID: 5899039660526600535, guid: d426fcad87da14042b7fc189f4a28cf4, type: 3}
 --- !u!4 &1186448686
 Transform:
   m_ObjectHideFlags: 0

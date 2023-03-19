@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.46381274, g: 0.6509144, b: 0.6698113, a: 0.7254902}
+  m_Color: {r: 0.46381274, g: 0.6509144, b: 0.6698113, a: 0.39607844}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,11 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b2f61713b8e744bffd578a5643f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0
+  bulletSpeed: 1
   partsType: Emp
-  partsRange: 0
+  partsRange: 9
   partsDamage: 0
-  partsAttackSpeed: 0
+  partsAttackSpeed: 0.1
   partsValue: 0
   player: {fileID: 0}
   missileParticle: {fileID: 0}

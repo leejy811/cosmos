@@ -17,6 +17,7 @@ public class SkillManager : MonoBehaviour
     {
         StartCoroutine(ShootParts("Missile"));
         StartCoroutine(ShootParts("Laser"));
+        StartCoroutine(ShootParts("Emp"));
     }
 
     //Update 함수에선 함수를 최신으로 업데이트해준다.
@@ -35,7 +36,6 @@ public class SkillManager : MonoBehaviour
                 yield return new WaitForFixedUpdate();
                 continue;
             }
-
             PartsContorller parts = GameManger.instance.poolManager.GetPool(partsType).GetComponent<PartsContorller>();
             parts.transform.position = transform.position;
             parts.Init(Target);

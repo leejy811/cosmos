@@ -60,6 +60,8 @@ public class PartsContorller : Bullet
 
         if (partsType == "Laser")
             LaserInit();
+        if (partsType == "Emp")
+            StartCoroutine("EmpAttack");
     }
 
     //CheckRange는 만약 Missile이 아무런 타겟도 맞추지 못하고 사거리에 도달하면 터지게 하는 함수이다.
@@ -90,6 +92,18 @@ public class PartsContorller : Bullet
         missileParticle.SetActive(false);
         gameObject.SetActive(false);
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    IEnumerator EmpAttack()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+        float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.deltaTime;
+        while (transform.localScale.x< partsRange)
+        {
+            transform.localScale += new Vector3(explosionSpeed, explosionSpeed, 0);
+            yield return null;
+        }
+        gameObject.SetActive(false);
     }
 
     //ProtocolAttack은 Protocol의 지속적인 공격을 위해 partsAttackSpeed마다 반복해주는 코루틴이다.

@@ -138,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: EnemyC
   enemySpeed: 0.3
+  knockBackSpeed: 3
+  knockBackDistance: 1
   enemyDamage: 1
   enemyHealth: 10
   enemyPrice: 2

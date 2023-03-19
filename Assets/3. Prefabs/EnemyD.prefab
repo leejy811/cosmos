@@ -202,9 +202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: EnemyD
   enemySpeed: 1
+  knockBackSpeed: 3
+  knockBackDistance: 1
   enemyDamage: 10
   enemyHealth: 6
-  enemyGold: 20
+  enemyPrice: 0
   transforms:
   - {fileID: 2989242160689174013}
   - {fileID: 8651176904867318714}
