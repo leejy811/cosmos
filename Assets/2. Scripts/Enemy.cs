@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour
     private string enemyType;
     [SerializeField]
     public float enemySpeed;
+    [SerializeField] 
+    private float knockBackSpeed;
+    [SerializeField] 
+    private float knockBackDistance;
     [SerializeField]
     private float enemyDamage;
     [SerializeField]
@@ -71,6 +75,12 @@ public class Enemy : MonoBehaviour
             float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
             GetDamage(damage);
         }
+        else if(other.gameObject.tag == "Emp")
+        {
+            float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
+            GetDamage(damage);
+            GetEmpAttack();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -95,6 +105,23 @@ public class Enemy : MonoBehaviour
     {
         return enemyDamage;
     }
+
+    private void GetEmpAttack()
+    {
+        StartCoroutine("KnockBackEffect");
+    }
+
+    IEnumerator KnockBackEffect()
+    {
+        float speed = knockBackSpeed;
+        while (speed > 0)
+        {
+            transform.position -= transform.up * Time.deltaTime * speed;
+            speed -= Time.deltaTime * speed / knockBackDistance;
+            yield return null;
+        }
+    }
+
     public void EnemyDie()
     {
         if (enemyType == "EnemyA")
