@@ -8,9 +8,9 @@ TagManager:
   - Bullet
   - Missile
   - Boss
-  - Protocol
   - Laser
   - Emp
+  - Barrier
   layers:
   - Default
   - TransparentFX

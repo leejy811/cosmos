@@ -35,11 +35,11 @@ public class PartsContorller : Bullet
     //Protocol만 풀링을 사용안하기 때문에 Protocol만 초기화를 해준다.
     private void Start()
     {
-        if (partsType == "Protocol")
+        if (partsType == "Barrier")
         {
             gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
             partsRange = player.attackRange;
-            StartCoroutine(ProtocolAttack());
+            StartCoroutine(BarrierAttack());
         }
     }
 
@@ -107,7 +107,7 @@ public class PartsContorller : Bullet
     }
 
     //ProtocolAttack은 Protocol의 지속적인 공격을 위해 partsAttackSpeed마다 반복해주는 코루틴이다.
-    IEnumerator ProtocolAttack()
+    IEnumerator BarrierAttack()
     {
         while (true)
         {
