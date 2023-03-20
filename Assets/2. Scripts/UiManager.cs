@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
 
 public class UiManager : MonoBehaviour
 {
@@ -32,12 +29,19 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject waveClearAnimBase;
     [SerializeField] private Image panel;
     [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private GameObject backgroundBase;
+    [SerializeField] private float backgroundMoveSpeed;
     #endregion
 
     #region Member Variables
     private bool isFold = false;
     private float currentTime = 0f;
     private float fadeInTime = 2f;
+    private Vector2 moveDir;
+    private float moveX=1;
+    private float moveY=1;
+    private float xScreenHalfSize;
+    private float yScreenHalfSize;
     #endregion
 
     private void Awake()
@@ -46,13 +50,36 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine("FadeIn"); 
+        StartCoroutine("FadeIn");
+        yScreenHalfSize = Screen.height / 2;
+        xScreenHalfSize = Screen.width  / 2;
+        moveDir=new Vector2(moveX, moveY);
     }
     private void Update()
     {
         SetHpUI();
         SetGold();
         SetJem();
+        MoveBackground();
+    }
+
+    private void MoveBackground()
+    {
+        float x = backgroundBase.GetComponent<RectTransform>().anchoredPosition.x;
+        float y = backgroundBase.GetComponent<RectTransform>().anchoredPosition.y;
+
+        if (x < -xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(0, 1f);
+        else if (x > xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(-1f, 0);
+        if (y < -yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(0, 1f);
+        else if (y > yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(-1f, 0);
+
+        moveDir.x = moveX;
+        moveDir.y = moveY;
+        backgroundBase.GetComponent<RectTransform>().anchoredPosition += backgroundMoveSpeed * Time.deltaTime * moveDir.normalized;
     }
     public void StartDamageEffect()
     {
