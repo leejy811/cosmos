@@ -46,6 +46,10 @@ public class Boss : MonoBehaviour
         if (enterBossPlayerRange && bossType == 2)
         {
             this.gameObject.transform.RotateAround(playerPos, Vector3.forward, bossSpeed * Time.deltaTime);
+            if(transform.position.x == 0 && transform.position.y ==  playerPos.y - playerController.attackRange)
+            {
+                StartCoroutine("StopBossC");
+            }
         }
         else
         {
@@ -95,7 +99,7 @@ public class Boss : MonoBehaviour
 
         if(enterBossPlayerRange && bossType == 2 && bossCSpawnEnemy)
         {
-            StartCoroutine("BossCPattern");
+            //StartCoroutine("BossCPattern");
             bossCSpawnEnemy = false;
         }
     }
@@ -131,22 +135,7 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void BossPattern(int type)
-    {
-        switch (type)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
 
-        }
-
-    }
     IEnumerator BossA_1Pattern()
     {
         yield return new WaitForSeconds(1f);
@@ -196,7 +185,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator BossCPattern()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         GameObject enemyC = GameManger.instance.poolManager.GetPool("EnemyC");
         enemyC.GetComponent<Enemy>().SetEnemyState(5, 3, enemyC.GetComponent<Enemy>().enemyPrice);
         enemyC.transform.position = this.transform.position;

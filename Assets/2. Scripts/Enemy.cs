@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     {
         if(moveLerp)
         {
-            if(targetPos != null && !bossLerp)
+            if(!bossLerp)
                 transform.position = Vector2.Lerp(transform.position, targetPos, 0.5f);
             else
                 transform.position = Vector2.Lerp(transform.position, targetPos, 0.1f);
@@ -137,6 +137,8 @@ public class Enemy : MonoBehaviour
 
     private void GetEmpAttack()
     {
+        if (gameObject.activeSelf == false)
+            return;
         StartCoroutine("KnockBackEffect");
     }
 

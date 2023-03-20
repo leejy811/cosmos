@@ -31,6 +31,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject waveClearAnimBase;
     [SerializeField] private Image panel;
+    [SerializeField] private GameObject bloodEffect;
     #endregion
 
     #region Member Variables
@@ -52,6 +53,16 @@ public class UiManager : MonoBehaviour
         SetHpUI();
         SetGold();
         SetJem();
+    }
+    public void StartDamageEffect()
+    {
+        StartCoroutine("DamageEffect");
+    }
+    IEnumerator DamageEffect()
+    {
+        bloodEffect.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        bloodEffect.SetActive(false);
     }
     IEnumerator FadeIn()
     {

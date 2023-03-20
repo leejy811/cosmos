@@ -9,11 +9,14 @@ using UnityEngine;
  */
 public class PlayerController : MonoBehaviour
 {
+    
     //Player ½ºÅÈ
     public float playerDamage { get; private set; } = 1;
     public float playerAttackSpeed { get; private set; } = 2;
     public float maxPlayerHealth { get; private set; } = 5;
     public float playerHealth { get; private set; } = 5;
+    //public float playerHealth { get; private set; } = 10000;
+
     public float playerHealthRecorvery { get; private set; } = 0;
 
     //Player ½ºÅÈ ¾÷±×·¹ÀÌµå Cost
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
     public void GetDamage(float damage)
     {
         GameManger.instance.cameraResolution.Shake();
+        GameManger.instance.UiManager.StartDamageEffect();
         if (playerHealth - damage <= 0)
         {
             playerHealth = 0;
