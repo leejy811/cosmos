@@ -10,14 +10,21 @@ using UnityEngine;
  */
 public class SkillManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Barrier;
+
     private Transform Target;
+    private string currentParts;
 
     //Start 함수에선 각 발사 코루틴의 실행을 담당하는데 어떤파츠를 가지고 있냐에 따른 예외처리 예정이다.
     private void Start()
     {
-        StartCoroutine(ShootParts("Missile"));
-        StartCoroutine(ShootParts("Laser"));
-        StartCoroutine(ShootParts("Emp"));
+        currentParts = PlayerPrefs.GetString("CurrentParts");
+
+        if (currentParts == "Barrier")
+            Barrier.SetActive(true);
+        else
+            StartCoroutine(ShootParts(currentParts));
     }
 
     //Update 함수에선 함수를 최신으로 업데이트해준다.

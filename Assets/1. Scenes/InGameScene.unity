@@ -2711,6 +2711,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 440817147}
   waveClearAnimBase: {fileID: 1763044781}
   panel: {fileID: 1472476298}
+  bloodEffect: {fileID: 0}
 --- !u!1 &578111936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,12 +3336,12 @@ GameObject:
   - component: {fileID: 768996024}
   - component: {fileID: 768996025}
   m_Layer: 0
-  m_Name: Protocol
-  m_TagString: Protocol
+  m_Name: Barrier
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &768996023
 Transform:
   m_ObjectHideFlags: 0
@@ -3369,7 +3370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0
-  partsType: Protocol
+  partsType: Barrier
   partsRange: 0
   partsDamage: 0.2
   partsAttackSpeed: 1
@@ -7178,6 +7179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9857626bbb24e324f9f356fe07c8a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Barrier: {fileID: 768996022}
 --- !u!1 &1668345519
 GameObject:
   m_ObjectHideFlags: 0

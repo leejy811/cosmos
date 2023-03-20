@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
         {
             other.gameObject.GetComponent<PartsContorller>().MissileAttack();
         }
-        else if (other.gameObject.tag == "Protocol")
+        else if (other.gameObject.tag == "Barrier")
         {
             enemySpeed *= other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Protocol")
+        if (other.gameObject.tag == "Barrier")
         {
             enemySpeed *= 1 / other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
