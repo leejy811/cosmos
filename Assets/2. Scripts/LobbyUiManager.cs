@@ -128,7 +128,7 @@ public class LobbyUiManager : MonoBehaviour
         }
 
         target = targetFragment;
-        targetFragment.transform.parent = nextFragment.transform;
+        targetFragment.transform.SetParent(nextFragment.transform);
         targetFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
         fragmentChangeAnim.Play("FragmentChangeAnim");
@@ -138,14 +138,14 @@ public class LobbyUiManager : MonoBehaviour
     private void OnEndChangeAnimation()
     {
         // set default parent to converted fragments(prevent unwanted movemetns of the converted fragments while initiallization)
-        target.transform.parent = mainUI.transform;
-        currentFragment.transform.GetChild(0).transform.parent = mainUI.transform;
+        target.transform.SetParent(mainUI.transform);
+        currentFragment.transform.GetChild(0).transform.SetParent(mainUI.transform);
 
         // initiallize position to animation start pos
         currentFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         nextFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(1440, 0);
 
-        target.transform.parent = currentFragment.transform;
+        target.transform.SetParent(currentFragment.transform);
         target.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         isConvertingUi = false;
     }

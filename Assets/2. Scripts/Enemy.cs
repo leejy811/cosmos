@@ -69,9 +69,7 @@ public class Enemy : MonoBehaviour
             if (targetPos == (Vector2)transform.position)
             {
                 moveLerp = false;
-                //Debug.Log("Target Pos : " + targetPos);
             }
-
         }
         else
         {
