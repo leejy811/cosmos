@@ -88,7 +88,8 @@ public class Boss : MonoBehaviour
         MoveBoss();
         if(enterBossPlayerRange && bossType == 0 && bossAPattern)
         {
-            StartCoroutine("BossAPattern");
+            //StartCoroutine("BossAPattern");
+            StartCoroutine("BossA_1Pattern");
             bossAPattern = false;
         }
 
@@ -146,7 +147,27 @@ public class Boss : MonoBehaviour
         }
 
     }
-
+    IEnumerator BossA_1Pattern()
+    {
+        yield return new WaitForSeconds(1f);
+        //enemyList.Clear();
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
+            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice);
+            //enemy.transform.position = spawnPoints[i].position;
+            enemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
+            enemy.GetComponent<Enemy>().moveLerp = true;
+            enemy.GetComponent<Enemy>().bossLerp = true;
+            enemy.transform.position = this.transform.position;
+            enemy.GetComponent<Enemy>().EnemyLookPlayer();
+            enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
+            enemy.GetComponent<Enemy>().waveManager = this.waveManager;
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(1f);
+        bossAPattern = true;
+    }
 
     IEnumerator BossAPattern()
     {
@@ -172,6 +193,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(5f);
         bossAPattern = true;
     }
+
     IEnumerator BossCPattern()
     {
         yield return new WaitForSeconds(1f);

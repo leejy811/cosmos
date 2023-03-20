@@ -91,11 +91,11 @@ public class WaveManager: MonoBehaviour
                 BossSpawn(currentWave / 10);
                 break;
             }
-            if (currentWave == 0)
-            {
-                BossSpawn(0);
-                break;
-            }
+            //if (currentWave == 0)
+            //{
+            //    BossSpawn(3);
+            //    break;
+            //}
             //else if (currentWave == 1)
             //{
             //    BossSpawn(1);

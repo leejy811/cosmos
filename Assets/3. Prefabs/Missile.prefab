@@ -4914,7 +4914,7 @@ MonoBehaviour:
   bulletSpeed: 5
   partsType: Missile
   partsRange: 1
-  partsDamage: 1
+  partsDamage: 0
   partsAttackSpeed: 0.5
   partsValue: 0
   player: {fileID: 0}
