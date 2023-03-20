@@ -65,6 +65,7 @@ Transform:
   m_Children:
   - {fileID: 5021594607862781980}
   - {fileID: 4456076450189618115}
+  - {fileID: 7862834121097520347}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,6 +188,7 @@ MonoBehaviour:
   - {fileID: 4456076450189618115}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  bossDLaser: {fileID: 7862834121097520348}
 --- !u!1 &8901973839982486589
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,3 +220,74 @@ Transform:
   m_Father: {fileID: 8119299994556774595}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7142454557282325121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8119299994556774595}
+    m_Modifications:
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800605, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_Name
+      value: Boss Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009225688092800605, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+--- !u!4 &7862834121097520347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+  m_PrefabInstance: {fileID: 7142454557282325121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7862834121097520348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1009225688092800605, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
+  m_PrefabInstance: {fileID: 7142454557282325121}
+  m_PrefabAsset: {fileID: 0}

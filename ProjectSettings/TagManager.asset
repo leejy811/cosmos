@@ -11,6 +11,7 @@ TagManager:
   - Laser
   - Emp
   - Barrier
+  - BossLaser
   layers:
   - Default
   - TransparentFX

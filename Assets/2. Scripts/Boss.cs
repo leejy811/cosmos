@@ -29,6 +29,9 @@ public class Boss : MonoBehaviour
     bool bossCPattern;
     bool bossDPattern;
 
+    [SerializeField]
+    private GameObject bossDLaser;
+
     public void Start()
     {
         BossLookPlayer();
@@ -247,8 +250,11 @@ public class Boss : MonoBehaviour
 
     // Boss D 가 레이저 쏘는 코루틴 만들어주세염
 
-    IEnumerator BossDShootLaser()
+     IEnumerator BossDShootLaser()
     {
-        yield return new WaitForSeconds(0.1f);
+
+        bossDLaser.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        bossDLaser.SetActive(false);
     }
 }

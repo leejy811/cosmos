@@ -185,5 +185,9 @@ public class PlayerController : MonoBehaviour
            
             PlayerDie();
         }
+        if (collision.gameObject.tag == "BossLaser")
+        {
+            GetDamage(10f);
+        }
     }
 }
