@@ -231,13 +231,14 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
-            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 3, bossDSpawnEnemy.GetComponent<Enemy>().enemyPrice);
+            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, bossDSpawnEnemy.GetComponent<Enemy>().enemyPrice);
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
-            bossDSpawnEnemy.GetComponent<Enemy>().bossLerp = true;
-            bossDSpawnEnemy.transform.position = this.transform.position;
+            //bossDSpawnEnemy.GetComponent<Enemy>().bossLerp = true;
             bossDSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
+
+            bossDSpawnEnemy.transform.position = this.transform.position;
             bossDSpawnEnemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
             bossDSpawnEnemy.GetComponent<Enemy>().waveManager = this.waveManager;
         }

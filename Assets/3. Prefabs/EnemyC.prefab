@@ -140,9 +140,12 @@ MonoBehaviour:
   enemySpeed: 0.3
   knockBackSpeed: 3
   knockBackDistance: 1
-  enemyDamage: 1
-  enemyHealth: 10
+  enemyDamage: 0
+  enemyHealth: 0
   enemyPrice: 2
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  targetPos: {x: 0, y: 0}
+  moveLerp: 0
+  bossLerp: 0
