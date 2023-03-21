@@ -66,7 +66,7 @@ public class WaveManager: MonoBehaviour
     }
     void Update()
     {
-        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 && waves[currentWave].enemyDCount == 0)
+        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0)
         {
             CheckWaveEnd();
         }
@@ -81,7 +81,7 @@ public class WaveManager: MonoBehaviour
     IEnumerator StartWave()
     {
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
-        int currentDCount = waves[currentWave].enemyDCount;      
+        int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;      
         yield return new WaitForSeconds(5);
 
         while (true)
@@ -108,7 +108,7 @@ public class WaveManager: MonoBehaviour
             //}
             string ranType;
 
-            int enemyT = Random.Range(0, 3);
+            int enemyT = Random.Range(0, 4);
             if(enemyT == 0)
             {
                 ranType = "EnemyA";
@@ -117,12 +117,16 @@ public class WaveManager: MonoBehaviour
             {
                 ranType = "EnemyB";
             }
+            else if(enemyT == 2)
+            {
+                ranType = "EnemyC";
+            }
             else
             {
                 ranType = "EnemyD";
             }
 
-            if (currentACount == 0 && currentBCount == 0 && currentDCount == 0)
+            if (currentACount == 0 && currentBCount == 0 && currentCCount == 0 && currentDCount == 0)
                 break;
             //if(currentACount == 0 && currentDCount == 0)
             //    ranType = "EnemyB";
@@ -135,6 +139,8 @@ public class WaveManager: MonoBehaviour
                 continue;
             else if (currentBCount == 0 && ranType == "EnemyB")
                 continue;
+            else if (currentCCount == 0 && ranType == "EnemyC")
+                continue;
             else if (currentDCount == 0 && ranType == "EnemyD")
                 continue;
 
@@ -142,6 +148,8 @@ public class WaveManager: MonoBehaviour
                 currentACount--;
             else if (ranType == "EnemyB")
                 currentBCount--;
+            else if (ranType == "EnemyC")
+                currentCCount--;
             else if (ranType == "EnemyD")
                 currentDCount--;
 
