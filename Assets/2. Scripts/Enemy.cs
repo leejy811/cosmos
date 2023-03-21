@@ -12,12 +12,11 @@ public class Enemy : MonoBehaviour
     private float knockBackSpeed;
     [SerializeField] 
     private float knockBackDistance;
-    [SerializeField]
+
     private float enemyDamage;
-    [SerializeField]
     private float enemyHealth;
-    [SerializeField]
-    public int enemyPrice;
+    private int enemyPrice;
+
     [SerializeField]
     private Transform[] transforms;
 
@@ -158,20 +157,17 @@ public class Enemy : MonoBehaviour
         {
             if(waveManager.waves[waveManager.currentWave].enemyACount > 0)
                 waveManager.waves[waveManager.currentWave].enemyACount--;
-            GameManger.instance.player.playerGold +=  enemyPrice;
         }
         else if(enemyType == "EnemyB")
         {
             if (waveManager.waves[waveManager.currentWave].enemyBCount > 0)
                 waveManager.waves[waveManager.currentWave].enemyBCount--;
-            GameManger.instance.player.playerGold += enemyPrice;
             //LocalDatabaseManager.instance.JemCount += enemyPrice;
         }
         else if(enemyType == "EnemyD")
         {
             if (waveManager.waves[waveManager.currentWave].enemyDCount > 0)
                 waveManager.waves[waveManager.currentWave].enemyDCount--;
-            GameManger.instance.player.playerGold += enemyPrice;
             for (int i=0; i<2; i++)
             {
                 GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
@@ -187,12 +183,10 @@ public class Enemy : MonoBehaviour
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
                 
             }
-
         }
-
+        GameManger.instance.player.playerGold += enemyPrice;
         transform.localEulerAngles = new Vector3(0, 0, 0);
         enemyHealth = 0;
         this.gameObject.SetActive(false);
-
     }
 }

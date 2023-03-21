@@ -80,7 +80,7 @@ public class Boss : MonoBehaviour
                     changeSpeed = 0.3f;
                     break;
                 case 2:
-                    changeSpeed = 15f;
+                    changeSpeed = 10f;
                     break;
                 case 3:
                     changeSpeed = 0;
@@ -197,7 +197,7 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         GameObject bossCSpawnEnemy = GameManger.instance.poolManager.GetPool("BossCSpawnEnemy");
-        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(5, 3, bossCSpawnEnemy.GetComponent<Enemy>().enemyPrice);
+        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, 1);
         bossCSpawnEnemy.transform.position = this.transform.position;
         bossCSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
         bossCSpawnEnemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
@@ -234,7 +234,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
-            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, bossDSpawnEnemy.GetComponent<Enemy>().enemyPrice);
+            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(0, 1, 2);
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
