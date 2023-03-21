@@ -29,6 +29,8 @@ public struct IWave
     public float enemyDDamage;
     public int enemyDPrice;
     public int enemyDJem;
+
+    public float spawnCoolTime;
 }
 public class WaveManager: MonoBehaviour
 {
@@ -38,7 +40,7 @@ public class WaveManager: MonoBehaviour
     public IWave[] waves;
 
     public int currentWave = -1;
-    private float spawnCoolTime;
+
     [SerializeField]
     private GameObject[] boss;
 
@@ -123,7 +125,7 @@ public class WaveManager: MonoBehaviour
                 currentDCount--;
 
             EnemySpawn(ranType);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(waves[currentWave].spawnCoolTime);
 
         }
     }
