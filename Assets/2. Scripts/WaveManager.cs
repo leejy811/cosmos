@@ -10,22 +10,25 @@ public struct IWave
     public float enemyAHp;
     public float enemyADamage;
     public int enemyAPrice;
+    public int enemyAJem;
 
     public int enemyBCount;
     public float enemyBHp;
     public float enemyBDamage;
     public int enemyBPrice;
+    public int enemyBJem;
 
     public int enemyCCount;
     public float enemyCHp;
     public float enemyCDamage;
     public int enemyCPrice;
+    public int enemyCJem;
 
     public int enemyDCount;
     public float enemyDHp;
     public float enemyDDamage;
     public int enemyDPrice;
-
+    public int enemyDJem;
 }
 public class WaveManager: MonoBehaviour
 {
@@ -35,35 +38,16 @@ public class WaveManager: MonoBehaviour
     public IWave[] waves;
 
     public int currentWave = -1;
+    private float spawnCoolTime;
     [SerializeField]
     private GameObject[] boss;
 
     void Start()
     {
-        //waves = new IWave[40];
-        //for(int i=0; i<40;i++)
-        //{
-        //    waves[i].enemyACount = (i * 3) + 5;
-        //    waves[i].enemyAHp = (i * 2) + 1;
-        //    waves[i].enemyADamage = i;
-        //    waves[i].enemyBCount = (i * 4) + 5;
-        //    waves[i].enemyBHp = (i * 3) + 5;
-        //    waves[i].enemyBDamage = i;
-        //    waves[i].enemyCCount = (i * 4) + 10;
-        //    waves[i].enemyCHp = (i * 3) + 5;
-        //    waves[i].enemyCDamage = i;
-        //    waves[i].enemyDCount = (i * 4) + 10;
-        //    waves[i].enemyDHp = (i * 3) + 5;
-        //    waves[i].enemyDDamage = i;
-        //}
-
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
-    private void Awake()
-    {
 
-    }
     void Update()
     {
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0)
@@ -91,23 +75,13 @@ public class WaveManager: MonoBehaviour
                 BossSpawn(currentWave / 10);
                 break;
             }
-            //if (currentWave == 0)
-            //{
-            //    BossSpawn(4);
-            //    break;
-            //}
-            //else if (currentWave == 1)
-            //{
-            //    BossSpawn(1);
-            //    break;
-            //}
-            //else if(currentWave == 2)
-            //{
-            //    BossSpawn(2);
-            //    break;
-            //}
-            string ranType;
+            if (currentWave == 0)
+            {
+                BossSpawn(2);
+                break;
+            }
 
+            string ranType;
             int enemyT = Random.Range(0, 4);
             if(enemyT == 0)
             {
@@ -125,15 +99,10 @@ public class WaveManager: MonoBehaviour
             {
                 ranType = "EnemyD";
             }
-
+            
+            // 모든 적 소환하면 코루틴 종료
             if (currentACount == 0 && currentBCount == 0 && currentCCount == 0 && currentDCount == 0)
                 break;
-            //if(currentACount == 0 && currentDCount == 0)
-            //    ranType = "EnemyB";
-            //else if(currentBCount == 0 && currentDCount == 0)
-            //    ranType = "EnemyA";
-            //else if(currentACount == 0 && currentBCount == 0)
-            //    ranType = "EnemyD";
 
             if (currentACount == 0 && ranType == "EnemyA")
                 continue;
@@ -162,14 +131,14 @@ public class WaveManager: MonoBehaviour
     {
         GameObject enemy = GameManger.instance.poolManager.GetPool(type);
         if (type == "EnemyA")
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyAHp, waves[currentWave].enemyADamage, waves[currentWave].enemyAPrice);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyAHp, waves[currentWave].enemyADamage, waves[currentWave].enemyAPrice, waves[currentWave].enemyAJem);
         else if(type == "EnemyB")
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage, waves[currentWave].enemyBPrice);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyBHp, waves[currentWave].enemyBDamage, waves[currentWave].enemyBPrice, waves[currentWave].enemyBJem);
         else if(type == "EnemyC")
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyCHp, waves[currentWave].enemyCDamage, waves[currentWave].enemyCPrice);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyCHp, waves[currentWave].enemyCDamage, waves[currentWave].enemyCPrice, waves[currentWave].enemyCJem);
         else if (type == "EnemyD")
         {
-            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage, waves[currentWave].enemyDPrice);
+            enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage, waves[currentWave].enemyDPrice, waves[currentWave].enemyDJem);
             waves[currentWave].enemyACount += 2;
         }
 

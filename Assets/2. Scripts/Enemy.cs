@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private float enemyDamage;
     private float enemyHealth;
     private int enemyPrice;
+    private int enemyJem;
 
     [SerializeField]
     private Transform[] transforms;
@@ -35,12 +36,12 @@ public class Enemy : MonoBehaviour
     {
         EnemyLookPlayer();
     }
-    public void SetEnemyState(float enemyHealth, float enemyDamage, int enemyPrice)
+    public void SetEnemyState(float enemyHealth, float enemyDamage, int enemyPrice, int enemyJem)
     {
         this.enemyHealth = enemyHealth;
         this.enemyDamage = enemyDamage;
         this.enemyPrice = enemyPrice;
-
+        this.enemyJem = enemyJem;
     }
     public void EnemyLookPlayer()
     {
@@ -164,7 +165,6 @@ public class Enemy : MonoBehaviour
         {
             if (waveManager.waves[waveManager.currentWave].enemyBCount > 0)
                 waveManager.waves[waveManager.currentWave].enemyBCount--;
-            //LocalDatabaseManager.instance.JemCount += enemyPrice;
         }
         else if(enemyType == "EnemyD")
         {
@@ -173,19 +173,16 @@ public class Enemy : MonoBehaviour
             for (int i=0; i<2; i++)
             {
                 GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
-                enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice);
-                //enemy.transform.position = transforms[i].position;
-                //enemy.transform.position = transform.position;
+                enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice, waveManager.waves[waveManager.currentWave].enemyAJem);
                 enemy.transform.position = transform.position;
                 enemy.GetComponent<Enemy>().moveLerp = true;
-
                 enemy.GetComponent<Enemy>().EnemyLookPlayer();
                 enemy.GetComponent<Enemy>().targetPos = transforms[i].position ;
                 enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
-                
             }
         }
+        LocalDatabaseManager.instance.JemCount += enemyJem;
         GameManger.instance.player.playerGold += enemyPrice;
         transform.localEulerAngles = new Vector3(0, 0, 0);
         enemyHealth = 0;

@@ -25,7 +25,7 @@ public class Boss : MonoBehaviour
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
 
-    bool bossAPattern = true;
+    bool bossAPattern;
     bool bossCPattern;
     bool bossDPattern;
 
@@ -59,7 +59,6 @@ public class Boss : MonoBehaviour
         else
         {
             transform.position += transform.up * Time.deltaTime * bossSpeed;
-
         }
     }
 
@@ -86,7 +85,6 @@ public class Boss : MonoBehaviour
                     changeSpeed = 0;
                     break;
             }
-
             bossSpeed = changeSpeed;
             enterBossPlayerRange = true;
         }
@@ -96,8 +94,7 @@ public class Boss : MonoBehaviour
         MoveBoss();
         if(enterBossPlayerRange && bossType == 0 && bossAPattern)
         {
-            //StartCoroutine("BossAPattern");
-            StartCoroutine("BossA_1Pattern");
+            StartCoroutine("BossAPattern");
             bossAPattern = false;
         }
 
@@ -146,14 +143,15 @@ public class Boss : MonoBehaviour
     }
 
 
-    IEnumerator BossA_1Pattern()
+    IEnumerator BossAPattern()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         //enemyList.Clear();
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
-            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice);
+            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, 
+                                                      waveManager.waves[waveManager.currentWave].enemyAPrice, waveManager.waves[waveManager.currentWave].enemyAJem);
             //enemy.transform.position = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
@@ -167,37 +165,12 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1f);
         bossAPattern = true;
     }
-
-    IEnumerator BossAPattern()
-    {
-        yield return new WaitForSeconds(5f);
-        //enemyList.Clear();
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
-            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice);
-            enemy.transform.position = spawnPoints[i].position;
-            enemy.GetComponent<Enemy>().EnemyLookPlayer();
-            enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
-            enemy.GetComponent<Enemy>().waveManager = this.waveManager;
-            enemy.GetComponent<Enemy>().enemySpeed = 0;
-            enemyList.Add(enemy);
-            yield return new WaitForSeconds(0.5f);
-        }
-        for(int i=0; i<enemyList.Count; i++)
-        {
-            enemyList[i].GetComponent<Enemy>().enemySpeed = 1;
-        }
-        enemyList.Clear();
-        yield return new WaitForSeconds(5f);
-        bossAPattern = true;
-    }
-
+  
     IEnumerator BossCPattern()
     {
         yield return new WaitForSeconds(0.5f);
         GameObject bossCSpawnEnemy = GameManger.instance.poolManager.GetPool("BossCSpawnEnemy");
-        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, 1);
+        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, 1, 1);
         bossCSpawnEnemy.transform.position = this.transform.position;
         bossCSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
         bossCSpawnEnemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
@@ -207,7 +180,6 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(2f);
         bossCPattern = true;
     }
-
     IEnumerator BossDPattern()
     {
         yield return new WaitForSeconds(0.1f);
@@ -227,14 +199,13 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(3f);
         bossDPattern = true;
     }
-
     IEnumerator BossDSpawnEnemy()
     {
         yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
-            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(0, 1, 2);
+            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(0, 1, 2, 1);
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
@@ -248,9 +219,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
     }
-
     // Boss D 가 레이저 쏘는 코루틴 만들어주세염
-
      IEnumerator BossDShootLaser()
     {
 
