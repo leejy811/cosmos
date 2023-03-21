@@ -5417,8 +5417,8 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 13
-    enemyAHp: 1.3
+  - enemyACount: 12
+    enemyAHp: 1.2
     enemyADamage: 1
     enemyAPrice: 1
     enemyBCount: 0
@@ -5433,30 +5433,30 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 15
+  - enemyACount: 14
+    enemyAHp: 1.4
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyBCount: 0
+    enemyBHp: 0
+    enemyBDamage: 0
+    enemyBPrice: 0
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+  - enemyACount: 16
     enemyAHp: 1.6
     enemyADamage: 1
     enemyAPrice: 1
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-  - enemyACount: 15
-    enemyAHp: 1.9
-    enemyADamage: 1
-    enemyAPrice: 1
     enemyBCount: 5
-    enemyBHp: 1.3
+    enemyBHp: 1.2
     enemyBDamage: 3
-    enemyBPrice: 1
+    enemyBPrice: 2
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5466,13 +5466,13 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
   - enemyACount: 18
-    enemyAHp: 2.2
+    enemyAHp: 1.8
     enemyADamage: 1
     enemyAPrice: 1
     enemyBCount: 7
-    enemyBHp: 1.9
+    enemyBHp: 1.3
     enemyBDamage: 3
-    enemyBPrice: 1
+    enemyBPrice: 2
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5481,14 +5481,30 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 21
-    enemyAHp: 2.5
+  - enemyACount: 20
+    enemyAHp: 2
     enemyADamage: 1
     enemyAPrice: 1
     enemyBCount: 9
-    enemyBHp: 2.2
+    enemyBHp: 1.4
     enemyBDamage: 3
-    enemyBPrice: 1
+    enemyBPrice: 2
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+  - enemyACount: 22
+    enemyAHp: 2.2
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyBCount: 11
+    enemyBHp: 1.5
+    enemyBDamage: 3
+    enemyBPrice: 2
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5498,29 +5514,13 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
   - enemyACount: 24
-    enemyAHp: 2.8
-    enemyADamage: 1
-    enemyAPrice: 1
-    enemyBCount: 11
-    enemyBHp: 2.5
-    enemyBDamage: 3
-    enemyBPrice: 1
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-  - enemyACount: 27
-    enemyAHp: 3.1
+    enemyAHp: 2.4
     enemyADamage: 1
     enemyAPrice: 1
     enemyBCount: 13
-    enemyBHp: 2.8
+    enemyBHp: 1.6
     enemyBDamage: 3
-    enemyBPrice: 1
+    enemyBPrice: 2
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5529,14 +5529,14 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 30
-    enemyAHp: 3.4
+  - enemyACount: 26
+    enemyAHp: 2.6
     enemyADamage: 1
     enemyAPrice: 1
     enemyBCount: 15
-    enemyBHp: 3.1
+    enemyBHp: 1.7
     enemyBDamage: 3
-    enemyBPrice: 1
+    enemyBPrice: 2
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5546,9 +5546,9 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
   - enemyACount: 0
-    enemyAHp: 3.4
+    enemyAHp: 2.8
     enemyADamage: 1
-    enemyAPrice: 1
+    enemyAPrice: 0
     enemyBCount: 11111
     enemyBHp: 0
     enemyBDamage: 0
@@ -5561,14 +5561,14 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
+  - enemyACount: 28
+    enemyAHp: 2.8
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyBCount: 15
+    enemyBHp: 1.8
+    enemyBDamage: 4
+    enemyBPrice: 4
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5577,14 +5577,14 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
+  - enemyACount: 30
+    enemyAHp: 3
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyBCount: 17
+    enemyBHp: 1.9
+    enemyBDamage: 4
+    enemyBPrice: 4
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5593,34 +5593,34 @@ MonoBehaviour:
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
+  - enemyACount: 32
+    enemyAHp: 3.2
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyBCount: 19
+    enemyBHp: 2.1
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyCCount: 2
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
+  - enemyACount: 34
+    enemyAHp: 3.4
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyBCount: 21
+    enemyBHp: 2.2
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyCCount: 3
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0

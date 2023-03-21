@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerDamageCost)
             return;
         PayGold(playerDamageCost);
-        playerDamage += 0.5f;
+        playerDamage += 0.1f;
         playerDamageCost += 2;
     }
     public void PlayerAttackSpeedLevelUp()
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         if (playerGold < playerAtkSpeedCost)
             return;
         PayGold(playerAtkSpeedCost);
-        playerAttackSpeed += 0.05f;
+        playerAttackSpeed += 0.1f;
         playerAtkSpeedCost += 2;
     }
     public void PlayerMaxHealthLevelUp()

@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossType: 0
-  bossHealth: 10000
+  bossHealth: 250
   bossSpeed: 2
   spawnPoints:
   - {fileID: 2824649541319715236}
@@ -300,6 +300,7 @@ MonoBehaviour:
   - {fileID: 5837441319898917551}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  bossDLaser: {fileID: 0}
 --- !u!1 &3501495795762583659
 GameObject:
   m_ObjectHideFlags: 0
