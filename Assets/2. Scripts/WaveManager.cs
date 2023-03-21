@@ -77,11 +77,11 @@ public class WaveManager: MonoBehaviour
                 BossSpawn(currentWave / 10);
                 break;
             }
-            if (currentWave == 0)
-            {
-                BossSpawn(2);
-                break;
-            }
+            //if (currentWave == 0)
+            //{
+            //    BossSpawn(2);
+            //    break;
+            //}
 
             string ranType;
             int enemyT = Random.Range(0, 4);
