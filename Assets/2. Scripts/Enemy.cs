@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 적 생성하고 무적 시간 두기 (0.2초 정도)
+//
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
