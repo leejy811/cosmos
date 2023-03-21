@@ -17,10 +17,10 @@ public class LocalDatabaseManager : MonoBehaviour
     public string CurrentParts { get; set; } = "Missile";
 
     //Parts Upgrade info, each index indicates how many times it had been upgraded
-    public int[] PartsMissile { get; set; } = { 0, 0, 0, 0 };
-    public int[] PartsProtocol { get; set; } = { 0, 0, 0, 0 };
-    public int[] PartsLaser { get; set; } = { 0, 0, 0, 0 };
-    public int[] PartsEmp { get; set; } = { 0, 0, 0, 0 };
+    public float[] PartsMissile { get; set; } = { 0, 0, 0};
+    public float[] PartsProtocol { get; set; } = { 0, 0, 0};
+    public float[] PartsLaser { get; set; } = { 0, 0, 0};
+    public float[] PartsEmp { get; set; } = { 0, 0, 0};
     #endregion
 
     void Awake()
@@ -48,31 +48,31 @@ public class LocalDatabaseManager : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentParts"))
             CurrentParts = PlayerPrefs.GetString("CurrentParts");
 
-        // string format : "val1, val2, val3, val4"
+        // string format : "val1, val2, val3"
         string[] temp;
         if (PlayerPrefs.HasKey("PartsMissile"))
         {
             temp = PlayerPrefs.GetString("PartsMissile").Split(',');
             for(int i = 0; i < PartsMissile.Length; i++)
-                PartsMissile[i] = int.Parse(temp[i]);
+                PartsMissile[i] = float.Parse(temp[i]);
         }
         if (PlayerPrefs.HasKey("PartsProtocol"))
         {
             temp = PlayerPrefs.GetString("PartsProtocol").Split(',');
             for (int i = 0; i < PartsProtocol.Length; i++)
-                PartsProtocol[i] = int.Parse(temp[i]);
+                PartsProtocol[i] = float.Parse(temp[i]);
         }
         if (PlayerPrefs.HasKey("PartsLaser"))
         {
             temp = PlayerPrefs.GetString("PartsLaser").Split(',');
             for (int i = 0; i < PartsLaser.Length; i++)
-                PartsLaser[i] = int.Parse(temp[i]);
+                PartsLaser[i] = float.Parse(temp[i]);
         }
         if (PlayerPrefs.HasKey("PartsEmp"))
         {
             temp = PlayerPrefs.GetString("PartsEmp").Split(',');
             for (int i = 0; i < PartsEmp.Length; i++)
-                PartsEmp[i] = int.Parse(temp[i]);
+                PartsEmp[i] = float.Parse(temp[i]);
         }
     }
 
@@ -92,19 +92,19 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         PlayerPrefs.SetString("CurrentParts", CurrentParts);
         string temp = "";
-        foreach(int part in PartsMissile)
+        foreach(float part in PartsMissile)
             temp += (part.ToString()+",");
         PlayerPrefs.SetString("PartsMissile", temp);
         temp = "";
-        foreach (int part in PartsProtocol)
+        foreach (float part in PartsProtocol)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsProtocol", temp);
         temp = "";
-        foreach (int part in PartsLaser)
+        foreach (float part in PartsLaser)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsLaser", temp);
         temp = "";
-        foreach (int part in PartsEmp)
+        foreach (float part in PartsEmp)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsEmp", temp);
     }
