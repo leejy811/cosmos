@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     bool isEnemyLive;
 
 
+    public bool checkEnemyDie;
+
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
     public bool moveLerp;
@@ -192,7 +194,7 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
-
+        checkEnemyDie = true;
         enemyDieEffect.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("EnemyDieEffect", 0.5f);
