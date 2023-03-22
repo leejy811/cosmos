@@ -32,6 +32,10 @@ public class Enemy : MonoBehaviour
     public Vector2 targetPos;
     public bool moveLerp;
     public bool bossLerp;
+
+    [SerializeField]
+    private GameObject enemyDieEffect;
+
     private void Start()
     {
         EnemyLookPlayer();
@@ -124,7 +128,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth - damage <= 0)
         {
-            EnemyDie();
+            EnemyDie(true) ;
         }
         else
             enemyHealth -= damage;
@@ -154,12 +158,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void EnemyDie()
+    public void EnemyDie(bool EnterPlayer)
     {
         if (enemyType == "EnemyA")
         {
             if(waveManager.waves[waveManager.currentWave].enemyACount > 0)
                 waveManager.waves[waveManager.currentWave].enemyACount--;
+            Debug.Log("Enemy A Die");
         }
         else if(enemyType == "EnemyB")
         {
@@ -182,10 +187,23 @@ public class Enemy : MonoBehaviour
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
             }
         }
-        LocalDatabaseManager.instance.JemCount += enemyJem;
-        GameManger.instance.player.playerGold += enemyPrice;
-        transform.localEulerAngles = new Vector3(0, 0, 0);
+        if(!EnterPlayer)
+        {
+            LocalDatabaseManager.instance.JemCount += enemyJem;
+            GameManger.instance.player.playerGold += enemyPrice;
+        }
+
+        enemyDieEffect.SetActive(true);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Invoke("EnemyDieEffect", 0.5f);
+
+    }
+    private void EnemyDieEffect()
+    {
         enemyHealth = 0;
-        this.gameObject.SetActive(false);
+        enemyDieEffect.SetActive(false);
+        gameObject.SetActive(false);
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 }
