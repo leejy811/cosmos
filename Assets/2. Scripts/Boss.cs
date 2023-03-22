@@ -209,7 +209,7 @@ public class Boss : MonoBehaviour
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
-            //bossDSpawnEnemy.GetComponent<Enemy>().bossLerp = true;
+            bossDSpawnEnemy.GetComponent<Enemy>().bossLerp = true;
             bossDSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
 
             bossDSpawnEnemy.transform.position = this.transform.position;

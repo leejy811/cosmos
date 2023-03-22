@@ -16,12 +16,21 @@ public class Bullet : MonoBehaviour
     //FixedUpdate에선 Bullet을 이동시켜주고 Bullet이 Target이 없어지면 사라지도록 예외처리가 되어있다.
     protected void FixedUpdate()
     {
-        if (target == null)
-        {
-            transform.position += attckDirection * bulletSpeed * Time.fixedDeltaTime;
-        }
 
-        if (!target.gameObject.GetComponent<Enemy>().isEnemyLive && gameObject.tag == "Bullet")
+        transform.position += attckDirection * bulletSpeed * Time.fixedDeltaTime;
+
+        if (target == null)
+            return;
+        Enemy targetEnemy = target.gameObject.GetComponent<Enemy>();
+        if (targetEnemy != null)
+        {
+            if (!target.gameObject.GetComponent<Enemy>().isEnemyLive && gameObject.tag != "Missile")
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
+        else if (target == null)
         {
             gameObject.SetActive(false);
             return;
@@ -30,9 +39,8 @@ public class Bullet : MonoBehaviour
         if (attckDirection == null)
             return;
 
-        transform.position += attckDirection * bulletSpeed * Time.fixedDeltaTime;
+        
     }
-
     //Init 함수는 Bullet을 소환할때 초기화 해주는 함수로 target을 매개변수로 받아서 방향을 초기화해준다.
     public void Init(Transform nearTarget)
     {
