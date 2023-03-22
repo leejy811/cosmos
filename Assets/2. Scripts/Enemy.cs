@@ -113,6 +113,10 @@ public class Enemy : MonoBehaviour
         {
             float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
             GetDamage(damage);
+
+            if (other.gameObject.GetComponentInParent<PartsContorller>().partsValue == 0)
+                return;
+
             GetEmpAttack();
         }
     }
@@ -129,7 +133,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth - damage <= 0)
         {
-            EnemyDie(true) ;
+            EnemyDie(false) ;
         }
         else
             enemyHealth -= damage;

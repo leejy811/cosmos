@@ -267,6 +267,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69493660}
   m_CullTransparentMesh: 1
+--- !u!1 &84654025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84654026}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 11'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &84654026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84654025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.732, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94808957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1774,37 @@ Transform:
   m_Father: {fileID: 1302566967}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &353638254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353638255}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 9'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353638255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353638254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.732, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &354061224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +2477,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487558382}
   m_CullTransparentMesh: 1
+--- !u!1 &508237453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508237454}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 10'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508237454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508237453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,6 +2684,37 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &525547457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525547458}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 5'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &525547458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525547457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.732, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &554931964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +3121,37 @@ Transform:
   m_Father: {fileID: 1302566967}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &621844226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 621844227}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 12'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &621844227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621844226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 1.732, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657369574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,6 +3406,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &709487233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709487234}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 6'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &709487234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709487233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: -1.732, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711631206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,6 +3854,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &761872434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761872435}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 3'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &761872435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761872434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.732, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765476227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,7 +3965,6 @@ MonoBehaviour:
   partsType: Barrier
   partsRange: 0
   partsDamage: 0.2
-  partsAttackSpeed: 1
   partsValue: 0.7
   player: {fileID: 1666084034}
   missileParticle: {fileID: 0}
@@ -3847,6 +4063,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795453368}
   m_CullTransparentMesh: 1
+--- !u!1 &874330697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874330698}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 8'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874330698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874330697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -1.732, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879419780
 GameObject:
   m_ObjectHideFlags: 0
@@ -4628,6 +4875,37 @@ Transform:
   m_Father: {fileID: 1302566967}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1119979792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119979793}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 4'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119979793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119979792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1133181214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,6 +5608,37 @@ Transform:
   m_Father: {fileID: 1302566967}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1217506044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217506045}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 2'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1217506045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217506044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1.732, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227470310
 GameObject:
   m_ObjectHideFlags: 0
@@ -5498,642 +5807,842 @@ MonoBehaviour:
     enemyAHp: 1
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 12
     enemyAHp: 1.2
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 14
     enemyAHp: 1.4
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 16
     enemyAHp: 1.6
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 5
     enemyBHp: 1.2
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 18
     enemyAHp: 1.8
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 7
     enemyBHp: 1.3
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 20
     enemyAHp: 2
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 9
     enemyBHp: 1.4
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 22
     enemyAHp: 2.2
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 11
     enemyBHp: 1.5
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 24
     enemyAHp: 2.4
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 13
     enemyBHp: 1.6
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 26
     enemyAHp: 2.6
     enemyADamage: 1
     enemyAPrice: 1
+    enemyAJem: 0
     enemyBCount: 15
     enemyBHp: 1.7
     enemyBDamage: 3
     enemyBPrice: 2
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 2.8
     enemyADamage: 1
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 11111
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 28
     enemyAHp: 2.8
     enemyADamage: 2
     enemyAPrice: 2
+    enemyAJem: 0
     enemyBCount: 15
     enemyBHp: 1.8
     enemyBDamage: 4
     enemyBPrice: 4
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 30
     enemyAHp: 3
     enemyADamage: 2
     enemyAPrice: 2
+    enemyAJem: 0
     enemyBCount: 17
     enemyBHp: 1.9
     enemyBDamage: 4
     enemyBPrice: 4
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 32
     enemyAHp: 3.2
     enemyADamage: 2
     enemyAPrice: 2
+    enemyAJem: 0
     enemyBCount: 19
     enemyBHp: 2.1
     enemyBDamage: 4
     enemyBPrice: 4
+    enemyBJem: 0
     enemyCCount: 2
     enemyCHp: 18
     enemyCDamage: 5
     enemyCPrice: 30
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 34
     enemyAHp: 3.4
     enemyADamage: 2
     enemyAPrice: 2
+    enemyAJem: 0
     enemyBCount: 21
     enemyBHp: 2.2
     enemyBDamage: 4
     enemyBPrice: 4
+    enemyBJem: 0
     enemyCCount: 3
     enemyCHp: 18
     enemyCDamage: 5
     enemyCPrice: 30
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
+    enemyAJem: 0
     enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
+    enemyBJem: 0
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
     enemyCPrice: 0
+    enemyCJem: 0
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   currentWave: 0
   boss:
   - {fileID: 3256790291441459130, guid: 36282b307df742249aa3d23dc49b1214, type: 3}
@@ -6216,6 +6725,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1302566967}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1325035792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325035793}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325035793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325035792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335125385
@@ -7917,7 +8457,19 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1325035793}
+  - {fileID: 1217506045}
+  - {fileID: 761872435}
+  - {fileID: 1119979793}
+  - {fileID: 525547458}
+  - {fileID: 709487234}
+  - {fileID: 1819305725}
+  - {fileID: 874330698}
+  - {fileID: 353638255}
+  - {fileID: 508237454}
+  - {fileID: 84654026}
+  - {fileID: 621844227}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7982,7 +8534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9857626bbb24e324f9f356fe07c8a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barrier: {fileID: 768996022}
+  barrier: {fileID: 768996024}
+  randomLaserPoints: []
 --- !u!1 &1668345519
 GameObject:
   m_ObjectHideFlags: 0
@@ -8587,6 +9140,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1302566967}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1819305724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819305725}
+  m_Layer: 3
+  m_Name: ' Random Laser Pont 7'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819305725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819305724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823540099
 GameObject:

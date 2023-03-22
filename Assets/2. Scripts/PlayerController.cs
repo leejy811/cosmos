@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float playerAttackSpeed { get; private set; } = 2;
     public float maxPlayerHealth { get; private set; } = 5;
     public float playerHealth { get; private set; } = 5;
+    public int playerShield { get; set; } = 0;
     //public float playerHealth { get; private set; } = 10000;
 
     public float playerHealthRecorvery { get; private set; } = 0;
@@ -113,6 +114,13 @@ public class PlayerController : MonoBehaviour
     {
         GameManger.instance.cameraResolution.Shake();
         GameManger.instance.UiManager.StartDamageEffect();
+
+        if(playerShield > 0 )
+        {
+            playerShield -= 1;
+            return;
+        }
+
         if (playerHealth - damage <= 0)
         {
             playerHealth = 0;
@@ -176,7 +184,7 @@ public class PlayerController : MonoBehaviour
             float damage = enemy.GetEnemyDamage();
 
             GetDamage(damage);
-            enemy.EnemyDie(false) ;
+            enemy.EnemyDie(true) ;
         }
         if (collision.gameObject.tag == "Boss")
         {

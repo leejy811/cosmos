@@ -18,7 +18,6 @@ public class PartsContorller : Bullet
     private float partsRange;
     [SerializeField]
     private float partsDamage;
-    public float partsAttackSpeed;
     public float partsValue;
 
     public PlayerController player;
@@ -54,14 +53,28 @@ public class PartsContorller : Bullet
     }
 
     //Init은 풀링을 사용하는 파츠들을 초기화 해줄때 사용하는 함수이다.
-    public new void Init(Transform nearTarget)
+    public void Init(Transform nearTarget, float[] value)
     {
-        base.Init(nearTarget);
+        partsDamage = player.playerDamage * value[0];
 
-        if (partsType == "Laser")
-            LaserInit();
-        if (partsType == "Emp")
+        if (partsType == "Barrier")
+        {
+            this.partsValue = value[1];
+            return;
+        }
+        else if (partsType == "Emp")
+        {
+            this.partsValue = value[2];
             StartCoroutine("EmpAttack");
+            return;
+        }
+
+        Init(nearTarget);
+
+        if (partsType == "Missile")
+            partsRange = value[2];
+        else if (partsType == "Laser")
+            LaserInit();
     }
 
     //CheckRange는 만약 Missile이 아무런 타겟도 맞추지 못하고 사거리에 도달하면 터지게 하는 함수이다.
@@ -97,11 +110,11 @@ public class PartsContorller : Bullet
     IEnumerator EmpAttack()
     {
         transform.localScale = new Vector3(1, 1, 1);
-        float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.deltaTime;
+        float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
         while (transform.localScale.x< partsRange)
         {
             transform.localScale += new Vector3(explosionSpeed, explosionSpeed, 0);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         gameObject.SetActive(false);
     }
@@ -112,7 +125,7 @@ public class PartsContorller : Bullet
         while (true)
         {
             CircleRangeAttack();
-            yield return new WaitForSeconds(1 / partsAttackSpeed);
+            yield return new WaitForSeconds(1 / bulletSpeed);
         }
     }
 
