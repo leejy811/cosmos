@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        EnemyLookPlayer();
     }
     public void SetEnemyState(float enemyHealth, float enemyDamage, int enemyPrice, int enemyJem)
     {
@@ -53,7 +52,7 @@ public class Enemy : MonoBehaviour
         if(bossLerp)
         {
             float targetAngle = Vector2.Angle(transform.up, playerPos - targetPos);
-            targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
+            targetAngle = targetPos.x >= 0 ? targetAngle : -targetAngle;
             transform.Rotate(new Vector3(0, 0, targetAngle));
         }
         else
