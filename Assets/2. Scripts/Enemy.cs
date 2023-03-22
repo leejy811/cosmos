@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     bool isEnemyLive;
 
 
-    public bool checkEnemyDie;
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
@@ -194,10 +193,15 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
-        checkEnemyDie = true;
-        enemyDieEffect.SetActive(true);
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Invoke("EnemyDieEffect", 0.5f);
+
+        //enemyDieEffect.SetActive(true);
+        //gameObject.tag = "Untagged";
+        //gameObject.layer = 0;
+        //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        //Invoke("EnemyDieEffect", 0.5f);
+        enemyHealth = 0;
+        gameObject.SetActive(false);
+        transform.localEulerAngles = new Vector3(0, 0, 0);
 
     }
     private void EnemyDieEffect()
@@ -205,6 +209,8 @@ public class Enemy : MonoBehaviour
         enemyHealth = 0;
         enemyDieEffect.SetActive(false);
         gameObject.SetActive(false);
+        gameObject.tag = "Enemy";
+        gameObject.layer = 6;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.localEulerAngles = new Vector3(0, 0, 0);
     }
