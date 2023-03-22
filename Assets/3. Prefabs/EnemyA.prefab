@@ -144,6 +144,7 @@ MonoBehaviour:
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  checkEnemyDie: 0
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   bossLerp: 0
@@ -165,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4130551600284319109
 Transform:
   m_ObjectHideFlags: 0
