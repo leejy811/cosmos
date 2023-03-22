@@ -5026,4 +5026,4 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   bossLerp: 0
-  enemyDieEffect: {fileID: 0}
+  enemyDieEffect: {fileID: 1726185676086826771}
