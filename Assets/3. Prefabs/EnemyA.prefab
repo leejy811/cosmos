@@ -144,6 +144,7 @@ MonoBehaviour:
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  checkEnemyDie: 0
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   bossLerp: 0
