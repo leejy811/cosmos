@@ -5823,7 +5823,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 12
     enemyAHp: 1.2
     enemyADamage: 1
@@ -5844,7 +5844,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 14
     enemyAHp: 1.4
     enemyADamage: 1
@@ -5865,7 +5865,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 16
     enemyAHp: 1.6
     enemyADamage: 1
@@ -5875,7 +5875,7 @@ MonoBehaviour:
     enemyBHp: 1.2
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5886,7 +5886,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 18
     enemyAHp: 1.8
     enemyADamage: 1
@@ -5896,7 +5896,7 @@ MonoBehaviour:
     enemyBHp: 1.3
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5907,7 +5907,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 20
     enemyAHp: 2
     enemyADamage: 1
@@ -5917,7 +5917,7 @@ MonoBehaviour:
     enemyBHp: 1.4
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5928,7 +5928,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 22
     enemyAHp: 2.2
     enemyADamage: 1
@@ -5938,7 +5938,7 @@ MonoBehaviour:
     enemyBHp: 1.5
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5949,7 +5949,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 24
     enemyAHp: 2.4
     enemyADamage: 1
@@ -5959,7 +5959,7 @@ MonoBehaviour:
     enemyBHp: 1.6
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5970,7 +5970,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 26
     enemyAHp: 2.6
     enemyADamage: 1
@@ -5980,7 +5980,7 @@ MonoBehaviour:
     enemyBHp: 1.7
     enemyBDamage: 3
     enemyBPrice: 2
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -5991,7 +5991,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 1
   - enemyACount: 0
     enemyAHp: 2.8
     enemyADamage: 1
@@ -6022,7 +6022,7 @@ MonoBehaviour:
     enemyBHp: 1.8
     enemyBDamage: 4
     enemyBPrice: 4
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -6033,7 +6033,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 0.8
   - enemyACount: 30
     enemyAHp: 3
     enemyADamage: 2
@@ -6043,7 +6043,7 @@ MonoBehaviour:
     enemyBHp: 1.9
     enemyBDamage: 4
     enemyBPrice: 4
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 0
     enemyCHp: 0
     enemyCDamage: 0
@@ -6054,7 +6054,7 @@ MonoBehaviour:
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 0.8
   - enemyACount: 32
     enemyAHp: 3.2
     enemyADamage: 2
@@ -6064,18 +6064,18 @@ MonoBehaviour:
     enemyBHp: 2.1
     enemyBDamage: 4
     enemyBPrice: 4
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 2
     enemyCHp: 18
     enemyCDamage: 5
     enemyCPrice: 30
-    enemyCJem: 0
+    enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 0.8
   - enemyACount: 34
     enemyAHp: 3.4
     enemyADamage: 2
@@ -6085,18 +6085,123 @@ MonoBehaviour:
     enemyBHp: 2.2
     enemyBDamage: 4
     enemyBPrice: 4
-    enemyBJem: 0
+    enemyBJem: 1
     enemyCCount: 3
     enemyCHp: 18
     enemyCDamage: 5
     enemyCPrice: 30
-    enemyCJem: 0
+    enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
     enemyDJem: 0
-    spawnCoolTime: 0
+    spawnCoolTime: 0.8
+  - enemyACount: 36
+    enemyAHp: 3.6
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyAJem: 0
+    enemyBCount: 23
+    enemyBHp: 2.3
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyBJem: 1
+    enemyCCount: 4
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.8
+  - enemyACount: 38
+    enemyAHp: 3.8
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyAJem: 0
+    enemyBCount: 25
+    enemyBHp: 2.4
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyBJem: 1
+    enemyCCount: 5
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.8
+  - enemyACount: 40
+    enemyAHp: 4
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyAJem: 0
+    enemyBCount: 27
+    enemyBHp: 2.5
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyBJem: 1
+    enemyCCount: 6
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.8
+  - enemyACount: 42
+    enemyAHp: 4.2
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyAJem: 0
+    enemyBCount: 29
+    enemyBHp: 2.6
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyBJem: 1
+    enemyCCount: 7
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.8
+  - enemyACount: 44
+    enemyAHp: 4.4
+    enemyADamage: 2
+    enemyAPrice: 2
+    enemyAJem: 0
+    enemyBCount: 31
+    enemyBHp: 2.7
+    enemyBDamage: 4
+    enemyBPrice: 4
+    enemyBJem: 1
+    enemyCCount: 8
+    enemyCHp: 18
+    enemyCDamage: 5
+    enemyCPrice: 30
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.8
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
@@ -6112,112 +6217,7 @@ MonoBehaviour:
     enemyCDamage: 0
     enemyCPrice: 0
     enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
+    enemyDCount: 1111
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
@@ -8536,6 +8536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrier: {fileID: 768996024}
   randomLaserPoints: []
+  Target: {fileID: 0}
 --- !u!1 &1668345519
 GameObject:
   m_ObjectHideFlags: 0
