@@ -176,6 +176,11 @@ public class Enemy : MonoBehaviour
             if (waveManager.waves[waveManager.currentWave].enemyBCount > 0)
                 waveManager.waves[waveManager.currentWave].enemyBCount--;
         }
+        else if(enemyType == "EnemyC")
+        {
+            if (waveManager.waves[waveManager.currentWave].enemyCCount > 0)
+                waveManager.waves[waveManager.currentWave].enemyCCount--;
+        }
         else if(enemyType == "EnemyD")
         {
             if (waveManager.waves[waveManager.currentWave].enemyDCount > 0)
@@ -198,14 +203,14 @@ public class Enemy : MonoBehaviour
             GameManger.instance.player.playerGold += enemyPrice;
         }
 
-        //enemyDieEffect.SetActive(true);
-        //gameObject.tag = "Untagged";
-        //gameObject.layer = 0;
-        //gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        //Invoke("EnemyDieEffect", 0.5f);
-        enemyHealth = 0;
-        gameObject.SetActive(false);
-        transform.localEulerAngles = new Vector3(0, 0, 0);
+        enemyDieEffect.SetActive(true);
+        gameObject.tag = "Untagged";
+        gameObject.layer = 0;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Invoke("EnemyDieEffect", 0.5f);
+        //enemyHealth = 0;
+        //gameObject.SetActive(false);
+        //transform.localEulerAngles = new Vector3(0, 0, 0);
 
     }
     private void EnemyDieEffect()
