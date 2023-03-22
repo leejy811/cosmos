@@ -138,12 +138,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: EnemyA
-  enemySpeed: 1
+  enemySpeed: 1.5
   knockBackSpeed: 3
   knockBackDistance: 1
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  isEnemyLive: 0
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   bossLerp: 0
