@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
             float damage = enemy.GetEnemyDamage();
 
             GetDamage(damage);
-            enemy.EnemyDie(false) ;
+            enemy.EnemyDie(true) ;
         }
         if (collision.gameObject.tag == "Boss")
         {

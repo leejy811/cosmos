@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHealth - damage <= 0)
         {
-            EnemyDie(true) ;
+            EnemyDie(false) ;
         }
         else
             enemyHealth -= damage;
