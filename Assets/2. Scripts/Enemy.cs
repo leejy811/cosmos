@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     public PlayerController playerController;
     public WaveManager waveManager;
-    bool isEnemyLive;
+    public bool isEnemyLive;
 
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
