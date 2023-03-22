@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     //FixedUpdate에선 Bullet을 이동시켜주고 Bullet이 Target이 없어지면 사라지도록 예외처리가 되어있다.
     protected void FixedUpdate()
     {
-        if (!target.gameObject.GetComponent<Enemy>().isEnemyLive && gameObject.tag != "Missile" && target != null)
+        if ((!target.gameObject.GetComponent<Enemy>().isEnemyLive && gameObject.tag == "Bullet") || (target == null && gameObject.tag == "Missile"))
         {
             gameObject.SetActive(false);
             return;
