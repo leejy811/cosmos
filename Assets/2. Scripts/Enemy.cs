@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     bool isEnemyLive;
 
 
-
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
     public bool moveLerp;
@@ -47,6 +46,7 @@ public class Enemy : MonoBehaviour
         this.enemyDamage = enemyDamage;
         this.enemyPrice = enemyPrice;
         this.enemyJem = enemyJem;
+        isEnemyLive = true;
     }
     public void EnemyLookPlayer()
     {
@@ -90,6 +90,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isEnemyLive)
+            return;
         if (other.gameObject.tag == "Bullet")
         {
             float damage = playerController.playerDamage;
@@ -208,6 +210,7 @@ public class Enemy : MonoBehaviour
         gameObject.layer = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("EnemyDieEffect", 0.5f);
+        isEnemyLive = false;
         //enemyHealth = 0;
         //gameObject.SetActive(false);
         //transform.localEulerAngles = new Vector3(0, 0, 0);
