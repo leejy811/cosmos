@@ -90,10 +90,15 @@ public class WaveManager: MonoBehaviour
     }
     public void CheckWaveEnd()
     {
-            currentWave++;
-            Debug.Log("Stage : " + (currentWave + 1));
-            GameManger.instance.UiManager.WaveClear(currentWave+1);
-            StartCoroutine("StartWave");
+        currentWave++;
+        Debug.Log("Stage : " + (currentWave + 1));
+        if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
+            isBossWave = true;
+        else
+            isBossWave = false;
+        Debug.Log("Is Boss Wave : " + isBossWave);
+        GameManger.instance.UiManager.WaveClear(currentWave+1);
+        StartCoroutine("StartWave");
     }
     IEnumerator StartWave()
     {

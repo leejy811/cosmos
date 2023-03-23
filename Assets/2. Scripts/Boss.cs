@@ -141,6 +141,7 @@ public class Boss : MonoBehaviour
 
     public void BossDie()
     {
+        Debug.Log("Boss Die");
         waveManager.isBossLive = false;
         bossHealth = 0;
         Destroy(gameObject);
