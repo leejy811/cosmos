@@ -98,14 +98,11 @@ public class PoolManager : MonoBehaviour
     
     public void DelPoolObject()
     {
-        Debug.Log("Del Pool Object Start !");
         for(int poolIdx = 0; poolIdx <pools.Length; poolIdx++)
         {
-            Debug.Log(poolLists[poolIdx].Count);
             for(int idx = 0; idx <poolLists[poolIdx].Count; idx++)
             {
                 GameObject gameObject = poolLists[poolIdx][idx];
-                Debug.Log(poolLists[poolIdx][idx].name);
 
                 if (gameObject.tag != "Enemy")
                     continue;

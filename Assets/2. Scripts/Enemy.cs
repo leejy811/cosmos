@@ -207,21 +207,18 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
-        if(this.bossLerp && this.moveLerp)
+        if(this.bossLerp || this.moveLerp)
         {
             bossLerp = false;
             moveLerp = false;
         }
+
         isEnemyLive = false;
         enemyDieEffect.SetActive(true);
         gameObject.tag = "Untagged";
         gameObject.layer = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("EnemyDieEffect", 0.5f);
-        //enemyHealth = 0;
-        //gameObject.SetActive(false);
-        //transform.localEulerAngles = new Vector3(0, 0, 0);
-
     }
     private void EnemyDieEffect()
     {
