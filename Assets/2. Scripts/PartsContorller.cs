@@ -24,7 +24,9 @@ public class PartsContorller : Bullet
 
     //Missile Parts 관련
     [SerializeField]
-    private GameObject missileParticle;
+    private GameObject missileBombParticle;
+    [SerializeField]
+    private GameObject missileBoostParticle;
     private bool isBomb;
 
     //Laser Parts 관련
@@ -93,7 +95,8 @@ public class PartsContorller : Bullet
         CircleRangeAttack();
 
         isBomb = true;
-        missileParticle.SetActive(true);
+        missileBoostParticle.SetActive(false);
+        missileBombParticle.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("BombEnd", 0.5f);
     }
@@ -102,8 +105,9 @@ public class PartsContorller : Bullet
     private void BombEnd()
     {
         isBomb = false;
-        missileParticle.SetActive(false);
+        missileBombParticle.SetActive(false);
         gameObject.SetActive(false);
+        missileBoostParticle.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
