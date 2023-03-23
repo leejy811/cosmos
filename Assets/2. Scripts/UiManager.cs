@@ -113,7 +113,7 @@ public class UiManager : MonoBehaviour
     }
     public void PauseGame()
     {
-
+        GameManger.instance.waveManager.WaveSkipButton();
     }
     void SetJem()
     {

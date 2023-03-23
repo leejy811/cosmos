@@ -68,6 +68,8 @@ public class Enemy : MonoBehaviour
 
     private void MoveEnemy()
     {
+        if (!isEnemyLive)
+            return;
         if(moveLerp)
         {
             if(!bossLerp)

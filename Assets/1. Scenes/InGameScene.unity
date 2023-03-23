@@ -1250,6 +1250,7 @@ MonoBehaviour:
   player: {fileID: 1666084034}
   UiManager: {fileID: 568352306}
   cameraResolution: {fileID: 519420033}
+  waveManager: {fileID: 1302566966}
 --- !u!4 &239584091
 Transform:
   m_ObjectHideFlags: 0

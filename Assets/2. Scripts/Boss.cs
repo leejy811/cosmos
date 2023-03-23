@@ -195,9 +195,9 @@ public class Boss : MonoBehaviour
             case 0:
             case 1:
             case 2:
-            case 3:
                 StartCoroutine("BossDSpawnEnemy");
                 break;
+            case 3:
             case 4:
                 StartCoroutine("BossDShootLaser");
                 break;
