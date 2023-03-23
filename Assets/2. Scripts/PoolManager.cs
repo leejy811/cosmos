@@ -108,10 +108,19 @@ public class PoolManager : MonoBehaviour
                 Debug.Log(poolLists[poolIdx][idx].name);
 
                 if (gameObject.tag != "Enemy")
-                    return;
+                    continue;
 
                 if (gameObject.activeSelf)
+                {
+                    if (gameObject.GetComponent<Enemy>().bossLerp == true || gameObject.GetComponent<Enemy>().moveLerp == true)
+                    {
+                        gameObject.GetComponent<Enemy>().bossLerp = false;
+                        gameObject.GetComponent<Enemy>().moveLerp = false;
+                    }
+                    gameObject.transform.position = new Vector3(0, 0, 0);
+                    gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
                     gameObject.SetActive(false);
+                }
             }
         }
     }

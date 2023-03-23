@@ -71,10 +71,10 @@ public class WaveManager: MonoBehaviour
     {
         if(isBossWave)
         {
-            GameObject bossA = GameObject.Find("Boss A");
-            GameObject bossB = GameObject.Find("Boss B");
-            GameObject bossC = GameObject.Find("Boss C");
-            GameObject bossD = GameObject.Find("Boss D");
+            GameObject bossA = GameObject.Find("Boss A(Clone)");
+            GameObject bossB = GameObject.Find("Boss B(Clone)");
+            GameObject bossC = GameObject.Find("Boss C(Clone)");
+            GameObject bossD = GameObject.Find("Boss D(Clone)");
             if (bossA != null)
                 Destroy(bossA);
             else if (bossB != null)
@@ -85,6 +85,7 @@ public class WaveManager: MonoBehaviour
                 Destroy(bossD);
         }
         GameManger.instance.poolManager.DelPoolObject();
+        StopCoroutine("StartWave");
         GoNextWave();
     }
     bool CheckBossWaveEnd()
