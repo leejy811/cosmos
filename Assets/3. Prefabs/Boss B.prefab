@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossType: 1
-  bossHealth: 50
+  bossHealth: 2000
   bossSpeed: 2
   spawnPoints: []
   playerController: {fileID: 0}
