@@ -85,6 +85,11 @@ public class WaveManager: MonoBehaviour
                 Destroy(bossD);
         }
         GameManger.instance.poolManager.DelPoolObject();
+        GameManger.instance.player.playerGold += waves[currentWave].enemyACount * waves[currentWave].enemyAPrice;
+        GameManger.instance.player.playerGold += waves[currentWave].enemyBCount * waves[currentWave].enemyBPrice;
+        GameManger.instance.player.playerGold += waves[currentWave].enemyCCount * waves[currentWave].enemyCPrice;
+        GameManger.instance.player.playerGold += waves[currentWave].enemyDCount * waves[currentWave].enemyDPrice;
+
         StopCoroutine("StartWave");
         GoNextWave();
     }
