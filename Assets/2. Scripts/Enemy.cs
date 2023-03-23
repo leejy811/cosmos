@@ -57,9 +57,12 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
-            targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
-            transform.Rotate(new Vector3(0, 0, targetAngle));
+            if(isEnemyLive)
+            {
+                float targetAngle = Vector2.Angle(transform.up, playerPos - (Vector2)transform.position);
+                targetAngle = transform.position.x >= 0 ? targetAngle : -targetAngle;
+                transform.Rotate(new Vector3(0, 0, targetAngle));
+            }
         }
     }
 
@@ -170,7 +173,6 @@ public class Enemy : MonoBehaviour
         {
             if(waveManager.waves[waveManager.currentWave].enemyACount > 0)
                 waveManager.waves[waveManager.currentWave].enemyACount--;
-            Debug.Log("Enemy A Die");
         }
         else if(enemyType == "EnemyB")
         {

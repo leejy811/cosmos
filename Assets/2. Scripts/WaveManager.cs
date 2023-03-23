@@ -44,18 +44,49 @@ public class WaveManager: MonoBehaviour
     [SerializeField]
     private GameObject[] boss;
 
+    private bool isBossWave;
+    public bool isBossLive;
+    private int currenBossType;
     void Start()
     {
+        isBossWave = false;
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
 
     void Update()
     {
-        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0)
+        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
+            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave)
         {
             CheckWaveEnd();
         }
+        if(isBossWave && !isBossLive)
+        {
+            if (CheckBossWaveEnd())
+                CheckWaveEnd();
+
+        }
+    }
+    bool CheckBossWaveEnd()
+    {
+        Debug.Log("Check Boss Wave End Start ");
+        if (currenBossType == 0)
+        {
+            if (GameManger.instance.poolManager.CheckPool("EnemyA"))
+                return false;
+        }
+        else if (currenBossType == 2)
+        {
+            if (GameManger.instance.poolManager.CheckPool("BossCSpawnEnemy"))
+                return false;
+        }
+        else if (currenBossType == 3)
+        {
+            if (GameManger.instance.poolManager.CheckPool("BossDSpawnEnemy"))
+                return false;
+        }
+        return true;
     }
     public void CheckWaveEnd()
     {
@@ -66,6 +97,7 @@ public class WaveManager: MonoBehaviour
     }
     IEnumerator StartWave()
     {
+        isBossWave = false;
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;      
         yield return new WaitForSeconds(5);
@@ -79,10 +111,24 @@ public class WaveManager: MonoBehaviour
             }
             //if (currentWave == 0)
             //{
+            //    BossSpawn(0);
+            //    break;
+            //}
+            //if (currentWave == 1)
+            //{
+            //    BossSpawn(1);
+            //    break;
+            //}
+            //if (currentWave == 2)
+            //{
+            //    BossSpawn(2);
+            //    break;
+            //}
+            //if (currentWave == 3)
+            //{
             //    BossSpawn(3);
             //    break;
             //}
-
             string ranType;
             int enemyT = Random.Range(0, 4);
             if(enemyT == 0)
@@ -153,6 +199,8 @@ public class WaveManager: MonoBehaviour
 
     void BossSpawn(int bossType)
     {
+        isBossWave = true;
+        currenBossType = bossType;
         Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
         boss.transform.position = spawnPoint[0].position;
         boss.BossLookPlayer();

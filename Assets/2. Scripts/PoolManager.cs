@@ -73,4 +73,26 @@ public class PoolManager : MonoBehaviour
 
         return selectObject;
     }
+    public bool CheckPool(string poolName)
+    {
+        int poolIndex = -1;
+        for(int idx = 0; idx<pools.Length;idx++)
+        {
+            if(pools[idx].name.Equals(poolName))
+            {
+                poolIndex = idx;
+                break;
+            }
+        }
+        for(int index = 0; index <poolLists[poolIndex].Count; index++)
+        {
+            GameObject ckObject = poolLists[poolIndex][index];
+
+            if(ckObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

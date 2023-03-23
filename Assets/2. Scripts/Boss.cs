@@ -29,6 +29,7 @@ public class Boss : MonoBehaviour
     bool bossCPattern;
     bool bossDPattern;
 
+
     [SerializeField]
     private GameObject bossDLaser;
 
@@ -40,6 +41,8 @@ public class Boss : MonoBehaviour
         bossAPattern = true;
         bossCPattern = true;
         bossDPattern = true;
+
+        waveManager.isBossLive = true;
     }
 
     public void BossLookPlayer()
@@ -109,6 +112,7 @@ public class Boss : MonoBehaviour
             StartCoroutine("BossDPattern");
             bossDPattern = false;
         }
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -137,11 +141,31 @@ public class Boss : MonoBehaviour
 
     public void BossDie()
     {
+        waveManager.isBossLive = false;
         bossHealth = 0;
-        waveManager.CheckWaveEnd();
         Destroy(gameObject);
     }
 
+    bool CheckBossWaveEnd()
+    {
+        Debug.Log("Check Boss Wave End Start ");
+        if (bossType == 0)
+        {
+            if(GameManger.instance.poolManager.CheckPool("EnemyA"))
+                return false;
+        }
+        else if(bossType == 2)
+        {
+            if (GameManger.instance.poolManager.CheckPool("BossCSpawnEnemy"))
+                return false;
+        }
+        else if(bossType == 3)
+        {
+            if (GameManger.instance.poolManager.CheckPool("BossDSpawnEnemy"))
+                return false;
+        }
+        return true;
+    }
 
     IEnumerator BossAPattern()
     {
