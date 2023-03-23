@@ -5993,7 +5993,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 0
-    enemyAHp: 2.8
+    enemyAHp: 5
     enemyADamage: 1
     enemyAPrice: 0
     enemyAJem: 0
@@ -6067,8 +6067,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 2
     enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6086,10 +6086,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 3
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 4
+    enemyCHp: 20
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6107,10 +6107,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 4
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 6
+    enemyCHp: 22
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6128,10 +6128,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 5
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 8
+    enemyCHp: 24
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6149,10 +6149,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 6
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 10
+    enemyCHp: 26
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6170,10 +6170,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 7
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 12
+    enemyCHp: 28
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6191,10 +6191,10 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 8
-    enemyCHp: 18
-    enemyCDamage: 5
-    enemyCPrice: 30
+    enemyCCount: 18
+    enemyCHp: 30
+    enemyCDamage: 8
+    enemyCPrice: 25
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0

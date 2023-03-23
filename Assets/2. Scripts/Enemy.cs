@@ -205,6 +205,11 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
+        if(this.bossLerp && this.moveLerp)
+        {
+            bossLerp = false;
+            moveLerp = false;
+        }
         isEnemyLive = false;
         enemyDieEffect.SetActive(true);
         gameObject.tag = "Untagged";
