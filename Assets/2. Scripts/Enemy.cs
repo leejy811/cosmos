@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     public bool moveLerp;
     public bool bossLerp;
 
+
+    private bool isEnemyGetDamage;
     [SerializeField]
     private GameObject enemyDieEffect;
 
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
         this.enemyPrice = enemyPrice;
         this.enemyJem = enemyJem;
         isEnemyLive = true;
+        isEnemyGetDamage = false;
     }
     public void EnemyLookPlayer()
     {
@@ -137,12 +140,20 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        //if (isEnemyGetDamage)
+        //    return;
+
         if (enemyHealth - damage <= 0)
         {
             EnemyDie(false) ;
         }
         else
+        {
+            //isEnemyGetDamage = true;
+            StartCoroutine("EnemyGetDamageEffect");
             enemyHealth -= damage;
+
+        }
     }
 
     public float GetEnemyDamage()
@@ -167,7 +178,15 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
     }
+    //IEnumerator EnemyGetDamageEffect()
+    //{
 
+    //    this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255, 255);
+    //    yield return new WaitForSeconds(0.5f);
+    //    this.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+
+    //    isEnemyGetDamage = false;
+    //}
 
     public void EnemyDie(bool EnterPlayer)
     {

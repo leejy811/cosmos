@@ -148,28 +148,28 @@ public class UiManager : MonoBehaviour
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
-        currentAtk.text = GameManger.instance.player.playerDamage.ToString("F1");
+        currentAtk.text = GameManger.instance.player.playerDamage.ToString("F2");
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }
 
     public void OnSpeedUpButton()
     {
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
-        currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F1");
+        currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
     }
 
     public void OnHpUpButton()
     {
         GameManger.instance.player.PlayerMaxHealthLevelUp();
-        currentHp.text = GameManger.instance.player.playerHealth.ToString();
+        currentHp.text = GameManger.instance.player.maxPlayerHealth.ToString();
         hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
     }
 
     public void OnRecoveryUpButton()
     {
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
-        currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F1") + " /sec";
+        currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
 
