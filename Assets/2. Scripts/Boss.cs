@@ -146,26 +146,7 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }
 
-    bool CheckBossWaveEnd()
-    {
-        Debug.Log("Check Boss Wave End Start ");
-        if (bossType == 0)
-        {
-            if(GameManger.instance.poolManager.CheckPool("EnemyA"))
-                return false;
-        }
-        else if(bossType == 2)
-        {
-            if (GameManger.instance.poolManager.CheckPool("BossCSpawnEnemy"))
-                return false;
-        }
-        else if(bossType == 3)
-        {
-            if (GameManger.instance.poolManager.CheckPool("BossDSpawnEnemy"))
-                return false;
-        }
-        return true;
-    }
+
 
     IEnumerator BossAPattern()
     {

@@ -205,13 +205,12 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
-
+        isEnemyLive = false;
         enemyDieEffect.SetActive(true);
         gameObject.tag = "Untagged";
         gameObject.layer = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("EnemyDieEffect", 0.5f);
-        isEnemyLive = false;
         //enemyHealth = 0;
         //gameObject.SetActive(false);
         //transform.localEulerAngles = new Vector3(0, 0, 0);
