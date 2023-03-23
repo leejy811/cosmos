@@ -214,7 +214,7 @@ public class UiManager : MonoBehaviour
 
     IEnumerator WaveClearAnim()
     {
-        string[] texts =new string[] { "Wave Clear !", "5", "4", "3", "2", "1", "" };
+        string[] texts =new string[] { "Wave Clear !", "3", "2", "1", "" };
         texts[texts.Length - 1] = "Wave " + waveLevel.text;
 
         waveClearAnimBase.SetActive(true);
