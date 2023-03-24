@@ -18,10 +18,11 @@ public class GameManger : MonoBehaviour
         instance = this;
     }
 
-    void Update()
+    private void Start()
     {
-        
+        SoundManager.instance.PlayBGM("InGameBGM");
     }
+
     public void GameOver()
     {
         UiManager.ActiveGameOverUI();

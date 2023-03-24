@@ -2931,7 +2931,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3028,7 +3028,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: []
-  bgm: []
+  bgm:
+  - name: LobbyBGM
+    clip: {fileID: 8300000, guid: fb23b1a3ec070264fbfe8155c6eeb707, type: 3}
+  - name: InGameBGM
+    clip: {fileID: 8300000, guid: 5b88f03ec64bd7346ad57a34e0f73da9, type: 3}
+  - name: BossBGM
+    clip: {fileID: 8300000, guid: bc025b234780f114f9fa1d3dfb6af054, type: 3}
   bgmPlayer: {fileID: 865386065}
   sfxPlayer:
   - {fileID: 865386064}
