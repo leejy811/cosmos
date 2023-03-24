@@ -69,7 +69,7 @@ public class LobbyUiManager : MonoBehaviour
     private void SetUi()
     {
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
-        highScore.text = "High Score : "+LocalDatabaseManager.instance.HighScore.ToString();
+        highScore.text = ": "+LocalDatabaseManager.instance.HighScore.ToString();
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
@@ -207,5 +207,10 @@ public class LobbyUiManager : MonoBehaviour
         SoundManager.instance.PlaySFX("BasicButtonSound");
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
         partsUpgradeBase.SetActive(false);
+    }
+
+    public void OnUpgradeButtonClicked(int index)
+    {
+        SoundManager.instance.PlaySFX("PartsUpgradeSound");
     }
 }
