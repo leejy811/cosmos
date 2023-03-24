@@ -49,6 +49,7 @@ public class LobbyUiManager : MonoBehaviour
     /// </summary>
     public void ChangeScene()
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         StartCoroutine("FadeOut");
     }
 
@@ -81,6 +82,7 @@ public class LobbyUiManager : MonoBehaviour
         if (part == null || currentPart==part || isConvertingUi)
             return;
         isConvertingUi = true;
+        SoundManager.instance.PlaySFX("PartsEquipSound");
 
         // Converting Animation
         part.GetComponent<Animation>().Play("PartsUiEquipAnim");
@@ -111,6 +113,7 @@ public class LobbyUiManager : MonoBehaviour
         if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingUi)
             return;
         isConvertingUi = true;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
 
         // Set the alpha value of each fragment button(if selected, assign 1)
         foreach (Image i in fragmentButtons)
