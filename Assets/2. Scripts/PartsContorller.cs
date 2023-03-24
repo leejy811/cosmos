@@ -33,12 +33,15 @@ public class PartsContorller : Bullet
     [SerializeField]
     private LineRenderer[] lasers;
 
+    private Animator barrierAnimatior;
+
     //Protocol만 풀링을 사용안하기 때문에 Protocol만 초기화를 해준다.
     private void Start()
     {
         if (partsType == "Barrier")
         {
             gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
+            //barrierAnimatior = gameObject.GetComponent<Animator>();
             partsRange = player.attackRange;
             StartCoroutine(BarrierAttack());
         }
