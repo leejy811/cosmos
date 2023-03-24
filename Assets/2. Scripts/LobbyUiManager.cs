@@ -31,6 +31,7 @@ public class LobbyUiManager : MonoBehaviour
     private void Start()
     {
         SetUi();
+        SoundManager.instance.PlayBGM("LobbyBGM");
     }
 
     // Set user data to the Text at the start of the game
@@ -148,5 +149,10 @@ public class LobbyUiManager : MonoBehaviour
         target.transform.SetParent(currentFragment.transform);
         target.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         isConvertingUi = false;
+    }
+
+    public void OpenPartsUpgradeBase(string name)
+    {
+
     }
 }
