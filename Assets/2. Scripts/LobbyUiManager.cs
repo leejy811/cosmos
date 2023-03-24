@@ -13,11 +13,22 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
+    [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Animation fragmentChangeAnim;
     [SerializeField] private Image panel;               // For Fade-out effect
     [SerializeField] private Image[] fragmentButtons;   // reference to 3 buttons at the bottom
     [SerializeField] private Text jemCount;
     [SerializeField] private Text highScore;
+
+    [SerializeField] private Text selectedPartsName;
+    [SerializeField] private Text selectedPartsDescription;
+    [SerializeField] private GameObject selectedPartsImage;
+    [SerializeField] private Text ability1Title;
+    [SerializeField] private Text ability2Title;
+    [SerializeField] private Text ability3Title;
+    [SerializeField] private Text ability1Description;
+    [SerializeField] private Text ability2Description;
+    [SerializeField] private Text ability3Description;
     #endregion
 
     #region Member Variables
@@ -26,6 +37,26 @@ public class LobbyUiManager : MonoBehaviour
     private bool isConvertingUi = false;
     private float currentTime = 0f;  
     private float fadeoutTime = 1f;
+    private int selectedPartsIdx = -1;
+    private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
+    {
+        {"Missile",0 },
+        {"Laser",1 },
+        {"Barrier",2 },
+        {"Emp",3 }
+    };
+    private string[] partsDescriptions = new string[4]
+    {   "Destroy all Enemies with\r\nLarge-Range Missiles!",
+        "Nobody can Survive\r\nafter Merciless Laser Attack",
+        "Barrier will Protects\r\nYour Weakest Part!",
+        "Enemies couldn't\r\nGet Close to You!"};
+    private string[,,] partsInfo = new string[4, 3, 2]
+    {
+        {{"Parts Damage","Increase Missile Damage +"},{ "Parts Speed","Increase Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Increase Laser Damage +"},{ "Parts Speed","Increase Laser Speed +"},{ "Abilities","Make Another Laser"} },
+        {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
+        {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
+    };
     #endregion
 
     private void Start()
@@ -156,6 +187,25 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OpenPartsUpgradeBase(string name)
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+        partsUpgradeBase.SetActive(true);
+        selectedPartsIdx = selectedParts[name];
 
+        selectedPartsName.text = name;
+        selectedPartsDescription.text = partsDescriptions[selectedPartsIdx];
+        selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(true);
+        ability1Title.text = partsInfo[selectedPartsIdx, 0, 0];
+        ability2Title.text = partsInfo[selectedPartsIdx, 1, 0];
+        ability3Title.text = partsInfo[selectedPartsIdx, 2, 0];
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1];
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1];
+        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
+    }
+
+    public void ClosePartsUpgradeBase()
+    {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+        selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
+        partsUpgradeBase.SetActive(false);
     }
 }
