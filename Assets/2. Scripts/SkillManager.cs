@@ -31,7 +31,7 @@ public class SkillManager : MonoBehaviour
         {
             partsValue = LocalDatabaseManager.instance.PartsProtocol;
             barrier.Init(null, partsValue);
-            partsValue = new float[] { 1, 0.5f, 1 };
+            partsValue = new float[] { 1, 0.5f, 0 };
             if (partsValue[2] == 1)
                 gameObject.GetComponent<PlayerController>().playerShield = 5;
             barrier.gameObject.SetActive(true);
@@ -45,14 +45,14 @@ public class SkillManager : MonoBehaviour
         else if (currentParts == "Laser")
         {
             partsValue = LocalDatabaseManager.instance.PartsLaser;
-            partsValue = new float[] { 1, 0.5f, 1 };
+            partsValue = new float[] { 1, 0.5f, 0 };
             if (partsValue[2] == 1)
                 randomLaserPoints = gameObject.GetComponentsInChildren<Transform>();
         }
         else if (currentParts == "Emp")
         {
             partsValue = LocalDatabaseManager.instance.PartsEmp;
-            partsValue = new float[] { 1, 0.5f, 1 };
+            partsValue = new float[] { 0.3f, 0.2f, 0 };
         }
 
         StartCoroutine(ShootParts(currentParts));

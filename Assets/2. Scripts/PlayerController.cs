@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             }
 
             Bullet bullet = GameManger.instance.poolManager.GetPool("Bullet").GetComponent<Bullet>();
-            bullet.bulletSpeed = playerAttackSpeed * 3;
+            //bullet.bulletSpeed = playerAttackSpeed * 3;
             bullet.transform.position = transform.position;
             bullet.Init(nearestTarget);
 

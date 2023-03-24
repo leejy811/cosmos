@@ -3968,7 +3968,8 @@ MonoBehaviour:
   partsDamage: 0.2
   partsValue: 0.7
   player: {fileID: 1666084034}
-  missileParticle: {fileID: 0}
+  missileBombParticle: {fileID: 0}
+  missileBoostParticle: {fileID: 0}
   lasers: []
 --- !u!58 &768996025
 CircleCollider2D:
@@ -6068,8 +6069,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 2
     enemyCHp: 18
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6089,8 +6090,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 4
     enemyCHp: 20
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6110,8 +6111,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 6
     enemyCHp: 22
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6131,8 +6132,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 8
     enemyCHp: 24
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6152,8 +6153,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 10
     enemyCHp: 26
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6173,8 +6174,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 12
     enemyCHp: 28
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
@@ -6194,8 +6195,8 @@ MonoBehaviour:
     enemyBJem: 1
     enemyCCount: 18
     enemyCHp: 30
-    enemyCDamage: 8
-    enemyCPrice: 25
+    enemyCDamage: 5
+    enemyCPrice: 30
     enemyCJem: 15
     enemyDCount: 0
     enemyDHp: 0
