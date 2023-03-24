@@ -150,7 +150,6 @@ public class Enemy : MonoBehaviour
         else
         {
             //isEnemyGetDamage = true;
-            StartCoroutine("EnemyGetDamageEffect");
             enemyHealth -= damage;
 
         }
