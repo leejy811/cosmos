@@ -45,7 +45,7 @@ public class SkillManager : MonoBehaviour
         else if (currentParts == "Laser")
         {
             partsValue = LocalDatabaseManager.instance.PartsLaser;
-            partsValue = new float[] { 1, 0.5f, 0 };
+            partsValue = new float[] { 1, 0.5f, 1 };
             if (partsValue[2] == 1)
                 randomLaserPoints = gameObject.GetComponentsInChildren<Transform>();
         }
@@ -81,7 +81,9 @@ public class SkillManager : MonoBehaviour
             parts.player = GameManger.instance.player;
             parts.Init(Target, partsValue);
             if (partsValue[2] == 1 && partsType == "Laser")
+            {
                 ShootRandomLaser();
+            }
 
             yield return new WaitForSeconds(1 / partsValue[1]);
         }

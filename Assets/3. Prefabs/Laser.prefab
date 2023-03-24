@@ -52,10 +52,10 @@ MonoBehaviour:
   partsType: Laser
   partsRange: 0
   partsDamage: 10
-  partsAttackSpeed: 0.3
   partsValue: 0
   player: {fileID: 0}
-  missileParticle: {fileID: 0}
+  missileBombParticle: {fileID: 0}
+  missileBoostParticle: {fileID: 0}
   lasers:
   - {fileID: 4626385862595406769}
   - {fileID: 1009225688645328408}
@@ -83,7 +83,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 14}
+  m_Size: {x: 0.3, y: 14}
   m_EdgeRadius: 0
 --- !u!95 &2857148772647280473
 Animator:
@@ -180,7 +180,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 14, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -189,7 +189,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.49596572
+        value: 0.25118423
         inSlope: 0
         outSlope: 0
         tangentMode: 0

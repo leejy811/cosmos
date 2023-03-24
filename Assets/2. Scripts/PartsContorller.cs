@@ -40,8 +40,8 @@ public class PartsContorller : Bullet
     {
         if (partsType == "Barrier")
         {
-            gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
-            //barrierAnimatior = gameObject.GetComponent<Animator>();
+            //gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
+            barrierAnimatior = gameObject.GetComponent<Animator>();
             partsRange = player.attackRange;
             StartCoroutine(BarrierAttack());
         }
@@ -55,6 +55,8 @@ public class PartsContorller : Bullet
             CheckRange();
             base.FixedUpdate();
         }
+        if (partsType == "Barrier")
+            CheckBarrier();
     }
 
     //Init은 풀링을 사용하는 파츠들을 초기화 해줄때 사용하는 함수이다.
@@ -87,6 +89,17 @@ public class PartsContorller : Bullet
     {
         if (Vector3.Distance(player.transform.position, transform.position) > player.attackRange)
             MissileAttack();
+    }
+
+    private void CheckBarrier()
+    {
+        bool isTarget = player.nearestTarget != null;
+        if(barrierAnimatior.GetBool("IsTarget") != isTarget)
+        {
+            barrierAnimatior.SetBool("IsTarget", isTarget);
+            if(isTarget)
+                barrierAnimatior.SetTrigger("DoAttack");
+        }
     }
 
     //MissileAttack은 Missile의 광역폭발을 실행하는 함수이다.
@@ -137,8 +150,9 @@ public class PartsContorller : Bullet
     }
 
     //CircleRangeAttack은 circle모양의 Range 내의 적에게 공격하는 함수이다.
-    private void CircleRangeAttack()
+    private bool CircleRangeAttack()
     {
+        bool isTarget = false;
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, partsRange, LayerMask.GetMask("Enemy"));
 
         foreach (Collider2D target in targets)
@@ -155,13 +169,17 @@ public class PartsContorller : Bullet
             }
             else
                 enemy.GetDamage(partsDamage);
+
+            isTarget = true;
         }
+
+        return isTarget;
     }
 
     //LaserInit은 Laser의 LineRenderer의 Position을 초기화해주는 함수이다.
     private void LaserInit()
     {
-        Vector3[] points = new Vector3[] { transform.position, target.transform.position * 10 - Vector3.up * 10 };
+        Vector3[] points = new Vector3[] { transform.position, target.transform.position * 15 - Vector3.up * 15 };
 
         foreach(LineRenderer laser in lasers)
             laser.SetPositions(points);
