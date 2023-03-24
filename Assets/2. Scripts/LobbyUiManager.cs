@@ -23,6 +23,12 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text selectedPartsName;
     [SerializeField] private Text selectedPartsDescription;
     [SerializeField] private GameObject selectedPartsImage;
+    [SerializeField] private Text ability1Title;
+    [SerializeField] private Text ability2Title;
+    [SerializeField] private Text ability3Title;
+    [SerializeField] private Text ability1Description;
+    [SerializeField] private Text ability2Description;
+    [SerializeField] private Text ability3Description;
     #endregion
 
     #region Member Variables
@@ -44,7 +50,13 @@ public class LobbyUiManager : MonoBehaviour
         "Nobody can Survive\r\nafter Merciless Laser Attack",
         "Barrier will Protects\r\nYour Weakest Part!",
         "Enemies couldn't\r\nGet Close to You!"};
-
+    private string[,,] partsInfo = new string[4, 3, 2]
+    {
+        {{"Parts Damage","Increase Missile Damage +"},{ "Parts Speed","Increase Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Increase Laser Damage +"},{ "Parts Speed","Increase Laser Speed +"},{ "Abilities","Make Another Laser"} },
+        {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
+        {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
+    };
     #endregion
 
     private void Start()
@@ -182,7 +194,12 @@ public class LobbyUiManager : MonoBehaviour
         selectedPartsName.text = name;
         selectedPartsDescription.text = partsDescriptions[selectedPartsIdx];
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(true);
-
+        ability1Title.text = partsInfo[selectedPartsIdx, 0, 0];
+        ability2Title.text = partsInfo[selectedPartsIdx, 1, 0];
+        ability3Title.text = partsInfo[selectedPartsIdx, 2, 0];
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1];
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1];
+        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
     }
 
     public void ClosePartsUpgradeBase()
