@@ -226,4 +226,15 @@ public class UiManager : MonoBehaviour
         }
         waveClearAnimBase.SetActive(false);
     }
+
+    public void SetTimeScale()
+    {
+        if (Time.timeScale == 2f)
+        {
+            Time.timeScale = 1f;
+            return;
+        }
+
+        Time.timeScale += 0.5f;
+    }
 }

@@ -94,11 +94,14 @@ public class PartsContorller : Bullet
     private void CheckBarrier()
     {
         bool isTarget = player.nearestTarget != null;
-        if(barrierAnimatior.GetBool("IsTarget") != isTarget)
+        if(barrierAnimatior.GetBool("IsTarget") != isTarget && barrierAnimatior.GetBool("IsAttack") == false)
         {
             barrierAnimatior.SetBool("IsTarget", isTarget);
-            if(isTarget)
+            if (isTarget)
+            {
+                barrierAnimatior.SetBool("IsAttack", true);
                 barrierAnimatior.SetTrigger("DoAttack");
+            }
         }
     }
 
@@ -195,5 +198,11 @@ public class PartsContorller : Bullet
     public void EndLaser()
     {
         gameObject.SetActive(false);
+    }
+
+    public void EndBarrierAttack()
+    {
+        barrierAnimatior.SetBool("IsAttack", false);
+        Debug.Log(barrierAnimatior.GetBool("IsAttack"));
     }
 }
