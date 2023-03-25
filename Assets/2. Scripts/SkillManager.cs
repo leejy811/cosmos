@@ -31,7 +31,7 @@ public class SkillManager : MonoBehaviour
         {
             partsValue = LocalDatabaseManager.instance.PartsProtocol;
             barrier.Init(null, partsValue);
-            partsValue = new float[] { 1, 0.5f, 1 };
+            partsValue = new float[] { 0.3f, 0.5f, 1 };
             if (partsValue[2] == 1)
                 gameObject.GetComponent<PlayerController>().playerShield = 5;
             barrier.gameObject.SetActive(true);
@@ -40,7 +40,7 @@ public class SkillManager : MonoBehaviour
         else if (currentParts == "Missile")
         {
             partsValue = LocalDatabaseManager.instance.PartsMissile;
-            partsValue = new float[] { 1, 0.5f, 1 };
+            partsValue = new float[] { 1, 0.5f, 2 };
         }
         else if (currentParts == "Laser")
         {
