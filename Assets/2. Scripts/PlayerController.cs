@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
             }
 
             Bullet bullet = GameManger.instance.poolManager.GetPool("Bullet").GetComponent<Bullet>();
+            SoundManager.instance.PlaySFX("PlayerBulletSound");
             //bullet.bulletSpeed = playerAttackSpeed * 3;
             bullet.transform.position = transform.position;
             bullet.Init(nearestTarget);
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         GameManger.instance.cameraResolution.Shake();
         GameManger.instance.UiManager.StartDamageEffect();
+        SoundManager.instance.PlaySFX("PlayerHitSound");
 
         if(playerShield > 0 )
         {

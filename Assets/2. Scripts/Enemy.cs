@@ -189,6 +189,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDie(bool EnterPlayer)
     {
+        SoundManager.instance.PlaySFX("MonsterKillSound");
         if (enemyType == "EnemyA")
         {
             if(waveManager.waves[waveManager.currentWave].enemyACount > 0)

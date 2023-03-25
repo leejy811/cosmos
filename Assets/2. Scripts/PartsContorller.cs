@@ -112,7 +112,7 @@ public class PartsContorller : Bullet
             return;
 
         CircleRangeAttack();
-
+        SoundManager.instance.PlaySFX("PlayerMissileSound");
         isBomb = true;
         missileBoostParticle.SetActive(false);
         missileBombParticle.SetActive(true);
@@ -132,6 +132,7 @@ public class PartsContorller : Bullet
 
     IEnumerator EmpAttack()
     {
+        SoundManager.instance.PlaySFX("PlayerEmpSound");
         transform.localScale = new Vector3(1, 1, 1);
         float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
         while (transform.localScale.x< partsRange)
