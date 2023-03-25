@@ -31,6 +31,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
+    [SerializeField] private Text timeScaleText;
     #endregion
 
     #region Member Variables
@@ -42,6 +43,7 @@ public class UiManager : MonoBehaviour
     private float moveY=1;
     private float xScreenHalfSize;
     private float yScreenHalfSize;
+    private int timeScaleIdx = 0;
     #endregion
 
     private void Awake()
@@ -148,6 +150,7 @@ public class UiManager : MonoBehaviour
     public void OnAttackUpButton()
     {
         GameManger.instance.player.PlayerDamageLevelUp();
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         currentAtk.text = GameManger.instance.player.playerDamage.ToString("F2");
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }
@@ -155,6 +158,7 @@ public class UiManager : MonoBehaviour
     public void OnSpeedUpButton()
     {
         GameManger.instance.player.PlayerAttackSpeedLevelUp();
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
     }
@@ -162,6 +166,7 @@ public class UiManager : MonoBehaviour
     public void OnHpUpButton()
     {
         GameManger.instance.player.PlayerMaxHealthLevelUp();
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         currentHp.text = GameManger.instance.player.maxPlayerHealth.ToString();
         hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
     }
@@ -169,6 +174,7 @@ public class UiManager : MonoBehaviour
     public void OnRecoveryUpButton()
     {
         GameManger.instance.player.PlayerHealthRecorveryLevelUp();
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
@@ -229,12 +235,9 @@ public class UiManager : MonoBehaviour
 
     public void SetTimeScale()
     {
-        if (Time.timeScale == 2f)
-        {
-            Time.timeScale = 1f;
-            return;
-        }
-
-        Time.timeScale += 0.5f;
+        float[] times = new float[] { 1.5f, 2.0f, 1.0f };
+        float time = times[timeScaleIdx++ % times.Length];
+        timeScaleText.text = String.Format("{0:0.0}", time);
+        Time.timeScale= time;
     }
 }
