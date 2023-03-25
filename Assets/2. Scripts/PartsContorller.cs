@@ -195,6 +195,11 @@ public class PartsContorller : Bullet
         return partsDamage;
     }
 
+    public void LaserSound()
+    {
+        SoundManager.instance.PlaySFX("PlayerLaserSound");
+    }
+
     //EndLaser는 Laser 애니메이션이 끝난 후 호출되는 이벤트 함수이다.
     public void EndLaser()
     {

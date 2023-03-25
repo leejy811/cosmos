@@ -230,7 +230,9 @@ public class Boss : MonoBehaviour
     {
 
         bossDLaser.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        SoundManager.instance.PlaySFX("BossDLaserSound");
+        yield return new WaitForSeconds(1.0f);
         bossDLaser.SetActive(false);
     }
 }
