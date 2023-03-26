@@ -4955,7 +4955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainUI: {fileID: 1745001738}
   backgroundBase: {fileID: 1414105098}
-  backgroundMoveSpeed: 10
+  backgroundMoveSpeed: 50
   currentFragment: {fileID: 1707676993}
   nextFragment: {fileID: 1232476221}
   partsUpgradeBase: {fileID: 1353861714}
