@@ -11,6 +11,8 @@ public class LobbyUiManager : MonoBehaviour
 
     #region UI Components
     [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject backgroundBase;
+    [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
     [SerializeField] private GameObject partsUpgradeBase;
@@ -32,6 +34,11 @@ public class LobbyUiManager : MonoBehaviour
     #endregion
 
     #region Member Variables
+    private Vector2 moveDir;
+    private float moveX = 1;
+    private float moveY = 1;
+    private float xScreenHalfSize;
+    private float yScreenHalfSize;
     private GameObject target;      // reference to the selected fragment
     private GameObject currentPart; // reference to the currently equiped part obj
     private bool isConvertingUi = false;
@@ -62,7 +69,15 @@ public class LobbyUiManager : MonoBehaviour
     private void Start()
     {
         SetUi();
+        yScreenHalfSize = Screen.height / 2;
+        xScreenHalfSize = Screen.width / 2;
+        moveDir = new Vector2(moveX, moveY);
         SoundManager.instance.PlayBGM("LobbyBGM");
+    }
+
+    private void Update()
+    {
+        MoveBackground();
     }
 
     // Set user data to the Text at the start of the game
@@ -73,6 +88,25 @@ public class LobbyUiManager : MonoBehaviour
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
+    }
+
+    private void MoveBackground()
+    {
+        float x = backgroundBase.GetComponent<RectTransform>().anchoredPosition.x;
+        float y = backgroundBase.GetComponent<RectTransform>().anchoredPosition.y;
+
+        if (x < -xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(0, 1f);
+        else if (x > xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(-1f, 0);
+        if (y < -yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(0, 1f);
+        else if (y > yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(-1f, 0);
+
+        moveDir.x = moveX;
+        moveDir.y = moveY;
+        backgroundBase.GetComponent<RectTransform>().anchoredPosition += backgroundMoveSpeed * Time.deltaTime * moveDir.normalized;
     }
 
     /// <summary>
