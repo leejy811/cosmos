@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5899039660526600535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -1067831121
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.46381274, g: 0.6509144, b: 0.6698113, a: 0.39607844}
+  m_Sprite: {fileID: 21300000, guid: 18d7447f1a8a0eb4e9017d7b6942bf74, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.8
 --- !u!114 &2375349860334152223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,12 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876b2f61713b8e744bffd578a5643f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 1
+  bulletSpeed: 3
   partsType: Emp
-  partsRange: 9
+  partsRange: 2.5
   partsDamage: 0
-  partsAttackSpeed: 0.1
   partsValue: 0
   player: {fileID: 0}
-  missileParticle: {fileID: 0}
+  missileBombParticle: {fileID: 0}
+  missileBoostParticle: {fileID: 0}
   lasers: []

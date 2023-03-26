@@ -133,7 +133,7 @@ public class PartsContorller : Bullet
     IEnumerator EmpAttack()
     {
         SoundManager.instance.PlaySFX("PlayerEmpSound");
-        transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = new Vector3(0.3f, 0.3f, 1);
         float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
         while (transform.localScale.x< partsRange)
         {
