@@ -185,6 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c78f5389360a7c4194db510ee8774ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  colorSpeed: 1
+  moveSpeed: 3
+  colorSpeed: 2
   damage: 0

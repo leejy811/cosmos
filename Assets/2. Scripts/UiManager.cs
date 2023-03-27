@@ -28,7 +28,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject waveClearAnimBase;
     [SerializeField] private Image panel;
-    [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private Image bloodEffect;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private Text timeScaleText;
@@ -89,9 +89,9 @@ public class UiManager : MonoBehaviour
     }
     IEnumerator DamageEffect()
     {
-        bloodEffect.SetActive(true);
+        bloodEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        bloodEffect.SetActive(false);
+        bloodEffect.gameObject.SetActive(false);
     }
     IEnumerator FadeIn()
     {
