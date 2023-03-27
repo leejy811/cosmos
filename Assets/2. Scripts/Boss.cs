@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 // 보스 A : 사거리에서 멈춘 뒤 보스 A의 패턴을 시작
 // 보스 B : 플레이어의 사거리 전에는 빠른 속도로 접근하다가 사거리에 도착하면 느린 속도로 접근
@@ -82,7 +83,7 @@ public class Boss : MonoBehaviour
                     changeSpeed = 0.3f;
                     break;
                 case 2:
-                    changeSpeed = 10f;
+                    changeSpeed = 15f;
                     break;
                 case 3:
                     changeSpeed = 0;
@@ -161,7 +162,6 @@ public class Boss : MonoBehaviour
             //enemy.transform.position = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
-            enemy.GetComponent<Enemy>().bossLerp = true;
             enemy.transform.position = this.transform.position;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();
             enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
@@ -215,7 +215,6 @@ public class Boss : MonoBehaviour
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
-            bossDSpawnEnemy.GetComponent<Enemy>().bossLerp = true;
             bossDSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
 
             bossDSpawnEnemy.transform.position = this.transform.position;

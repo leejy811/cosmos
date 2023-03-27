@@ -109,9 +109,8 @@ public class PoolManager : MonoBehaviour
 
                 if (gameObject.activeSelf)
                 {
-                    if (gameObject.GetComponent<Enemy>().bossLerp == true || gameObject.GetComponent<Enemy>().moveLerp == true)
+                    if (gameObject.GetComponent<Enemy>().moveLerp == true)
                     {
-                        gameObject.GetComponent<Enemy>().bossLerp = false;
                         gameObject.GetComponent<Enemy>().moveLerp = false;
                     }
                     gameObject.transform.position = new Vector3(0, 0, 0);

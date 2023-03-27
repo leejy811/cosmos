@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerGold < playerDamageCost)
             return;
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         PayGold(playerDamageCost);
         playerDamage += 0.1f;
         playerDamageCost += 2;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerGold < playerAtkSpeedCost)
             return;
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.05f;
         playerAtkSpeedCost += 2;
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerGold < playerMaxHealthCost)
             return;
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         PayGold(playerMaxHealthCost);
         maxPlayerHealth += 5f;
         playerHealth += 5f;
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerGold < playerHealthRecorveryCost)
             return;
+        SoundManager.instance.PlaySFX("StatusUpgradeSound");
         PayGold(playerHealthRecorveryCost);
         playerHealthRecorvery += 0.1f;
         playerHealthRecorveryCost += 5; 

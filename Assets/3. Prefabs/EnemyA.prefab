@@ -147,7 +147,6 @@ MonoBehaviour:
   isEnemyLive: 0
   targetPos: {x: 0, y: 0}
   moveLerp: 0
-  bossLerp: 0
   enemyDieEffect: {fileID: 7183557558256534094}
 --- !u!1 &7183557558256534094
 GameObject:

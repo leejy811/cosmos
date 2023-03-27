@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 // 적 생성하고 무적 시간 두기 (0.2초 정도)
 //
@@ -31,15 +32,14 @@ public class Enemy : MonoBehaviour
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
     public bool moveLerp;
-    public bool bossLerp;
 
 
-    private bool isEnemyGetDamage;
     [SerializeField]
     private GameObject enemyDieEffect;
 
     private void Start()
     {
+
     }
     public void SetEnemyState(float enemyHealth, float enemyDamage, int enemyPrice, int enemyJem)
     {
@@ -48,11 +48,10 @@ public class Enemy : MonoBehaviour
         this.enemyPrice = enemyPrice;
         this.enemyJem = enemyJem;
         isEnemyLive = true;
-        isEnemyGetDamage = false;
     }
     public void EnemyLookPlayer()
     {
-        if(bossLerp)
+        if(moveLerp)
         {
             float targetAngle = Vector2.Angle(transform.up, playerPos - targetPos);
             targetAngle = targetPos.x >= 0 ? targetAngle : -targetAngle;
@@ -68,21 +67,17 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
     private void MoveEnemy()
     {
         if (!isEnemyLive)
             return;
         if(moveLerp)
         {
-            if(!bossLerp)
-                transform.position = Vector2.Lerp(transform.position, targetPos, 0.5f);
-            else
-                transform.position = Vector2.Lerp(transform.position, targetPos, 0.1f);
-
+            //Debug.Log("DOTween Move Start");
+            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.4f).SetEase(Ease.OutSine);
             if (targetPos == (Vector2)transform.position)
             {
-                moveLerp = false;
+                    moveLerp = false;
             }
         }
         else
@@ -99,6 +94,7 @@ public class Enemy : MonoBehaviour
     {
         if (!isEnemyLive)
             return;
+
         if (other.gameObject.tag == "Bullet")
         {
             float damage = playerController.playerDamage;
@@ -142,19 +138,20 @@ public class Enemy : MonoBehaviour
     {
         //if (isEnemyGetDamage)
         //    return;
+        DamageEffect(damage);
 
         if (enemyHealth - damage <= 0)
-        {
             EnemyDie(false) ;
-        }
         else
-        {
-            //isEnemyGetDamage = true;
             enemyHealth -= damage;
-
-        }
     }
+    public void DamageEffect(float damage)
+    {
+        GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
+        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+        hudText.GetComponent<DamageText>().damage = damage;
 
+    }
     public float GetEnemyDamage()
     {
         return enemyDamage;
@@ -177,15 +174,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
     }
-    //IEnumerator EnemyGetDamageEffect()
-    //{
 
-    //    this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255, 255);
-    //    yield return new WaitForSeconds(0.5f);
-    //    this.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-
-    //    isEnemyGetDamage = false;
-    //}
 
     public void EnemyDie(bool EnterPlayer)
     {
@@ -226,11 +215,8 @@ public class Enemy : MonoBehaviour
             LocalDatabaseManager.instance.JemCount += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
         }
-        if(this.bossLerp || this.moveLerp)
-        {
-            bossLerp = false;
+        if(this.moveLerp)
             moveLerp = false;
-        }
 
         isEnemyLive = false;
         enemyDieEffect.SetActive(true);
