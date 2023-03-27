@@ -33,7 +33,8 @@ public class Boss : MonoBehaviour
 
     [SerializeField]
     private GameObject bossDLaser;
-
+    [SerializeField]
+    private GameObject bossDieEffect;
     public void Start()
     {
         BossLookPlayer();
@@ -144,13 +145,23 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("Boss Die");
         waveManager.isBossLive = false;
-        bossHealth = 0;
-        Destroy(gameObject);
+        bossDieEffect.SetActive(true);
+        if(bossType == 0 || bossType == 3)
+            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        else
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        Invoke("BossDieEffectEnd", 0.5f);
+
     }
+private void BossDieEffectEnd()
+{
+        bossHealth = 0;
+        bossDieEffect.SetActive(false);
+        Destroy(gameObject);
+}
 
-
-
-    IEnumerator BossAPattern()
+IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
         //enemyList.Clear();
