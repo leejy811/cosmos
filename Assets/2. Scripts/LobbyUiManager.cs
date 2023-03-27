@@ -31,6 +31,9 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability1Description;
     [SerializeField] private Text ability2Description;
     [SerializeField] private Text ability3Description;
+    [SerializeField] private Text ability1UpgradeJem;
+    [SerializeField] private Text ability2UpgradeJem;
+    [SerializeField] private Text ability3UpgradeJem;
     #endregion
 
     #region Member Variables
@@ -45,6 +48,8 @@ public class LobbyUiManager : MonoBehaviour
     private float currentTime = 0f;  
     private float fadeoutTime = 1f;
     private int selectedPartsIdx = -1;
+    private string currentParts;
+    int[] partsUpgradeInfo;
     private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
     {
         {"Missile",0 },
@@ -64,6 +69,10 @@ public class LobbyUiManager : MonoBehaviour
         {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
         {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
     };
+    #endregion
+
+    #region For Debug
+    [SerializeField] private InputField input;
     #endregion
 
     private void Start()
@@ -219,21 +228,44 @@ public class LobbyUiManager : MonoBehaviour
         isConvertingUi = false;
     }
 
+    /// <summary>
+    /// OnClick Parts Upgrade button
+    /// </summary>
+    /// <param name="name"></param>
     public void OpenPartsUpgradeBase(string name)
     {
         SoundManager.instance.PlaySFX("BasicButtonSound");
+        currentParts = name;
         partsUpgradeBase.SetActive(true);
-        selectedPartsIdx = selectedParts[name];
+        selectedPartsIdx = selectedParts[currentParts];
+        switch (selectedPartsIdx)
+        {
+            case 0:
+                partsUpgradeInfo = LocalDatabaseManager.instance.PartsMissile;
+                break;
+            case 1:
+                partsUpgradeInfo = LocalDatabaseManager.instance.PartsLaser;
+                break;
+            case 2:
+                partsUpgradeInfo = LocalDatabaseManager.instance.PartsBarrier;
+                break;
+            case 3:
+                partsUpgradeInfo = LocalDatabaseManager.instance.PartsEmp;
+                break;
+            default:
+                Debug.Log("selected part is out of index range");
+                break;
+        }
 
-        selectedPartsName.text = name;
+        // Set each UI Component with Selected Parts
+        selectedPartsName.text = currentParts;
         selectedPartsDescription.text = partsDescriptions[selectedPartsIdx];
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(true);
         ability1Title.text = partsInfo[selectedPartsIdx, 0, 0];
         ability2Title.text = partsInfo[selectedPartsIdx, 1, 0];
         ability3Title.text = partsInfo[selectedPartsIdx, 2, 0];
-        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1];
-        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1];
-        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
+        
+        SetPartsUpgradeJemText();
     }
 
     public void ClosePartsUpgradeBase()
@@ -243,8 +275,67 @@ public class LobbyUiManager : MonoBehaviour
         partsUpgradeBase.SetActive(false);
     }
 
+    /// <summary>
+    /// On Parts Upgrade Button Clicked
+    /// </summary>
+    /// <param name="index">param indicated 'which' button clicked, the order matters</param>
     public void OnUpgradeButtonClicked(int index)
     {
+        // return if current value is already max
+        if (partsUpgradeInfo[index] >= LocalDatabaseManager.instance.MaxUpgradeInfo[index])
+            return;
+        // return if current jem is insufficient
+        if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+            return;
+
         SoundManager.instance.PlaySFX("PartsUpgradeSound");
+
+        // set Local data & UI components
+        LocalDatabaseManager.instance.JemCount -= LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]];
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        partsUpgradeInfo[index] += 1;
+        SetPartsUpgradeJemText();
+        LocalDatabaseManager.instance.SavePartsData();
+        LocalDatabaseManager.instance.SaveGameData();
+    }
+
+    private void SetPartsUpgradeJemText()
+    {
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]].ToString();
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]].ToString();
+        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
+
+
+        if (partsUpgradeInfo[0] >= LocalDatabaseManager.instance.MaxUpgradeInfo[0])
+            ability1UpgradeJem.text = "Max";
+        else
+            ability1UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 0, partsUpgradeInfo[0]].ToString() + " J";
+
+        if (partsUpgradeInfo[1] >= LocalDatabaseManager.instance.MaxUpgradeInfo[1])
+            ability2UpgradeJem.text = "Max";
+        else
+            ability2UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 1, partsUpgradeInfo[1]].ToString() + " J";
+
+        if (partsUpgradeInfo[2] >= LocalDatabaseManager.instance.MaxUpgradeInfo[2])
+            ability3UpgradeJem.text = "Max";
+        else
+            ability3UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 2, partsUpgradeInfo[2]].ToString() + " J";
+    }
+
+    // func for testing
+    public void ResetPartsInfo()
+    {
+        LocalDatabaseManager.instance.PartsMissile = new int[3] { 0, 0, 0 };
+        LocalDatabaseManager.instance.PartsLaser = new int[3] { 0, 0, 0 };
+        LocalDatabaseManager.instance.PartsBarrier = new int[3] { 0, 0, 0 };
+        LocalDatabaseManager.instance.PartsEmp = new int[3] { 0, 0, 0 };
+        LocalDatabaseManager.instance.SavePartsData();
+    }
+
+    public void SetJem()
+    {
+        LocalDatabaseManager.instance.JemCount = int.Parse( input.text);
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        LocalDatabaseManager.instance.SaveGameData();
     }
 }
