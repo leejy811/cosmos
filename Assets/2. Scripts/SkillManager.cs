@@ -29,9 +29,10 @@ public class SkillManager : MonoBehaviour
 
         if (currentParts == "Barrier")
         {
-            partsValue = LocalDatabaseManager.instance.PartsProtocol;
-            barrier.Init(null, partsValue);
+            //partsValue = LocalDatabaseManager.instance.PartsBarrier;
             partsValue = new float[] { 0.3f, 0.5f, 1 };
+            barrier.Init(null, partsValue);
+           
             if (partsValue[2] == 1)
                 gameObject.GetComponent<PlayerController>().playerShield = 5;
             barrier.gameObject.SetActive(true);
@@ -39,19 +40,19 @@ public class SkillManager : MonoBehaviour
         }
         else if (currentParts == "Missile")
         {
-            partsValue = LocalDatabaseManager.instance.PartsMissile;
+            //partsValue = LocalDatabaseManager.instance.PartsMissile;
             partsValue = new float[] { 1, 0.5f, 2 };
         }
         else if (currentParts == "Laser")
         {
-            partsValue = LocalDatabaseManager.instance.PartsLaser;
+            //partsValue = LocalDatabaseManager.instance.PartsLaser;
             partsValue = new float[] { 1, 0.5f, 1 };
             if (partsValue[2] == 1)
                 randomLaserPoints = gameObject.GetComponentsInChildren<Transform>();
         }
         else if (currentParts == "Emp")
         {
-            partsValue = LocalDatabaseManager.instance.PartsEmp;
+            //partsValue = LocalDatabaseManager.instance.PartsEmp;
             partsValue = new float[] { 0.1f, 0.2f, 1 };
         }
 
