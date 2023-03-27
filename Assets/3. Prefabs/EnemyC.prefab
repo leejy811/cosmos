@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -748,7 +748,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.5
+      value: 3
       mode: 0
       spread: 0
       speed:
@@ -5018,5 +5018,4 @@ MonoBehaviour:
   isEnemyLive: 0
   targetPos: {x: 0, y: 0}
   moveLerp: 0
-  bossLerp: 0
   enemyDieEffect: {fileID: 3294496368883836577}

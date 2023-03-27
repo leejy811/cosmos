@@ -71,6 +71,9 @@ public class Boss : MonoBehaviour
     // 보스의 타입에 따라서 플레이어의 사거리까지 간 뒤 속도 조절
     public void CheckPlayer()
     {
+        if (enterBossPlayerRange)
+            return;
+
         float changeSpeed = 0;
 
         if (transform.position.y - playerPos.y <= playerController.attackRange)
@@ -133,6 +136,7 @@ public class Boss : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        DamageEffect(damage);
         if (bossHealth - damage <= 0)
         {
             BossDie();
@@ -140,7 +144,12 @@ public class Boss : MonoBehaviour
         else
             bossHealth -= damage;
     }
-
+    private void DamageEffect(float damage)
+    {
+        GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
+        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+        hudText.GetComponent<DamageText>().damage = damage;
+    }
     public void BossDie()
     {
         Debug.Log("Boss Die");
@@ -151,7 +160,7 @@ public class Boss : MonoBehaviour
         else
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-        Invoke("BossDieEffectEnd", 0.5f);
+        Invoke("BossDieEffectEnd", 0.8f);
 
     }
 private void BossDieEffectEnd()

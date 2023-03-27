@@ -16,7 +16,7 @@ public class DamageText : MonoBehaviour
     {
         this.GetComponent<MeshRenderer>().sortingLayerName = "Player";
         text = GetComponent<TextMeshPro>();
-        text.text = damage.ToString();
+        text.text = damage.ToString("F1");
         textColor = text.color;
     }
 

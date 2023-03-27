@@ -136,10 +136,24 @@ public class WaveManager: MonoBehaviour
             }
             //if (currentWave == 0)
             //{
+            //    BossSpawn(0);
+            //    break;
+            //}
+            //if (currentWave == 1)
+            //{
+            //    BossSpawn(1);
+            //    break;
+            //}
+            //if (currentWave == 2)
+            //{
+            //    BossSpawn(2);
+            //    break;
+            //}
+            //if (currentWave == 3)
+            //{
             //    BossSpawn(3);
             //    break;
             //}
-
             string ranType;
             int enemyT = Random.Range(0, 4);
             if(enemyT == 0)

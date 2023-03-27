@@ -145,13 +145,13 @@ public class Enemy : MonoBehaviour
         else
             enemyHealth -= damage;
     }
-    public void DamageEffect(float damage)
+    private void DamageEffect(float damage)
     {
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
         hudText.GetComponent<DamageText>().damage = damage;
-
     }
+
     public float GetEnemyDamage()
     {
         return enemyDamage;
