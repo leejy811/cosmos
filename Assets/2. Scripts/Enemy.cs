@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
         if(moveLerp)
         {
             //Debug.Log("DOTween Move Start");
-            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.4f).SetEase(Ease.OutSine);
+            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.25f).SetEase(Ease.OutBounce);
             if (targetPos == (Vector2)transform.position)
             {
                     moveLerp = false;
@@ -204,8 +204,8 @@ public class Enemy : MonoBehaviour
                 enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, waveManager.waves[waveManager.currentWave].enemyAPrice, waveManager.waves[waveManager.currentWave].enemyAJem);
                 enemy.transform.position = transform.position;
                 enemy.GetComponent<Enemy>().moveLerp = true;
+                enemy.GetComponent<Enemy>().targetPos = transforms[i].position;
                 enemy.GetComponent<Enemy>().EnemyLookPlayer();
-                enemy.GetComponent<Enemy>().targetPos = transforms[i].position ;
                 enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
             }

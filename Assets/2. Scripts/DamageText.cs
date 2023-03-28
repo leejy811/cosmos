@@ -22,17 +22,19 @@ public class DamageText : MonoBehaviour
 
     void Update()
     {
+        if (text.text != damage.ToString("F1"))
+        {
+            text.text = damage.ToString("F1");
+        }
         transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime, 0));
         textColor.a = Mathf.Lerp(textColor.a, 0, Time.deltaTime * colorSpeed);
         text.color = textColor;
-        if(textColor.a == 0)
+        if(textColor.a <= 0.1f)
         {
-            ActiveOff();
+            Debug.Log("textColor : " + textColor + " text.color.a : " + text.color.a);
+            Debug.Log("Active False" + text.color.a);
+            this.gameObject.SetActive(false);
+            textColor.a = 1;
         }
-    }
-    private void ActiveOff()
-    {
-        this.gameObject.SetActive(false);
-        textColor.a = 1;
     }
 }
