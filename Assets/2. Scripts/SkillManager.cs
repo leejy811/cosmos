@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -20,40 +21,27 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private Transform Target;
     private string currentParts;
-    private float[] partsValue;
+    private float[] partsValue = new float[3];
 
     //Start 함수에선 각 발사 코루틴의 실행을 담당하는데 어떤파츠를 가지고 있냐에 따른 예외처리 예정이다.
     private void Start()
     {
-        currentParts = PlayerPrefs.GetString("CurrentParts");
+        currentParts = LocalDatabaseManager.instance.CurrentParts;
+
+        for (int i = 0; i < 3; i++)
+            partsValue[i] = LocalDatabaseManager.instance.PartsStatInfo[currentParts][i, LocalDatabaseManager.instance.PartsValue[i]];
 
         if (currentParts == "Barrier")
         {
-            //partsValue = LocalDatabaseManager.instance.PartsBarrier;
-            partsValue = new float[] { 0.3f, 0.5f, 1 };
             barrier.Init(null, partsValue);
-           
-            if (partsValue[2] == 1)
-                gameObject.GetComponent<PlayerController>().playerShield = 5;
+            gameObject.GetComponent<PlayerController>().playerShield = (int)partsValue[2];
             barrier.gameObject.SetActive(true);
             return;
         }
-        else if (currentParts == "Missile")
-        {
-            //partsValue = LocalDatabaseManager.instance.PartsMissile;
-            partsValue = new float[] { 1, 0.5f, 2 };
-        }
         else if (currentParts == "Laser")
         {
-            //partsValue = LocalDatabaseManager.instance.PartsLaser;
-            partsValue = new float[] { 1, 0.5f, 1 };
             if (partsValue[2] == 1)
                 randomLaserPoints = gameObject.GetComponentsInChildren<Transform>();
-        }
-        else if (currentParts == "Emp")
-        {
-            //partsValue = LocalDatabaseManager.instance.PartsEmp;
-            partsValue = new float[] { 0.1f, 0.2f, 1 };
         }
 
         StartCoroutine(ShootParts(currentParts));
@@ -77,14 +65,11 @@ public class SkillManager : MonoBehaviour
                 yield return new WaitForFixedUpdate();
                 continue;
             }
-            PartsContorller parts = GameManger.instance.poolManager.GetPool(partsType).GetComponent<PartsContorller>();
-            parts.transform.position = transform.position;
-            parts.player = GameManger.instance.player;
-            parts.Init(Target, partsValue);
+
+            SpawnParts(partsType);
+
             if (partsValue[2] == 1 && partsType == "Laser")
-            {
                 ShootRandomLaser();
-            }
 
             yield return new WaitForSeconds(1 / partsValue[1]);
         }
@@ -93,10 +78,15 @@ public class SkillManager : MonoBehaviour
     private void ShootRandomLaser()
     {
         int ranIndex = Random.Range(1, randomLaserPoints.Length);
-        Transform ranTarget = randomLaserPoints[ranIndex];
-        PartsContorller parts = GameManger.instance.poolManager.GetPool("Laser").GetComponent<PartsContorller>();
+        Target = randomLaserPoints[ranIndex];
+        SpawnParts("Laser");
+    }
+
+    private void SpawnParts(string partsType)
+    {
+        PartsContorller parts = GameManger.instance.poolManager.GetPool(partsType).GetComponent<PartsContorller>();
         parts.transform.position = transform.position;
         parts.player = GameManger.instance.player;
-        parts.Init(ranTarget, partsValue);
+        parts.Init(Target, partsValue);
     }
 }
