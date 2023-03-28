@@ -7814,6 +7814,27 @@ MonoBehaviour:
     enemyDPrice: 18
     enemyDJem: 5
     spawnCoolTime: 0.4
+  - enemyACount: 82
+    enemyAHp: 20
+    enemyADamage: 8
+    enemyAPrice: 0
+    enemyAJem: 8
+    enemyBCount: 68
+    enemyBHp: 20
+    enemyBDamage: 16
+    enemyBPrice: 0
+    enemyBJem: 8
+    enemyCCount: 52
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 0
+    enemyCJem: 10
+    enemyDCount: 42
+    enemyDHp: 9
+    enemyDDamage: 20
+    enemyDPrice: 0
+    enemyDJem: 5
+    spawnCoolTime: 0.2
   currentWave: 0
   boss:
   - {fileID: 3256790291441459130, guid: 36282b307df742249aa3d23dc49b1214, type: 3}

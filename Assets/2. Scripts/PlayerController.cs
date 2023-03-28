@@ -185,9 +185,9 @@ public class PlayerController : MonoBehaviour
     private void PlayerDie()
     {
         //플레이어 사망 로직
-        GameManger.instance.cameraResolution.Shake();
-            this.gameObject.SetActive(false);
-            GameManger.instance.GameOver();
+        //GameManger.instance.cameraResolution.Shake();
+        this.gameObject.SetActive(false);
+        GameManger.instance.GameOver();
     }
 
     //Recovery는 체력을 재생하는 함수이다.
