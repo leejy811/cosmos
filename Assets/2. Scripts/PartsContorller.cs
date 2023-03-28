@@ -130,17 +130,17 @@ public class PartsContorller : Bullet
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    IEnumerator EmpAttack()
+    private void EmpAttack()
     {
         SoundManager.instance.PlaySFX("PlayerEmpSound");
         transform.localScale = new Vector3(0.3f, 0.3f, 1);
-        float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
-        while (transform.localScale.x< partsRange)
-        {
-            transform.localScale += new Vector3(explosionSpeed, explosionSpeed, 0);
-            yield return new WaitForFixedUpdate();
-        }
-        gameObject.SetActive(false);
+        gameObject.GetComponent<Animator>().SetFloat("EmpSpeed", bulletSpeed);
+        //float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
+        //while (transform.localScale.x< partsRange)
+        //{
+        //    transform.localScale += new Vector3(explosionSpeed, explosionSpeed, 0);
+        //    yield return new WaitForFixedUpdate();
+        //}
     }
 
     //ProtocolAttack은 Protocol의 지속적인 공격을 위해 partsAttackSpeed마다 반복해주는 코루틴이다.
@@ -210,5 +210,10 @@ public class PartsContorller : Bullet
     {
         barrierAnimatior.SetBool("IsAttack", false);
         Debug.Log(barrierAnimatior.GetBool("IsAttack"));
+    }
+
+    public void EndEmp()
+    {
+        gameObject.SetActive(false);
     }
 }
