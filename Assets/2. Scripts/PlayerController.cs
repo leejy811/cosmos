@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
             return;
         SoundManager.instance.PlaySFX("StatusUpgradeSound");
         PayGold(playerMaxHealthCost);
-        maxPlayerHealth += 5f;
-        playerHealth += 5f;
+        maxPlayerHealth += 3f;
+        playerHealth += 3f;
         playerMaxHealthCost += 5;
     }
     public void PlayerHealthRecorveryLevelUp()
