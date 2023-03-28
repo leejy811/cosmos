@@ -296,7 +296,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94808957
 GameObject:
@@ -1370,6 +1370,90 @@ Transform:
   m_Father: {fileID: 1302566967}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &211202533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 211202534}
+  - component: {fileID: 211202535}
+  m_Layer: 3
+  m_Name: Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &211202534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211202533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2037946282}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &211202535
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211202533}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1738724787
+  m_SortingLayer: 6
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 34d71ce9e883c29468ec60f4a5e61d57, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &239584089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +2041,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &354061224
 GameObject:
@@ -2889,7 +2973,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -3096,7 +3180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &554931964
 GameObject:
@@ -3647,7 +3731,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657369574
 GameObject:
@@ -4009,7 +4093,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711631206
 GameObject:
@@ -4609,7 +4693,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765476227
 GameObject:
@@ -4969,7 +5053,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879419780
 GameObject:
@@ -5849,7 +5933,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1144793311
 GameObject:
@@ -6512,7 +6596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227470310
 GameObject:
@@ -7173,7 +7257,7 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 4
+    enemyCCount: 3
     enemyCHp: 20
     enemyCDamage: 5
     enemyCPrice: 30
@@ -7194,7 +7278,7 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 6
+    enemyCCount: 4
     enemyCHp: 22
     enemyCDamage: 5
     enemyCPrice: 30
@@ -7278,7 +7362,7 @@ MonoBehaviour:
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
-    enemyCCount: 18
+    enemyCCount: 14
     enemyCHp: 30
     enemyCDamage: 5
     enemyCPrice: 30
@@ -7310,6 +7394,195 @@ MonoBehaviour:
     enemyDPrice: 0
     enemyDJem: 0
     spawnCoolTime: 0
+  - enemyACount: 46
+    enemyAHp: 4.6
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 33
+    enemyBHp: 2.8
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 16
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 15
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.6
+  - enemyACount: 48
+    enemyAHp: 4.8
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 35
+    enemyBHp: 2.9
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 18
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0.6
+  - enemyACount: 50
+    enemyAHp: 5
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 36
+    enemyBHp: 3
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 20
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 5
+    enemyDHp: 6
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 52
+    enemyAHp: 5.2
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 38
+    enemyBHp: 3.1
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 22
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 8
+    enemyDHp: 6.2
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 54
+    enemyAHp: 5.4
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 40
+    enemyBHp: 3.2
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 24
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 11
+    enemyDHp: 6.4
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 56
+    enemyAHp: 5.6
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 42
+    enemyBHp: 3.3
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 26
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 14
+    enemyDHp: 6.6
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 58
+    enemyAHp: 5.8
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 44
+    enemyBHp: 3.4
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 28
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 17
+    enemyDHp: 6.8
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 60
+    enemyAHp: 6
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 46
+    enemyBHp: 3.5
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 30
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 20
+    enemyDHp: 7
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
+  - enemyACount: 62
+    enemyAHp: 6.2
+    enemyADamage: 4
+    enemyAPrice: 4
+    enemyAJem: 0
+    enemyBCount: 48
+    enemyBHp: 3.6
+    enemyBDamage: 8
+    enemyBPrice: 8
+    enemyBJem: 1
+    enemyCCount: 32
+    enemyCHp: 35
+    enemyCDamage: 10
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 22
+    enemyDHp: 7.2
+    enemyDDamage: 6
+    enemyDPrice: 8
+    enemyDJem: 5
+    spawnCoolTime: 0.6
   - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
@@ -7331,405 +7604,216 @@ MonoBehaviour:
     enemyDPrice: 0
     enemyDJem: 0
     spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+  - enemyACount: 64
+    enemyAHp: 6.4
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 50
+    enemyBHp: 3.7
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 34
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 24
+    enemyDHp: 7.2
+    enemyDDamage: 12
+    enemyDPrice: 16
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 66
+    enemyAHp: 6.6
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 52
+    enemyBHp: 3.8
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 36
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 26
+    enemyDHp: 7.4
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 68
+    enemyAHp: 6.8
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 54
+    enemyBHp: 3.9
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 38
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 28
+    enemyDHp: 7.6
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 70
+    enemyAHp: 7
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 56
+    enemyBHp: 4
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 40
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 30
+    enemyDHp: 8
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 72
+    enemyAHp: 7.2
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 58
+    enemyBHp: 4.1
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 42
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 32
+    enemyDHp: 8
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 74
+    enemyAHp: 7.4
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 60
+    enemyBHp: 4.2
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 44
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 34
+    enemyDHp: 8.2
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 76
+    enemyAHp: 7.6
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 62
+    enemyBHp: 4.3
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 46
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 36
+    enemyDHp: 8.4
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 78
+    enemyAHp: 7.8
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 64
+    enemyBHp: 4.4
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 48
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 38
+    enemyDHp: 8.6
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 80
+    enemyAHp: 8
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
+    enemyBCount: 66
+    enemyBHp: 4.5
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 50
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 40
+    enemyDHp: 8.8
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
+  - enemyACount: 82
+    enemyAHp: 8.2
+    enemyADamage: 8
+    enemyAPrice: 8
     enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
-  - enemyACount: 0
-    enemyAHp: 0
-    enemyADamage: 0
-    enemyAPrice: 0
-    enemyAJem: 0
-    enemyBCount: 0
-    enemyBHp: 0
-    enemyBDamage: 0
-    enemyBPrice: 0
-    enemyBJem: 0
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 0
+    enemyBCount: 68
+    enemyBHp: 4.6
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 52
+    enemyCHp: 40
+    enemyCDamage: 20
+    enemyCPrice: 40
+    enemyCJem: 10
+    enemyDCount: 42
+    enemyDHp: 9
+    enemyDDamage: 12
+    enemyDPrice: 18
+    enemyDJem: 5
+    spawnCoolTime: 0.4
   currentWave: 0
   boss:
   - {fileID: 3256790291441459130, guid: 36282b307df742249aa3d23dc49b1214, type: 3}
@@ -7884,7 +7968,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335125385
 GameObject:
@@ -9813,7 +9897,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1666084032}
-  - component: {fileID: 1666084031}
   - component: {fileID: 1666084033}
   - component: {fileID: 1666084034}
   - component: {fileID: 1666084036}
@@ -9825,58 +9908,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &1666084031
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666084030}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1738724787
-  m_SortingLayer: 6
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 34d71ce9e883c29468ec60f4a5e61d57, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!4 &1666084032
 Transform:
   m_ObjectHideFlags: 0
@@ -9889,6 +9920,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2037946282}
   - {fileID: 1325035793}
   - {fileID: 1217506045}
   - {fileID: 761872435}
@@ -10603,7 +10635,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1666084032}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823540099
 GameObject:
@@ -11695,6 +11727,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021678832}
   m_CullTransparentMesh: 1
+--- !u!1 &2037946281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037946282}
+  m_Layer: 3
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037946282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037946281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 211202534}
+  m_Father: {fileID: 1666084032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2043034071
 GameObject:
   m_ObjectHideFlags: 0
