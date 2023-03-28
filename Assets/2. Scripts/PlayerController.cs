@@ -34,6 +34,13 @@ public class PlayerController : MonoBehaviour
     public float attackRange { get; private set; } = 4;
     public Transform nearestTarget { get; private set; }
 
+    private Transform playerSprite;
+
+    private float rotateSpeed=-50;
+    private float targetSpeed;
+    private float standardTime = 2f;
+    private float currentTime;
+
     //Player 스탯 LevelUp 관련 함수들
     public void PlayerDamageLevelUp()
     {
@@ -84,13 +91,51 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(Shoot());
         playerHealth = maxPlayerHealth;
+        currentTime = standardTime;
+        playerSprite = transform.GetChild(0);
     }
 
     //FixedUpdate는 체력재생과 타겟을 최신화 해준다.
     void FixedUpdate()
     {
         Recovery();
+        ElapseTime();
         nearestTarget = GetTarget(true);
+        playerSprite.Rotate( Time.deltaTime * rotateSpeed * Vector3.forward );
+    }
+
+    private void ElapseTime()
+    {
+        currentTime -= Time.deltaTime;
+        if (currentTime <= 0)
+            ResetAction();
+    }
+
+    private void ResetAction()
+    {
+        int action = UnityEngine.Random.Range(0, 10);
+
+        if (action < 8)
+            targetSpeed = -50;
+        else if (action == 8)
+            targetSpeed = UnityEngine.Random.Range(250f, 500f);
+        else
+            targetSpeed = UnityEngine.Random.Range(-500f, -250f);
+
+        StartCoroutine("RotateSpeedLerp");
+        currentTime = standardTime;
+    }
+
+    IEnumerator RotateSpeedLerp()
+    {
+        float elapseTime = 0;
+        while (elapseTime <= standardTime)
+        {
+            elapseTime += Time.deltaTime;
+            rotateSpeed = Mathf.Lerp(rotateSpeed, targetSpeed, Time.deltaTime);
+            yield return null;
+        }
+        rotateSpeed = targetSpeed;
     }
 
     //Shoot 코루틴은 총알을 공격속도마다 발사해주는 코루틴이다.
