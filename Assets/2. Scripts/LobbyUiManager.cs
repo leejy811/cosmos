@@ -166,6 +166,21 @@ public class LobbyUiManager : MonoBehaviour
         // Update newly equiped part to the database manager
         LocalDatabaseManager.instance.CurrentParts = part.transform.name.Substring(5);
         LocalDatabaseManager.instance.SavePartsData();
+        switch (LocalDatabaseManager.instance.CurrentParts)
+        {
+            case "Missile":
+                LocalDatabaseManager.instance.PartsValue = LocalDatabaseManager.instance.PartsMissile;
+                break;
+            case "Laser":
+                LocalDatabaseManager.instance.PartsValue = LocalDatabaseManager.instance.PartsLaser;
+                break;
+            case "Barrier":
+                LocalDatabaseManager.instance.PartsValue = LocalDatabaseManager.instance.PartsBarrier;
+                break;
+            case "Emp":
+                LocalDatabaseManager.instance.PartsValue = LocalDatabaseManager.instance.PartsEmp;
+                break;
+        }
         Invoke("UiConvertingState", 0.6f);
     }
 
