@@ -14,6 +14,7 @@ public class ButtonBehavior : MonoBehaviour
     private Button myButton;
     private Vector3 originalScale;
     private bool isTweening;
+    [SerializeField] float punchScale = 0.2f;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class ButtonBehavior : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
-            transform.DOPunchScale(originalScale * 0.2f, 0.2f, 0, 1f).OnComplete(() =>
+            transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
             {
                 isTweening = false;
             });
