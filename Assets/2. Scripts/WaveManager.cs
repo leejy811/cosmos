@@ -129,6 +129,8 @@ public class WaveManager: MonoBehaviour
 
         while (true)
         {
+            if (GameManger.instance.player.isPlayerDie)
+                break;
             if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
             {
                 BossSpawn(currentWave / 10);
