@@ -60,6 +60,9 @@ public class SkillManager : MonoBehaviour
     {
         while (true)
         {
+            if (GetComponent<PlayerController>().isPlayerDie)
+                break;
+
             if (Target == null)
             {
                 yield return new WaitForFixedUpdate();
