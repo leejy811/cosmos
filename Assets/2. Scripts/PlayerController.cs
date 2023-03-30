@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     //타겟 관련 변수
     private Collider2D[] targets;
-    public float attackRange { get; private set; } = 4;
+    public float attackRange { get; private set; } = 5;
     public Transform nearestTarget { get; private set; }
 
     private Transform playerSprite;
