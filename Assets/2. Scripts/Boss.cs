@@ -105,7 +105,10 @@ public class Boss : MonoBehaviour
             StartCoroutine("BossAPattern");
             bossAPattern = false;
         }
-
+        if(enterBossPlayerRange && bossType == 1)
+        {
+            this.transform.GetChild(0).transform.Rotate(Vector3.forward, 8f);
+        }
         if(enterBossPlayerRange && bossType == 2 && bossCPattern)
         {
             StartCoroutine("BossCPattern");
@@ -155,12 +158,11 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss Die");
         waveManager.isBossLive = false;
         bossDieEffect.SetActive(true);
-        if(bossType == 0 || bossType == 3)
+        if(bossType == 0 || bossType == 1)
             gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         else
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-
-        Invoke("BossDieEffectEnd", 0.8f);
+        Invoke("BossDieEffectEnd", 1.5f);
 
     }
 private void BossDieEffectEnd()

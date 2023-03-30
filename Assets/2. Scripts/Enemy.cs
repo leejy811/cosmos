@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         {
             //Debug.Log("DOTween Move Start");
             this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.25f).SetEase(Ease.OutBounce);
-            if (targetPos == (Vector2)transform.position)
+            if (Mathf.Abs(targetPos.x - transform.position.x) <= 0.2f && Mathf.Abs(targetPos.y - transform.position.y) <= 0.2f)
             {
                     moveLerp = false;
             }
@@ -176,27 +176,28 @@ public class Enemy : MonoBehaviour
     }
 
 
+    // 게임 EndDIe 함수 하나 더 만들기
     public void EnemyDie(bool EnterPlayer)
     {
         SoundManager.instance.PlaySFX("MonsterKillSound");
         if (enemyType == "EnemyA")
         {
-            if(waveManager.waves[waveManager.currentWave].enemyACount > 0)
+            if(waveManager.waves[waveManager.currentWave].enemyACount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyACount--;
         }
         else if(enemyType == "EnemyB")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyBCount > 0)
+            if (waveManager.waves[waveManager.currentWave].enemyBCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyBCount--;
         }
         else if(enemyType == "EnemyC")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyCCount > 0)
+            if (waveManager.waves[waveManager.currentWave].enemyCCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyCCount--;
         }
         else if(enemyType == "EnemyD")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyDCount > 0)
+            if (waveManager.waves[waveManager.currentWave].enemyDCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyDCount--;
             for (int i=0; i<2; i++)
             {
@@ -210,6 +211,7 @@ public class Enemy : MonoBehaviour
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
             }
         }
+        // 플레이어 닿았을 때 골드나 잼 안올라가게 하기
         if(!EnterPlayer)
         {
             LocalDatabaseManager.instance.JemCount += enemyJem;
@@ -223,7 +225,7 @@ public class Enemy : MonoBehaviour
         gameObject.tag = "Untagged";
         gameObject.layer = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Invoke("EnemyDieEffect", 0.5f);
+        Invoke("EnemyDieEffect", 1.5f);
     }
     private void EnemyDieEffect()
     {

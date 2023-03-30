@@ -16,6 +16,7 @@ public class GameManger : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
     }
 
     private void Start()
@@ -23,11 +24,18 @@ public class GameManger : MonoBehaviour
         SoundManager.instance.PlayBGM("InGameBGM");
     }
 
-    public void GameOver()
+     public IEnumerator GameOver()
     {
-        UiManager.ActiveGameOverUI();
         UiManager.SaveGameResult();
-        Time.timeScale = 0;
+        Time.timeScale = 0.8f;
+        while (Time.timeScale > 0.2f)
+        {
+            Time.timeScale -= 0.3f * Time.fixedDeltaTime;
+            //Bloom Intensity 설정 요기다 해주세용
+            yield return new WaitForFixedUpdate();
+        }
+
+        SceneManager.LoadScene("GameOverScene");
     }
 
     public void RestartGame()

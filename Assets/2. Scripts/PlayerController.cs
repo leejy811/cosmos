@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
     private float standardTime = 2f;
     private float currentTime;
 
+    [SerializeField]
+    private GameObject PlayerDieParticle;
+    public bool isPlayerDie;
+
     //Player 스탯 LevelUp 관련 함수들
     public void PlayerDamageLevelUp()
     {
@@ -98,6 +102,8 @@ public class PlayerController : MonoBehaviour
     //FixedUpdate는 체력재생과 타겟을 최신화 해준다.
     void FixedUpdate()
     {
+        if (isPlayerDie)
+            return;
         Recovery();
         ElapseTime();
         nearestTarget = GetTarget(true);
@@ -143,6 +149,9 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
+            if (isPlayerDie)
+                break;
+
             if (nearestTarget == null)
             {
                 yield return new WaitForFixedUpdate();
@@ -162,9 +171,8 @@ public class PlayerController : MonoBehaviour
     //GetDamage는 PlayerHealth를 감소시키는 함수로 데미지를 입는 함수이다.
     public void GetDamage(float damage)
     {
-        GameManger.instance.cameraResolution.Shake();
-        GameManger.instance.UiManager.StartDamageEffect();
-        SoundManager.instance.PlaySFX("PlayerHitSound");
+        if (isPlayerDie)
+            return;
 
         if(playerShield > 0 )
         {
@@ -176,18 +184,23 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth = 0;
             PlayerDie();
+            return;
         }
         else
             playerHealth -= damage;
+
+        GameManger.instance.cameraResolution.Shake();
+        GameManger.instance.UiManager.StartDamageEffect();
+        SoundManager.instance.PlaySFX("PlayerHitSound");
     }
 
     //PlayerDie는 플레이어 사망 로직을 작성하는 함수이다.
     private void PlayerDie()
     {
-        //플레이어 사망 로직
-        GameManger.instance.cameraResolution.Shake();
-            this.gameObject.SetActive(false);
-            GameManger.instance.GameOver();
+        isPlayerDie = true;
+        playerSprite.gameObject.SetActive(false);
+        PlayerDieParticle.SetActive(true);
+        StartCoroutine(GameManger.instance.GameOver());
     }
 
     //Recovery는 체력을 재생하는 함수이다.
@@ -229,6 +242,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isPlayerDie)
+            return;
         if (collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.GetComponent<Enemy>();
