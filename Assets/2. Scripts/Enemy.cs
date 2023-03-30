@@ -175,6 +175,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void GameOverDie()
+    {
+        isEnemyLive = false;
+        enemyDieEffect.SetActive(true);
+        gameObject.tag = "Untagged";
+        gameObject.layer = 0;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Invoke("EnemyDieEffect", 1.5f);
+    }
 
     // 게임 EndDIe 함수 하나 더 만들기
     public void EnemyDie(bool EnterPlayer)
