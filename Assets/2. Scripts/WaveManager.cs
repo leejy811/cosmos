@@ -98,7 +98,7 @@ public class WaveManager: MonoBehaviour
         Debug.Log("Check Boss Wave End Start ");
         if (currenBossType == 0)
         {
-            if (GameManger.instance.poolManager.CheckPool("EnemyA"))
+            if (GameManger.instance.poolManager.CheckPool("BossASpawnEnemy"))
                 return false;
         }
         else if (currenBossType == 2)

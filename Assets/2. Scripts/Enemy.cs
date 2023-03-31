@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
             return;
         if(moveLerp)
         {
-            //Debug.Log("DOTween Move Start");
             this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.25f).SetEase(Ease.OutBounce);
             if (Mathf.Abs(targetPos.x - transform.position.x) <= 0.2f && Mathf.Abs(targetPos.y - transform.position.y) <= 0.2f)
             {

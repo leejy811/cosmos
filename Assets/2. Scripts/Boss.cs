@@ -17,6 +17,9 @@ public class Boss : MonoBehaviour
     private float bossSpeed;
     [SerializeField]
     private Transform[] spawnPoints;
+    [SerializeField]
+    private Transform[] targetPoints;
+
     public PlayerController playerController;
     public WaveManager waveManager;
 
@@ -187,15 +190,13 @@ IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
         //enemyList.Clear();
-        for (int i = 0; i < spawnPoints.Length; i++)
+        for (int i = 0; i < targetPoints.Length; i++)
         {
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
-            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, 
-                                                      waveManager.waves[waveManager.currentWave].enemyAPrice, waveManager.waves[waveManager.currentWave].enemyAJem);
-            //enemy.transform.position = spawnPoints[i].position;
-            enemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
+            enemy.GetComponent<Enemy>().SetEnemyState(2, 1, 0, 0);
+            enemy.transform.position = spawnPoints[i/3].position;
+            enemy.GetComponent<Enemy>().targetPos = targetPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
-            enemy.transform.position = this.transform.position;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();
             enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
             enemy.GetComponent<Enemy>().waveManager = this.waveManager;
