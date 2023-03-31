@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class UiManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private Text timeScaleText;
+    private PostProcessVolume postProcessVolume;
+    private Bloom bloom;
     #endregion
 
     #region Member Variables
@@ -56,6 +59,9 @@ public class UiManager : MonoBehaviour
         yScreenHalfSize = Screen.height / 2;
         xScreenHalfSize = Screen.width  / 2;
         moveDir=new Vector2(moveX, moveY);
+
+        postProcessVolume = Camera.main.GetComponent<PostProcessVolume>();
+        postProcessVolume.profile.TryGetSettings(out bloom);
     }
     private void Update()
     {
@@ -196,6 +202,16 @@ public class UiManager : MonoBehaviour
         LocalDatabaseManager.instance.JemCount += int.Parse(jemCount.text);
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
         LocalDatabaseManager.instance.SaveGameData();
+    }
+
+    public void CloseCanvas()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void SetBloomIntensity(float value)
+    {
+        bloom.intensity.value += value;
     }
 
     public void PushRetryButton()

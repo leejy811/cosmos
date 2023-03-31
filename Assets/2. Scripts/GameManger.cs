@@ -13,6 +13,7 @@ public class GameManger : MonoBehaviour
 
     // 잠깐 웨이브 스킵하려고 WaveManager 추가할게요 나중에 밸런싱 끝나면 지울 수 있음
     public WaveManager waveManager;
+
     void Awake()
     {
         instance = this;
@@ -27,11 +28,19 @@ public class GameManger : MonoBehaviour
      public IEnumerator GameOver()
     {
         UiManager.SaveGameResult();
+        
+        Time.timeScale = 0.05f;
+        yield return new WaitForSeconds(0.05f);
+
+        UiManager.CloseCanvas();
+        Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.5f);
+
         Time.timeScale = 0.8f;
         while (Time.timeScale > 0.2f)
         {
-            Time.timeScale -= 0.3f * Time.fixedDeltaTime;
-            //Bloom Intensity 설정 요기다 해주세용
+            Time.timeScale -= 0.2f * Time.fixedDeltaTime;
+            UiManager.SetBloomIntensity(0.7f);
             yield return new WaitForFixedUpdate();
         }
 
