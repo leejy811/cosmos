@@ -69,6 +69,8 @@ public class LobbyUiManager : MonoBehaviour
         {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
         {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
     };
+
+    [SerializeField] AdsManager adsManager;
     #endregion
 
     #region For Debug
@@ -350,6 +352,18 @@ public class LobbyUiManager : MonoBehaviour
     public void SetJem()
     {
         LocalDatabaseManager.instance.JemCount = int.Parse( input.text);
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        LocalDatabaseManager.instance.SaveGameData();
+    }
+
+    public void OnAdsButtonClick()
+    {
+        adsManager.ShowRewardedAd();
+    }
+
+    public void EndAdsReward()
+    {
+        LocalDatabaseManager.instance.JemCount = 123;
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
         LocalDatabaseManager.instance.SaveGameData();
     }
