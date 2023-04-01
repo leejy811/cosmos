@@ -5011,7 +5011,7 @@ MonoBehaviour:
   enemyType: EnemyC
   enemySpeed: 0.5
   knockBackSpeed: 3
-  knockBackDistance: 0.2
+  knockBackDistance: 0.1
   transforms: []
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
