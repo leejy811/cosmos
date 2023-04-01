@@ -12516,7 +12516,7 @@ MonoBehaviour:
     enemyDPrice: 8
     enemyDJem: 5
     spawnCoolTime: 0.6
-  - enemyACount: 0
+  - enemyACount: 11
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
@@ -12726,7 +12726,7 @@ MonoBehaviour:
     enemyDPrice: 18
     enemyDJem: 5
     spawnCoolTime: 0.4
-  - enemyACount: 0
+  - enemyACount: 111111
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0

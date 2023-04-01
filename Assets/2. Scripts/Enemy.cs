@@ -146,6 +146,10 @@ public class Enemy : MonoBehaviour
     }
     private void DamageEffect(float damage)
     {
+        Color targetColor = new Color(255, 0, 0, 255);
+        Color bossColor = this.gameObject.transform.GetComponent<Renderer>().material.color;
+        this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
+        this.gameObject.transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
         hudText.GetComponent<DamageText>().damage = damage;

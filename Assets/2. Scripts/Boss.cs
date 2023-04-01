@@ -140,6 +140,11 @@ public class Boss : MonoBehaviour
         {
             other.gameObject.GetComponent<PartsContorller>().MissileAttack();
         }
+        else if (other.gameObject.tag == "Laser")
+        {
+            float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
+            GetDamage(damage);
+        }
     }
 
     public void GetDamage(float damage)
@@ -154,8 +159,26 @@ public class Boss : MonoBehaviour
     }
     private void DamageEffect(float damage)
     {
+        Color targetColor = new Color(255, 0, 0, 255);
+        Color bossColor;
+        if (bossType == 0 && bossType == 1)
+            bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
+        else
+            bossColor = this.gameObject.transform.GetComponent<Renderer>().material.color;
+        if (bossType == 0)
+            this.gameObject.transform.DOShakeScale(0.3f, 0.2f, 5, 90, false, ShakeRandomnessMode.Full);
+        if (bossType == 0 && bossType == 1)
+        {
+            this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
+            this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.1f);
+        }
+        else
+        {
+            this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
+            this.gameObject.transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.1f);
+        }
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
-        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
         hudText.GetComponent<DamageText>().damage = damage;
     }
     public void BossDie()
@@ -166,7 +189,12 @@ public class Boss : MonoBehaviour
         if (bossType == 0 || bossType == 1)
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
         else
+        {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.tag = "Untagged";
+            gameObject.layer = 0;
+        }
+
         Invoke("BossDieEffectEnd", 1.5f);
     }
     public void GameOverDie()
@@ -189,11 +217,12 @@ public class Boss : MonoBehaviour
 IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
-        
+
         //enemyList.Clear();
+
         for (int i = 0; i < targetPoints.Length; i++)
         {
-            this.gameObject.transform.DOShakeScale(0.3f, 1f, 10, 90, false, ShakeRandomnessMode.Full);
+
 
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
             enemy.GetComponent<Enemy>().SetEnemyState(2, 1, 0, 0);
