@@ -32,13 +32,14 @@ public class Enemy : MonoBehaviour
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
     public bool moveLerp;
-
-
+    Color targetColor = new Color(255, 0, 0, 255);
+    Color enemyColor;
     [SerializeField]
     private GameObject enemyDieEffect;
 
     private void Start()
     {
+        enemyColor = this.gameObject.transform.GetComponent<Renderer>().material.color;
 
     }
     public void SetEnemyState(float enemyHealth, float enemyDamage, int enemyPrice, int enemyJem)
@@ -106,6 +107,8 @@ public class Enemy : MonoBehaviour
         }
         else if (other.gameObject.tag == "Barrier")
         {
+            if (enemyType == "EnemyC")
+                return;
             enemySpeed *= other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
         else if (other.gameObject.tag == "Laser")
@@ -115,6 +118,7 @@ public class Enemy : MonoBehaviour
         }
         else if (other.gameObject.tag == "Emp")
         {
+
             float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
             GetDamage(damage);
 
@@ -146,6 +150,9 @@ public class Enemy : MonoBehaviour
     }
     private void DamageEffect(float damage)
     {
+
+        this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
+        this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
         hudText.GetComponent<DamageText>().damage = damage;
@@ -244,5 +251,6 @@ public class Enemy : MonoBehaviour
         gameObject.layer = 6;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.localEulerAngles = new Vector3(0, 0, 0);
+        this.gameObject.transform.GetComponent<Renderer>().material.color = enemyColor;
     }
 }
