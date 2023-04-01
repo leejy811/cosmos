@@ -12726,27 +12726,27 @@ MonoBehaviour:
     enemyDPrice: 18
     enemyDJem: 5
     spawnCoolTime: 0.4
-  - enemyACount: 82
-    enemyAHp: 8.2
-    enemyADamage: 8
-    enemyAPrice: 8
+  - enemyACount: 0
+    enemyAHp: 0
+    enemyADamage: 0
+    enemyAPrice: 0
     enemyAJem: 0
-    enemyBCount: 68
-    enemyBHp: 4.6
-    enemyBDamage: 16
-    enemyBPrice: 16
-    enemyBJem: 1
-    enemyCCount: 33
-    enemyCHp: 40
-    enemyCDamage: 20
-    enemyCPrice: 40
-    enemyCJem: 10
-    enemyDCount: 42
-    enemyDHp: 9
-    enemyDDamage: 12
-    enemyDPrice: 18
-    enemyDJem: 5
-    spawnCoolTime: 0.4
+    enemyBCount: 0
+    enemyBHp: 0
+    enemyBDamage: 0
+    enemyBPrice: 0
+    enemyBJem: 0
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyCJem: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 0
   - enemyACount: 82
     enemyAHp: 20
     enemyADamage: 8
