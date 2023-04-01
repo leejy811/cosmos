@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameOverUiManager : MonoBehaviour
 {
     [SerializeField] private GameObject backgroundBase;
-    [SerializeField] private float backgroundMoveSpeed;
+    [SerializeField] private float backgroundMoveSpeed=50f;
 
     private Vector2 moveDir;
     private float moveX = 1;
