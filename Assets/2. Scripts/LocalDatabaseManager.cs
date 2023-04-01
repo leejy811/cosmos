@@ -26,6 +26,8 @@ public class LocalDatabaseManager : MonoBehaviour
     public int[] PartsEmp { get; set; } = { 0, 0, 0};
     public int[] PartsValue { get; set; }
 
+    public int Ticket { get; set; } = 3;
+
 
 
     /// <summary>
@@ -93,6 +95,8 @@ public class LocalDatabaseManager : MonoBehaviour
             JemCount = PlayerPrefs.GetInt("JemCount");
         if (PlayerPrefs.HasKey("HighScore"))
             HighScore = PlayerPrefs.GetInt("HighScore");
+        if (PlayerPrefs.HasKey("Ticket"))
+            HighScore = PlayerPrefs.GetInt("Ticket");
         if (PlayerPrefs.HasKey("CurrentParts"))
             CurrentParts = PlayerPrefs.GetString("CurrentParts");
 
@@ -131,6 +135,7 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetInt("HighScore", HighScore);
+        PlayerPrefs.SetInt("Ticket", Ticket);
     }
 
     /// <summary>
