@@ -31,8 +31,6 @@ public class DamageText : MonoBehaviour
         text.color = textColor;
         if(textColor.a <= 0.1f)
         {
-            Debug.Log("textColor : " + textColor + " text.color.a : " + text.color.a);
-            Debug.Log("Active False" + text.color.a);
             this.gameObject.SetActive(false);
             textColor.a = 1;
         }

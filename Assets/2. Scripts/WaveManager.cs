@@ -98,7 +98,7 @@ public class WaveManager: MonoBehaviour
         Debug.Log("Check Boss Wave End Start ");
         if (currenBossType == 0)
         {
-            if (GameManger.instance.poolManager.CheckPool("EnemyA"))
+            if (GameManger.instance.poolManager.CheckPool("BossASpawnEnemy"))
                 return false;
         }
         else if (currenBossType == 2)
@@ -129,6 +129,8 @@ public class WaveManager: MonoBehaviour
 
         while (true)
         {
+            if (GameManger.instance.player.isPlayerDie)
+                break;
             if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
             {
                 BossSpawn(currentWave / 10);

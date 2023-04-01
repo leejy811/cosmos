@@ -17,6 +17,9 @@ public class Boss : MonoBehaviour
     private float bossSpeed;
     [SerializeField]
     private Transform[] spawnPoints;
+    [SerializeField]
+    private Transform[] targetPoints;
+
     public PlayerController playerController;
     public WaveManager waveManager;
 
@@ -29,7 +32,6 @@ public class Boss : MonoBehaviour
     bool bossAPattern;
     bool bossCPattern;
     bool bossDPattern;
-
 
     [SerializeField]
     private GameObject bossDLaser;
@@ -56,6 +58,7 @@ public class Boss : MonoBehaviour
 
     public void MoveBoss()
     {
+
         CheckPlayer();
         if (enterBossPlayerRange && bossType == 2)
         {
@@ -99,6 +102,8 @@ public class Boss : MonoBehaviour
     }
     public void FixedUpdate()
     {
+        if (GameManger.instance.player.isPlayerDie)
+            return;
         MoveBoss();
         if(enterBossPlayerRange && bossType == 0 && bossAPattern)
         {
@@ -163,28 +168,35 @@ public class Boss : MonoBehaviour
         else
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("BossDieEffectEnd", 1.5f);
-
     }
-private void BossDieEffectEnd()
-{
+    public void GameOverDie()
+    {
+        bossDieEffect.SetActive(true);
+        if(bossType == 0 || bossType == 1)
+            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        else
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Invoke("BossDieEffectEnd", 1.5f);
+    }
+
+    private void BossDieEffectEnd()
+    {
         bossHealth = 0;
         bossDieEffect.SetActive(false);
         Destroy(gameObject);
-}
+    }
 
 IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
         //enemyList.Clear();
-        for (int i = 0; i < spawnPoints.Length; i++)
+        for (int i = 0; i < targetPoints.Length; i++)
         {
-            GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");
-            enemy.GetComponent<Enemy>().SetEnemyState(waveManager.waves[waveManager.currentWave].enemyAHp, waveManager.waves[waveManager.currentWave].enemyADamage, 
-                                                      waveManager.waves[waveManager.currentWave].enemyAPrice, waveManager.waves[waveManager.currentWave].enemyAJem);
-            //enemy.transform.position = spawnPoints[i].position;
-            enemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
+            GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
+            enemy.GetComponent<Enemy>().SetEnemyState(2, 1, 0, 0);
+            enemy.transform.position = spawnPoints[i/3].position;
+            enemy.GetComponent<Enemy>().targetPos = targetPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
-            enemy.transform.position = this.transform.position;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();
             enemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
             enemy.GetComponent<Enemy>().waveManager = this.waveManager;

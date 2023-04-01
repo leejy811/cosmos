@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     //타겟 관련 변수
     private Collider2D[] targets;
-    public float attackRange { get; private set; } = 4;
+    public float attackRange { get; private set; } = 5;
     public Transform nearestTarget { get; private set; }
 
     private Transform playerSprite;
@@ -103,7 +103,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (isPlayerDie)
+        {
+            GetTarget(true);
             return;
+        }
         Recovery();
         ElapseTime();
         nearestTarget = GetTarget(true);
@@ -216,12 +219,22 @@ public class PlayerController : MonoBehaviour
     //그리고 결과로 가져온 타겟의 Transform을 반환한다.
     public Transform GetTarget(bool nearest)
     {
+        if (isPlayerDie)
+            attackRange = 100;
+
         targets = Physics2D.OverlapCircleAll(new Vector2(0, 1), attackRange, LayerMask.GetMask("Enemy"));
         Transform resultTransform = null;
         float distance = nearest ? attackRange : 0;
 
         foreach (Collider2D target in targets)
         {
+            if (isPlayerDie)
+            {
+                Enemy enemy = target.GetComponent<Enemy>();
+                if (enemy != null)
+                    enemy.GameOverDie();
+                continue;
+            }
             Vector3 playerPosition = transform.position;
             Vector3 targetPosition = target.transform.position;
             float curDistance = Vector3.Distance(playerPosition, targetPosition);
