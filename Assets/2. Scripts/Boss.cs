@@ -163,8 +163,8 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss Die");
         waveManager.isBossLive = false;
         bossDieEffect.SetActive(true);
-        if(bossType == 0 || bossType == 1)
-            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        if (bossType == 0 || bossType == 1)
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         else
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("BossDieEffectEnd", 1.5f);
@@ -173,7 +173,7 @@ public class Boss : MonoBehaviour
     {
         bossDieEffect.SetActive(true);
         if(bossType == 0 || bossType == 1)
-            gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         else
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("BossDieEffectEnd", 1.5f);
@@ -189,9 +189,12 @@ public class Boss : MonoBehaviour
 IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
+        
         //enemyList.Clear();
         for (int i = 0; i < targetPoints.Length; i++)
         {
+            this.gameObject.transform.DOShakeScale(0.3f, 1f, 10, 90, false, ShakeRandomnessMode.Full);
+
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
             enemy.GetComponent<Enemy>().SetEnemyState(2, 1, 0, 0);
             enemy.transform.position = spawnPoints[i/3].position;
