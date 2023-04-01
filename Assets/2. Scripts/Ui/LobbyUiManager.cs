@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class LobbyUiManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LobbyUiManager : MonoBehaviour
     // Activate UI Animations and set UI informations containing user data
 
     #region UI Components
+    //main ui
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
@@ -21,7 +23,10 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Image[] fragmentButtons;   // reference to 3 buttons at the bottom
     [SerializeField] private Text jemCount;
     [SerializeField] private Text highScore;
+    [SerializeField] private Image jemIcon;
+    [SerializeField] private ParticleSystem uiParticle;
 
+    //parts ui
     [SerializeField] private Text selectedPartsName;
     [SerializeField] private Text selectedPartsDescription;
     [SerializeField] private GameObject selectedPartsImage;
@@ -42,6 +47,8 @@ public class LobbyUiManager : MonoBehaviour
     private float moveY = 1;
     private float xScreenHalfSize;
     private float yScreenHalfSize;
+    private Vector3 originalJemScale;
+    private bool isTweening=false;
     private GameObject target;      // reference to the selected fragment
     private GameObject currentPart; // reference to the currently equiped part obj
     private bool isConvertingUi = false;
@@ -99,6 +106,7 @@ public class LobbyUiManager : MonoBehaviour
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
+        originalJemScale = jemIcon.transform.localScale;
     }
 
     private void MoveBackground()
@@ -354,6 +362,25 @@ public class LobbyUiManager : MonoBehaviour
         LocalDatabaseManager.instance.JemCount = int.Parse( input.text);
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
         LocalDatabaseManager.instance.SaveGameData();
+
+        // Stop the particle system
+        uiParticle.Stop();
+        // Clear any existing particles
+        uiParticle.Clear();
+        // Start the particle system
+        uiParticle.Play();
+    }
+
+    public void JemParticleEffect()
+    {
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            jemIcon.transform.DOPunchScale(originalJemScale * 0.5f, 0.1f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
     }
 
     public void OnAdsButtonClick()
