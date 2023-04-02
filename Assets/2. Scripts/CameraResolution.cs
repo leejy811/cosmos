@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraResolution : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector3 originPos;
     void Start()
     {
         Camera camera = GetComponent<Camera>();
@@ -28,12 +28,6 @@ public class CameraResolution : MonoBehaviour
 
     private void OnPreCull() => GL.Clear(true, true, Color.black);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    Vector3 originPos;
     public void Shake()
     {
         StartCoroutine("CameraShake");
@@ -41,7 +35,6 @@ public class CameraResolution : MonoBehaviour
 
     private IEnumerator CameraShake()
     {
-
         float timer = 0;
         while(timer <= 0.5)
         {
@@ -51,5 +44,4 @@ public class CameraResolution : MonoBehaviour
         }
         transform.localPosition = originPos;
     }
-    
 }
