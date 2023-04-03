@@ -133,6 +133,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Barrier")
         {
+            if (enemyType == "EnemyC")
+                return;
             enemySpeed *= 1 / other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
     }
