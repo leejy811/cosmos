@@ -78,7 +78,7 @@ public class PartsContorller : Bullet
 
         Init(nearTarget);
 
-        if (partsType == "Missile")
+        if (partsType == "Missile" && value[2] != 0)
             partsRange = value[2];
         else if (partsType == "Laser")
             LaserInit();

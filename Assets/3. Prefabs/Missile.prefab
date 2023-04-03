@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 5
   partsType: Missile
-  partsRange: 1
+  partsRange: 2
   partsDamage: 0
   partsValue: 0
   player: {fileID: 0}
