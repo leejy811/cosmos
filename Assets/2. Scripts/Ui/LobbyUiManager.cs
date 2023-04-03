@@ -131,8 +131,9 @@ public class LobbyUiManager : MonoBehaviour
     /// <summary>
     /// Make Fade-out effect when the 'Battle' button clicked
     /// </summary>
-    public void ChangeScene()
+    public void ChangeScene(bool useTicket)
     {
+        LocalDatabaseManager.instance.isTicketMode = useTicket;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         StartCoroutine("FadeOut");
     }
@@ -390,8 +391,13 @@ public class LobbyUiManager : MonoBehaviour
 
     public void EndAdsReward()
     {
-        LocalDatabaseManager.instance.JemCount = 123;
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        ChangeScene(true);
+    }
+
+    public void OnClickUseTicketButton()
+    {
+        LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
+        ChangeScene(true);
     }
 }
