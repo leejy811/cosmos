@@ -23,6 +23,9 @@ public class SkillManager : MonoBehaviour
     private string currentParts;
     private float[] partsValue = new float[3];
 
+    [SerializeField] 
+    private GameObject shield;
+
     //Start 함수에선 각 발사 코루틴의 실행을 담당하는데 어떤파츠를 가지고 있냐에 따른 예외처리 예정이다.
     private void Start()
     {
@@ -35,7 +38,10 @@ public class SkillManager : MonoBehaviour
         {
             barrier.Init(null, partsValue);
             gameObject.GetComponent<PlayerController>().playerShield = (int)partsValue[2];
+            SetShieldText((int)partsValue[2]);
             barrier.gameObject.SetActive(true);
+            if ((int)partsValue[2] != 0)
+                SetShieldActive(true);
             return;
         }
         else if (currentParts == "Laser")
@@ -91,5 +97,16 @@ public class SkillManager : MonoBehaviour
         parts.transform.position = transform.position;
         parts.player = GameManger.instance.player;
         parts.Init(Target, partsValue);
+    }
+
+    public void SetShieldActive(bool active)
+    {
+        shield.GetComponentInChildren<MeshRenderer>().sortingLayerName = "Player";
+        shield.SetActive(active);
+    }
+
+    public void SetShieldText(int shieldValue)
+    {
+        shield.GetComponentInChildren<TextMesh>().text = "X " + shieldValue.ToString();
     }
 }
