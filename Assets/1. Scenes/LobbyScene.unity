@@ -4242,13 +4242,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7324b649117cb474e8697518a086a634, type: 3}
   - name: StatusUpgradeSound
     clip: {fileID: 8300000, guid: 4277dd5afa806b049ae1c15108d6b0d3, type: 3}
+  - name: BossAppear
+    clip: {fileID: 8300000, guid: f0f8399a72724d74996ad2a0e669d4ce, type: 3}
   bgm:
   - name: LobbyBGM
     clip: {fileID: 8300000, guid: fb23b1a3ec070264fbfe8155c6eeb707, type: 3}
   - name: InGameBGM
     clip: {fileID: 8300000, guid: 5b88f03ec64bd7346ad57a34e0f73da9, type: 3}
-  - name: BossBGM
-    clip: {fileID: 8300000, guid: bc025b234780f114f9fa1d3dfb6af054, type: 3}
+  - name: BossA
+    clip: {fileID: 8300000, guid: 67d1d63cd893587499f5118076324dd7, type: 3}
+  - name: BossB
+    clip: {fileID: 8300000, guid: 162b1eff91d405340b0368560b99c8ce, type: 3}
   bgmPlayer: {fileID: 865386065}
   sfxPlayer:
   - {fileID: 865386064}
