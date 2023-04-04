@@ -179,7 +179,16 @@ public class PlayerController : MonoBehaviour
 
         if(playerShield > 0 )
         {
+            GameManger.instance.cameraResolution.Shake();
+            GameManger.instance.UiManager.StartDamageEffect();
+            SoundManager.instance.PlaySFX("PlayerHitSound");
             playerShield -= 1;
+            if (playerShield == 0)
+            {
+                gameObject.GetComponent<SkillManager>().SetShieldActive(false);
+                return;
+            }
+            gameObject.GetComponent<SkillManager>().SetShieldText(playerShield);
             return;
         }
 
