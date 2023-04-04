@@ -73,10 +73,10 @@ public class LobbyUiManager : MonoBehaviour
         "Enemies couldn't\r\nGet Close to You!"};
     private string[,,] partsInfo = new string[4, 3, 2]
     {
-        {{"Parts Damage","Increase Missile Damage +"},{ "Parts Speed","Increase Missile Speed +"},{ "Abilities","Increase Missile Range"} },
-        {{"Parts Damage","Increase Laser Damage +"},{ "Parts Speed","Increase Laser Speed +"},{ "Abilities","Make Another Laser"} },
-        {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
-        {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
+        {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Make Another Laser"} },
+        {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
+        {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }
     };
     #endregion
 
@@ -351,8 +351,10 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetPartsUpgradeJemText()
     {
-        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]].ToString();
-        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]].ToString();
+        int description1 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]] * 100);
+        int description2 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]] * 100);
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + description1.ToString();
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + description2.ToString();
         ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
 
 
