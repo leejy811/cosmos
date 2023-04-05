@@ -38,11 +38,6 @@ public class SkillManager : MonoBehaviour
             barrier.gameObject.SetActive(true);
             return;
         }
-        else if (currentParts == "Laser")
-        {
-            if (partsValue[2] == 1)
-                randomLaserPoints = gameObject.GetComponentsInChildren<Transform>();
-        }
 
         StartCoroutine(ShootParts(currentParts));
     }
