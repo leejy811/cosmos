@@ -39,6 +39,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability1UpgradeJem;
     [SerializeField] private Text ability2UpgradeJem;
     [SerializeField] private Text ability3UpgradeJem;
+    [SerializeField] private Image[] partsUpgradeButtons;
     #endregion
 
     #region Member Variables
@@ -56,7 +57,8 @@ public class LobbyUiManager : MonoBehaviour
     private float fadeoutTime = 1f;
     private int selectedPartsIdx = -1;
     private string currentParts;
-    int[] partsUpgradeInfo;
+    private int[] partsUpgradeInfo;
+    private float punchScale = 0.2f;
     private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
     {
         {"Missile",0 },
@@ -71,10 +73,10 @@ public class LobbyUiManager : MonoBehaviour
         "Enemies couldn't\r\nGet Close to You!"};
     private string[,,] partsInfo = new string[4, 3, 2]
     {
-        {{"Parts Damage","Increase Missile Damage +"},{ "Parts Speed","Increase Missile Speed +"},{ "Abilities","Increase Missile Range"} },
-        {{"Parts Damage","Increase Laser Damage +"},{ "Parts Speed","Increase Laser Speed +"},{ "Abilities","Make Another Laser"} },
-        {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
-        {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
+        {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Make Another Laser"} },
+        {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
+        {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }
     };
     #endregion
 
@@ -304,14 +306,39 @@ public class LobbyUiManager : MonoBehaviour
     /// <param name="index">param indicated 'which' button clicked, the order matters</param>
     public void OnUpgradeButtonClicked(int index)
     {
+        bool returnFlag = false;
+        Vector3 originalScale= partsUpgradeButtons[index].transform.localScale;
+
         // return if current value is already max
         if (partsUpgradeInfo[index] >= LocalDatabaseManager.instance.MaxUpgradeInfo[index])
-            return;
+            returnFlag=true;
         // return if current jem is insufficient
-        if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+        else if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+            returnFlag = true;
+
+        if (returnFlag)
+        {
+            SoundManager.instance.PlaySFX("ButtonDenied");
+            if (!isTweening)    // Prevent multi-clicking
+            {
+                isTweening = true;
+                partsUpgradeButtons[index].transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+                {
+                    isTweening = false;
+                });
+            }
             return;
+        }
 
         SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            partsUpgradeButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
 
         // set Local data & UI components
         LocalDatabaseManager.instance.JemCount -= LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]];
@@ -324,8 +351,10 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetPartsUpgradeJemText()
     {
-        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]].ToString();
-        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]].ToString();
+        int description1 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]] * 100);
+        int description2 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]] * 100);
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + description1.ToString();
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + description2.ToString();
         ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
 
 
