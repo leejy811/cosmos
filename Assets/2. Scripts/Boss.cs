@@ -159,28 +159,24 @@ public class Boss : MonoBehaviour
     }
     private void DamageEffect(float damage)
     {
+        // 보스의 원래 색과 빨간색 저장
         Color targetColor = new Color(255, 0, 0, 255);
         Color bossColor;
-        if (bossType == 0 && bossType == 1)
-            bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
-        else
-            bossColor = this.gameObject.transform.GetComponent<Renderer>().material.color;
+        bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
+
+        // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
         if (bossType == 0)
             this.gameObject.transform.DOShakeScale(0.3f, 0.2f, 5, 90, false, ShakeRandomnessMode.Full);
-        if (bossType == 0 && bossType == 1)
-        {
-            this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
-            this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.1f);
-        }
-        else
-        {
-            this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
-            this.gameObject.transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.1f);
-        }
+
+        // 빠르게 색 변환
+        this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.08f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.08f);
+
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
-        hudText.GetComponent<DamageText>().damage = damage;
+        hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
     }
+    
     public void BossDie()
     {
         Debug.Log("Boss Die");
@@ -225,6 +221,7 @@ IEnumerator BossAPattern()
 
 
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
+            // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
             enemy.GetComponent<Enemy>().SetEnemyState(2, 1, 0, 0);
             enemy.transform.position = spawnPoints[i/3].position;
             enemy.GetComponent<Enemy>().targetPos = targetPoints[i].position;
@@ -242,6 +239,7 @@ IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(0.5f);
         GameObject bossCSpawnEnemy = GameManger.instance.poolManager.GetPool("BossCSpawnEnemy");
+        // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
         bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(1, 1, 1, 1);
         bossCSpawnEnemy.transform.position = this.transform.position;
         bossCSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
@@ -277,6 +275,7 @@ IEnumerator BossAPattern()
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
+            // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
             bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(0, 1, 2, 1);
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
@@ -290,7 +289,6 @@ IEnumerator BossAPattern()
         yield return new WaitForSeconds(5f);
 
     }
-    // Boss D 가 레이저 쏘는 코루틴 만들어주세염
      IEnumerator BossDShootLaser()
     {
 

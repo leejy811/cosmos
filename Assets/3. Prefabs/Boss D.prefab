@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8119299994556774595}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &3582314124452978504
 ParticleSystem:
@@ -4901,9 +4901,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8119299994556774595}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8119299994556774598
+--- !u!1 &8000998753356363077
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4911,44 +4911,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8119299994556774595}
-  - component: {fileID: 8119299994556774592}
-  - component: {fileID: 8119299994556774621}
-  - component: {fileID: 7230822414901233152}
-  - component: {fileID: 1910652348110667771}
-  m_Layer: 6
-  m_Name: Boss D
-  m_TagString: Boss
+  - component: {fileID: 6335899630931326910}
+  - component: {fileID: 1662741444356517170}
+  m_Layer: 0
+  m_Name: Boss Sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8119299994556774595
+--- !u!4 &6335899630931326910
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8119299994556774598}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 8000998753356363077}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5021594607862781980}
-  - {fileID: 4456076450189618115}
-  - {fileID: 7862834121097520347}
-  - {fileID: 8162484152479470450}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 8119299994556774595}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8119299994556774592
+--- !u!212 &1662741444356517170
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8119299994556774598}
+  m_GameObject: {fileID: 8000998753356363077}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4988,12 +4981,51 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12, y: 12}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8119299994556774598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8119299994556774595}
+  - component: {fileID: 8119299994556774621}
+  - component: {fileID: 7230822414901233152}
+  - component: {fileID: 1910652348110667771}
+  m_Layer: 6
+  m_Name: Boss D
+  m_TagString: Boss
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8119299994556774595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119299994556774598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6335899630931326910}
+  - {fileID: 5021594607862781980}
+  - {fileID: 4456076450189618115}
+  - {fileID: 7862834121097520347}
+  - {fileID: 8162484152479470450}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8119299994556774621
 Rigidbody2D:
   serializedVersion: 4
@@ -5093,7 +5125,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8119299994556774595}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7142454557282325121
 PrefabInstance:
@@ -5104,7 +5136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1009225688092800602, guid: c59364c141d2a51489b57e9b8e6e3895, type: 3}
       propertyPath: m_LocalPosition.x

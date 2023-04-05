@@ -242,6 +242,10 @@ public class PlayerController : MonoBehaviour
                 Enemy enemy = target.GetComponent<Enemy>();
                 if (enemy != null)
                     enemy.GameOverDie();
+                if(enemy == null)
+                {
+                    target.GetComponent<Boss>().GameOverDie();
+                }
                 continue;
             }
             Vector3 playerPosition = transform.position;
@@ -276,11 +280,9 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Boss")
         {
-            Boss bossB = collision.GetComponent<Boss>();
-            bossB.BossDie();
-           
             PlayerDie();
         }
+        // 보스 D 레이저 데미지 수정
         if (collision.gameObject.tag == "BossLaser")
         {
             GetDamage(0.5f);

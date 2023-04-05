@@ -16,15 +16,15 @@ public class DamageText : MonoBehaviour
     {
         this.GetComponent<MeshRenderer>().sortingLayerName = "Player";
         text = GetComponent<TextMeshPro>();
-        text.text = damage.ToString("F1");
+        text.text = damage.ToString();
         textColor = text.color;
     }
 
     void Update()
     {
-        if (text.text != damage.ToString("F1"))
+        if (text.text != damage.ToString())
         {
-            text.text = damage.ToString("F1");
+            text.text = damage.ToString();
         }
         transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime, 0));
         textColor.a = Mathf.Lerp(textColor.a, 0, Time.deltaTime * colorSpeed);
