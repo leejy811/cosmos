@@ -46,42 +46,42 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerDie;
 
     //Player 스탯 LevelUp 관련 함수들
-    public void PlayerDamageLevelUp()
+    public bool PlayerDamageLevelUp()
     {
         if (playerGold < playerDamageCost)
-            return;
-        SoundManager.instance.PlaySFX("StatusUpgradeSound");
+            return false;
         PayGold(playerDamageCost);
         playerDamage += 0.1f;
         playerDamageCost += 2;
+        return true;
     }
-    public void PlayerAttackSpeedLevelUp()
+    public bool PlayerAttackSpeedLevelUp()
     {
         if (playerGold < playerAtkSpeedCost)
-            return;
-        SoundManager.instance.PlaySFX("StatusUpgradeSound");
+            return false;
         PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.05f;
         playerAtkSpeedCost += 2;
+        return true;
     }
-    public void PlayerMaxHealthLevelUp()
+    public bool PlayerMaxHealthLevelUp()
     {
         if (playerGold < playerMaxHealthCost)
-            return;
-        SoundManager.instance.PlaySFX("StatusUpgradeSound");
+            return false;
         PayGold(playerMaxHealthCost);
         maxPlayerHealth += 3f;
         playerHealth += 3f;
         playerMaxHealthCost += 5;
+        return true;
     }
-    public void PlayerHealthRecorveryLevelUp()
+    public bool PlayerHealthRecorveryLevelUp()
     {
         if (playerGold < playerHealthRecorveryCost)
-            return;
-        SoundManager.instance.PlaySFX("StatusUpgradeSound");
+            return false;
         PayGold(playerHealthRecorveryCost);
         playerHealthRecorvery += 0.1f;
-        playerHealthRecorveryCost += 5; 
+        playerHealthRecorveryCost += 5;
+        return true;
     }
 
     //PayGold는 playerGold를 지불하는 함수이다.
