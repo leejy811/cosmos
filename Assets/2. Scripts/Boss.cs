@@ -33,6 +33,9 @@ public class Boss : MonoBehaviour
     bool bossCPattern;
     bool bossDPattern;
 
+    private bool colorEffectOn;
+    Color targetColor = new Color(255, 0, 0, 255);
+    Color bossColor;
     [SerializeField]
     private GameObject bossDLaser;
     [SerializeField]
@@ -47,6 +50,8 @@ public class Boss : MonoBehaviour
         bossDPattern = true;
 
         waveManager.isBossLive = true;
+        bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.color;
+
     }
 
     public void BossLookPlayer()
@@ -149,7 +154,7 @@ public class Boss : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        DamageEffect(damage);
+        FloatingDamageEffect(damage);
         if (bossHealth - damage <= 0)
         {
             BossDie();
@@ -157,26 +162,43 @@ public class Boss : MonoBehaviour
         else
             bossHealth -= damage;
     }
-    private void DamageEffect(float damage)
+    private void FloatingDamageEffect(float damage)
     {
-        // 보스의 원래 색과 빨간색 저장
-        Color targetColor = new Color(255, 0, 0, 255);
-        Color bossColor;
-        bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
-
+        //if(!colorEffectOn)
+        //{
+        //    StartCoroutine("ColorEffect");
+        //    colorEffectOn = true;
+        //}
         // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
-        if (bossType == 0)
-            this.gameObject.transform.DOShakeScale(0.3f, 0.2f, 5, 90, false, ShakeRandomnessMode.Full);
+        if (bossType == 0 || bossType == 3)
+            this.gameObject.transform.DOShakeScale(0.1f, 0.1f, 1, 90, true, ShakeRandomnessMode.Full);
+        // 보스의 원래 색과 빨간색 저장
 
-        // 빠르게 색 변환
-        this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.08f);
-        this.gameObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.DOColor(bossColor, 0.08f);
 
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.1f);
+
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
         hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
     }
-    
+    //IEnumerator ColorEffect()
+    //{
+    //    // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
+    //    if (bossType == 0 && bossType == 3)
+    //        this.gameObject.transform.DOShakeScale(0.2f, 0.1f, 2, 90, false, ShakeRandomnessMode.Full);
+    //    // 보스의 원래 색과 빨간색 저장
+    //    Color targetColor = new Color(255, 0, 0, 255);
+    //    Color bossColor;
+    //    bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.color;
+    //    this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.1f);
+
+    //    yield return new WaitForSeconds(0.3f);
+
+    //    // 빠르게 색 변환
+    //    this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.1f);
+    //    colorEffectOn = false;
+    //}
     public void BossDie()
     {
         Debug.Log("Boss Die");
