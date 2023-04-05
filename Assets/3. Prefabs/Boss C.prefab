@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossType: 2
-  bossHealth: 600
+  bossHealth: 1e+10
   bossSpeed: 2
   spawnPoints: []
   targetPoints: []
