@@ -12,10 +12,9 @@ public class LobbyUiManager : MonoBehaviour
 
     #region UI Components
     //main ui
-    [SerializeField] private GameObject mainUI;
+    [SerializeField] private RectTransform mainUiContainer;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
-    [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
     [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Animation fragmentChangeAnim;
@@ -53,6 +52,7 @@ public class LobbyUiManager : MonoBehaviour
     private GameObject target;      // reference to the selected fragment
     private GameObject currentPart; // reference to the currently equiped part obj
     private bool isConvertingUi = false;
+    private int currentFragment = 0;
     private float currentTime = 0f;  
     private float fadeoutTime = 1f;
     private int selectedPartsIdx = -1;
@@ -206,52 +206,43 @@ public class LobbyUiManager : MonoBehaviour
     /// Convet to each Fragment by setting their parents and activate the animation
     /// </summary>
     /// <param name="targetFragment"></param>
-    public void OnClickFragmentChange(GameObject targetFragment)
+    public void OnClickFragmentChange(int targetFragment)
     {
-        // Do nothing if selecting current fragment or already converting fragments
-        if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingUi)
+        if (currentFragment == targetFragment || isConvertingUi)
             return;
+
         isConvertingUi = true;
         SoundManager.instance.PlaySFX("BasicButtonSound");
 
         // Set the alpha value of each fragment button(if selected, assign 1)
         foreach (Image i in fragmentButtons)
             ButtonAlphaChange(i, 0.3f);
-        switch (targetFragment.transform.name)
+        switch (targetFragment)
         {
-            case "TitleFragment":
+            case 0:
                 ButtonAlphaChange(fragmentButtons[0], 1f);
                 break;
-            case "PartsFragment":
+            case 1:
                 ButtonAlphaChange(fragmentButtons[1], 1f);
                 break;
-            case "ExtraFragment":
+            case 2:
                 ButtonAlphaChange(fragmentButtons[2], 1f);
                 break;
         }
 
-        target = targetFragment;
-        targetFragment.transform.SetParent(nextFragment.transform);
-        targetFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
-        fragmentChangeAnim.Play("FragmentChangeAnim");
-        Invoke("OnEndChangeAnimation", 1f);
+        float moveAmount = (currentFragment - targetFragment) * 1440;
+        currentFragment = targetFragment;
+        StartCoroutine(MoveFragment(moveAmount));
     }
 
-    private void OnEndChangeAnimation()
+    // use Coroutine + DOTween
+    IEnumerator MoveFragment(float distance)
     {
-        // set default parent to converted fragments(prevent unwanted movemetns of the converted fragments while initiallization)
-        target.transform.SetParent(mainUI.transform);
-        currentFragment.transform.GetChild(0).transform.SetParent(mainUI.transform);
-
-        // initiallize position to animation start pos
-        currentFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        nextFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(1440, 0);
-
-        target.transform.SetParent(currentFragment.transform);
-        target.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        isConvertingUi = false;
+        var tween = mainUiContainer.DOLocalMoveX(mainUiContainer.localPosition.x+ distance, 1f);
+        yield return tween.WaitForCompletion();
+        isConvertingUi = false; //enable fragment change after converting finished
     }
+
 
     /// <summary>
     /// OnClick Parts Upgrade button
