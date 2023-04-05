@@ -26,8 +26,6 @@ public class CameraResolution : MonoBehaviour
         camera.rect = rect;
     }
 
-    private void OnPreCull() => GL.Clear(true, true, Color.black);
-
     public void Shake()
     {
         StartCoroutine("CameraShake");
