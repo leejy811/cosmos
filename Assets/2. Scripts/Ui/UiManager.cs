@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
 
 public class UiManager : MonoBehaviour
 {
@@ -33,12 +34,16 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private Text timeScaleText;
+    [SerializeField] private Image[] statButtons;
+    [SerializeField] private float punchScale = 0.2f;
+    [SerializeField] private float punchPosition = 20f;
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
 
     #region Member Variables
     private bool isFold = false;
+    private bool isTweening = false;
     private float currentTime = 0f;
     private float fadeInTime = 2f;
     private Vector2 moveDir;
@@ -158,7 +163,10 @@ public class UiManager : MonoBehaviour
     }
     public void OnAttackUpButton()
     {
-        GameManger.instance.player.PlayerDamageLevelUp();
+        if(GameManger.instance.player.PlayerDamageLevelUp())
+            ButtonAccepted(0);
+        else
+            ButtonDenied(0);
         curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
@@ -166,21 +174,30 @@ public class UiManager : MonoBehaviour
 
     public void OnSpeedUpButton()
     {
-        GameManger.instance.player.PlayerAttackSpeedLevelUp();
+        if (GameManger.instance.player.PlayerAttackSpeedLevelUp())
+            ButtonAccepted(1);
+        else
+            ButtonDenied(1);
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
     }
 
     public void OnHpUpButton()
     {
-        GameManger.instance.player.PlayerMaxHealthLevelUp();
+        if (GameManger.instance.player.PlayerMaxHealthLevelUp())
+            ButtonAccepted(2);
+        else
+            ButtonDenied(2);
         currentHp.text = GameManger.instance.player.maxPlayerHealth.ToString();
         hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
     }
 
     public void OnRecoveryUpButton()
     {
-        GameManger.instance.player.PlayerHealthRecorveryLevelUp();
+        if (GameManger.instance.player.PlayerHealthRecorveryLevelUp())
+            ButtonAccepted(3);
+        else
+            ButtonDenied(3);
         currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
@@ -193,7 +210,32 @@ public class UiManager : MonoBehaviour
             bottomUiAnim.Play("BottomUiCloseAnim");
         isFold = !isFold;
     }
+    private void ButtonAccepted(int index)
+    {
+        SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        Vector3 originalScale = statButtons[index].transform.localScale;
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            statButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+    }
 
+    private void ButtonDenied(int index)
+    {
+        SoundManager.instance.PlaySFX("ButtonDenied");
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            statButtons[index].transform.DOPunchPosition(new Vector3(punchPosition, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+    }
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
