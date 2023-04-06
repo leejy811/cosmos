@@ -171,7 +171,10 @@ public class Boss : MonoBehaviour
         //}
         // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
         if (bossType == 0 || bossType == 3)
-            this.gameObject.transform.DOShakeScale(0.1f, 0.1f, 1, 90, true, ShakeRandomnessMode.Full);
+        {
+            this.gameObject.transform.DOShakeScale(0.2f, 0.1f, 1, 90, true, ShakeRandomnessMode.Full);
+            this.gameObject.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetDelay(0.5f);
+        }
         // 보스의 원래 색과 빨간색 저장
 
 
