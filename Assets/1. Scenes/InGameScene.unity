@@ -5984,7 +5984,6 @@ GameObject:
   - component: {fileID: 189753289}
   - component: {fileID: 189753288}
   - component: {fileID: 189753287}
-  - component: {fileID: 189753290}
   m_Layer: 5
   m_Name: RecoveryUpGold
   m_TagString: Untagged
@@ -6107,19 +6106,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189753285}
   m_CullTransparentMesh: 1
---- !u!114 &189753290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189753285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e28352d80dccc4ca6b2a931cc9ec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchScale: 0.1
 --- !u!1 &193796909
 GameObject:
   m_ObjectHideFlags: 0
@@ -8293,7 +8279,6 @@ GameObject:
   - component: {fileID: 554931968}
   - component: {fileID: 554931967}
   - component: {fileID: 554931966}
-  - component: {fileID: 554931969}
   m_Layer: 5
   m_Name: SpeedUpGold
   m_TagString: Untagged
@@ -8416,19 +8401,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554931964}
   m_CullTransparentMesh: 1
---- !u!114 &554931969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554931964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e28352d80dccc4ca6b2a931cc9ec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchScale: 0.1
 --- !u!1 &566716644
 GameObject:
   m_ObjectHideFlags: 0
@@ -13273,7 +13245,6 @@ GameObject:
   - component: {fileID: 1335125388}
   - component: {fileID: 1335125387}
   - component: {fileID: 1335125389}
-  - component: {fileID: 1335125390}
   m_Layer: 5
   m_Name: AtkUpGold
   m_TagString: Untagged
@@ -13396,19 +13367,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1335125390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335125385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e28352d80dccc4ca6b2a931cc9ec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchScale: 0.1
 --- !u!1 &1337381162
 GameObject:
   m_ObjectHideFlags: 0
@@ -13798,7 +13756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1472476297
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16199,7 +16157,6 @@ GameObject:
   - component: {fileID: 1898891454}
   - component: {fileID: 1898891453}
   - component: {fileID: 1898891452}
-  - component: {fileID: 1898891455}
   m_Layer: 5
   m_Name: HpUpGold
   m_TagString: Untagged
@@ -16322,19 +16279,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898891450}
   m_CullTransparentMesh: 1
---- !u!114 &1898891455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898891450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e28352d80dccc4ca6b2a931cc9ec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchScale: 0.1
 --- !u!1 &1925925036
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,8 +34,10 @@ public class Boss : MonoBehaviour
     bool bossDPattern;
 
     private bool colorEffectOn;
-    Color targetColor = new Color(255, 0, 0, 255);
+
+    Color targetColor = new Color32(255, 0, 0, 80);
     Color bossColor;
+
     [SerializeField]
     private GameObject bossDLaser;
     [SerializeField]
@@ -176,9 +178,9 @@ public class Boss : MonoBehaviour
             this.gameObject.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetDelay(0.5f);
         }
 
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.1f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 1f);
 
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.1f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
         hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
@@ -216,10 +218,7 @@ public class Boss : MonoBehaviour
     public void GameOverDie()
     {
         bossDieEffect.SetActive(true);
-        if(bossType == 0 || bossType == 1)
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        else
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
         Invoke("BossDieEffectEnd", 1.5f);
     }
 
