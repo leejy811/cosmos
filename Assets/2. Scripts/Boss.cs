@@ -175,8 +175,6 @@ public class Boss : MonoBehaviour
             this.gameObject.transform.DOShakeScale(0.2f, 0.1f, 1, 90, true, ShakeRandomnessMode.Full);
             this.gameObject.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetDelay(0.5f);
         }
-        // 보스의 원래 색과 빨간색 저장
-
 
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.1f);
 
@@ -207,14 +205,11 @@ public class Boss : MonoBehaviour
         Debug.Log("Boss Die");
         waveManager.isBossLive = false;
         bossDieEffect.SetActive(true);
-        if (bossType == 0 || bossType == 1)
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        else
-        {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.tag = "Untagged";
-            gameObject.layer = 0;
-        }
+
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.tag = "Untagged";
+        gameObject.layer = 0;
+
 
         Invoke("BossDieEffectEnd", 1.5f);
     }
