@@ -29,6 +29,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Animator waveClearAnim;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject waveClearAnimBase;
+    [SerializeField] private GameObject attackRange;
+    [SerializeField] private GameObject safeArea;
     [SerializeField] private Image panel;
     [SerializeField] private Image bloodEffect;
     [SerializeField] private GameObject backgroundBase;
@@ -252,12 +254,23 @@ public class UiManager : MonoBehaviour
 
     public void CloseCanvas()
     {
-        this.gameObject.SetActive(false);
+        attackRange.gameObject.SetActive(false);
+        safeArea.gameObject.SetActive(false);
+    }
+
+    public void AddBloomIntensity(float value)
+    {
+        bloom.intensity.value += value;
     }
 
     public void SetBloomIntensity(float value)
     {
-        bloom.intensity.value += value;
+        bloom.intensity.value = value;
+    }
+
+    public float GetBloomIntensity()
+    {
+        return bloom.intensity.value;
     }
 
     public void PushRetryButton()

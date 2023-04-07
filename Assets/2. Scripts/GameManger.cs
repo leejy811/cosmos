@@ -45,12 +45,21 @@ public class GameManger : MonoBehaviour
                 Time.timeScale -= 0.2f * Time.fixedDeltaTime * weight;
             }
             catch { Time.timeScale = 0.1f; }
-            UiManager.SetBloomIntensity(weight);
+            UiManager.AddBloomIntensity(weight);
             weight += (Time.fixedDeltaTime / 3) * 2;
             yield return new WaitForFixedUpdate();
         }
-
-        SceneManager.LoadScene("GameOverScene");
+        
+        Time.timeScale = 1;
+        float intensity = 100;
+        UiManager.ActiveGameOverUI();
+        while (UiManager.GetBloomIntensity()>1.6f)
+        {
+            intensity = Mathf.Lerp(intensity, 1.5f, Time.deltaTime/2);
+            UiManager.SetBloomIntensity(intensity);
+            Debug.Log(UiManager.GetBloomIntensity());
+            yield return null;
+        }
     }
 
     public void RestartGame()
