@@ -7173,7 +7173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Ticket : 0'
+  m_Text: 
 --- !u!222 &392357162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8612,8 +8612,11 @@ MonoBehaviour:
   speedUpGold: {fileID: 100316434}
   currentHp: {fileID: 2043034073}
   hpUpGold: {fileID: 487558384}
-  resultJem: {fileID: 2021678834}
+  resultJem: {fileID: 2129364821}
   resultScore: {fileID: 1802319238}
+  resultHighScore: {fileID: 2021678834}
+  resultTicket: {fileID: 392357161}
+  resultTime: {fileID: 697744257}
   currentRecovery: {fileID: 156074754}
   recoveryUpGold: {fileID: 1823540101}
   waveCleaeAnimText: {fileID: 879419783}
@@ -9167,7 +9170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Play Time : 0'
+  m_Text: 
 --- !u!222 &697744258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15524,7 +15527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Wave : 0'
+  m_Text: 
 --- !u!222 &1802319239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16484,7 +16487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'High Score : 0'
+  m_Text: 
 --- !u!222 &2021678835
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16884,7 +16887,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Jem : 0'
+  m_Text: 
 --- !u!222 &2129364822
 CanvasRenderer:
   m_ObjectHideFlags: 0

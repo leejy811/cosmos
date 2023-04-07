@@ -22,6 +22,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text hpUpGold;
     [SerializeField] private Text resultJem;
     [SerializeField] private Text resultScore;
+    [SerializeField] private Text resultHighScore;
+    [SerializeField] private Text resultTicket;
+    [SerializeField] private Text resultTime;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Text waveCleaeAnimText;
@@ -241,8 +244,14 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
-        resultScore.text = "High Score : "+waveLevel.text;
-        resultJem.text = "Jem : "+jemCount.text;
+
+        Sequence resultSequence = DOTween.Sequence();
+        resultSequence.
+            Append(resultScore.DOText("Wave : " + waveLevel.text, 1.5f)).
+            Append(resultHighScore.DOText("High Score : " + LocalDatabaseManager.instance.HighScore, 1.5f)).
+            Append(resultJem.DOText("Jem : " + jemCount.text, 1.5f)).
+            Append(resultTicket.DOText("Ticket : ", 1.5f)).
+            Append(resultTime.DOText("Play Time : ",1.5f));
     }
 
     public void SaveGameResult()

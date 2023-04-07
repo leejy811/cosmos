@@ -52,14 +52,14 @@ public class GameManger : MonoBehaviour
         
         Time.timeScale = 1;
         float intensity = 100;
-        UiManager.ActiveGameOverUI();
-        while (UiManager.GetBloomIntensity()>1.6f)
+        while (UiManager.GetBloomIntensity()>20f)
         {
-            intensity = Mathf.Lerp(intensity, 1.5f, Time.deltaTime/2);
+            intensity = Mathf.Lerp(intensity, 1.5f, Time.deltaTime);
             UiManager.SetBloomIntensity(intensity);
-            Debug.Log(UiManager.GetBloomIntensity());
             yield return null;
         }
+        UiManager.SetBloomIntensity(1.5f);
+        UiManager.ActiveGameOverUI();
     }
 
     public void RestartGame()
