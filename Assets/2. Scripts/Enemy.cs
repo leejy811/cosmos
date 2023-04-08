@@ -230,8 +230,15 @@ public class Enemy : MonoBehaviour
         // 플레이어 닿았을 때 골드나 잼 안올라가게 하기
         if(!EnterPlayer)
         {
-            LocalDatabaseManager.instance.JemCount += enemyJem;
+            GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
+
+            int ranTicket = Random.Range(0, 1000);
+            if(ranTicket == 0)
+            {
+                LocalDatabaseManager.instance.Ticket += 1;
+                //파티클 이펙트
+            }
         }
         if(this.moveLerp)
             moveLerp = false;

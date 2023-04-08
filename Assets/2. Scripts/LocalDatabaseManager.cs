@@ -19,13 +19,18 @@ public class LocalDatabaseManager : MonoBehaviour
     public string CurrentParts { get; set; } = "Missile";
 
     //Parts Upgrade info, each index indicates how many times it had been upgraded
-    public int[] MaxUpgradeInfo { get; } = { 19, 19, 1 };
+    public int[] MaxUpgradeInfo { get; } = { 9, 9, 1 };
     public int[] PartsMissile { get; set; } = { 0, 0, 0};
     public int[] PartsBarrier { get; set; } = { 0, 0, 0};
     public int[] PartsLaser { get; set; } = { 0, 0, 0};
     public int[] PartsEmp { get; set; } = { 0, 0, 0};
     public int[] PartsValue { get; set; }
 
+    public int Ticket = 3;
+    public bool isTicketMode { get; set; } = false;
+
+    public int[] AchieveCurValue { get; set; }
+    public int[] AchieveCurLevel { get; set; }
 
     /// <summary>
     /// 사용법(기본적으로 3차원 배열 형태, 근데 딕셔너리를 사용해서 첫번째 원소는 파츠 이름으로 쉽게 알아볼수 있도록..)
@@ -39,23 +44,20 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         // 각 파츠별로 세 가지 속성(공격력, 공격 속도 - 공통, 특수 능력 해방 여부)- 순서대로
         //                                                 공격력                                                      공격속도                                     특수능력 해방(1이면 해방)
-        {"Missile",new float[3,20]{ { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 2.1f, 2.2f }, { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 2.1f, 2.2f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
-        {"Laser",new float[3,20]{ { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 2.1f, 2.2f }, { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 2.1f, 2.2f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
-        {"Barrier",new float[3,20]{ { 0.05f, 0.075f, 0.1f, 0.125f, 0.15f, 0.175f, 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f}, { 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f, 0.55f, 0.575f, 0.6f, 0.625f, 0.65f, 0.675f, 0.7f, 0.725f, 0.75f, 0.775f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
-        {"Emp",new float[3,20]{ { 0.15f, 0.175f, 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f, 0.55f, 0.575f, 0.6f, 0.625f}, { 0.01f, 0.02f, 0.03f, 0.04f, 0.05f, 0.06f, 0.07f, 0.08f, 0.09f, 0.1f, 0.11f, 0.12f, 0.13f, 0.14f, 0.15f, 0.16f, 0.17f, 0.18f, 0.19f, 0.2f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
+        {"Missile",new float[3,10]{ { 0.3f, 0.5f, 0.7f, 0.9f, 1.1f, 1.3f, 1.7f, 1.9f, 2.1f, 3f }, { 0.3f, 0.5f, 0.7f, 0.9f, 1.1f, 1.3f, 1.5f, 1.7f, 1.9f, 2.1f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
+        {"Laser",new float[3,10]{ { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f }, { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
+        {"Barrier",new float[3,10]{ { 0.05f, 0.1f, 0.15f, 0.2f, 0.25f, 0.3f, 0.35f, 0.4f, 0.45f, 0.5f }, { 0.3f, 0.35f, 0.4f, 0.45f, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
+        {"Emp",new float[3,10]{ { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }, { 0.04f, 0.08f, 0.12f, 0.16f, 0.2f, 0.24f, 0.28f, 0.32f, 0.36f, 0.4f }, { 1, 1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
     };
 
     // readonly data table of amount of the jem comsumtion for each parts' upgrade
     public int[,,] PartsUpgradeJem { get; } = {
-        {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
+        {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
+        {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
+        {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
+        {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
     };
-
-    public int[] AchieveCurValue { get; set; }
-    public int[] AchieveCurLevel { get; set; }
-
+    
     #endregion
 
     void Awake()
@@ -85,7 +87,6 @@ public class LocalDatabaseManager : MonoBehaviour
                 break;
         }
     }
-
     void Start()
     {
         AchieveCurValue = new int[12];
@@ -101,6 +102,8 @@ public class LocalDatabaseManager : MonoBehaviour
             JemCount = PlayerPrefs.GetInt("JemCount");
         if (PlayerPrefs.HasKey("HighScore"))
             HighScore = PlayerPrefs.GetInt("HighScore");
+        if (PlayerPrefs.HasKey("Ticket"))
+            HighScore = PlayerPrefs.GetInt("Ticket");
         if (PlayerPrefs.HasKey("CurrentParts"))
             CurrentParts = PlayerPrefs.GetString("CurrentParts");
 
@@ -139,6 +142,7 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetInt("HighScore", HighScore);
+        PlayerPrefs.SetInt("Ticket", Ticket);
         SaveAchieveData();
     }
 
@@ -187,10 +191,10 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         string temp = "";
         foreach (int value in AchieveCurValue)
-            temp += value.ToString() + "," ;
+            temp += value.ToString() + ",";
         PlayerPrefs.SetString("AchieveCurValue", temp);
         temp = "";
-        foreach(int level in AchieveCurLevel)
+        foreach (int level in AchieveCurLevel)
             temp += level.ToString() + ",";
         PlayerPrefs.SetString("AchieveCurLevel", temp);
     }
