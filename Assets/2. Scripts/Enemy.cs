@@ -133,6 +133,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Barrier")
         {
+            if (enemyType == "EnemyC")
+                return;
             enemySpeed *= 1 / other.gameObject.GetComponent<PartsContorller>().partsValue;
         }
     }
@@ -150,12 +152,11 @@ public class Enemy : MonoBehaviour
     }
     private void DamageEffect(float damage)
     {
-
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-        hudText.GetComponent<DamageText>().damage = damage;
+        hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
     }
 
     public float GetEnemyDamage()

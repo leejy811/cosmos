@@ -12,10 +12,9 @@ public class LobbyUiManager : MonoBehaviour
 
     #region UI Components
     //main ui
-    [SerializeField] private GameObject mainUI;
+    [SerializeField] private RectTransform mainUiContainer;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
-    [SerializeField] private GameObject currentFragment;
     [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
     [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Animation fragmentChangeAnim;
@@ -39,6 +38,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability1UpgradeJem;
     [SerializeField] private Text ability2UpgradeJem;
     [SerializeField] private Text ability3UpgradeJem;
+    [SerializeField] private Image[] partsUpgradeButtons;
     #endregion
 
     #region Member Variables
@@ -52,11 +52,13 @@ public class LobbyUiManager : MonoBehaviour
     private GameObject target;      // reference to the selected fragment
     private GameObject currentPart; // reference to the currently equiped part obj
     private bool isConvertingUi = false;
+    private int currentFragment = 0;
     private float currentTime = 0f;  
     private float fadeoutTime = 1f;
     private int selectedPartsIdx = -1;
     private string currentParts;
-    int[] partsUpgradeInfo;
+    private int[] partsUpgradeInfo;
+    private float punchScale = 0.2f;
     private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
     {
         {"Missile",0 },
@@ -71,10 +73,10 @@ public class LobbyUiManager : MonoBehaviour
         "Enemies couldn't\r\nGet Close to You!"};
     private string[,,] partsInfo = new string[4, 3, 2]
     {
-        {{"Parts Damage","Increase Missile Damage +"},{ "Parts Speed","Increase Missile Speed +"},{ "Abilities","Increase Missile Range"} },
-        {{"Parts Damage","Increase Laser Damage +"},{ "Parts Speed","Increase Laser Speed +"},{ "Abilities","Make Another Laser"} },
-        {{"Parts Damage","Increase Barrier Damage +"},{ "Parts Speed","Increase Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
-        {{"Parts Damage","Increase Emp Damage +"},{ "Parts Speed","Reduce Cool-Time +"},{ "Abilities","Additional Knock-Back Effect"} }
+        {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Make Another Laser"} },
+        {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
+        {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }
     };
 
     [SerializeField] AdsManager adsManager;
@@ -207,52 +209,43 @@ public class LobbyUiManager : MonoBehaviour
     /// Convet to each Fragment by setting their parents and activate the animation
     /// </summary>
     /// <param name="targetFragment"></param>
-    public void OnClickFragmentChange(GameObject targetFragment)
+    public void OnClickFragmentChange(int targetFragment)
     {
-        // Do nothing if selecting current fragment or already converting fragments
-        if (currentFragment.transform.GetChild(0) == targetFragment.transform || isConvertingUi)
+        if (currentFragment == targetFragment || isConvertingUi)
             return;
+
         isConvertingUi = true;
         SoundManager.instance.PlaySFX("BasicButtonSound");
 
         // Set the alpha value of each fragment button(if selected, assign 1)
         foreach (Image i in fragmentButtons)
             ButtonAlphaChange(i, 0.3f);
-        switch (targetFragment.transform.name)
+        switch (targetFragment)
         {
-            case "TitleFragment":
+            case 0:
                 ButtonAlphaChange(fragmentButtons[0], 1f);
                 break;
-            case "PartsFragment":
+            case 1:
                 ButtonAlphaChange(fragmentButtons[1], 1f);
                 break;
-            case "ExtraFragment":
+            case 2:
                 ButtonAlphaChange(fragmentButtons[2], 1f);
                 break;
         }
 
-        target = targetFragment;
-        targetFragment.transform.SetParent(nextFragment.transform);
-        targetFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
-        fragmentChangeAnim.Play("FragmentChangeAnim");
-        Invoke("OnEndChangeAnimation", 1f);
+        float moveAmount = (currentFragment - targetFragment) * 1440;
+        currentFragment = targetFragment;
+        StartCoroutine(MoveFragment(moveAmount));
     }
 
-    private void OnEndChangeAnimation()
+    // use Coroutine + DOTween
+    IEnumerator MoveFragment(float distance)
     {
-        // set default parent to converted fragments(prevent unwanted movemetns of the converted fragments while initiallization)
-        target.transform.SetParent(mainUI.transform);
-        currentFragment.transform.GetChild(0).transform.SetParent(mainUI.transform);
-
-        // initiallize position to animation start pos
-        currentFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        nextFragment.GetComponent<RectTransform>().anchoredPosition = new Vector2(1440, 0);
-
-        target.transform.SetParent(currentFragment.transform);
-        target.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        isConvertingUi = false;
+        var tween = mainUiContainer.DOLocalMoveX(mainUiContainer.localPosition.x+ distance, 1f);
+        yield return tween.WaitForCompletion();
+        isConvertingUi = false; //enable fragment change after converting finished
     }
+
 
     /// <summary>
     /// OnClick Parts Upgrade button
@@ -307,14 +300,39 @@ public class LobbyUiManager : MonoBehaviour
     /// <param name="index">param indicated 'which' button clicked, the order matters</param>
     public void OnUpgradeButtonClicked(int index)
     {
+        bool returnFlag = false;
+        Vector3 originalScale= partsUpgradeButtons[index].transform.localScale;
+
         // return if current value is already max
         if (partsUpgradeInfo[index] >= LocalDatabaseManager.instance.MaxUpgradeInfo[index])
-            return;
+            returnFlag=true;
         // return if current jem is insufficient
-        if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+        else if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+            returnFlag = true;
+
+        if (returnFlag)
+        {
+            SoundManager.instance.PlaySFX("ButtonDenied");
+            if (!isTweening)    // Prevent multi-clicking
+            {
+                isTweening = true;
+                partsUpgradeButtons[index].transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+                {
+                    isTweening = false;
+                });
+            }
             return;
+        }
 
         SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            partsUpgradeButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
 
         // set Local data & UI components
         LocalDatabaseManager.instance.JemCount -= LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]];
@@ -327,8 +345,10 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetPartsUpgradeJemText()
     {
-        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]].ToString();
-        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]].ToString();
+        int description1 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]] * 100);
+        int description2 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]] * 100);
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + description1.ToString();
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + description2.ToString();
         ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
 
 

@@ -45,11 +45,14 @@ public class WaveManager: MonoBehaviour
     private GameObject[] boss;
 
     private bool isBossWave;
+    private bool checkWave;
+
     public bool isBossLive;
     private int currenBossType;
     void Start()
     {
         isBossWave = false;
+        checkWave = false;
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
@@ -57,11 +60,11 @@ public class WaveManager: MonoBehaviour
     void Update()
     {
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
-            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave)
+            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave && checkWave)
         {
             GoNextWave();
         }
-        if(isBossWave && !isBossLive)
+        if(isBossWave && !isBossLive && checkWave)
         {
             if (CheckBossWaveEnd())
                 GoNextWave();
@@ -139,26 +142,8 @@ public class WaveManager: MonoBehaviour
                 BossSpawn(currentWave / 10);
                 break;
             }
-            //if (currentWave == 0)
-            //{
-            //    BossSpawn(0);
-            //    break;
-            //}
-            //if (currentWave == 1)
-            //{
-            //    BossSpawn(1);
-            //    break;
-            //}
-            //if (currentWave == 2)
-            //{
-            //    BossSpawn(2);
-            //    break;
-            //}
-            //if (currentWave == 3)
-            //{
-            //    BossSpawn(3);
-            //    break;
-            //}
+            checkWave = true;
+
             string ranType;
             int enemyT = Random.Range(0, 4);
             if(enemyT == 0)
@@ -177,10 +162,6 @@ public class WaveManager: MonoBehaviour
             {
                 ranType = "EnemyD";
             }
-            
-            // 모든 적 소환하면 코루틴 종료
-            if (currentACount == 0 && currentBCount == 0 && currentCCount == 0 && currentDCount == 0)
-                break;
 
             if (currentACount == 0 && ranType == "EnemyA")
                 continue;
@@ -191,17 +172,21 @@ public class WaveManager: MonoBehaviour
             else if (currentDCount == 0 && ranType == "EnemyD")
                 continue;
 
-            if (ranType == "EnemyA")
+            if (ranType == "EnemyA" && currentWave != 40)
                 currentACount--;
-            else if (ranType == "EnemyB")
+            else if (ranType == "EnemyB" && currentWave != 40)
                 currentBCount--;
-            else if (ranType == "EnemyC")
+            else if (ranType == "EnemyC" && currentWave != 40)
                 currentCCount--;
-            else if (ranType == "EnemyD")
+            else if (ranType == "EnemyD" && currentWave != 40)
                 currentDCount--;
 
             EnemySpawn(ranType);
             yield return new WaitForSeconds(waves[currentWave].spawnCoolTime);
+
+            // 모든 적 소환하면 코루틴 종료
+            if (currentACount == 0 && currentBCount == 0 && currentCCount == 0 && currentDCount == 0)
+                break;
         }
     }
     public void EnemySpawn(string type)

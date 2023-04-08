@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
 
 public class UiManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text hpUpGold;
     [SerializeField] private Text resultJem;
     [SerializeField] private Text resultScore;
+    [SerializeField] private Text resultHighScore;
+    [SerializeField] private Text resultTicket;
+    [SerializeField] private Text resultTime;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
     [SerializeField] private Text waveCleaeAnimText;
@@ -28,17 +32,23 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Animator waveClearAnim;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject waveClearAnimBase;
+    [SerializeField] private GameObject attackRange;
+    [SerializeField] private GameObject safeArea;
     [SerializeField] private Image panel;
     [SerializeField] private Image bloodEffect;
     [SerializeField] private GameObject backgroundBase;
     [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private Text timeScaleText;
+    [SerializeField] private Image[] statButtons;
+    [SerializeField] private float punchScale = 0.2f;
+    [SerializeField] private float punchPosition = 20f;
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
 
     #region Member Variables
     private bool isFold = false;
+    private bool isTweening = false;
     private float currentTime = 0f;
     private float fadeInTime = 2f;
     private Vector2 moveDir;
@@ -47,7 +57,9 @@ public class UiManager : MonoBehaviour
     private float xScreenHalfSize;
     private float yScreenHalfSize;
     private int timeScaleIdx = 0;
+    private float curAtk = 0;
     #endregion
+
 
     private void Awake()
     {
@@ -144,7 +156,8 @@ public class UiManager : MonoBehaviour
 
     private void SetPlayerState()
     {
-        currentAtk.text = GameManger.instance.player.playerDamage.ToString("F1");
+        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
@@ -155,28 +168,41 @@ public class UiManager : MonoBehaviour
     }
     public void OnAttackUpButton()
     {
-        GameManger.instance.player.PlayerDamageLevelUp();
-        currentAtk.text = GameManger.instance.player.playerDamage.ToString("F1");
+        if(GameManger.instance.player.PlayerDamageLevelUp())
+            ButtonAccepted(0);
+        else
+            ButtonDenied(0);
+        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }
 
     public void OnSpeedUpButton()
     {
-        GameManger.instance.player.PlayerAttackSpeedLevelUp();
+        if (GameManger.instance.player.PlayerAttackSpeedLevelUp())
+            ButtonAccepted(1);
+        else
+            ButtonDenied(1);
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
         speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
     }
 
     public void OnHpUpButton()
     {
-        GameManger.instance.player.PlayerMaxHealthLevelUp();
+        if (GameManger.instance.player.PlayerMaxHealthLevelUp())
+            ButtonAccepted(2);
+        else
+            ButtonDenied(2);
         currentHp.text = GameManger.instance.player.maxPlayerHealth.ToString();
         hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
     }
 
     public void OnRecoveryUpButton()
     {
-        GameManger.instance.player.PlayerHealthRecorveryLevelUp();
+        if (GameManger.instance.player.PlayerHealthRecorveryLevelUp())
+            ButtonAccepted(3);
+        else
+            ButtonDenied(3);
         currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
@@ -189,12 +215,43 @@ public class UiManager : MonoBehaviour
             bottomUiAnim.Play("BottomUiCloseAnim");
         isFold = !isFold;
     }
+    private void ButtonAccepted(int index)
+    {
+        SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        Vector3 originalScale = statButtons[index].transform.localScale;
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            statButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+    }
 
+    private void ButtonDenied(int index)
+    {
+        SoundManager.instance.PlaySFX("ButtonDenied");
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            statButtons[index].transform.DOPunchPosition(new Vector3(punchPosition, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+    }
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
-        resultScore.text = "High Score : "+waveLevel.text;
-        resultJem.text = "Jem : "+jemCount.text;
+
+        Sequence resultSequence = DOTween.Sequence();
+        resultSequence.
+            Append(resultScore.DOText("Wave : " + waveLevel.text, 1.5f)).
+            Append(resultHighScore.DOText("High Score : " + LocalDatabaseManager.instance.HighScore, 1.5f)).
+            Append(resultJem.DOText("Jem : " + jemCount.text, 1.5f)).
+            Append(resultTicket.DOText("Ticket : ", 1.5f)).
+            Append(resultTime.DOText("Play Time : ",1.5f));
     }
 
     public void SaveGameResult()
@@ -207,12 +264,23 @@ public class UiManager : MonoBehaviour
 
     public void CloseCanvas()
     {
-        this.gameObject.SetActive(false);
+        attackRange.gameObject.SetActive(false);
+        safeArea.gameObject.SetActive(false);
+    }
+
+    public void AddBloomIntensity(float value)
+    {
+        bloom.intensity.value += value;
     }
 
     public void SetBloomIntensity(float value)
     {
-        bloom.intensity.value += value;
+        bloom.intensity.value = value;
+    }
+
+    public float GetBloomIntensity()
+    {
+        return bloom.intensity.value;
     }
 
     public void PushRetryButton()

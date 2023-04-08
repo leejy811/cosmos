@@ -40,7 +40,6 @@ public class PartsContorller : Bullet
     {
         if (partsType == "Barrier")
         {
-            //gameObject.GetComponentInParent<SpriteRenderer>().color = Color.red;
             barrierAnimatior = gameObject.GetComponent<Animator>();
             partsRange = player.attackRange;
             StartCoroutine(BarrierAttack());
@@ -78,7 +77,7 @@ public class PartsContorller : Bullet
 
         Init(nearTarget);
 
-        if (partsType == "Missile")
+        if (partsType == "Missile" && value[2] != 0)
             partsRange = value[2];
         else if (partsType == "Laser")
             LaserInit();
@@ -209,7 +208,7 @@ public class PartsContorller : Bullet
     public void EndBarrierAttack()
     {
         barrierAnimatior.SetBool("IsAttack", false);
-        Debug.Log(barrierAnimatior.GetBool("IsAttack"));
+        barrierAnimatior.SetBool("IsTarget", false);
     }
 
     public void EndEmp()
