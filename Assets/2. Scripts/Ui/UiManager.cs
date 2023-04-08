@@ -137,7 +137,7 @@ public class UiManager : MonoBehaviour
     }
     void SetJem()
     {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+        jemCount.text = GameManger.instance.player.playerJem.ToString();
     }
     public void AddJem(int num=0)
     {
@@ -257,7 +257,8 @@ public class UiManager : MonoBehaviour
 
     public void SaveGameResult()
     {
-        LocalDatabaseManager.instance.JemCount += int.Parse(jemCount.text);
+        int currentGameJem = GameManger.instance.player.playerJem;
+        LocalDatabaseManager.instance.JemCount += LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
         LocalDatabaseManager.instance.SaveGameData();
     }

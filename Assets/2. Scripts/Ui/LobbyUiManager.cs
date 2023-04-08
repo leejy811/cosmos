@@ -78,6 +78,8 @@ public class LobbyUiManager : MonoBehaviour
         {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
         {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }
     };
+
+    [SerializeField] AdsManager adsManager;
     #endregion
 
     #region For Debug
@@ -131,8 +133,9 @@ public class LobbyUiManager : MonoBehaviour
     /// <summary>
     /// Make Fade-out effect when the 'Battle' button clicked
     /// </summary>
-    public void ChangeScene()
+    public void ChangeScene(bool useTicket)
     {
+        LocalDatabaseManager.instance.isTicketMode = useTicket;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         StartCoroutine("FadeOut");
     }
@@ -399,5 +402,22 @@ public class LobbyUiManager : MonoBehaviour
                 isTweening = false;
             });
         }
+    }
+
+    public void OnAdsButtonClick()
+    {
+        adsManager.ShowRewardedAd();
+    }
+
+    public void EndAdsReward()
+    {
+        ChangeScene(true);
+    }
+
+    public void OnClickUseTicketButton()
+    {
+        LocalDatabaseManager.instance.Ticket -= 10;
+        LocalDatabaseManager.instance.SaveGameData();
+        ChangeScene(true);
     }
 }
