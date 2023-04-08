@@ -29,7 +29,8 @@ public class LocalDatabaseManager : MonoBehaviour
     public int Ticket = 3;
     public bool isTicketMode { get; set; } = false;
 
-
+    public int[] AchieveCurValue { get; set; }
+    public int[] AchieveCurLevel { get; set; }
 
     /// <summary>
     /// 사용법(기본적으로 3차원 배열 형태, 근데 딕셔너리를 사용해서 첫번째 원소는 파츠 이름으로 쉽게 알아볼수 있도록..)
@@ -86,6 +87,11 @@ public class LocalDatabaseManager : MonoBehaviour
                 break;
         }
     }
+    void Start()
+    {
+        AchieveCurValue = new int[12];
+        AchieveCurLevel = new int[12];
+    }
 
     /// <summary>
     /// Load all data at the start of the Game, in Lobby Scene
@@ -137,6 +143,7 @@ public class LocalDatabaseManager : MonoBehaviour
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetInt("HighScore", HighScore);
         PlayerPrefs.SetInt("Ticket", Ticket);
+        SaveAchieveData();
     }
 
     /// <summary>
@@ -161,5 +168,34 @@ public class LocalDatabaseManager : MonoBehaviour
         foreach (int part in PartsEmp)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsEmp", temp);
+    }
+
+    public void LoadAchieveData()
+    {
+        string[] temp;
+        if (PlayerPrefs.HasKey("AchieveCurValue"))
+        {
+            temp = PlayerPrefs.GetString("AchieveCurValue").Split(',');
+            for (int i = 0; i < AchieveCurValue.Length; i++)
+                AchieveCurValue[i] = int.Parse(temp[i]);
+        }
+        if (PlayerPrefs.HasKey("AchieveCurLevel"))
+        {
+            temp = PlayerPrefs.GetString("AchieveCurLevel").Split(',');
+            for (int i = 0; i < AchieveCurLevel.Length; i++)
+                AchieveCurLevel[i] = int.Parse(temp[i]);
+        }
+    }
+
+    public void SaveAchieveData()
+    {
+        string temp = "";
+        foreach (int value in AchieveCurValue)
+            temp += value.ToString() + ",";
+        PlayerPrefs.SetString("AchieveCurValue", temp);
+        temp = "";
+        foreach (int level in AchieveCurLevel)
+            temp += level.ToString() + ",";
+        PlayerPrefs.SetString("AchieveCurLevel", temp);
     }
 }
