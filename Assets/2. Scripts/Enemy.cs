@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private int enemyPrice;
     private int enemyJem;
 
+    private bool deathDelay;
     [SerializeField]
     private Transform[] transforms;
 
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
         this.enemyPrice = enemyPrice;
         this.enemyJem = enemyJem;
         isEnemyLive = true;
+        deathDelay = true;
     }
     public void EnemyLookPlayer()
     {
@@ -87,9 +89,16 @@ public class Enemy : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(deathDelay)
+        {
+            Invoke("DeathDelayEnd", 1f);
+        }
         MoveEnemy();
     }
-
+    private void DeathDelayEnd()
+    {
+        deathDelay = false;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isEnemyLive)
@@ -141,6 +150,8 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        if (deathDelay)
+            return;
         //if (isEnemyGetDamage)
         //    return;
         DamageEffect(damage);
@@ -156,7 +167,7 @@ public class Enemy : MonoBehaviour
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-        hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
+        hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
     }
 
     public float GetEnemyDamage()

@@ -156,7 +156,7 @@ public class UiManager : MonoBehaviour
 
     private void SetPlayerState()
     {
-        curAtk = (int)(GameManger.instance.player.playerDamage * 100);
+        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
@@ -172,7 +172,8 @@ public class UiManager : MonoBehaviour
             ButtonAccepted(0);
         else
             ButtonDenied(0);
-        curAtk = (int)(GameManger.instance.player.playerDamage * 100);
+        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        //curAtk = (int)(GameManger.instance.player.playerDamage * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }

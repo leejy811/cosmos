@@ -183,7 +183,8 @@ public class Boss : MonoBehaviour
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
-        hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
+        hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        //hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
     }
     //IEnumerator ColorEffect()
     //{

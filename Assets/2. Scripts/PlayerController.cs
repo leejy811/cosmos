@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         PayGold(playerDamageCost);
         playerDamage += 0.1f;
         playerDamageCost += 2;
-        playerDamage = Mathf.Round(playerDamage * 100) * 0.01f;
+        playerDamage = Mathf.Round(playerDamage * 10) * 0.1f;
         return true;
     }
     public bool PlayerAttackSpeedLevelUp()
