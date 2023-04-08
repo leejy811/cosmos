@@ -241,7 +241,7 @@ IEnumerator BossAPattern()
 
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
             // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
-            enemy.GetComponent<Enemy>().SetEnemyState(5, 1, 0, 0);
+            enemy.GetComponent<Enemy>().SetEnemyState(5, 3, 0, 0);
             enemy.transform.position = spawnPoints[i/3].position;
             enemy.GetComponent<Enemy>().targetPos = targetPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
@@ -259,7 +259,7 @@ IEnumerator BossAPattern()
         yield return new WaitForSeconds(0.5f);
         GameObject bossCSpawnEnemy = GameManger.instance.poolManager.GetPool("BossCSpawnEnemy");
         // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
-        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(50, 15, 0, 0);
+        bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(80, 15, 0, 0);
         bossCSpawnEnemy.transform.position = this.transform.position;
         bossCSpawnEnemy.GetComponent<Enemy>().EnemyLookPlayer();
         bossCSpawnEnemy.GetComponent<Enemy>().playerController = GameManger.instance.player;
@@ -295,7 +295,7 @@ IEnumerator BossAPattern()
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
             // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
-            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(0, 1, 2, 1);
+            bossDSpawnEnemy.GetComponent<Enemy>().SetEnemyState(40, 30, 0, 0);
             //bossDSpawnEnemy.transform.position = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().targetPos = spawnPoints[i].position;
             bossDSpawnEnemy.GetComponent<Enemy>().moveLerp = true;
