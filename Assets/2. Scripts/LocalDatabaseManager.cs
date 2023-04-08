@@ -27,7 +27,6 @@ public class LocalDatabaseManager : MonoBehaviour
     public int[] PartsValue { get; set; }
 
 
-
     /// <summary>
     /// 사용법(기본적으로 3차원 배열 형태, 근데 딕셔너리를 사용해서 첫번째 원소는 파츠 이름으로 쉽게 알아볼수 있도록..)
     /// 미사일 파츠의 첫번째 강화 정도를 알고 싶다면?
@@ -53,7 +52,10 @@ public class LocalDatabaseManager : MonoBehaviour
         {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
         {{200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{100,200,300,400,500,600,700,800,900,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
     };
-    
+
+    public int[] AchieveCurValue { get; set; }
+    public int[] AchieveCurLevel { get; set; }
+
     #endregion
 
     void Awake()
@@ -82,6 +84,12 @@ public class LocalDatabaseManager : MonoBehaviour
                 PartsValue = PartsEmp;
                 break;
         }
+    }
+
+    void Start()
+    {
+        AchieveCurValue = new int[12];
+        AchieveCurLevel = new int[12];
     }
 
     /// <summary>
@@ -131,6 +139,7 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetInt("HighScore", HighScore);
+        SaveAchieveData();
     }
 
     /// <summary>
@@ -155,5 +164,34 @@ public class LocalDatabaseManager : MonoBehaviour
         foreach (int part in PartsEmp)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsEmp", temp);
+    }
+
+    public void LoadAchieveData()
+    {
+        string[] temp;
+        if (PlayerPrefs.HasKey("AchieveCurValue"))
+        {
+            temp = PlayerPrefs.GetString("AchieveCurValue").Split(',');
+            for (int i = 0; i < AchieveCurValue.Length; i++)
+                AchieveCurValue[i] = int.Parse(temp[i]);
+        }
+        if (PlayerPrefs.HasKey("AchieveCurLevel"))
+        {
+            temp = PlayerPrefs.GetString("AchieveCurLevel").Split(',');
+            for (int i = 0; i < AchieveCurLevel.Length; i++)
+                AchieveCurLevel[i] = int.Parse(temp[i]);
+        }
+    }
+
+    public void SaveAchieveData()
+    {
+        string temp = "";
+        foreach (int value in AchieveCurValue)
+            temp += value.ToString() + "," ;
+        PlayerPrefs.SetString("AchieveCurValue", temp);
+        temp = "";
+        foreach(int level in AchieveCurLevel)
+            temp += level.ToString() + ",";
+        PlayerPrefs.SetString("AchieveCurLevel", temp);
     }
 }
