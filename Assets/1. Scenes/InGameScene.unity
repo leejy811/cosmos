@@ -14823,7 +14823,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrier: {fileID: 768996024}
-  randomLaserPoints: []
+  randomLaserPoints:
+  - {fileID: 1325035793}
+  - {fileID: 1217506045}
+  - {fileID: 761872435}
+  - {fileID: 1119979793}
+  - {fileID: 525547458}
+  - {fileID: 709487234}
+  - {fileID: 1819305725}
+  - {fileID: 874330698}
+  - {fileID: 353638255}
+  - {fileID: 508237454}
+  - {fileID: 84654026}
+  - {fileID: 621844227}
   Target: {fileID: 0}
   shield: {fileID: 812934481}
 --- !u!1 &1668345519

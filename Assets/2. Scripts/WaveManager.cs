@@ -92,9 +92,9 @@ public class WaveManager: MonoBehaviour
         GameManger.instance.player.playerGold += waves[currentWave].enemyBCount * waves[currentWave].enemyBPrice;
         GameManger.instance.player.playerGold += waves[currentWave].enemyCCount * waves[currentWave].enemyCPrice;
         GameManger.instance.player.playerGold += waves[currentWave].enemyDCount * waves[currentWave].enemyDPrice;
-        LocalDatabaseManager.instance.JemCount += waves[currentWave].enemyBCount * waves[currentWave].enemyBJem;
-        LocalDatabaseManager.instance.JemCount += waves[currentWave].enemyCCount * waves[currentWave].enemyCJem;
-        LocalDatabaseManager.instance.JemCount += waves[currentWave].enemyDCount * waves[currentWave].enemyDJem;
+        GameManger.instance.player.playerJem += waves[currentWave].enemyBCount * waves[currentWave].enemyBJem;
+        GameManger.instance.player.playerJem += waves[currentWave].enemyCCount * waves[currentWave].enemyCJem;
+        GameManger.instance.player.playerJem += waves[currentWave].enemyDCount * waves[currentWave].enemyDJem;
 
         StopCoroutine("StartWave");
         GoNextWave();

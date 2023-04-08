@@ -26,8 +26,9 @@ public class PlayerController : MonoBehaviour
     public int playerMaxHealthCost { get; private set; } = 5;
     public int playerHealthRecorveryCost { get; private set; } = 5;
 
-    //플레이어 현재 골드
+    //플레이어 현재 재화
     public int playerGold { get; set; } = 0;
+    public int playerJem { get; set; } = 0;
 
     //타겟 관련 변수
     private Collider2D[] targets;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         PayGold(playerDamageCost);
         playerDamage += 0.1f;
         playerDamageCost += 2;
+        playerDamage = Mathf.Round(playerDamage * 10) * 0.1f;
         return true;
     }
     public bool PlayerAttackSpeedLevelUp()

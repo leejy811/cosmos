@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private int enemyPrice;
     private int enemyJem;
 
+    private bool deathDelay;
     [SerializeField]
     private Transform[] transforms;
 
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
         this.enemyPrice = enemyPrice;
         this.enemyJem = enemyJem;
         isEnemyLive = true;
+        deathDelay = true;
     }
     public void EnemyLookPlayer()
     {
@@ -74,7 +76,7 @@ public class Enemy : MonoBehaviour
             return;
         if(moveLerp)
         {
-            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.25f).SetEase(Ease.OutBounce);
+            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.5f).SetEase(Ease.OutBounce);
             if (Mathf.Abs(targetPos.x - transform.position.x) <= 0.2f && Mathf.Abs(targetPos.y - transform.position.y) <= 0.2f)
             {
                     moveLerp = false;
@@ -87,9 +89,16 @@ public class Enemy : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(deathDelay)
+        {
+            Invoke("DeathDelayEnd", 1f);
+        }
         MoveEnemy();
     }
-
+    private void DeathDelayEnd()
+    {
+        deathDelay = false;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isEnemyLive)
@@ -141,6 +150,8 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        if (deathDelay)
+            return;
         //if (isEnemyGetDamage)
         //    return;
         DamageEffect(damage);
@@ -156,7 +167,7 @@ public class Enemy : MonoBehaviour
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-        hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
     }
 
     public float GetEnemyDamage()
@@ -230,8 +241,15 @@ public class Enemy : MonoBehaviour
         // 플레이어 닿았을 때 골드나 잼 안올라가게 하기
         if(!EnterPlayer)
         {
-            LocalDatabaseManager.instance.JemCount += enemyJem;
+            GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
+
+            int ranTicket = Random.Range(0, 1000);
+            if(ranTicket == 1)
+            {
+                LocalDatabaseManager.instance.Ticket += 1;
+                //파티클 이펙트
+            }
         }
         if(this.moveLerp)
             moveLerp = false;

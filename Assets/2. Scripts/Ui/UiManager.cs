@@ -57,7 +57,7 @@ public class UiManager : MonoBehaviour
     private float xScreenHalfSize;
     private float yScreenHalfSize;
     private int timeScaleIdx = 0;
-    private float curAtk = 0;
+    private int curAtk = 0;
     #endregion
 
 
@@ -137,7 +137,7 @@ public class UiManager : MonoBehaviour
     }
     void SetJem()
     {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString();
+        jemCount.text = GameManger.instance.player.playerJem.ToString();
     }
     public void AddJem(int num=0)
     {
@@ -156,7 +156,7 @@ public class UiManager : MonoBehaviour
 
     private void SetPlayerState()
     {
-        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
@@ -172,7 +172,8 @@ public class UiManager : MonoBehaviour
             ButtonAccepted(0);
         else
             ButtonDenied(0);
-        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        //curAtk = (int)(GameManger.instance.player.playerDamage * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }
@@ -256,7 +257,8 @@ public class UiManager : MonoBehaviour
 
     public void SaveGameResult()
     {
-        LocalDatabaseManager.instance.JemCount += int.Parse(jemCount.text);
+        int currentGameJem = GameManger.instance.player.playerJem;
+        LocalDatabaseManager.instance.JemCount += LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
         LocalDatabaseManager.instance.SaveGameData();
     }
