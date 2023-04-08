@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
             return;
         if(moveLerp)
         {
-            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.25f).SetEase(Ease.OutBounce);
+            this.gameObject.transform.DOLocalMove(new Vector3(targetPos.x, targetPos.y, 0), 0.5f).SetEase(Ease.OutBounce);
             if (Mathf.Abs(targetPos.x - transform.position.x) <= 0.2f && Mathf.Abs(targetPos.y - transform.position.y) <= 0.2f)
             {
                     moveLerp = false;
@@ -156,7 +156,7 @@ public class Enemy : MonoBehaviour
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-        hudText.GetComponent<DamageText>().damage = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
     }
 
     public float GetEnemyDamage()

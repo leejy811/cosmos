@@ -9,7 +9,7 @@ public class DamageText : MonoBehaviour
     public float colorSpeed;
     TextMeshPro text;
     Color textColor;
-    public float damage;
+    public int damage;
 
 
     void Start()

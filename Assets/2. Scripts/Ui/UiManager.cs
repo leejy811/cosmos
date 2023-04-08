@@ -57,7 +57,7 @@ public class UiManager : MonoBehaviour
     private float xScreenHalfSize;
     private float yScreenHalfSize;
     private int timeScaleIdx = 0;
-    private float curAtk = 0;
+    private int curAtk = 0;
     #endregion
 
 
@@ -156,7 +156,7 @@ public class UiManager : MonoBehaviour
 
     private void SetPlayerState()
     {
-        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        curAtk = (int)(GameManger.instance.player.playerDamage * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
         currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
@@ -172,7 +172,7 @@ public class UiManager : MonoBehaviour
             ButtonAccepted(0);
         else
             ButtonDenied(0);
-        curAtk = (float.Parse)(GameManger.instance.player.playerDamage.ToString("F1")) * 100;
+        curAtk = (int)(GameManger.instance.player.playerDamage * 100);
         currentAtk.text = curAtk.ToString();
         atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
     }
