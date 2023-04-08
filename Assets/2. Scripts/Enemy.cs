@@ -234,7 +234,7 @@ public class Enemy : MonoBehaviour
             GameManger.instance.player.playerGold += enemyPrice;
 
             int ranTicket = Random.Range(0, 1000);
-            if(ranTicket == 0)
+            if(ranTicket == 1)
             {
                 LocalDatabaseManager.instance.Ticket += 1;
                 //파티클 이펙트
