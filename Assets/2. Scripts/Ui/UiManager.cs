@@ -143,9 +143,8 @@ public class UiManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        //GameManger.instance.waveManager.WaveSkipButton();
-
         Time.timeScale = 0;
+        GameManger.instance.isPlaying = false;
         pauseUi.SetActive(true);
         bgmSlider.value = SoundManager.instance.GetBgmVolume();
         sfxSlider.value = SoundManager.instance.GetSfxVolume();
@@ -153,7 +152,8 @@ public class UiManager : MonoBehaviour
     public void ResumeGame()
     {
         pauseUi.SetActive(false);
-        Time.timeScale = times[timeScaleIdx % times.Length];;
+        Time.timeScale = times[timeScaleIdx % times.Length];
+        GameManger.instance.isPlaying = true;
     }
 
     void SetJem()
@@ -259,14 +259,16 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
+        int time = (int)GameManger.instance.playTime;
+        string timeString = time / 60 == 0 ? time + "s" : time / 60 + "m " + time % 60 + "s";
 
         Sequence resultSequence = DOTween.Sequence();
         resultSequence.
             Append(resultScore.DOText("Wave : " + waveLevel.text, 1.5f)).
             Append(resultHighScore.DOText("High Score : " + LocalDatabaseManager.instance.HighScore, 1.5f)).
             Append(resultJem.DOText("Jem : " + jemCount.text, 1.5f)).
-            Append(resultTicket.DOText("Ticket : ", 1.5f)).
-            Append(resultTime.DOText("Play Time : ",1.5f));
+            Append(resultTicket.DOText("Ticket : " + GameManger.instance.playTicket, 1.5f)).
+            Append(resultTime.DOText("Play Time : "+ timeString, 1.5f));
     }
 
     public void SaveGameResult()
@@ -274,6 +276,7 @@ public class UiManager : MonoBehaviour
         int currentGameJem = GameManger.instance.player.playerJem;
         LocalDatabaseManager.instance.JemCount += LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
+        LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
     }
 
@@ -339,5 +342,10 @@ public class UiManager : MonoBehaviour
     private void SetSfxSlider(float value)
     {
         SoundManager.instance.SetSfxVolume(value);
+    }
+
+    public void NextStage()
+    {
+        GameManger.instance.waveManager.WaveSkipButton();
     }
 }

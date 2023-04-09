@@ -17,6 +17,11 @@ public class GameManger : MonoBehaviour
     public bool onBloomEffect = true;
     public bool onHitEffect = true;
 
+    // play info in 'each' game
+    public bool isPlaying { get; set; } = false;
+    public int playTicket { get; set; } = 0;
+    public float playTime { get; set; } = 0f;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -34,6 +39,12 @@ public class GameManger : MonoBehaviour
         SoundManager.instance.PlayBGM("LobbyBGM");
     }
 
+    private void Update()
+    {
+        if (isPlaying)
+            playTime += Time.deltaTime/Time.timeScale;
+    }
+
     private void SetIngameVar()
     {
         poolManager = GameObject.Find("PoolManager").GetComponent<PoolManager>();
@@ -46,6 +57,7 @@ public class GameManger : MonoBehaviour
     public IEnumerator GameOver()
     {
         UiManager.SaveGameResult();
+        isPlaying = false;
 
         Time.timeScale = 0.05f;
         yield return new WaitForSeconds(0.08f);
@@ -93,12 +105,16 @@ public class GameManger : MonoBehaviour
         yield return asyncLoad;
 
         SetIngameVar();
+        isPlaying = true;
+        playTime = 0;
+        playTicket = 0;
     }
 
     public void GoLobby()
     {
         SceneManager.LoadScene("LobbyScene");
         SoundManager.instance.PlayBGM("LobbyBGM");
-    Time.timeScale = 1;
+        Time.timeScale = 1;
+        isPlaying = false;
     }
 }
