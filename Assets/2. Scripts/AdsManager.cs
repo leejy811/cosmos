@@ -9,6 +9,8 @@ public class AdsManager : MonoBehaviour
 {
     RewardedAd rewardedAd;
     private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    //ca-app-pub-2079986244432267/1568243636    Real
+    //ca-app-pub-3940256099942544/5224354917    Test
 
     [SerializeField] LobbyUiManager lobbyUiManager;
 
