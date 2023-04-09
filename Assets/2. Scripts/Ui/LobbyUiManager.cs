@@ -39,6 +39,10 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability2UpgradeJem;
     [SerializeField] private Text ability3UpgradeJem;
     [SerializeField] private Image[] partsUpgradeButtons;
+
+    //settings ui
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
     #endregion
 
     #region Member Variables
@@ -108,6 +112,11 @@ public class LobbyUiManager : MonoBehaviour
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
         originalJemScale = jemIcon.transform.localScale;
+
+        bgmSlider.value = SoundManager.instance.GetBgmVolume();
+        sfxSlider.value = SoundManager.instance.GetSfxVolume();
+        bgmSlider.onValueChanged.AddListener(SetBgmSlider);
+        sfxSlider.onValueChanged.AddListener(SetSfxSlider);
     }
 
     private void MoveBackground()
@@ -365,6 +374,16 @@ public class LobbyUiManager : MonoBehaviour
             ability3UpgradeJem.text = "Max";
         else
             ability3UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 2, partsUpgradeInfo[2]].ToString() + " J";
+    }
+
+    private void SetBgmSlider(float value)
+    {
+        SoundManager.instance.SetBgmVolume(value);
+    }
+
+    private void SetSfxSlider(float value)
+    {
+        SoundManager.instance.SetSfxVolume(value);
     }
 
     // func for testing

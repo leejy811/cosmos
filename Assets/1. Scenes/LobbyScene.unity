@@ -5520,7 +5520,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6247,6 +6247,8 @@ MonoBehaviour:
   - {fileID: 1093907540}
   - {fileID: 1286931338}
   - {fileID: 1216668781}
+  bgmSlider: {fileID: 1531728865}
+  sfxSlider: {fileID: 1050852526}
   adsManager: {fileID: 0}
   input: {fileID: 0}
 --- !u!1 &1121229475
@@ -7585,7 +7587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Hit Effect Effect
+  m_Text: Hit Effect
 --- !u!222 &1420994292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8308,7 +8310,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

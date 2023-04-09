@@ -65,4 +65,27 @@ public class SoundManager : MonoBehaviour
         //Debug.Log("남아있는 오디오소스가 없습니다");
         return;
     }
+
+    public void SetBgmVolume(float value)
+    {
+        bgmPlayer.volume = value;
+    }
+
+    public void SetSfxVolume(float value)
+    {
+        foreach(AudioSource audioSource in sfxPlayer)
+        {
+            audioSource.volume = value;
+        }
+    }
+
+    public float GetBgmVolume()
+    {
+        return bgmPlayer.volume;
+    }
+
+    public float GetSfxVolume()
+    {
+        return sfxPlayer[0].volume;
+    }
 }
