@@ -47,7 +47,6 @@ public class UiManager : MonoBehaviour
     #endregion
 
     #region Member Variables
-    private bool isFold = false;
     private bool isTweening = false;
     private float currentTime = 0f;
     private float fadeInTime = 2f;
@@ -72,6 +71,9 @@ public class UiManager : MonoBehaviour
 
         postProcessVolume = Camera.main.GetComponent<PostProcessVolume>();
         postProcessVolume.profile.TryGetSettings(out bloom);
+
+        if (!GameManger.instance.onBloomEffect)
+            SetBloomIntensity(0);
     }
     private void Update()
     {
@@ -101,7 +103,8 @@ public class UiManager : MonoBehaviour
     }
     public void StartDamageEffect()
     {
-        StartCoroutine("DamageEffect");
+        if(GameManger.instance.onHitEffect)
+            StartCoroutine("DamageEffect");
     }
     IEnumerator DamageEffect()
     {
@@ -206,14 +209,7 @@ public class UiManager : MonoBehaviour
         recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
     }
 
-    public void SetBottomUi()
-    {
-        if (isFold)
-            bottomUiAnim.Play("BottomUiUpAnim");
-        else
-            bottomUiAnim.Play("BottomUiCloseAnim");
-        isFold = !isFold;
-    }
+   
     private void ButtonAccepted(int index)
     {
         SoundManager.instance.PlaySFX("PartsUpgradeSound");
@@ -269,7 +265,8 @@ public class UiManager : MonoBehaviour
 
     public void AddBloomIntensity(float value)
     {
-        bloom.intensity.value += value;
+        if(GameManger.instance.onBloomEffect)
+            bloom.intensity.value += value;
     }
 
     public void SetBloomIntensity(float value)

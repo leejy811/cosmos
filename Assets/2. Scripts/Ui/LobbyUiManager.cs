@@ -43,6 +43,8 @@ public class LobbyUiManager : MonoBehaviour
     //settings ui
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Toggle bloomToggle;
+    [SerializeField] private Toggle hitToggle;
     #endregion
 
     #region Member Variables
@@ -117,6 +119,11 @@ public class LobbyUiManager : MonoBehaviour
         sfxSlider.value = SoundManager.instance.GetSfxVolume();
         bgmSlider.onValueChanged.AddListener(SetBgmSlider);
         sfxSlider.onValueChanged.AddListener(SetSfxSlider);
+
+        bloomToggle.isOn = GameManger.instance.onBloomEffect;
+        hitToggle.isOn = GameManger.instance.onHitEffect;
+        bloomToggle.onValueChanged.AddListener(SetBloomToggle);
+        hitToggle.onValueChanged.AddListener(SetBloodEffectToggle);
     }
 
     private void MoveBackground()
@@ -384,6 +391,16 @@ public class LobbyUiManager : MonoBehaviour
     private void SetSfxSlider(float value)
     {
         SoundManager.instance.SetSfxVolume(value);
+    }
+
+    private void SetBloomToggle(bool value)
+    {
+        GameManger.instance.onBloomEffect = value;
+    }
+
+    private void SetBloodEffectToggle(bool value)
+    {
+        GameManger.instance.onHitEffect = value;
     }
 
     // func for testing

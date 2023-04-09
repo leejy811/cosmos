@@ -6249,6 +6249,8 @@ MonoBehaviour:
   - {fileID: 1216668781}
   bgmSlider: {fileID: 1531728865}
   sfxSlider: {fileID: 1050852526}
+  bloomToggle: {fileID: 1882649804}
+  hitToggle: {fileID: 747582057}
   adsManager: {fileID: 0}
   input: {fileID: 0}
 --- !u!1 &1121229475
@@ -8208,6 +8210,8 @@ MonoBehaviour:
   UiManager: {fileID: 0}
   cameraResolution: {fileID: 0}
   waveManager: {fileID: 0}
+  onBloomEffect: 1
+  onHitEffect: 1
 --- !u!4 &1510742518
 Transform:
   m_ObjectHideFlags: 0

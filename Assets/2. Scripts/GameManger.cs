@@ -12,8 +12,10 @@ public class GameManger : MonoBehaviour
     public UiManager UiManager;
     public CameraResolution cameraResolution;
 
-    // 잠깐 웨이브 스킵하려고 WaveManager 추가할게요 나중에 밸런싱 끝나면 지울 수 있음
     public WaveManager waveManager;
+
+    public bool onBloomEffect = true;
+    public bool onHitEffect = true;
 
     void Awake()
     {
