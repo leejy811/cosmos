@@ -1512,7 +1512,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0, b: 0.779181, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1688,7 +1688,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 4f3dc612b6f4c4d4d9d95c2742c3021e, type: 3}
+    - sprite: {fileID: 21300000, guid: a58f2e68c85bc414ba9bfc5c3f703e60, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
