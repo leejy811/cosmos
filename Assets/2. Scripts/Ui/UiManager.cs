@@ -42,6 +42,11 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image[] statButtons;
     [SerializeField] private float punchScale = 0.2f;
     [SerializeField] private float punchPosition = 20f;
+
+    [SerializeField] private GameObject pauseUi;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
+
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
@@ -55,6 +60,7 @@ public class UiManager : MonoBehaviour
     private float moveY=1;
     private float xScreenHalfSize;
     private float yScreenHalfSize;
+    float[] times = new float[] {1.0f,1.5f, 2.0f };
     private int timeScaleIdx = 0;
     private int curAtk = 0;
     #endregion
@@ -74,6 +80,9 @@ public class UiManager : MonoBehaviour
 
         if (!GameManger.instance.onBloomEffect)
             SetBloomIntensity(0);
+
+        bgmSlider.onValueChanged.AddListener(SetBgmSlider);
+        sfxSlider.onValueChanged.AddListener(SetSfxSlider);
     }
     private void Update()
     {
@@ -134,8 +143,19 @@ public class UiManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        GameManger.instance.waveManager.WaveSkipButton();
+        //GameManger.instance.waveManager.WaveSkipButton();
+
+        Time.timeScale = 0;
+        pauseUi.SetActive(true);
+        bgmSlider.value = SoundManager.instance.GetBgmVolume();
+        sfxSlider.value = SoundManager.instance.GetSfxVolume();
     }
+    public void ResumeGame()
+    {
+        pauseUi.SetActive(false);
+        Time.timeScale = times[timeScaleIdx % times.Length];;
+    }
+
     void SetJem()
     {
         jemCount.text = GameManger.instance.player.playerJem.ToString();
@@ -279,11 +299,6 @@ public class UiManager : MonoBehaviour
         return bloom.intensity.value;
     }
 
-    public void PushRetryButton()
-    {
-        GameManger.instance.StartGame();
-    }
-
     public void PushLobbyButton()
     {
         GameManger.instance.GoLobby();
@@ -312,9 +327,17 @@ public class UiManager : MonoBehaviour
 
     public void SetTimeScale()
     {
-        float[] times = new float[] { 1.5f, 2.0f, 1.0f };
-        float time = times[timeScaleIdx++ % times.Length];
+        float time = times[++timeScaleIdx % times.Length];
         timeScaleText.text = String.Format("{0:0.0}", time);
         Time.timeScale= time;
+    }
+
+    private void SetBgmSlider(float value)
+    {
+        SoundManager.instance.SetBgmVolume(value);
+    }
+    private void SetSfxSlider(float value)
+    {
+        SoundManager.instance.SetSfxVolume(value);
     }
 }

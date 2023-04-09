@@ -10,6 +10,6 @@ public class PopupUiBehavior : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.DOPunchScale(originalScale * 0.3f, 0.2f, 0, 1f);
+        transform.DOPunchScale(originalScale * 0.15f, 0.2f, 0, 1f).SetUpdate(true);
     }
 }
