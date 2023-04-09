@@ -92,7 +92,6 @@ public class LobbyUiManager : MonoBehaviour
         yScreenHalfSize = Screen.height / 2;
         xScreenHalfSize = Screen.width / 2;
         moveDir = new Vector2(moveX, moveY);
-        SoundManager.instance.PlayBGM("LobbyBGM");
     }
 
     private void Update()
@@ -156,7 +155,7 @@ public class LobbyUiManager : MonoBehaviour
             panel.color = alpha;
             yield return null;
         }
-        SceneManager.LoadScene("InGameScene");
+        GameManger.instance.StartGame();
     }
 
     /// <summary>
