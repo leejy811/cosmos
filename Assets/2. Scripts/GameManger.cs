@@ -96,6 +96,7 @@ public class GameManger : MonoBehaviour
     public void GoLobby()
     {
         SceneManager.LoadScene("LobbyScene");
-        Time.timeScale = 1;
+        SoundManager.instance.PlayBGM("LobbyBGM");
+    Time.timeScale = 1;
     }
 }
