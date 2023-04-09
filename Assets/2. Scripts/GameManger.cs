@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManger : MonoBehaviour
 {
     public static GameManger instance;
+
     public PoolManager poolManager;
     public PlayerController player;
     public UiManager UiManager;
@@ -16,13 +17,28 @@ public class GameManger : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        SoundManager.instance.PlayBGM("InGameBGM");
+        SoundManager.instance.PlayBGM("LobbyBGM");
+    }
+
+    private void SetIngameVar()
+    {
+        poolManager = GameObject.Find("PoolManager").GetComponent<PoolManager>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        UiManager= GameObject.Find("MainCanvas").GetComponent<UiManager>();
+        waveManager = GameObject.Find("WaveManager").GetComponent<WaveManager>();
+        cameraResolution = Camera.main.GetComponent<CameraResolution>();
     }
 
     public IEnumerator GameOver()
@@ -62,15 +78,25 @@ public class GameManger : MonoBehaviour
         UiManager.ActiveGameOverUI();
     }
 
-    public void RestartGame()
+    public void StartGame()
     {
-        SceneManager.LoadScene("InGameScene");
         Time.timeScale = 1;
+        StartCoroutine("LoadIngameScene");
+        SoundManager.instance.PlayBGM("InGameBGM");
+    }
+
+    IEnumerator LoadIngameScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("InGameScene");
+        yield return asyncLoad;
+
+        SetIngameVar();
     }
 
     public void GoLobby()
     {
         SceneManager.LoadScene("LobbyScene");
-        Time.timeScale = 1;
+        SoundManager.instance.PlayBGM("LobbyBGM");
+    Time.timeScale = 1;
     }
 }

@@ -61,12 +61,10 @@ public class UiManager : MonoBehaviour
     #endregion
 
 
-    private void Awake()
-    {
-        SetPlayerState();
-    }
+   
     private void Start()
     {
+        SetPlayerState();
         StartCoroutine("FadeIn");
         yScreenHalfSize = Screen.height / 2;
         xScreenHalfSize = Screen.width  / 2;
@@ -286,7 +284,7 @@ public class UiManager : MonoBehaviour
 
     public void PushRetryButton()
     {
-        GameManger.instance.RestartGame();
+        GameManger.instance.StartGame();
     }
 
     public void PushLobbyButton()
