@@ -58,6 +58,7 @@ public class GameManger : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        SaveAchieveResult();
         uiManager.SaveGameResult();
         isPlaying = false;
 
@@ -131,5 +132,20 @@ public class GameManger : MonoBehaviour
             else
                 lobbyUiManager.OpenExitPopup();
         }
+    }
+
+    public void SaveAchieveResult()
+    {
+        AchievementManager.instance.achieves["Starting from the basic"].curValue += waveManager.totalKillEnemyACount;
+        AchievementManager.instance.achieves["Not so fast?"].curValue += waveManager.totalKillEnemyBCount;
+        AchievementManager.instance.achieves["Quite Fragile"].curValue += waveManager.totalKillEnemyCCount;
+        AchievementManager.instance.achieves["Gross. Go Away"].curValue += waveManager.totalKillEnemyDCount;
+        AchievementManager.instance.achieves["MotherShip Down"].curValue += waveManager.currentWave >= 10 ? 1 : 0;
+        AchievementManager.instance.achieves["It was close"].curValue += waveManager.currentWave >= 20 ? 1 : 0;
+        AchievementManager.instance.achieves["I¡¯m Not a Sun"].curValue += waveManager.currentWave >= 30 ? 1 : 0;
+        AchievementManager.instance.achieves["SpaceKing"].curValue += waveManager.currentWave >= 40 ? 1 : 0;
+        AchievementManager.instance.achieves["What a good balance"].curValue = Mathf.Min(player.playerDamageLevel, player.playerAttackSpeedLevel, player.playerHealthLevel, player.playerHealthRecorveryLevel);
+        AchievementManager.instance.achieves["Alien? Zombie?"].curValue = Mathf.Min(player.playerHealthLevel, player.playerHealthRecorveryLevel);
+        AchievementManager.instance.achieves["StarWars"].curValue = waveManager.bonusWaveTime;
     }
 }

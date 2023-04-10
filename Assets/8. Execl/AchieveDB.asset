@@ -13,13 +13,63 @@ MonoBehaviour:
   m_Name: AchieveDB
   m_EditorClassIdentifier: 
   Achieves:
-  - achieveName: EnemyA
-    achieveDescription: Kill Enemy A
-    maxAchieveLevel: 4
-    maxCondition: 50,100,150,200
-    reward: 10,20,30,40
-  - achieveName: EnemyB
-    achieveDescription: Kill Enemy B
-    maxAchieveLevel: 4
-    maxCondition: 50,100,150,200
-    reward: 10,20,30,40
+  - achieveName: Starting from the basic
+    achieveDescription: Kill Monster A
+    maxAchieveLevel: 5
+    maxCondition: 100,150,200,250,300
+    reward: 10,20,30,40,50
+  - achieveName: Not so fast?
+    achieveDescription: Kill Monster B
+    maxAchieveLevel: 5
+    maxCondition: 100,150,200,250,300
+    reward: 10,20,30,40,50
+  - achieveName: Quite Fragile
+    achieveDescription: Kill Monster C
+    maxAchieveLevel: 5
+    maxCondition: 50,75,100,125,150
+    reward: 10,20,30,40,50
+  - achieveName: Gross. Go Away
+    achieveDescription: Kill Monster D
+    maxAchieveLevel: 5
+    maxCondition: 50,80,110,140,170
+    reward: 10,20,30,40,50
+  - achieveName: MotherShip Down
+    achieveDescription: Kill Stage 10 Boss
+    maxAchieveLevel: 5
+    maxCondition: 3,8,13,18,22
+    reward: 10,20,30,40,50
+  - achieveName: It was close
+    achieveDescription: Kill Stage 20 Boss
+    maxAchieveLevel: 5
+    maxCondition: 3,8,13,18,22
+    reward: 10,20,30,40,50
+  - achieveName: "I\u2019m Not a Sun"
+    achieveDescription: Kill Stage 30 Boss
+    maxAchieveLevel: 5
+    maxCondition: 3,8,13,18,22
+    reward: 10,20,30,40,50
+  - achieveName: SpaceKing
+    achieveDescription: KIll Stage 40 Boss
+    maxAchieveLevel: 5
+    maxCondition: 3,8,13,18,22
+    reward: 10,20,30,40,50
+  - achieveName: What a good balance
+    achieveDescription: ?????????????
+    maxAchieveLevel: 1
+    maxCondition: 30
+    reward: 100
+  - achieveName: World Class Engineer
+    achieveDescription: ?????????????
+    maxAchieveLevel: 1
+    maxCondition: 4
+    reward: 100
+  - achieveName: Alien? Zombie?
+    achieveDescription: ?????????????
+    maxAchieveLevel: 1
+    maxCondition: 50
+    reward: 100
+  - achieveName: StarWars
+    achieveDescription: ?????????????
+    maxAchieveLevel: 1
+    maxCondition: 30
+    reward: 100

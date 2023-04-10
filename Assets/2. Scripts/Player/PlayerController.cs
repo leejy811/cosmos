@@ -9,7 +9,6 @@ using UnityEngine;
  */
 public class PlayerController : MonoBehaviour
 {
-    
     //Player 스탯
     public float playerDamage { get; private set; } = 1;
     public float playerAttackSpeed { get; private set; } = 2;
@@ -25,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public int playerAtkSpeedCost { get; private set; } = 3;
     public int playerMaxHealthCost { get; private set; } = 5;
     public int playerHealthRecorveryCost { get; private set; } = 5;
+
+    public int playerDamageLevel { get; private set; } = 0;
+    public int playerAttackSpeedLevel { get; private set; } = 0;
+    public int playerHealthLevel { get; private set; } = 0;
+    public int playerHealthRecorveryLevel { get; private set; } = 0;
 
     //플레이어 현재 재화
     public int playerGold { get; set; } = 0;
@@ -54,6 +58,7 @@ public class PlayerController : MonoBehaviour
         PayGold(playerDamageCost);
         playerDamage += 0.1f;
         playerDamageCost += 2;
+        playerDamageLevel++;
         playerDamage = Mathf.Round(playerDamage * 10) * 0.1f;
         return true;
     }
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         PayGold(playerAtkSpeedCost);
         playerAttackSpeed += 0.05f;
         playerAtkSpeedCost += 2;
+        playerAttackSpeedLevel++;
         return true;
     }
     public bool PlayerMaxHealthLevelUp()
@@ -74,6 +80,7 @@ public class PlayerController : MonoBehaviour
         maxPlayerHealth += 3f;
         playerHealth += 3f;
         playerMaxHealthCost += 5;
+        playerHealthLevel++;
         return true;
     }
     public bool PlayerHealthRecorveryLevelUp()
@@ -83,6 +90,7 @@ public class PlayerController : MonoBehaviour
         PayGold(playerHealthRecorveryCost);
         playerHealthRecorvery += 0.1f;
         playerHealthRecorveryCost += 5;
+        playerHealthRecorveryLevel++;
         return true;
     }
 

@@ -102,4 +102,13 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
+
+    public void SavePartsAchieve()
+    {
+        if (LocalDatabaseManager.instance.PartsMissile[2] == 1)
+            if (LocalDatabaseManager.instance.PartsBarrier[2] == 1)
+                if (LocalDatabaseManager.instance.PartsEmp[2] == 1)
+                    if (LocalDatabaseManager.instance.PartsLaser[2] == 1)
+                        achieves["World Class Engineer"].curValue = 4;
+    }
 }

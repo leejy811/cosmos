@@ -170,6 +170,7 @@ public class LocalDatabaseManager : MonoBehaviour
         foreach (int part in PartsEmp)
             temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsEmp", temp);
+        AchievementManager.instance.SavePartsAchieve();
     }
 
     public void LoadAchieveData()
