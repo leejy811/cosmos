@@ -41,6 +41,12 @@ public class WaveManager: MonoBehaviour
 
     public int currentWave = -1;
 
+    public int totalKillEnemyACount;
+    public int totalKillEnemyBCount;
+    public int totalKillEnemyCCount;
+    public int totalKillEnemyDCount;
+
+
     [SerializeField]
     private GameObject[] boss;
 
@@ -49,6 +55,8 @@ public class WaveManager: MonoBehaviour
 
     public bool isBossLive;
     private int currenBossType;
+
+    
     void Start()
     {
         isBossWave = false;
