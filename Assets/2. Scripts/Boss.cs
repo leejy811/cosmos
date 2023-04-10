@@ -166,23 +166,11 @@ public class Boss : MonoBehaviour
     }
     private void FloatingDamageEffect(float damage)
     {
-        //if(!colorEffectOn)
-        //{
-        //    StartCoroutine("ColorEffect");
-        //    colorEffectOn = true;
-        //}
-        // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
-        if (bossType == 0 || bossType == 3)
-        {
-            this.gameObject.transform.DOShakeScale(0.2f, 0.1f, 1, 90, true, ShakeRandomnessMode.Full);
-            this.gameObject.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetDelay(0.5f);
-        }
-
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 1f);
 
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 1f);
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
-        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0);
+        hudText.transform.position = new Vector3(this.transform.position.x +Random.Range(-1f, 1f), this.transform.position.y + 1f, 0);
         hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
         //hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
     }

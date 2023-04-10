@@ -27,7 +27,7 @@ public class GameManger : MonoBehaviour
     public IEnumerator GameOver()
     {
         UiManager.SaveGameResult();
-
+        Debug.Log(waveManager.bonusWaveTime);
         Time.timeScale = 0.05f;
         yield return new WaitForSeconds(0.08f);
 

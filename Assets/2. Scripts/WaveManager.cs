@@ -45,7 +45,7 @@ public class WaveManager: MonoBehaviour
     public int totalKillEnemyBCount;
     public int totalKillEnemyCCount;
     public int totalKillEnemyDCount;
-
+    public int bonusWaveTime;
 
     [SerializeField]
     private GameObject[] boss;
@@ -61,6 +61,7 @@ public class WaveManager: MonoBehaviour
     {
         isBossWave = false;
         checkWave = false;
+        bonusWaveTime = 0;
         Debug.Log("Stage : " + (currentWave + 1));
         StartCoroutine("StartWave");
     }
@@ -77,7 +78,12 @@ public class WaveManager: MonoBehaviour
             if (CheckBossWaveEnd())
                 GoNextWave();
         }
+        if(currentWave == 41)
+        {
+            bonusWaveTime += (int)Time.deltaTime;
+        }
     }
+
     public void WaveSkipButton()
     {
         if(isBossWave)

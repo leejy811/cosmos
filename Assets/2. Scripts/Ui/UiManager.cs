@@ -133,6 +133,9 @@ public class UiManager : MonoBehaviour
     }
     public void PauseGame()
     {
+    }
+    public void SkipButton()
+    {
         GameManger.instance.waveManager.WaveSkipButton();
     }
     void SetJem()
@@ -296,7 +299,10 @@ public class UiManager : MonoBehaviour
 
     public void WaveClear(int num)
     {
-        waveLevel.text = Convert.ToString(num);
+        if (num == 41)
+            waveLevel.text = "Bonus";
+        else
+            waveLevel.text = Convert.ToString(num);
         StartCoroutine("WaveClearAnim");
     }
 
