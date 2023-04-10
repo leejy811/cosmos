@@ -86,11 +86,8 @@ public class LocalDatabaseManager : MonoBehaviour
                 PartsValue = PartsEmp;
                 break;
         }
-    }
-    void Start()
-    {
-        AchieveCurValue = new int[12];
-        AchieveCurLevel = new int[12];
+        AchieveCurValue = new int[AchievementManager.instance.achieveDB.Achieves.Count];
+        AchieveCurLevel = new int[AchievementManager.instance.achieveDB.Achieves.Count];
     }
 
     /// <summary>

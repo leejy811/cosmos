@@ -211,21 +211,27 @@ public class Enemy : MonoBehaviour
         {
             if(waveManager.waves[waveManager.currentWave].enemyACount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyACount--;
+            waveManager.totalKillEnemyACount++;
         }
         else if(enemyType == "EnemyB")
         {
             if (waveManager.waves[waveManager.currentWave].enemyBCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyBCount--;
+            waveManager.totalKillEnemyBCount++;
+
         }
         else if(enemyType == "EnemyC")
         {
             if (waveManager.waves[waveManager.currentWave].enemyCCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyCCount--;
+            waveManager.totalKillEnemyCCount++;
+
         }
         else if(enemyType == "EnemyD")
         {
             if (waveManager.waves[waveManager.currentWave].enemyDCount > 0 && waveManager.currentWave != 40)
                 waveManager.waves[waveManager.currentWave].enemyDCount--;
+            waveManager.totalKillEnemyDCount++;
             for (int i=0; i<2; i++)
             {
                 GameObject enemy = GameManger.instance.poolManager.GetPool("EnemyA");

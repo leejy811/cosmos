@@ -41,35 +41,50 @@ public class WaveManager: MonoBehaviour
 
     public int currentWave = -1;
 
+    public int totalKillEnemyACount;
+    public int totalKillEnemyBCount;
+    public int totalKillEnemyCCount;
+    public int totalKillEnemyDCount;
+    public int bonusWaveTime;
+
     [SerializeField]
     private GameObject[] boss;
 
     private bool isBossWave;
-    private bool checkWave;
-
     public bool isBossLive;
     private int currenBossType;
+
+    
     void Start()
     {
         isBossWave = false;
-        checkWave = false;
-        Debug.Log("Stage : " + (currentWave + 1));
+        bonusWaveTime = 0;
+        //Debug.Log("Stage : " + (currentWave + 1));
+        GameManger.instance.UiManager.WaveClear(currentWave + 1);
         StartCoroutine("StartWave");
     }
 
     void Update()
     {
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
-            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave && checkWave)
+            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave)
         {
             GoNextWave();
         }
-        if(isBossWave && !isBossLive && checkWave)
+        if(isBossWave && !isBossLive)
         {
             if (CheckBossWaveEnd())
+            {
+                isBossWave = false;
                 GoNextWave();
+            }
+        }
+        if(currentWave == 40)
+        {
+            bonusWaveTime += (int)Time.deltaTime;
         }
     }
+
     public void WaveSkipButton()
     {
         if(isBossWave)
@@ -128,7 +143,6 @@ public class WaveManager: MonoBehaviour
     }
     IEnumerator StartWave()
     {
-        isBossWave = false;
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;      
         yield return new WaitForSeconds(5);
@@ -142,7 +156,6 @@ public class WaveManager: MonoBehaviour
                 BossSpawn(currentWave / 10);
                 break;
             }
-            checkWave = true;
 
             string ranType;
             int enemyT = Random.Range(0, 4);
