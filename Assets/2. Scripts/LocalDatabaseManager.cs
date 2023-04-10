@@ -12,18 +12,19 @@ public class LocalDatabaseManager : MonoBehaviour
     #region User Data
     public int JemCount { get; set; } = 0;
     private int highScore = 0;
-    public int HighScore {
+    public int HighScore
+    {
         get { return highScore; }
         set { highScore = Mathf.Max(value, highScore); }
-     }
+    }
     public string CurrentParts { get; set; } = "Missile";
 
     //Parts Upgrade info, each index indicates how many times it had been upgraded
     public int[] MaxUpgradeInfo { get; } = { 9, 9, 1 };
-    public int[] PartsMissile { get; set; } = { 0, 0, 0};
-    public int[] PartsBarrier { get; set; } = { 0, 0, 0};
-    public int[] PartsLaser { get; set; } = { 0, 0, 0};
-    public int[] PartsEmp { get; set; } = { 0, 0, 0};
+    public int[] PartsMissile { get; set; } = { 0, 0, 0 };
+    public int[] PartsBarrier { get; set; } = { 0, 0, 0 };
+    public int[] PartsLaser { get; set; } = { 0, 0, 0 };
+    public int[] PartsEmp { get; set; } = { 0, 0, 0 };
     public int[] PartsValue { get; set; }
 
     public int Ticket { get; set; } = 3;
@@ -40,7 +41,7 @@ public class LocalDatabaseManager : MonoBehaviour
     /// LocalDatabaseManager.instance.PartsStatInfo["Missile"][1, LocalDatabaseManager.instance.PartsMissile[1]];
     /// PartsStatInfo 자체는 데이터 테이블 느낌으로 readonly, PartsMissile에서 저장하는 강화 '정도'를 이용해서 현재 강화 정도에 해당하는 값 '참조'
     /// </summary>
-    public Dictionary<string, float[,]> PartsStatInfo { get; } =new Dictionary<string, float[,]>
+    public Dictionary<string, float[,]> PartsStatInfo { get; } = new Dictionary<string, float[,]>
     {
         // 각 파츠별로 세 가지 속성(공격력, 공격 속도 - 공통, 특수 능력 해방 여부)- 순서대로
         //                                                 공격력                                                      공격속도                                     특수능력 해방(1이면 해방)
@@ -57,15 +58,15 @@ public class LocalDatabaseManager : MonoBehaviour
         {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
         {{200,300,400,500,600,700,800,900,1000 },{100,200,300,400,500,600,700,800,900 },{2000,-1,-1,-1,-1,-1,-1,-1,-1 } },
     };
-    
+
     #endregion
 
     void Awake()
     {
-        if (instance == null)   
+        if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);     
+            DontDestroyOnLoad(this.gameObject);
         }
         else
             Destroy(this.gameObject);
@@ -86,6 +87,10 @@ public class LocalDatabaseManager : MonoBehaviour
                 PartsValue = PartsEmp;
                 break;
         }
+    }
+
+    private void Start()
+    {
         AchieveCurValue = new int[AchievementManager.instance.achieveDB.Achieves.Count];
         AchieveCurLevel = new int[AchievementManager.instance.achieveDB.Achieves.Count];
     }
@@ -109,7 +114,7 @@ public class LocalDatabaseManager : MonoBehaviour
         if (PlayerPrefs.HasKey("PartsMissile"))
         {
             temp = PlayerPrefs.GetString("PartsMissile").Split(',');
-            for(int i = 0; i < PartsMissile.Length; i++)
+            for (int i = 0; i < PartsMissile.Length; i++)
                 PartsMissile[i] = int.Parse(temp[i]);
         }
         if (PlayerPrefs.HasKey("PartsBarrier"))
@@ -150,8 +155,8 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         PlayerPrefs.SetString("CurrentParts", CurrentParts);
         string temp = "";
-        foreach(int part in PartsMissile)
-            temp += (part.ToString()+",");
+        foreach (int part in PartsMissile)
+            temp += (part.ToString() + ",");
         PlayerPrefs.SetString("PartsMissile", temp);
         temp = "";
         foreach (int part in PartsBarrier)

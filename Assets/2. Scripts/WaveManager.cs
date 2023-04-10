@@ -60,7 +60,7 @@ public class WaveManager: MonoBehaviour
         isBossWave = false;
         bonusWaveTime = 0;
         //Debug.Log("Stage : " + (currentWave + 1));
-        GameManger.instance.UiManager.WaveClear(currentWave + 1);
+        GameManger.instance.uiManager.WaveClear(currentWave + 1);
         StartCoroutine("StartWave");
     }
 
