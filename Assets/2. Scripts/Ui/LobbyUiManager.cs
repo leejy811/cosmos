@@ -64,7 +64,7 @@ public class LobbyUiManager : MonoBehaviour
     private int currentFragment = 0;
     private float currentTime = 0f;  
     private float fadeoutTime = 1f;
-    private int selectedPartsIdx = -1;
+    private int selectedPartsIdx = 0;
     private string currentParts;
     private int[] partsUpgradeInfo;
     private float punchScale = 0.2f;
