@@ -300,9 +300,13 @@ public class UiManager : MonoBehaviour
     public void WaveClear(int num)
     {
         if (num == 41)
+        {
             waveLevel.text = "Bonus";
+        }
         else
+        {
             waveLevel.text = Convert.ToString(num);
+        }
         StartCoroutine("WaveClearAnim");
     }
 
@@ -311,6 +315,7 @@ public class UiManager : MonoBehaviour
         string[] texts =new string[] { "Wave Clear !", "3", "2", "1", "" };
         texts[texts.Length - 1] = "Wave " + waveLevel.text;
 
+        yield return new WaitForSeconds(0.5f);
         waveClearAnimBase.SetActive(true);
         foreach (string s in texts)
         {
