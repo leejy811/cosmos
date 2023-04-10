@@ -45,6 +45,9 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Toggle bloomToggle;
     [SerializeField] private Toggle hitToggle;
+
+    // Popup
+    [SerializeField] private GameObject exitPopup;
     #endregion
 
     #region Member Variables
@@ -65,6 +68,7 @@ public class LobbyUiManager : MonoBehaviour
     private string currentParts;
     private int[] partsUpgradeInfo;
     private float punchScale = 0.2f;
+    public bool isPopupOpen { get; private set; } = false;
     private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
     {
         {"Missile",0 },
@@ -268,6 +272,7 @@ public class LobbyUiManager : MonoBehaviour
     /// <param name="name"></param>
     public void OpenPartsUpgradeBase(string name)
     {
+        isPopupOpen = true;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         currentParts = name;
         partsUpgradeBase.SetActive(true);
@@ -302,11 +307,30 @@ public class LobbyUiManager : MonoBehaviour
         SetPartsUpgradeJemText();
     }
 
+    public void OpenExitPopup()
+    {
+        isPopupOpen = true;
+        exitPopup.SetActive(true);
+    }
+
+    public void CloseExitPopup()
+    {
+        isPopupOpen = false;
+        exitPopup.SetActive(false);
+    }
+
     public void ClosePartsUpgradeBase()
     {
+        isPopupOpen = false;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
         partsUpgradeBase.SetActive(false);
+    }
+
+    public void ClosePopupUi()
+    {
+        ClosePartsUpgradeBase();
+        CloseExitPopup();
     }
 
     /// <summary>
@@ -454,5 +478,10 @@ public class LobbyUiManager : MonoBehaviour
         LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
         ChangeScene(true);
+    }
+
+    public void OnExitButton()
+    {
+        Application.Quit();
     }
 }

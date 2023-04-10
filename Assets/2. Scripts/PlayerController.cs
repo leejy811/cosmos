@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         if(playerShield > 0 )
         {
             GameManger.instance.cameraResolution.Shake();
-            GameManger.instance.UiManager.StartDamageEffect();
+            GameManger.instance.uiManager.StartDamageEffect();
             SoundManager.instance.PlaySFX("PlayerHitSound");
             playerShield -= 1;
             if (playerShield == 0)
@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
             playerHealth -= damage;
 
         GameManger.instance.cameraResolution.Shake();
-        GameManger.instance.UiManager.StartDamageEffect();
+        GameManger.instance.uiManager.StartDamageEffect();
         SoundManager.instance.PlaySFX("PlayerHitSound");
     }
 
