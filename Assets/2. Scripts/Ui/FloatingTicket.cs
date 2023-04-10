@@ -6,29 +6,31 @@ public class FloatingTicket : MonoBehaviour
     public float moveAmount=3;
     public float rotateAmount = 3000;
     public float colorSpeed;
-    Color textColor;
+    Color ticketColor;
     SpriteRenderer sprite;
 
-
-    private void OnEnable()     
+    private void Start()
     {
-        sprite =transform.GetChild(0).GetComponent<SpriteRenderer>();
-        textColor = sprite.color;
-        Sequence sequence = DOTween.Sequence();
-        sequence.
-            Append(transform.DOMoveY(moveAmount, 3)).
-            Join(transform.DORotate(new Vector3(0,rotateAmount, 0), 3,RotateMode.FastBeyond360).SetEase(Ease.OutQuint)).SetAutoKill(false);
+        sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        ticketColor = sprite.color;
     }
 
-    void Update()
+    private void Update()
     {
-        textColor.a = Mathf.Lerp(textColor.a, 0, Time.deltaTime * colorSpeed);
-        sprite.color = textColor;
-        if (textColor.a <= 0.1f)
+        ticketColor.a = Mathf.Lerp(ticketColor.a, 0, Time.deltaTime * colorSpeed);
+        sprite.color = ticketColor;
+        if (ticketColor.a <= 0.1f)
         {
             //DOTween.KillAll();
-            textColor.a = 1;
+            ticketColor.a = 1;
+            transform.position = new Vector3(0, 0, 0);
             this.gameObject.SetActive(false);
         }
+    }
+
+    public void FloatingEffet()
+    {
+        transform.DOMoveY(transform.position.y + moveAmount, 3);
+        transform.DORotate(new Vector3(0, rotateAmount, 0), 3, RotateMode.FastBeyond360).SetEase(Ease.OutQuint);
     }
 }

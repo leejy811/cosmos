@@ -127,6 +127,8 @@ public class GameManger : MonoBehaviour
         {
             if (isPlaying)
                 uiManager.PauseGame();
+            else if (playTime > 0)
+                uiManager.ResumeGame();
             else if (lobbyUiManager.isPopupOpen)
                 lobbyUiManager.ClosePopupUi();
             else

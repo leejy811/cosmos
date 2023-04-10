@@ -250,12 +250,13 @@ public class Enemy : MonoBehaviour
             GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
 
-            int ranTicket = Random.Range(1, 2);
+            int ranTicket = Random.Range(0, 10);
             if(ranTicket == 1)
             {
                 GameManger.instance.playTicket += 1;
                 GameObject ticket = GameManger.instance.poolManager.GetPool("Ticket");
                 ticket.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+                ticket.GetComponent<FloatingTicket>().FloatingEffet();
             }
         }
         if(this.moveLerp)
