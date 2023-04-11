@@ -105,7 +105,7 @@ public class LocalDatabaseManager : MonoBehaviour
         if (PlayerPrefs.HasKey("HighScore"))
             HighScore = PlayerPrefs.GetInt("HighScore");
         if (PlayerPrefs.HasKey("Ticket"))
-            HighScore = PlayerPrefs.GetInt("Ticket");
+            Ticket = PlayerPrefs.GetInt("Ticket");
         if (PlayerPrefs.HasKey("CurrentParts"))
             CurrentParts = PlayerPrefs.GetString("CurrentParts");
 

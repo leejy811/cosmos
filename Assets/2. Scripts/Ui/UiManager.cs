@@ -270,7 +270,7 @@ public class UiManager : MonoBehaviour
         resultSequence.
             Append(resultScore.DOText("Wave : " + waveLevel.text, 1.5f)).
             Append(resultHighScore.DOText("High Score : " + LocalDatabaseManager.instance.HighScore, 1.5f)).
-            Append(resultJem.DOText("Jem : " + jemCount.text, 1.5f)).
+            Append(resultJem.DOText("Jem : " + GameManger.instance.player.playerJem, 1.5f)).
             Append(resultTicket.DOText("Ticket : " + GameManger.instance.playTicket, 1.5f)).
             Append(resultTime.DOText("Play Time : "+ timeString, 1.5f));
     }
@@ -278,7 +278,8 @@ public class UiManager : MonoBehaviour
     public void SaveGameResult()
     {
         int currentGameJem = GameManger.instance.player.playerJem;
-        LocalDatabaseManager.instance.JemCount += LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
+        GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
+        LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
         LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();

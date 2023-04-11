@@ -250,7 +250,7 @@ public class Enemy : MonoBehaviour
             GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
 
-            int ranTicket = Random.Range(0, 10);
+            int ranTicket = Random.Range(0, 100);
             if(ranTicket == 1)
             {
                 GameManger.instance.playTicket += 1;

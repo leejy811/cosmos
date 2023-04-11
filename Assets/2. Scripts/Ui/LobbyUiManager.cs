@@ -491,6 +491,8 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OnClickUseTicketButton()
     {
+        if (LocalDatabaseManager.instance.Ticket < 10)
+            return;
         LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
         ChangeScene(true);

@@ -119,6 +119,8 @@ public class GameManger : MonoBehaviour
         SoundManager.instance.PlayBGM("LobbyBGM");
         Time.timeScale = 1;
         isPlaying = false;
+        playTime = 0;
+        playTicket = 0;
     }
 
     private void DoExit()
