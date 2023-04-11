@@ -280,7 +280,7 @@ public class UiManager : MonoBehaviour
         int currentGameJem = GameManger.instance.player.playerJem;
         GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
-        LocalDatabaseManager.instance.HighScore = int.Parse(waveLevel.text);
+        LocalDatabaseManager.instance.HighScore = waveLevel.text;
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
     }
@@ -314,14 +314,14 @@ public class UiManager : MonoBehaviour
 
     public void WaveClear(int num)
     {
-        //if (num == 41)
-        //{
-        //    waveLevel.text = "Bonus";
-        //}
-        //else
-        //{
+        if (num == 41)
+        {
+            waveLevel.text = "Bonus";
+        }
+        else
+        {
             waveLevel.text = Convert.ToString(num);
-        //}
+        }
         StartCoroutine("WaveClearAnim");
     }
 

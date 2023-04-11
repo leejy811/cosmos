@@ -11,12 +11,13 @@ public class LocalDatabaseManager : MonoBehaviour
 
     #region User Data
     public int JemCount { get; set; } = 0;
-    private int highScore = 0;
-    public int HighScore
+    private string highScore = "0";
+    public string HighScore
     {
         get { return highScore; }
-        set { highScore = Mathf.Max(value, highScore); }
+        set { highScore = value == "Bonus" ? "Bonus" : Mathf.Max(int.Parse(value), int.Parse(highScore)).ToString(); }
     }
+
     public string CurrentParts { get; set; } = "Missile";
 
     //Parts Upgrade info, each index indicates how many times it had been upgraded
@@ -102,8 +103,10 @@ public class LocalDatabaseManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("JemCount"))
             JemCount = PlayerPrefs.GetInt("JemCount");
+
         if (PlayerPrefs.HasKey("HighScore"))
-            HighScore = PlayerPrefs.GetInt("HighScore");
+            HighScore = PlayerPrefs.GetString("HighScore");
+
         if (PlayerPrefs.HasKey("Ticket"))
             Ticket = PlayerPrefs.GetInt("Ticket");
         if (PlayerPrefs.HasKey("CurrentParts"))
@@ -143,7 +146,7 @@ public class LocalDatabaseManager : MonoBehaviour
     public void SaveGameData()
     {
         PlayerPrefs.SetInt("JemCount", JemCount);
-        PlayerPrefs.SetInt("HighScore", HighScore);
+        PlayerPrefs.SetString("HighScore", HighScore);
         PlayerPrefs.SetInt("Ticket", Ticket);
         SaveAchieveData();
     }

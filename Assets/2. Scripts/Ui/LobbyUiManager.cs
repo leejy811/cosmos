@@ -115,7 +115,7 @@ public class LobbyUiManager : MonoBehaviour
     private void SetUi()
     {
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
-        highScore.text = ": "+LocalDatabaseManager.instance.HighScore.ToString();
+        highScore.text = ": "+LocalDatabaseManager.instance.HighScore;
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
