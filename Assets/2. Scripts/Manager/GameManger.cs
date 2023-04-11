@@ -115,7 +115,15 @@ public class GameManger : MonoBehaviour
 
     public void GoLobby()
     {
-        SceneManager.LoadScene("LobbyScene");
+        StartCoroutine("IGoLobby");
+    }
+
+    IEnumerator IGoLobby()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("LobbyScene");
+        yield return asyncLoad;
+
+        lobbyUiManager = GameObject.Find("Canvas").GetComponent<LobbyUiManager>();
         SoundManager.instance.PlayBGM("LobbyBGM");
         Time.timeScale = 1;
         isPlaying = false;
