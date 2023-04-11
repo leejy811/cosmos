@@ -195,10 +195,7 @@ public class Enemy : MonoBehaviour
 
     public void GameOverDie()
     {
-        isEnemyLive = false;
         enemyDieEffect.SetActive(true);
-        gameObject.tag = "Untagged";
-        gameObject.layer = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Invoke("EnemyDieEffect", 1.5f);
     }
