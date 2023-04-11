@@ -48,6 +48,8 @@ public class LobbyUiManager : MonoBehaviour
 
     // Popup
     [SerializeField] private GameObject exitPopup;
+    [SerializeField] private GameObject battlePopup;
+    [SerializeField] private Text ticketNum;
     #endregion
 
     #region Member Variables
@@ -327,10 +329,24 @@ public class LobbyUiManager : MonoBehaviour
         partsUpgradeBase.SetActive(false);
     }
 
+    public void OpenBattlePopup()
+    {
+        isPopupOpen = true;
+        battlePopup.SetActive(true);
+        ticketNum.text = LocalDatabaseManager.instance.Ticket + " / 10";
+    }
+
+    public void CloseBattlePopup()
+    {
+        isPopupOpen = false;
+        battlePopup.SetActive(false);
+    }
+
     public void ClosePopupUi()
     {
         ClosePartsUpgradeBase();
         CloseExitPopup();
+        CloseBattlePopup();
     }
 
     /// <summary>
