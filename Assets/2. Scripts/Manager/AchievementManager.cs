@@ -27,7 +27,7 @@ public class AchievementManager : MonoBehaviour
     public Dictionary<string, IAchieve> achieves = new Dictionary<string,IAchieve>();
     private string[] achieveNames;
 
-    public AchieveDB achieveDB;
+    public DataBase achieveDB;
 
     private void Awake()
     {

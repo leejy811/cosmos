@@ -54,6 +54,7 @@ public class WaveManager: MonoBehaviour
     public bool isBossLive;
     private int currenBossType;
 
+    public DataBase waveDB;
     
     void Start()
     {
@@ -233,5 +234,35 @@ public class WaveManager: MonoBehaviour
         boss.BossLookPlayer();
         boss.playerController = GameManger.instance.player;
         boss.waveManager = this;
+    }
+
+    private void LoadWaveData()
+    {
+        for(int i = 0; i < waveDB.Waves.Count; i++)
+        {
+            waves[i].enemyACount = waveDB.Waves[i].enemyACount;
+            waves[i].enemyAHp = waveDB.Waves[i].enemyAHp;
+            waves[i].enemyADamage = waveDB.Waves[i].enemyADamage;
+            waves[i].enemyAPrice = waveDB.Waves[i].enemyAPrice;
+            waves[i].enemyAJem = waveDB.Waves[i].enemyAJem;
+
+            waves[i].enemyBCount = waveDB.Waves[i].enemyBCount;
+            waves[i].enemyBHp = waveDB.Waves[i].enemyBHp;
+            waves[i].enemyBDamage = waveDB.Waves[i].enemyBDamage;
+            waves[i].enemyBPrice = waveDB.Waves[i].enemyBPrice;
+            waves[i].enemyBJem = waveDB.Waves[i].enemyBJem;
+
+            waves[i].enemyCCount = waveDB.Waves[i].enemyCCount;
+            waves[i].enemyCHp = waveDB.Waves[i].enemyCHp;
+            waves[i].enemyCDamage = waveDB.Waves[i].enemyCDamage;
+            waves[i].enemyCPrice = waveDB.Waves[i].enemyCPrice;
+            waves[i].enemyCJem = waveDB.Waves[i].enemyCJem;
+
+            waves[i].enemyDCount = waveDB.Waves[i].enemyDCount;
+            waves[i].enemyDHp = waveDB.Waves[i].enemyDHp;
+            waves[i].enemyDDamage = waveDB.Waves[i].enemyDDamage;
+            waves[i].enemyDPrice = waveDB.Waves[i].enemyDPrice;
+            waves[i].enemyDJem = waveDB.Waves[i].enemyDJem;
+        }
     }
 }
