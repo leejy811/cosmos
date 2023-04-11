@@ -68,7 +68,7 @@ public class WaveManager: MonoBehaviour
     void Update()
     {
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
-            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !isBossWave)
+            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !CheckBossWave())
         {
             GoNextWave();
         }
@@ -84,6 +84,13 @@ public class WaveManager: MonoBehaviour
         {
             bonusWaveTime += (int)Time.deltaTime;
         }
+    }
+
+    private bool CheckBossWave()
+    {
+        if ((currentWave + 1) % 10 == 0)
+            return true;
+        else return false;
     }
 
     public void WaveSkipButton()

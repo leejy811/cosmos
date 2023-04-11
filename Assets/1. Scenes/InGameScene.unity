@@ -12108,7 +12108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1011557694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13676,11 +13676,11 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 0
-    enemyAHp: 5
-    enemyADamage: 1
+    enemyAHp: 0
+    enemyADamage: 0
     enemyAPrice: 0
     enemyAJem: 0
-    enemyBCount: 11111
+    enemyBCount: 0
     enemyBHp: 0
     enemyBDamage: 0
     enemyBPrice: 0
@@ -13900,7 +13900,7 @@ MonoBehaviour:
     enemyCDamage: 0
     enemyCPrice: 0
     enemyCJem: 0
-    enemyDCount: 1111
+    enemyDCount: 0
     enemyDHp: 0
     enemyDDamage: 0
     enemyDPrice: 0
@@ -14095,7 +14095,7 @@ MonoBehaviour:
     enemyDPrice: 8
     enemyDJem: 5
     spawnCoolTime: 0.6
-  - enemyACount: 11
+  - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
@@ -14305,7 +14305,7 @@ MonoBehaviour:
     enemyDPrice: 18
     enemyDJem: 5
     spawnCoolTime: 0.4
-  - enemyACount: 111111
+  - enemyACount: 0
     enemyAHp: 0
     enemyADamage: 0
     enemyAPrice: 0
