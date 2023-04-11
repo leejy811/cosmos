@@ -41,40 +41,7 @@ namespace DataBaseEntity
     }
 
     [System.Serializable]
-    public class MissileDBEntity
-    {
-        public float damage;
-        public float attackSpeed;
-        public float expertSkill;
-        public int damageUpgradeJem;
-        public int attackSpeedUpgradeJem;
-        public int expertSkillUpgradeJem;
-    }
-
-    [System.Serializable]
-    public class BarrierDBEntity
-    {
-        public float damage;
-        public float attackSpeed;
-        public float expertSkill;
-        public int damageUpgradeJem;
-        public int attackSpeedUpgradeJem;
-        public int expertSkillUpgradeJem;
-    }
-
-    [System.Serializable]
-    public class LaserDBEntity
-    {
-        public float damage;
-        public float attackSpeed;
-        public float expertSkill;
-        public int damageUpgradeJem;
-        public int attackSpeedUpgradeJem;
-        public int expertSkillUpgradeJem;
-    }
-
-    [System.Serializable]
-    public class EmpDBEntity
+    public class PartsDBEntity
     {
         public float damage;
         public float attackSpeed;
