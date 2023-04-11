@@ -53,7 +53,6 @@ public class Boss : MonoBehaviour
 
         waveManager.isBossLive = true;
         bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.color;
-
     }
 
     public void BossLookPlayer()
@@ -172,34 +171,15 @@ public class Boss : MonoBehaviour
         GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         hudText.transform.position = new Vector3(this.transform.position.x +Random.Range(-0.5f, 0.5f), this.transform.position.y + 1f, 0);
         hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
-        //hudText.GetComponent<DamageText>().damage = (int)(GameManger.instance.player.playerDamage * 100);
     }
-    //IEnumerator ColorEffect()
-    //{
-    //    // 보스 A의 경우 피격 시 크기가 커졌다 작아짐(또잉)
-    //    if (bossType == 0 && bossType == 3)
-    //        this.gameObject.transform.DOShakeScale(0.2f, 0.1f, 2, 90, false, ShakeRandomnessMode.Full);
-    //    // 보스의 원래 색과 빨간색 저장
-    //    Color targetColor = new Color(255, 0, 0, 255);
-    //    Color bossColor;
-    //    bossColor = this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.color;
-    //    this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.1f);
 
-    //    yield return new WaitForSeconds(0.3f);
-
-    //    // 빠르게 색 변환
-    //    this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.1f);
-    //    colorEffectOn = false;
-    //}
     public void BossDie()
     {
-        Debug.Log("Boss Die");
         bossDieEffect.SetActive(true);
 
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameObject.tag = "Untagged";
         gameObject.layer = 0;
-
 
         Invoke("BossDieEffectEnd", 1.5f);
     }

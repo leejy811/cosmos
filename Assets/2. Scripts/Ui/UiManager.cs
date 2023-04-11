@@ -314,14 +314,14 @@ public class UiManager : MonoBehaviour
 
     public void WaveClear(int num)
     {
-        if (num == 41)
-        {
-            waveLevel.text = "Bonus";
-        }
-        else
-        {
+        //if (num == 41)
+        //{
+        //    waveLevel.text = "Bonus";
+        //}
+        //else
+        //{
             waveLevel.text = Convert.ToString(num);
-        }
+        //}
         StartCoroutine("WaveClearAnim");
     }
 
