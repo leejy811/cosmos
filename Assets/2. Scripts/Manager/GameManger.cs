@@ -14,8 +14,8 @@ public class GameManger : MonoBehaviour
     public LobbyUiManager lobbyUiManager;
     public WaveManager waveManager;
 
-    public bool onBloomEffect = true;
-    public bool onHitEffect = true;
+    public bool onBloomEffect { get; set; } = true;
+    public bool onHitEffect { get; set; } = true;
 
     // play info in 'each' game
     public bool isPlaying { get; set; } = false;

@@ -50,6 +50,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject exitPopup;
     [SerializeField] private GameObject battlePopup;
     [SerializeField] private Text ticketNum;
+    [SerializeField] private GameObject settingsPopup;
+    [SerializeField] private GameObject popupPanel;
     #endregion
 
     #region Member Variables
@@ -317,12 +319,16 @@ public class LobbyUiManager : MonoBehaviour
 
     public void CloseExitPopup()
     {
+        if (!exitPopup.activeSelf)
+            return;
         isPopupOpen = false;
         exitPopup.SetActive(false);
     }
 
     public void ClosePartsUpgradeBase()
     {
+        if (!partsUpgradeBase.activeSelf)
+            return;
         isPopupOpen = false;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
@@ -338,8 +344,25 @@ public class LobbyUiManager : MonoBehaviour
 
     public void CloseBattlePopup()
     {
+        if (!battlePopup.activeSelf)
+            return;
         isPopupOpen = false;
         battlePopup.SetActive(false);
+    }
+
+    public void OpenSettingsPopup()
+    {
+        isPopupOpen = true;
+        settingsPopup.SetActive(true);
+        popupPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
+    }
+
+    public void CloseSettingsPopup()
+    {
+        if (!settingsPopup.activeSelf)
+            return;
+        isPopupOpen = false;
+        popupPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
     }
 
     public void ClosePopupUi()
@@ -347,6 +370,7 @@ public class LobbyUiManager : MonoBehaviour
         ClosePartsUpgradeBase();
         CloseExitPopup();
         CloseBattlePopup();
+        CloseSettingsPopup();
     }
 
     /// <summary>
