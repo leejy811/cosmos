@@ -5016,6 +5016,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
   isEnemyLive: 0
+  numberPrefab: {fileID: 3699665865677232935, guid: 368723df01195d7429be6c12e9ca4ec6, type: 3}
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   enemyDieEffect: {fileID: 1641198445818840192}

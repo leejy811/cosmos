@@ -5092,6 +5092,7 @@ MonoBehaviour:
   - {fileID: 5021594607862781980}
   - {fileID: 4456076450189618115}
   targetPoints: []
+  numberPrefab: {fileID: 3699665865677232935, guid: 368723df01195d7429be6c12e9ca4ec6, type: 3}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
   bossDLaser: {fileID: 7862834121097520348}

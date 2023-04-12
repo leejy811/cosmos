@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using DamageNumbersPro;
 // 적 생성하고 무적 시간 두기 (0.2초 정도)
 //
 public class Enemy : MonoBehaviour
@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
     public PlayerController playerController;
     public WaveManager waveManager;
     public bool isEnemyLive;
-
+    [SerializeField]
+    private DamageNumber numberPrefab;
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
     public Vector2 targetPos;
@@ -165,9 +166,10 @@ public class Enemy : MonoBehaviour
     {
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(targetColor, 0.1f);
         this.gameObject.transform.GetComponent<Renderer>().material.DOColor(enemyColor, 0.1f);
-        GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
-        hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-        hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        //GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
+        //hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+        //hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        DamageNumber damageNumber = numberPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100));
     }
 
     public float GetEnemyDamage()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using DamageNumbersPro;
 
 // 보스 A : 사거리에서 멈춘 뒤 보스 A의 패턴을 시작
 // 보스 B : 플레이어의 사거리 전에는 빠른 속도로 접근하다가 사거리에 도착하면 느린 속도로 접근
@@ -19,7 +20,8 @@ public class Boss : MonoBehaviour
     private Transform[] spawnPoints;
     [SerializeField]
     private Transform[] targetPoints;
-
+    [SerializeField]
+    private DamageNumber numberPrefab;
     public PlayerController playerController;
     public WaveManager waveManager;
 
@@ -35,7 +37,7 @@ public class Boss : MonoBehaviour
 
     private bool colorEffectOn;
 
-    Color targetColor = new Color32(255, 0, 0, 255);
+    Color targetColor = new Color(255, 0, 0, 255);
     Color bossColor;
 
     [SerializeField]
@@ -131,7 +133,6 @@ public class Boss : MonoBehaviour
             StartCoroutine("BossDPattern");
             bossDPattern = false;
         }
-
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -165,12 +166,13 @@ public class Boss : MonoBehaviour
     }
     private void FloatingDamageEffect(float damage)
     {
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.5f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.3f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.3f);
+        //GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
+        //hudText.transform.position = new Vector3(this.transform.position.x +Random.Range(-0.5f, 0.5f), this.transform.position.y + 1f, 0);
+        //hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
+        DamageNumber damageNumber = numberPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 1.5f, 0), (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100));
 
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.5f);
-        GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
-        hudText.transform.position = new Vector3(this.transform.position.x +Random.Range(-0.5f, 0.5f), this.transform.position.y + 1f, 0);
-        hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
     }
 
     public void BossDie()
