@@ -77,8 +77,12 @@ public class PartsContorller : Bullet
 
         Init(nearTarget);
 
-        if (partsType == "Missile" && value[2] != 0)
-            partsRange = value[2];
+        if (partsType == "Missile")
+        {
+            if (value[2] != 0)
+                partsRange = value[2];
+            changeMissileParticleSize(partsRange);
+        }
         else if (partsType == "Laser")
             LaserInit();
     }
@@ -116,7 +120,7 @@ public class PartsContorller : Bullet
         missileBoostParticle.SetActive(false);
         missileBombParticle.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Invoke("BombEnd", 0.5f);
+        Invoke("BombEnd", 2f);
     }
 
     //BombEnd는 Missile이 터지고 난뒤 이펙트가 끝나면 다시 초기화를 하는 함수이다.
@@ -127,6 +131,7 @@ public class PartsContorller : Bullet
         gameObject.SetActive(false);
         missileBoostParticle.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        changeMissileParticleSize(1 / partsRange);
     }
 
     private void EmpAttack()
@@ -134,12 +139,6 @@ public class PartsContorller : Bullet
         SoundManager.instance.PlaySFX("PlayerEmpSound");
         transform.localScale = new Vector3(0.3f, 0.3f, 1);
         gameObject.GetComponent<Animator>().SetFloat("EmpSpeed", bulletSpeed);
-        //float explosionSpeed = (partsRange - transform.localScale.x) * bulletSpeed * Time.fixedDeltaTime;
-        //while (transform.localScale.x< partsRange)
-        //{
-        //    transform.localScale += new Vector3(explosionSpeed, explosionSpeed, 0);
-        //    yield return new WaitForFixedUpdate();
-        //}
     }
 
     //ProtocolAttack은 Protocol의 지속적인 공격을 위해 partsAttackSpeed마다 반복해주는 코루틴이다.
@@ -214,5 +213,12 @@ public class PartsContorller : Bullet
     public void EndEmp()
     {
         gameObject.SetActive(false);
+    }
+
+    private void changeMissileParticleSize(float size)
+    {
+        Transform[] bombParticleTransform = missileBombParticle.GetComponentsInChildren<Transform>();
+        foreach (Transform transform in bombParticleTransform)
+            transform.localScale *= size;
     }
 }
