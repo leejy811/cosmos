@@ -92,12 +92,6 @@ public class LocalDatabaseManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        AchieveCurValue = new int[AchievementManager.instance.achieveDB.Achieves.Count];
-        AchieveCurLevel = new int[AchievementManager.instance.achieveDB.Achieves.Count];
-    }
-
     /// <summary>
     /// Load all data at the start of the Game, in Lobby Scene
     /// </summary>
@@ -180,6 +174,8 @@ public class LocalDatabaseManager : MonoBehaviour
 
     public void LoadAchieveData()
     {
+        AchieveCurValue = new int[AchievementManager.instance.achieveDB.Achieves.Count];
+        AchieveCurLevel = new int[AchievementManager.instance.achieveDB.Achieves.Count];
         string[] temp;
         if (PlayerPrefs.HasKey("AchieveCurValue"))
         {
