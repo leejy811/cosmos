@@ -169,7 +169,7 @@ public class Enemy : MonoBehaviour
         //GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
         //hudText.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
         //hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
-        DamageNumber damageNumber = numberPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100));
+        DamageNumber damageNumber = numberPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round( damage * 10) * 0.1f) * 100));
     }
 
     public float GetEnemyDamage()
