@@ -9,7 +9,7 @@ public class WaveManager: MonoBehaviour
 
     [SerializeField]
     private Transform[] spawnPoint;
-    public WaveDBEntity[] waves;
+    public List<WaveDBEntity> waves;
 
     public int currentWave = -1;
 
@@ -26,16 +26,16 @@ public class WaveManager: MonoBehaviour
     public bool isBossLive;
     private int currenBossType;
 
-    public DataBase waveDB;
+    private DataBase waveDB;
     
     void Start()
     {
+        LoadWaveData();
         isBossWave = false;
         bonusWaveTime = 0;
         //Debug.Log("Stage : " + (currentWave + 1));
         //GameManger.instance.uiManager.WaveClear(currentWave + 1);
         StartCoroutine("StartWave");
-        LoadWaveData();
     }
 
     void Update()
@@ -218,6 +218,11 @@ public class WaveManager: MonoBehaviour
 
     private void LoadWaveData()
     {
-        waves = waveDB.Waves.ToArray();
+        waveDB = GameManger.instance.database;
+
+        for (int i = 0; i< waveDB.Waves.Count; i++)
+        {
+            waves.Add(waveDB.Waves[i]);
+        }
     }
 }

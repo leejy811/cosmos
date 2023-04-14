@@ -39,6 +39,8 @@ public class AchievementManager : MonoBehaviour
         else
             Destroy(this.gameObject);
 
+        achieveDB = GameManger.instance.database;
+
         LoadAchieveStringIndex();
         LoadAchieveInfo();
     }

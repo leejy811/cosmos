@@ -13,6 +13,7 @@ public class GameManger : MonoBehaviour
     public CameraResolution cameraResolution;
     public LobbyUiManager lobbyUiManager;
     public WaveManager waveManager;
+    public DataBase database;
 
     public bool onBloomEffect { get; set; } = true;
     public bool onHitEffect { get; set; } = true;
