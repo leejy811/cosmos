@@ -9,7 +9,7 @@ public class WaveManager: MonoBehaviour
 
     [SerializeField]
     private Transform[] spawnPoint;
-    public List<WaveDBEntity> waves;
+    public WaveDBEntity[] waves;
 
     public int currentWave = -1;
 
@@ -218,6 +218,6 @@ public class WaveManager: MonoBehaviour
 
     private void LoadWaveData()
     {
-        waves = waveDB.Waves.ToList(); ;
+        waves = waveDB.Waves.ToArray();
     }
 }
