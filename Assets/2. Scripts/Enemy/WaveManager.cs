@@ -40,6 +40,9 @@ public class WaveManager: MonoBehaviour
 
     void Update()
     {
+        if (GameManger.instance.player.isPlayerDie)
+            return;
+
         if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
             && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !CheckBossWave())
         {

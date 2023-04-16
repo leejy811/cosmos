@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3699665865677232935}
   - component: {fileID: 5915402331295859867}
   m_Layer: 13
-  m_Name: Damage Text
+  m_Name: Damage Text Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,16 +537,16 @@ MonoBehaviour:
   enableShakeFadeIn: 0
   shakeOffsetFadeIn: {x: 0, y: 1.5}
   shakeFrequencyFadeIn: 4
-  durationFadeOut: 0.1
-  enableOffsetFadeOut: 0
-  offsetFadeOut: {x: 0.5, y: 0}
+  durationFadeOut: 0.2
+  enableOffsetFadeOut: 1
+  offsetFadeOut: {x: 0.05, y: 0}
   enableScaleFadeOut: 1
-  scaleFadeOut: {x: 0.4, y: 0.4}
+  scaleFadeOut: {x: 1.05, y: -0.1}
   enableCrossScaleFadeOut: 0
   crossScaleFadeOut: {x: 1, y: 1.5}
-  enableShakeFadeOut: 0
-  shakeOffsetFadeOut: {x: 0, y: 1.5}
-  shakeFrequencyFadeOut: 4
+  enableShakeFadeOut: 1
+  shakeOffsetFadeOut: {x: 0, y: -0.2}
+  shakeFrequencyFadeOut: 2
   enableLerp: 1
   lerpSettings:
     speed: 5

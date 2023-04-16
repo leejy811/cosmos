@@ -15,7 +15,7 @@ public class LocalDatabaseManager : MonoBehaviour
     public string HighScore
     {
         get { return highScore; }
-        set { highScore = value == "Bonus" ? "Bonus" : highScore == "Bonus" ? "Bonus" : Mathf.Max(int.Parse(value), int.Parse(highScore)).ToString(); }
+        set { highScore = value == "Bonus" ? "40" : highScore == "Bonus" ? "40" : Mathf.Max(int.Parse(value), int.Parse(highScore)).ToString(); }
     }
 
     public string CurrentParts { get; set; } = "Missile";

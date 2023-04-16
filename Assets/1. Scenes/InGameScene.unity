@@ -14001,7 +14001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1011557694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16632,7 +16632,6 @@ MonoBehaviour:
   - {fileID: 8119299994556774598, guid: c32794497f0e4f34ebe44839e59892fd, type: 3}
   - {fileID: 8119299994556774598, guid: ba8911e96cd8d494dbff6885a7654a16, type: 3}
   isBossLive: 0
-  waveDB: {fileID: 11400000, guid: 9c1df470fe350c5498be7081465bcbd6, type: 2}
 --- !u!4 &1302566967
 Transform:
   m_ObjectHideFlags: 0

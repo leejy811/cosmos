@@ -5050,7 +5050,8 @@ MonoBehaviour:
   - {fileID: 2312142958335708309}
   - {fileID: 1187649247255562372}
   - {fileID: 1938976666744485141}
-  numberPrefab: {fileID: 3699665865677232935, guid: 368723df01195d7429be6c12e9ca4ec6, type: 3}
+  bulletTextPrefab: {fileID: 3699665865677232935, guid: 368723df01195d7429be6c12e9ca4ec6, type: 3}
+  partsTextPrefab: {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
   bossDLaser: {fileID: 0}

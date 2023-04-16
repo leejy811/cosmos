@@ -21,7 +21,9 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private Transform[] targetPoints;
     [SerializeField]
-    private DamageNumber numberPrefab;
+    private DamageNumber bulletTextPrefab;
+    [SerializeField]
+    private DamageNumber partsTextPrefab;
     public PlayerController playerController;
     public WaveManager waveManager;
 
@@ -140,7 +142,7 @@ public class Boss : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             float damage = playerController.playerDamage;
-            GetDamage(damage);
+            GetDamage(damage, false);
             other.gameObject.SetActive(false);
         }
         else if (other.gameObject.tag == "Missile")
@@ -150,13 +152,13 @@ public class Boss : MonoBehaviour
         else if (other.gameObject.tag == "Laser")
         {
             float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
-            GetDamage(damage);
+            GetDamage(damage, true);
         }
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, bool isPartsDamage)
     {
-        FloatingDamageEffect(damage);
+        FloatingDamageEffect(damage, isPartsDamage);
         if (bossHealth - damage <= 0)
         {
             BossDie();
@@ -164,14 +166,17 @@ public class Boss : MonoBehaviour
         else
             bossHealth -= damage;
     }
-    private void FloatingDamageEffect(float damage)
+    private void FloatingDamageEffect(float damage, bool isPartsDamage)
     {
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.3f);
         this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.3f);
-        //GameObject hudText = GameManger.instance.poolManager.GetPool("DamageText");
-        //hudText.transform.position = new Vector3(this.transform.position.x +Random.Range(-0.5f, 0.5f), this.transform.position.y + 1f, 0);
-        //hudText.GetComponent<DamageText>().damage = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100);
-        DamageNumber damageNumber = numberPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 1.5f, 0), (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 100));
+        DamageNumber damageNumber;
+        if (isPartsDamage)
+        {
+            damageNumber = partsTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 10) * 0.1f) * 100));
+        }
+        else
+            damageNumber = bulletTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 10) * 0.1f) * 100));
 
     }
 

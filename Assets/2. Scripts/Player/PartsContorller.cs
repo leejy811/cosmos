@@ -167,10 +167,10 @@ public class PartsContorller : Bullet
             if (enemy == null)
             {
                 Boss boss = target.gameObject.GetComponent<Boss>();
-                boss.GetDamage(partsDamage);
+                boss.GetDamage(partsDamage, true);
             }
             else
-                enemy.GetDamage(partsDamage);
+                enemy.GetDamage(partsDamage, true);
 
             isTarget = true;
         }
