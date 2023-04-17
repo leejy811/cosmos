@@ -26,7 +26,7 @@ public class LocalDatabaseManager : MonoBehaviour
     public int[] PartsBarrier { get; set; } = { 0, 0, 0 };
     public int[] PartsLaser { get; set; } = { 0, 0, 0 };
     public int[] PartsEmp { get; set; } = { 0, 0, 0 };
-    public int[] PartsValue { get; set; }
+    public int[] PartsValue { get; set; } = { 0, 0, 0 };
 
     public int Ticket { get; set; } = 3;
     public bool isTicketMode { get; set; } = false;

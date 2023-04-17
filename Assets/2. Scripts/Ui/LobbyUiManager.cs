@@ -209,7 +209,7 @@ public class LobbyUiManager : MonoBehaviour
 
         // Set the alpha value of each fragment button(if selected, assign 1)
         foreach (Image i in fragmentButtons)
-            ButtonAlphaChange(i, 0.3f);
+            ButtonAlphaChange(i, 0.15f);
         switch (targetFragment)
         {
             case 0:
