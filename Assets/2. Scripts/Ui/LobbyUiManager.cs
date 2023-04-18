@@ -13,8 +13,6 @@ public class LobbyUiManager : MonoBehaviour
     #region UI Components
     //main ui
     [SerializeField] private RectTransform mainUiContainer;
-    [SerializeField] private GameObject backgroundBase;
-    [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
     [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Animation fragmentChangeAnim;
@@ -55,11 +53,6 @@ public class LobbyUiManager : MonoBehaviour
     #endregion
 
     #region Member Variables
-    private Vector2 moveDir;
-    private float moveX = 1;
-    private float moveY = 1;
-    private float xScreenHalfSize;
-    private float yScreenHalfSize;
     private Vector3 originalJemScale;
     private bool isTweening=false;
     private GameObject target;      // reference to the selected fragment
@@ -103,14 +96,6 @@ public class LobbyUiManager : MonoBehaviour
     private void Start()
     {
         SetUi();
-        yScreenHalfSize = Screen.height / 2;
-        xScreenHalfSize = Screen.width / 2;
-        moveDir = new Vector2(moveX, moveY);
-    }
-
-    private void Update()
-    {
-        MoveBackground();
     }
 
     // Set user data to the Text at the start of the game
@@ -134,24 +119,6 @@ public class LobbyUiManager : MonoBehaviour
         hitToggle.onValueChanged.AddListener(SetBloodEffectToggle);
     }
 
-    private void MoveBackground()
-    {
-        float x = backgroundBase.GetComponent<RectTransform>().anchoredPosition.x;
-        float y = backgroundBase.GetComponent<RectTransform>().anchoredPosition.y;
-
-        if (x < -xScreenHalfSize)
-            moveX = UnityEngine.Random.Range(0, 1f);
-        else if (x > xScreenHalfSize)
-            moveX = UnityEngine.Random.Range(-1f, 0);
-        if (y < -yScreenHalfSize)
-            moveY = UnityEngine.Random.Range(0, 1f);
-        else if (y > yScreenHalfSize)
-            moveY = UnityEngine.Random.Range(-1f, 0);
-
-        moveDir.x = moveX;
-        moveDir.y = moveY;
-        backgroundBase.GetComponent<RectTransform>().anchoredPosition += backgroundMoveSpeed * Time.deltaTime * moveDir.normalized;
-    }
 
     /// <summary>
     /// Make Fade-out effect when the 'Battle' button clicked
@@ -242,7 +209,7 @@ public class LobbyUiManager : MonoBehaviour
 
         // Set the alpha value of each fragment button(if selected, assign 1)
         foreach (Image i in fragmentButtons)
-            ButtonAlphaChange(i, 0.3f);
+            ButtonAlphaChange(i, 0.15f);
         switch (targetFragment)
         {
             case 0:
