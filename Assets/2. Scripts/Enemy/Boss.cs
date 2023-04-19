@@ -217,12 +217,10 @@ IEnumerator BossAPattern()
 
         for (int i = 0; i < targetPoints.Length; i++)
         {
-
-
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
             // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
             enemy.GetComponent<Enemy>().SetEnemyState(5, 3, 0, 0);
-            enemy.transform.position = spawnPoints[i/3].position;
+            enemy.transform.position = spawnPoints[0].position;
             enemy.GetComponent<Enemy>().targetPos = targetPoints[i].position;
             enemy.GetComponent<Enemy>().moveLerp = true;
             enemy.GetComponent<Enemy>().EnemyLookPlayer();

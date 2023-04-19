@@ -5092,7 +5092,7 @@ MonoBehaviour:
   - {fileID: 5021594607862781980}
   - {fileID: 4456076450189618115}
   targetPoints: []
-  bulletTextPrefab: {fileID: 3699665865677232935, guid: 368723df01195d7429be6c12e9ca4ec6, type: 3}
+  bulletTextPrefab: {fileID: 3699665865677232935, guid: bd98a82a4766edf4c83b0cc2101c632b, type: 3}
   partsTextPrefab: {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
