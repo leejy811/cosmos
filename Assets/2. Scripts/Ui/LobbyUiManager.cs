@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -13,9 +12,7 @@ public class LobbyUiManager : MonoBehaviour
     #region UI Components
     //main ui
     [SerializeField] private RectTransform mainUiContainer;
-    [SerializeField] private GameObject nextFragment;   // Assigned after the user clicked next fragment
     [SerializeField] private GameObject partsUpgradeBase;
-    [SerializeField] private Animation fragmentChangeAnim;
     [SerializeField] private Image panel;               // For Fade-out effect
     [SerializeField] private Image[] fragmentButtons;   // reference to 3 buttons at the bottom
     [SerializeField] private Text jemCount;
@@ -41,10 +38,10 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Image[] partsUpgradeButtons;
 
     //settings ui
-    [SerializeField] private Slider bgmSlider;
-    [SerializeField] private Slider sfxSlider;
-    [SerializeField] private Toggle bloomToggle;
-    [SerializeField] private Toggle hitToggle;
+    [SerializeField] private Scrollbar bgmSlider;
+    [SerializeField] private Scrollbar sfxSlider;
+    [SerializeField] private SwitchButton bloomToggle;
+    [SerializeField] private SwitchButton hitToggle;
 
     // Popup
     [SerializeField] private GameObject exitPopup;
@@ -117,10 +114,8 @@ public class LobbyUiManager : MonoBehaviour
         bgmSlider.onValueChanged.AddListener(SetBgmSlider);
         sfxSlider.onValueChanged.AddListener(SetSfxSlider);
 
-        bloomToggle.isOn = GameManger.instance.onBloomEffect;
-        hitToggle.isOn = GameManger.instance.onHitEffect;
-        bloomToggle.onValueChanged.AddListener(SetBloomToggle);
-        hitToggle.onValueChanged.AddListener(SetBloodEffectToggle);
+        bloomToggle.SetSwitch(GameManger.instance.onBloomEffect);
+        hitToggle.SetSwitch(GameManger.instance.onHitEffect);
     }
 
 
@@ -427,16 +422,6 @@ public class LobbyUiManager : MonoBehaviour
     private void SetSfxSlider(float value)
     {
         SoundManager.instance.SetSfxVolume(value);
-    }
-
-    private void SetBloomToggle(bool value)
-    {
-        GameManger.instance.onBloomEffect = value;
-    }
-
-    private void SetBloodEffectToggle(bool value)
-    {
-        GameManger.instance.onHitEffect = value;
     }
 
     // func for testing

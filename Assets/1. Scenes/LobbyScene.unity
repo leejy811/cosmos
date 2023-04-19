@@ -12392,10 +12392,8 @@ MonoBehaviour:
   - {fileID: 1093907540}
   - {fileID: 1286931338}
   - {fileID: 1216668781}
-  bgmSlider: {fileID: 1531728865}
-  sfxSlider: {fileID: 1050852526}
-  bloomToggle: {fileID: 1882649804}
-  hitToggle: {fileID: 747582057}
+  bgmSlider: {fileID: 8756714962691450795}
+  sfxSlider: {fileID: 8756714918667667913}
   exitPopup: {fileID: 2076073350}
   battlePopup: {fileID: 1395257535}
   ticketNum: {fileID: 1414750442}
@@ -25532,6 +25530,7 @@ MonoBehaviour:
   textOn: {fileID: 8756714918854515171}
   textOff: {fileID: 8756714917650122527}
   imageHandle: {fileID: 8651580064991634723}
+  toggleType: 1
   onPos: {fileID: 8865570517583154095}
   offPos: {fileID: 8865570515866430447}
 --- !u!114 &8756714918183813945
@@ -25547,7 +25546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25882354, g: 0.92941177, b: 0.972549, a: 1}
+  m_Color: {r: 0.17254902, g: 0.4745098, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25637,7 +25636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17254902, g: 0.4745098, b: 0.62352943, a: 1}
+  m_Color: {r: 0.25882354, g: 0.92941177, b: 0.972549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25801,6 +25800,7 @@ MonoBehaviour:
   textOn: {fileID: 8756714918578406559}
   textOff: {fileID: 8756714918183813945}
   imageHandle: {fileID: 8651580066727839349}
+  toggleType: 0
   onPos: {fileID: 8865570515734218841}
   offPos: {fileID: 8865570510671249237}
 --- !u!114 &8756714918936955521
@@ -27144,7 +27144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.3, y: 0}
+  m_AnchoredPosition: {x: 30.3, y: 0}
   m_SizeDelta: {x: 110, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8865570511166100033
