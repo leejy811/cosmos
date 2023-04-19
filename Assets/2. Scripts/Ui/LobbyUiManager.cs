@@ -20,6 +20,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Image[] fragmentButtons;   // reference to 3 buttons at the bottom
     [SerializeField] private Text jemCount;
     [SerializeField] private Text highScore;
+    [SerializeField] private Text ticket;
+    [SerializeField] private Text equipment;
     [SerializeField] private Image jemIcon;
     [SerializeField] private ParticleSystem uiParticle;
 
@@ -102,7 +104,9 @@ public class LobbyUiManager : MonoBehaviour
     private void SetUi()
     {
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
-        highScore.text = ": "+LocalDatabaseManager.instance.HighScore;
+        highScore.text =LocalDatabaseManager.instance.HighScore;
+        ticket.text = LocalDatabaseManager.instance.Ticket.ToString();
+        equipment.text = LocalDatabaseManager.instance.CurrentParts;
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
@@ -155,7 +159,7 @@ public class LobbyUiManager : MonoBehaviour
     /// <param name="part"></param>
     public void EquipParts(GameObject part)
     {
-        // Conduct converting while not exceptional situation
+        // Conduct converting if not exceptional situation
         if (part == null || currentPart==part || isConvertingUi)
             return;
         isConvertingUi = true;
@@ -169,6 +173,7 @@ public class LobbyUiManager : MonoBehaviour
         // Update newly equiped part to the database manager
         LocalDatabaseManager.instance.CurrentParts = part.transform.name.Substring(5);
         LocalDatabaseManager.instance.SavePartsData();
+        equipment.text = LocalDatabaseManager.instance.CurrentParts;
         switch (LocalDatabaseManager.instance.CurrentParts)
         {
             case "Missile":
