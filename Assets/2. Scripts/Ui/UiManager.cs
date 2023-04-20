@@ -44,8 +44,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private float punchPosition = 20f;
 
     [SerializeField] private GameObject pauseUi;
-    [SerializeField] private Slider bgmSlider;
-    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Scrollbar bgmSlider;
+    [SerializeField] private Scrollbar sfxSlider;
 
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
