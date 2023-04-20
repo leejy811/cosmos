@@ -60,7 +60,9 @@ public class Enemy : MonoBehaviour
     {
         if(moveLerp)
         {
+            // Calc angle between enemy and player
             float targetAngle = Vector2.Angle(transform.up, playerPos - targetPos);
+            // Convert targetAngle to Signed value
             targetAngle = targetPos.x >= 0 ? targetAngle : -targetAngle;
             transform.Rotate(new Vector3(0, 0, targetAngle));
         }
@@ -195,7 +197,7 @@ public class Enemy : MonoBehaviour
         float speed = knockBackSpeed;
         while (speed > 0)
         {
-            transform.position -= transform.up * Time.deltaTime * speed;
+            transform.position -= Time.deltaTime * speed *transform.up;
             speed -= Time.deltaTime * speed / knockBackDistance;
             yield return null;
         }

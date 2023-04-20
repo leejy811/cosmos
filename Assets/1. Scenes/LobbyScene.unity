@@ -12362,9 +12362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainUiContainer: {fileID: 1745001739}
-  nextFragment: {fileID: 0}
   partsUpgradeBase: {fileID: 1353861714}
-  fragmentChangeAnim: {fileID: 0}
   panel: {fileID: 1160756648}
   fragmentButtons:
   - {fileID: 1801925280}
@@ -12394,6 +12392,8 @@ MonoBehaviour:
   - {fileID: 1216668781}
   bgmSlider: {fileID: 8756714962691450795}
   sfxSlider: {fileID: 8756714918667667913}
+  bloomToggle: {fileID: 8756714918903211193}
+  hitToggle: {fileID: 8756714918072833467}
   exitPopup: {fileID: 2076073350}
   battlePopup: {fileID: 1395257535}
   ticketNum: {fileID: 1414750442}
