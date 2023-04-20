@@ -173,10 +173,10 @@ public class Boss : MonoBehaviour
         DamageNumber damageNumber;
         if (isPartsDamage)
         {
-            damageNumber = partsTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 100) * 0.01f) * 100));
+            damageNumber = partsTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 1000) * 0.001f) * 1000));
         }
         else
-            damageNumber = bulletTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 10) * 0.1f) * 100));
+            damageNumber = bulletTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 10) * 0.1f) * 1000));
 
     }
 
