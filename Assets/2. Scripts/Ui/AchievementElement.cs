@@ -25,13 +25,13 @@ public class AchievementElement : MonoBehaviour
 
     public void SetAchievementValue()
     {
-        if ( achieve.achieveLevel>=achieve.maxAchieveLevel)
+        if ( achieve.achieveLevel>=achieve.maxAchieveLevel)     // Set clear panel if max level
             clearPanel.SetActive(true);
 
-        if(!isHiddenMission)
+        if(!isHiddenMission)                                                      // Only show level icon if not hidden mission
             achievementIcon.sprite = iconImages[achieve.achieveLevel];
 
-        if (achieve.achieveDescription == "?????????????")
+        if (achieve.achieveDescription == "?????????????")         // Set Mission description
             achievementDescription.text = achieve.achieveDescription;
         else
             achievementDescription.text =  achieve.achieveDescription+ " " +  achieve.maxCondition[achieve.achieveLevel];
@@ -41,6 +41,7 @@ public class AchievementElement : MonoBehaviour
 
     public void OnRewardButton()
     {
+        // return if condition not achieved
         if (!achieve.isSuccess() || achieve.maxAchieveLevel == achieve.achieveLevel)
         {
             SoundManager.instance.PlaySFX("ButtonDenied");
@@ -55,6 +56,7 @@ public class AchievementElement : MonoBehaviour
             return;
         }
 
+        // Add button&sound effect
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
@@ -65,6 +67,7 @@ public class AchievementElement : MonoBehaviour
         }
         SoundManager.instance.PlaySFX("PartsUpgradeSound");
 
+        // Add Jems and save to local
         LocalDatabaseManager.instance.JemCount += achieve.reward[achieve.achieveLevel];
         LocalDatabaseManager.instance.SaveGameData();
         GameManger.instance.lobbyUiManager.SetJem(particleBase);

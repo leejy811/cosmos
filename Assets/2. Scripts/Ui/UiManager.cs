@@ -263,17 +263,73 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
-        int time = (int)GameManger.instance.playTime;
-        string timeString = time / 60 == 0 ? time + "s" : time / 60 + "m " + time % 60 + "s";
-
-        Sequence resultSequence = DOTween.Sequence();
-        resultSequence.
-            Append(resultScore.DOText("Wave : " + waveLevel.text, 1.5f)).
-            Append(resultHighScore.DOText("High Score : " + LocalDatabaseManager.instance.HighScore, 1.5f)).
-            Append(resultJem.DOText("Jem : " + GameManger.instance.player.playerJem, 1.5f)).
-            Append(resultTicket.DOText("Ticket : " + GameManger.instance.playTicket, 1.5f)).
-            Append(resultTime.DOText("Play Time : "+ timeString, 1.5f));
+        StartCoroutine(ResultCountingEffect());
     }
+
+    IEnumerator ResultCountingEffect()
+    {
+        int loops = Math.Min(10, int.Parse(waveLevel.text));
+        int count = Math.Max(1, int.Parse(waveLevel.text) / 10);
+        int value;
+
+        for (int i = 0; i < loops; i++)
+        {
+            var tween=resultScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween.WaitForCompletion();
+            resultScore.text = (i * count).ToString();
+            var tween2=resultScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween2.WaitForCompletion();
+        }
+        resultScore.text = waveLevel.text;
+        resultScore.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        value = int.Parse(LocalDatabaseManager.instance.HighScore);
+        loops = Math.Min(10, value);
+        count = Math.Max(1, (int)Math.Round((float)value / 10));
+        for (int i = 0; i < loops; i++)
+        {
+            var tween = resultHighScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween.WaitForCompletion();
+            resultHighScore.text = (i *count).ToString();
+            var tween2 = resultHighScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween2.WaitForCompletion();
+        }
+        resultHighScore.text = LocalDatabaseManager.instance.HighScore;
+        resultHighScore.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        value = GameManger.instance.player.playerJem;
+        loops = Math.Min(10, value);
+        count = Math.Max(1, (int)Math.Round((float)value / 10));
+        for (int i = 0; i < loops; i++)
+        {
+            var tween = resultJem.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween.WaitForCompletion();
+            resultJem.text = (i *count).ToString();
+            var tween2 = resultJem.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween2.WaitForCompletion();
+        }
+        resultJem.text = value.ToString();
+        resultJem.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        value = GameManger.instance.playTicket;
+        loops = Math.Min(10, value);
+        count = Math.Max(1, (int)Math.Round((float)value / 10));
+        for (int i = 0; i < loops; i++)
+        {
+            var tween = resultTicket.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween.WaitForCompletion();
+            resultTicket.text = (i *count).ToString();
+            var tween2 = resultTicket.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            yield return tween2.WaitForCompletion();
+        }
+        resultTicket.text = value.ToString();
+        resultTicket.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+        int time = (int)GameManger.instance.playTime;
+        string timeString = time < 60 ? time + "s" : time / 60 + "m " + time % 60 + "s";
+        resultTime.DOText(timeString, 1.5f);
+    }
+
 
     public void SaveGameResult()
     {
