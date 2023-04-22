@@ -283,6 +283,7 @@ public class UiManager : MonoBehaviour
         LocalDatabaseManager.instance.HighScore = waveLevel.text;
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
+        AchievementManager.instance.SaveAchieve();
     }
 
     public void CloseCanvas()
