@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class AchievementElement : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class AchievementElement : MonoBehaviour
     [SerializeField] private Transform particleBase;
 
     private IAchieve achieve;
+    private bool isTweening=false;
 
     void Start()
     {
@@ -33,7 +33,28 @@ public class AchievementElement : MonoBehaviour
     public void OnRewardButton()
     {
         if (!achieve.isSuccess() || achieve.maxAchieveLevel == achieve.achieveLevel)
+        {
+            SoundManager.instance.PlaySFX("ButtonDenied");
+            if (!isTweening)    // Prevent multi-clicking
+            {
+                isTweening = true;
+                particleBase.transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+                {
+                    isTweening = false;
+                });
+            }
             return;
+        }
+
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            particleBase.DOPunchScale(particleBase.localScale * 0.2f, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+        SoundManager.instance.PlaySFX("PartsUpgradeSound");
 
         LocalDatabaseManager.instance.JemCount += achieve.reward[achieve.achieveLevel];
         LocalDatabaseManager.instance.SaveGameData();
