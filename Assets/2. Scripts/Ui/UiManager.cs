@@ -266,6 +266,7 @@ public class UiManager : MonoBehaviour
         StartCoroutine(ResultCountingEffect());
     }
 
+    // Counting effect, the number flipped by x-axis while increasing
     IEnumerator ResultCountingEffect()
     {
         int loops = Math.Min(10, int.Parse(waveLevel.text));

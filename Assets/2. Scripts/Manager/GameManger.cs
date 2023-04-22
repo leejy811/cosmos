@@ -68,11 +68,11 @@ public class GameManger : MonoBehaviour
 
         uiManager.CloseCanvas();
         Time.timeScale = 1f;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         Time.timeScale = 0.8f;
         float weight = 0.7f;
-        while (Time.timeScale > 0.3f)
+        while (Time.timeScale > 0.4f)
         {
             try
             {
@@ -80,7 +80,7 @@ public class GameManger : MonoBehaviour
             }
             catch { Time.timeScale = 0.1f; }
             uiManager.AddBloomIntensity(weight);
-            weight += (Time.fixedDeltaTime / 3) * 2;
+            weight += (Time.fixedDeltaTime / 5) * 3;
             yield return new WaitForFixedUpdate();
         }
         
