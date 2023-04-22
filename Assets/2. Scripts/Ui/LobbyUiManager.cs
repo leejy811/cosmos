@@ -10,7 +10,7 @@ public class LobbyUiManager : MonoBehaviour
     // Activate UI Animations and set UI informations containing user data
 
     #region UI Components
-    [Header("main ui")]
+    [Header("main ui===================================")]
     [SerializeField] private RectTransform mainUiContainer;
     [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Image panel;               // For Fade-out effect
@@ -20,9 +20,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ticket;
     [SerializeField] private Text equipment;
     [SerializeField] private Image jemIcon;
-    [SerializeField] private ParticleSystem uiParticle;
 
-    [Header("parts ui")]
+    [Header("parts ui===================================")]
     [SerializeField] private Text selectedPartsName;
     [SerializeField] private Text selectedPartsDescription;
     [SerializeField] private GameObject selectedPartsImage;
@@ -37,13 +36,16 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability3UpgradeJem;
     [SerializeField] private Image[] partsUpgradeButtons;
 
-    [Header("settings ui")]
+    [Header("achievement===================================")]
+    [SerializeField] private Transform uiParticleBase;
+    [SerializeField] private Transform root;
+    [SerializeField] private ParticleSystem uiParticle; 
+
+    [Header("Popup===================================")]
     [SerializeField] private Scrollbar bgmSlider;
     [SerializeField] private Scrollbar sfxSlider;
     [SerializeField] private SwitchButton bloomToggle;
     [SerializeField] private SwitchButton hitToggle;
-
-    [Header("Popup")]
     [SerializeField] private GameObject exitPopup;
     [SerializeField] private GameObject battlePopup;
     [SerializeField] private Text ticketNum;
@@ -435,11 +437,17 @@ public class LobbyUiManager : MonoBehaviour
         LocalDatabaseManager.instance.SavePartsData();
     }
 
-    public void SetJem()
+    public void SetJem(Transform startPos)
     {
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
 
-        
+        uiParticleBase.parent = startPos;
+        uiParticleBase.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        uiParticleBase.parent = root;
+
+        uiParticle.Stop();
+        uiParticle.Clear();
+        uiParticle.Play();
     }
 
     public void JemParticleEffect()

@@ -692,6 +692,7 @@ MonoBehaviour:
   achievementRateBar: {fileID: 5387114299672281026}
   achievementReward: {fileID: 5387114285146352834}
   achievementIcon: {fileID: 5387114300116286120}
+  particleBase: {fileID: 5209560157445375294}
 --- !u!1 &5428051479975500992
 GameObject:
   m_ObjectHideFlags: 0

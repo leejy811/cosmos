@@ -10,6 +10,7 @@ public class AchievementElement : MonoBehaviour
     [SerializeField] private Image achievementRateBar;
     [SerializeField] private Text achievementReward;
     [SerializeField] private Image achievementIcon;
+    [SerializeField] private Transform particleBase;
 
     private IAchieve achieve;
 
@@ -31,12 +32,12 @@ public class AchievementElement : MonoBehaviour
 
     public void OnRewardButton()
     {
-        if (!achieve.isSuccess() || achieve.maxAchieveLevel==achieve.achieveLevel)
+        if (!achieve.isSuccess() || achieve.maxAchieveLevel == achieve.achieveLevel)
             return;
-        
+
         LocalDatabaseManager.instance.JemCount += achieve.reward[achieve.achieveLevel];
         LocalDatabaseManager.instance.SaveGameData();
-        GameManger.instance.lobbyUiManager.SetJem();
+        GameManger.instance.lobbyUiManager.SetJem(particleBase);
 
         achieve.achieveLevel++;
         SetAchievementValue();
