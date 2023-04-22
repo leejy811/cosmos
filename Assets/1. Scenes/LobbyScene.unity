@@ -7969,6 +7969,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640784611161969210}
     m_Modifications:
+    - target: {fileID: 4748162079279115671, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: isHiddenMission
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209560160259158700, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12512,6 +12516,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640784611161969210}
     m_Modifications:
+    - target: {fileID: 4748162079279115671, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: isHiddenMission
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209560160259158700, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13086,6 +13094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640784611161969210}
     m_Modifications:
+    - target: {fileID: 4748162079279115671, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: isHiddenMission
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209560160259158700, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14911,6 +14923,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640784611161969210}
     m_Modifications:
+    - target: {fileID: 4748162079279115671, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: isHiddenMission
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209560160259158700, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

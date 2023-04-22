@@ -12,6 +12,7 @@ public class AchievementElement : MonoBehaviour
     [SerializeField] private Transform particleBase;
     [SerializeField] private GameObject clearPanel;
     [SerializeField] private Sprite[] iconImages;
+    [SerializeField] private bool isHiddenMission;
 
     private IAchieve achieve;
     private bool isTweening=false;
@@ -27,7 +28,8 @@ public class AchievementElement : MonoBehaviour
         if ( achieve.achieveLevel>=achieve.maxAchieveLevel)
             clearPanel.SetActive(true);
 
-        achievementIcon.sprite = iconImages[achieve.achieveLevel];
+        if(!isHiddenMission)
+            achievementIcon.sprite = iconImages[achieve.achieveLevel];
 
         if (achieve.achieveDescription == "?????????????")
             achievementDescription.text = achieve.achieveDescription;
