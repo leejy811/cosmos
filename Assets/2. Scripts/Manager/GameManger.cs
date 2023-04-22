@@ -116,6 +116,7 @@ public class GameManger : MonoBehaviour
 
     public void GoLobby()
     {
+        AchievementManager.instance.LoadAchieve();
         StartCoroutine("IGoLobby");
     }
 

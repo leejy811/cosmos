@@ -1167,9 +1167,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: MotherShip Down
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -8045,9 +8053,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: What a good balance
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -8655,6 +8671,10 @@ PrefabInstance:
     - target: {fileID: 5209560160259158700, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: Starting from the basic
       objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
@@ -10398,9 +10418,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: Gross. Go Away
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -11949,9 +11977,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: SpaceKing
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -12521,9 +12557,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: World Class Engineer
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -12833,9 +12877,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: Not so fast?
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -13079,9 +13131,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: StarWars
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -13295,9 +13355,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: It was close
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -13430,9 +13498,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: "I\u2019m Not a Sun"
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -14880,9 +14956,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: Alien? Zombie?
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
@@ -16316,9 +16400,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_Text
+      value: Quite Fragile
+      objectReference: {fileID: 0}
     - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Name
       value: AchievementElement (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428051479150990592, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}

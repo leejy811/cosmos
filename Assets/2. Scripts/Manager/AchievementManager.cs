@@ -14,6 +14,7 @@ public class IAchieve
     public int[] reward;
     public int curValue;
     public int achieveLevel;
+    public int maxAchieveLevel;
     public bool isSuccess()
     {
         if (maxCondition[achieveLevel] <= curValue)
@@ -34,7 +35,7 @@ public class AchievementManager : MonoBehaviour
     public static AchievementManager instance;
 
     //업적의 정보가 모두 들어있는 Dictionary
-    public Dictionary<string, IAchieve> achieves = new Dictionary<string,IAchieve>();
+    public Dictionary<string, IAchieve> achieves = new Dictionary<string, IAchieve>();
     private string[] achieveNames;
 
     //Execl안의 정보를 가져온 DataBase
@@ -54,19 +55,16 @@ public class AchievementManager : MonoBehaviour
 
         LoadAchieveStringIndex();
         LoadAchieveInfo();
-    }
-
-    private void Start()
-    {
         LoadAchieve();
     }
+
 
     //LocalDataBase에서 업적 정보를 가져오는 함수
     public void LoadAchieve()
     {
         LocalDatabaseManager.instance.LoadAchieveData();
 
-        for(int i = 0; i < achieves.Count; i++)
+        for (int i = 0; i < achieves.Count; i++)
         {
             achieves[achieveNames[i]].curValue = LocalDatabaseManager.instance.AchieveCurValue[i];
             achieves[achieveNames[i]].achieveLevel = LocalDatabaseManager.instance.AchieveCurLevel[i];
@@ -106,6 +104,7 @@ public class AchievementManager : MonoBehaviour
         {
             achieves[achieveNames[achieveCount]].achieveName = achieveDB.Achieves[achieveCount].achieveName;
             achieves[achieveNames[achieveCount]].achieveDescription = achieveDB.Achieves[achieveCount].achieveDescription;
+            achieves[achieveNames[achieveCount]].maxAchieveLevel = achieveDB.Achieves[achieveCount].maxAchieveLevel;
 
             achieves[achieveNames[achieveCount]].maxCondition = new int[achieveDB.Achieves[achieveCount].maxAchieveLevel];
             achieves[achieveNames[achieveCount]].reward = new int[achieveDB.Achieves[achieveCount].maxAchieveLevel];

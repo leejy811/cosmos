@@ -311,7 +311,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.5
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -559,7 +559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5387114299835693396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4748162079279115671}
+        m_TargetAssemblyTypeName: AchievementElement, Assembly-CSharp
+        m_MethodName: OnRewardButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5428051479150990592
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +584,7 @@ GameObject:
   - component: {fileID: 5207126919058591570}
   - component: {fileID: 5387114285339305720}
   - component: {fileID: 5387114286236800590}
+  - component: {fileID: 4748162079279115671}
   m_Layer: 5
   m_Name: AchievementElement
   m_TagString: Untagged
@@ -662,6 +675,23 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4748162079279115671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428051479150990592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365183de69146e8428af8249869784e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementName: {fileID: 5387114299568176654}
+  achievementDescription: {fileID: 5206713407621242482}
+  achievementRateBar: {fileID: 5387114299672281026}
+  achievementReward: {fileID: 5387114285146352834}
+  achievementIcon: {fileID: 5387114300116286120}
 --- !u!1 &5428051479975500992
 GameObject:
   m_ObjectHideFlags: 0

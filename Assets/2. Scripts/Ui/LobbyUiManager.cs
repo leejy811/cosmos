@@ -10,7 +10,7 @@ public class LobbyUiManager : MonoBehaviour
     // Activate UI Animations and set UI informations containing user data
 
     #region UI Components
-    //main ui
+    [Header("main ui")]
     [SerializeField] private RectTransform mainUiContainer;
     [SerializeField] private GameObject partsUpgradeBase;
     [SerializeField] private Image panel;               // For Fade-out effect
@@ -22,7 +22,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Image jemIcon;
     [SerializeField] private ParticleSystem uiParticle;
 
-    //parts ui
+    [Header("parts ui")]
     [SerializeField] private Text selectedPartsName;
     [SerializeField] private Text selectedPartsDescription;
     [SerializeField] private GameObject selectedPartsImage;
@@ -37,18 +37,19 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ability3UpgradeJem;
     [SerializeField] private Image[] partsUpgradeButtons;
 
-    //settings ui
+    [Header("settings ui")]
     [SerializeField] private Scrollbar bgmSlider;
     [SerializeField] private Scrollbar sfxSlider;
     [SerializeField] private SwitchButton bloomToggle;
     [SerializeField] private SwitchButton hitToggle;
 
-    // Popup
+    [Header("Popup")]
     [SerializeField] private GameObject exitPopup;
     [SerializeField] private GameObject battlePopup;
     [SerializeField] private Text ticketNum;
     [SerializeField] private GameObject settingsPopup;
     [SerializeField] private GameObject popupPanel;
+
     #endregion
 
     #region Member Variables
@@ -436,16 +437,9 @@ public class LobbyUiManager : MonoBehaviour
 
     public void SetJem()
     {
-        LocalDatabaseManager.instance.JemCount = int.Parse( input.text);
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
-        LocalDatabaseManager.instance.SaveGameData();
 
-        // Stop the particle system
-        uiParticle.Stop();
-        // Clear any existing particles
-        uiParticle.Clear();
-        // Start the particle system
-        uiParticle.Play();
+        
     }
 
     public void JemParticleEffect()

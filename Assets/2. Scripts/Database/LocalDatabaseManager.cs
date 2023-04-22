@@ -142,7 +142,6 @@ public class LocalDatabaseManager : MonoBehaviour
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetString("HighScore", HighScore);
         PlayerPrefs.SetInt("Ticket", Ticket);
-        SaveAchieveData();
     }
 
     /// <summary>
