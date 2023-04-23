@@ -696,10 +696,12 @@ MonoBehaviour:
   particleBase: {fileID: 5209560157445375294}
   clearPanel: {fileID: 8104620803931341099}
   iconImages:
+  - {fileID: 21300000, guid: bbe2fe611b6ca430e84008c5a8d06d96, type: 3}
   - {fileID: 21300000, guid: 31e69171cbbbe4100a2a684f828daf53, type: 3}
   - {fileID: 21300000, guid: a3456269e70384385a29da6c2fb56bff, type: 3}
   - {fileID: 21300000, guid: 3daadf8420370494e875fef51142eae3, type: 3}
   - {fileID: 21300000, guid: bf4d1313712b842a1a9847efedad23cc, type: 3}
+  isHiddenMission: 0
 --- !u!1 &5428051479975500992
 GameObject:
   m_ObjectHideFlags: 0

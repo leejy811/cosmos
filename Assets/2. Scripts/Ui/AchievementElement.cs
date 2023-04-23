@@ -25,13 +25,16 @@ public class AchievementElement : MonoBehaviour
 
     public void SetAchievementValue()
     {
-        if ( achieve.achieveLevel>=achieve.maxAchieveLevel)     // Set clear panel if max level
+        if (achieve.achieveLevel >= achieve.maxAchieveLevel)     // Set clear panel if max level
+        {
             clearPanel.SetActive(true);
+            return;
+        }
 
         if(!isHiddenMission)                                                      // Only show level icon if not hidden mission
             achievementIcon.sprite = iconImages[achieve.achieveLevel];
 
-        if (achieve.achieveDescription == "?????????????")         // Set Mission description
+        if (isHiddenMission)         // Set Mission description
             achievementDescription.text = achieve.achieveDescription;
         else
             achievementDescription.text =  achieve.achieveDescription+ " " +  achieve.maxCondition[achieve.achieveLevel];
