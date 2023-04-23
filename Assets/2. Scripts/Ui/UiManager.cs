@@ -91,6 +91,7 @@ public class UiManager : MonoBehaviour
 
         currentHpIndex = hpBars.Length-1;
         prevHp = hpBars.Length;
+        StartCoroutine(GageAnim());
     }
     private void Update()
     {
@@ -196,6 +197,36 @@ public class UiManager : MonoBehaviour
             }
         }
         isHpCalc = false;
+    }
+
+    IEnumerator GageAnim()      // progressbar anim, show 1 cycle
+    {
+        yield return new WaitForSeconds(1f);
+
+        for (int i = hpBars.Length - 1; i > 0 - 1; i--)
+        {
+            yield return new WaitForSeconds(0.05f);
+            hpBars[i].DOKill();
+            hpBars[i].DOFade(0f, 0f).SetEase(Ease.InCubic);
+        }
+
+        for (int i = 0; i < hpBars.Length; i++)
+        {
+            yield return new WaitForSeconds(0.05f);
+            hpBars[i].DOKill();
+            hpBars[i].DOFade(1f, 0f);
+        }
+        yield return new WaitForSeconds(0.3f);
+    }
+
+    IEnumerator ResetHpBars()
+    {
+        for (int i = currentHpIndex; i >= 0 ; i--)
+        {
+            hpBars[i].DOKill();
+            var tween=hpBars[i].DOFade(0f, 0.05f).SetEase(Ease.InCubic).SetUpdate(true);
+            yield return tween.WaitForCompletion();
+        }
     }
 
     public void PauseGame()
@@ -309,7 +340,7 @@ public class UiManager : MonoBehaviour
         StartCoroutine(ResultCountingEffect());
     }
 
-    // Counting effect, the number flipped by x-axis while increasing
+    // Counting effect, the number is flipped by x-axis while increasing
     IEnumerator ResultCountingEffect()
     {
         int loops = Math.Min(10, int.Parse(waveLevel.text));
@@ -384,6 +415,11 @@ public class UiManager : MonoBehaviour
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
         AchievementManager.instance.SaveAchieve();
+    }
+
+    public void DoGameOverWorks()
+    {
+        StartCoroutine(ResetHpBars());
     }
 
     public void CloseCanvas()

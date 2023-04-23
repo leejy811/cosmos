@@ -60,6 +60,7 @@ public class GameManger : MonoBehaviour
     public IEnumerator GameOver()
     {
         SaveAchieveResult();
+        uiManager.DoGameOverWorks();
         uiManager.SaveGameResult();
         isPlaying = false;
 
