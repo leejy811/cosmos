@@ -41,7 +41,7 @@ public class PartsContorller : Bullet
         if (partsType == "Barrier")
         {
             barrierAnimatior = gameObject.GetComponent<Animator>();
-            partsRange = player.attackRange;
+            partsRange = player.attackRange + 0.2f;
             StartCoroutine(BarrierAttack());
         }
     }
