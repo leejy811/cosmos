@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DataBaseEntity;
 
 public class LocalDatabaseManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class LocalDatabaseManager : MonoBehaviour
     public int[] PartsLaser { get; set; } = { 0, 0, 0 };
     public int[] PartsEmp { get; set; } = { 0, 0, 0 };
     public int[] PartsValue { get; set; } = { 0, 0, 0 };
+    private DataBase PartsDB;
 
     public int Ticket { get; set; } = 3;
     public bool isTicketMode { get; set; } = false;
@@ -42,8 +44,13 @@ public class LocalDatabaseManager : MonoBehaviour
     /// LocalDatabaseManager.instance.PartsStatInfo["Missile"][1, LocalDatabaseManager.instance.PartsMissile[1]];
     /// PartsStatInfo 자체는 데이터 테이블 느낌으로 readonly, PartsMissile에서 저장하는 강화 '정도'를 이용해서 현재 강화 정도에 해당하는 값 '참조'
     /// </summary>
-    public Dictionary<string, float[,]> PartsStatInfo { get; } = new Dictionary<string, float[,]>
+    public Dictionary<string, float[,]> PartsStatInfo { get; set; } = new Dictionary<string, float[,]>
     {
+        {"Missile",new float[3,20]}, {"Laser",new float[3,20]}, {"Barrier",new float[3,20]}, {"Emp",new float[3,20]},
+    };
+
+    /*
+         {
         // 각 파츠별로 세 가지 속성(공격력, 공격 속도 - 공통, 특수 능력 해방 여부)- 순서대로
         //                                                 공격력                                                      공격속도                                     특수능력 해방(1이면 해방)
         {"Missile",new float[3,20]{ { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.1f, 2.3f, 2.5f }, { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2f, 2.1f, 2.2f }, { 0, 4, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
@@ -51,14 +58,17 @@ public class LocalDatabaseManager : MonoBehaviour
         {"Barrier",new float[3,20]{ { 0.05f, 0.075f, 0.1f, 0.125f, 0.15f, 0.175f, 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f}, { 0.775f, 0.75f, 0.725f, 0.7f, 0.675f, 0.65f, 0.625f, 0.6f, 0.575f, 0.55f, 0.525f, 0.5f, 0.475f, 0.45f, 0.425f, 0.4f, 0.375f, 0.35f, 0.325f, 0.3f }, { 0, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
         {"Emp",new float[3,20]{ { 0.15f, 0.175f, 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f, 0.55f, 0.575f, 0.6f, 0.625f}, { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.11f, 1.12f, 1.13f, 1.14f, 1.15f, 1.16f, 1.17f, 1.18f, 1.19f, 1.2f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
     };
+     */
 
     // readonly data table of amount of the jem comsumtion for each parts' upgrade
-    public int[,,] PartsUpgradeJem { get; } = {
-        {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-        {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
-    };
+    public int[,,] PartsUpgradeJem { get; set; }
+
+    /*        {
+    {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
+    {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
+    {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
+    {{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 },{2000,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 } },
+};*/
 
     #endregion
 
@@ -88,6 +98,11 @@ public class LocalDatabaseManager : MonoBehaviour
                 PartsValue = PartsEmp;
                 break;
         }
+    }
+
+    private void Start()
+    {
+        LoadPartsStatData();
     }
 
     /// <summary>
@@ -131,6 +146,65 @@ public class LocalDatabaseManager : MonoBehaviour
             temp = PlayerPrefs.GetString("PartsEmp").Split(',');
             for (int i = 0; i < PartsEmp.Length; i++)
                 PartsEmp[i] = int.Parse(temp[i]);
+        }
+    }
+
+    private void LoadPartsStatData()
+    {
+        PartsDB = GameManger.instance.database;
+
+        PartsUpgradeJem = new int[4, 3, PartsDB.Missile.Count]; 
+
+        PartsStatInfo = new Dictionary<string, float[,]>
+        {
+            {"Missile",new float[3,PartsDB.Missile.Count]}, 
+            {"Laser",new float[3,PartsDB.Laser.Count]}, 
+            {"Barrier",new float[3,PartsDB.Barrier.Count]}, 
+            {"Emp",new float[3,PartsDB.Emp.Count]},
+        };
+
+        for (int i = 0; i < PartsDB.Missile.Count; i++)
+        {
+            PartsStatInfo["Missile"][0, i] = PartsDB.Missile[i].damage;
+            PartsStatInfo["Missile"][1, i] = PartsDB.Missile[i].attackSpeed;
+            PartsStatInfo["Missile"][2, i] = PartsDB.Missile[i].expertSkill;
+            PartsUpgradeJem[0, 0, i] = PartsDB.Missile[i].damageUpgradeJem;
+            PartsUpgradeJem[0, 1, i] = PartsDB.Missile[i].attackSpeedUpgradeJem;
+            PartsUpgradeJem[0, 2, i] = PartsDB.Missile[i].expertSkillUpgradeJem;
+        }
+
+        PartsStatInfo["Laser"] = new float[3, PartsDB.Laser.Count];
+        for (int i = 0; i < PartsDB.Laser.Count; i++)
+        {
+            PartsStatInfo["Laser"][0, i] = PartsDB.Laser[i].damage;
+            PartsStatInfo["Laser"][1, i] = PartsDB.Laser[i].attackSpeed;
+            PartsStatInfo["Laser"][2, i] = PartsDB.Laser[i].expertSkill;
+            PartsUpgradeJem[1, 0, i] = PartsDB.Laser[i].damageUpgradeJem;
+            PartsUpgradeJem[1, 1, i] = PartsDB.Laser[i].attackSpeedUpgradeJem;
+            PartsUpgradeJem[1, 2, i] = PartsDB.Laser[i].expertSkillUpgradeJem;
+        }
+
+        PartsStatInfo["barrier"] = new float[3, PartsDB.Barrier.Count];
+        for (int i = 0; i < PartsDB.Barrier.Count; i++)
+        {
+            PartsStatInfo["Barrier"][0, i] = PartsDB.Barrier[i].damage;
+            PartsStatInfo["Barrier"][0, i] = PartsDB.Barrier[i].damage;
+            PartsStatInfo["Barrier"][1, i] = PartsDB.Barrier[i].attackSpeed;
+            PartsStatInfo["Barrier"][2, i] = PartsDB.Barrier[i].expertSkill;
+            PartsUpgradeJem[2, 0, i] = PartsDB.Barrier[i].damageUpgradeJem;
+            PartsUpgradeJem[2, 1, i] = PartsDB.Barrier[i].attackSpeedUpgradeJem;
+            PartsUpgradeJem[2, 2, i] = PartsDB.Barrier[i].expertSkillUpgradeJem;
+        }
+
+        PartsStatInfo["Emp"] = new float[3, PartsDB.Emp.Count];
+        for (int i = 0; i < PartsDB.Emp.Count; i++)
+        {
+            PartsStatInfo["Emp"][0, i] = PartsDB.Emp[i].damage;
+            PartsStatInfo["Emp"][1, i] = PartsDB.Emp[i].attackSpeed;
+            PartsStatInfo["Emp"][2, i] = PartsDB.Emp[i].expertSkill;
+            PartsUpgradeJem[3, 0, i] = PartsDB.Emp[i].damageUpgradeJem;
+            PartsUpgradeJem[3, 1, i] = PartsDB.Emp[i].attackSpeedUpgradeJem;
+            PartsUpgradeJem[3, 2, i] = PartsDB.Emp[i].expertSkillUpgradeJem;
         }
     }
 
