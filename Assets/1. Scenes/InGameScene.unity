@@ -8454,7 +8454,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383690778}
-  - component: {fileID: 383690779}
   m_Layer: 5
   m_Name: gage_bar
   m_TagString: Untagged
@@ -8502,18 +8501,6 @@ RectTransform:
   m_AnchoredPosition: {x: 12.000431, y: -0.000050783157}
   m_SizeDelta: {x: 320, y: 46}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &383690779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383690777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d7ef211081a47ef87c626e5316f088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &385124047
 GameObject:
   m_ObjectHideFlags: 0
@@ -11076,7 +11063,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jemCount: {fileID: 1486779553}
   goldCount: {fileID: 317123097}
-  hpScrollbar: {fileID: 1640498191}
   waveLevel: {fileID: 458069868}
   currentAtk: {fileID: 720113232}
   atkUpGold: {fileID: 1475322841}
@@ -11113,6 +11099,27 @@ MonoBehaviour:
   pauseUi: {fileID: 501911986}
   bgmSlider: {fileID: 2000568456}
   sfxSlider: {fileID: 922552318}
+  hpBars:
+  - {fileID: 398754230}
+  - {fileID: 1284380743}
+  - {fileID: 752727062}
+  - {fileID: 1700567271}
+  - {fileID: 257595763}
+  - {fileID: 1818331714}
+  - {fileID: 109705268}
+  - {fileID: 231535637}
+  - {fileID: 531603197}
+  - {fileID: 1237612741}
+  - {fileID: 722738013}
+  - {fileID: 468791303}
+  - {fileID: 741298756}
+  - {fileID: 1528243376}
+  - {fileID: 1216283983}
+  - {fileID: 1813741150}
+  - {fileID: 90067518}
+  - {fileID: 640068545}
+  - {fileID: 753993270}
+  - {fileID: 527358029}
 --- !u!1 &578111936
 GameObject:
   m_ObjectHideFlags: 0
@@ -14415,7 +14422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1011557694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19230,7 +19237,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1600311265}
   - component: {fileID: 1600311267}
-  - component: {fileID: 1600311266}
   m_Layer: 5
   m_Name: Gage_bg
   m_TagString: Untagged
@@ -19260,36 +19266,6 @@ RectTransform:
   m_AnchoredPosition: {x: 84, y: 0}
   m_SizeDelta: {x: 410.8, y: 86}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1600311266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600311264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5587f1103ad040799b2eff8e4aee259, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1600311267
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19472,7 +19448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1640498190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20257,7 +20233,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

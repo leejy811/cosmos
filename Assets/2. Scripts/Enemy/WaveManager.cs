@@ -121,7 +121,6 @@ public class WaveManager: MonoBehaviour
     public void GoNextWave()
     {
         currentWave++;
-        Debug.Log("Stage : " + (currentWave + 1));
         GameManger.instance.uiManager.WaveClear(currentWave+1);
         StartCoroutine("StartWave");
     }

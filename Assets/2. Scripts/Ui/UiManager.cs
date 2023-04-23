@@ -12,7 +12,6 @@ public class UiManager : MonoBehaviour
     #region UI Components
     [SerializeField] private Text jemCount;
     [SerializeField] private Text goldCount;
-    [SerializeField] private Scrollbar hpScrollbar;
     [SerializeField] private Text waveLevel;
     [SerializeField] private Text currentAtk;
     [SerializeField] private Text atkUpGold;
@@ -47,6 +46,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Scrollbar bgmSlider;
     [SerializeField] private Scrollbar sfxSlider;
 
+    [SerializeField] private Image[] hpBars;
+
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
@@ -63,6 +64,10 @@ public class UiManager : MonoBehaviour
     float[] times = new float[] {1.0f,1.5f, 2.0f };
     private int timeScaleIdx = 0;
     private int curAtk = 0;
+    private int currentHpIndex;
+    private int targetHpIndex;
+    private bool isHpCalc = false;
+    private int prevHp;
     #endregion
 
 
@@ -83,6 +88,9 @@ public class UiManager : MonoBehaviour
 
         bgmSlider.onValueChanged.AddListener(SetBgmSlider);
         sfxSlider.onValueChanged.AddListener(SetSfxSlider);
+
+        currentHpIndex = hpBars.Length-1;
+        prevHp = hpBars.Length;
     }
     private void Update()
     {
@@ -139,8 +147,57 @@ public class UiManager : MonoBehaviour
     }
     void SetHpUI()
     {
-        hpScrollbar.size = GameManger.instance.player.playerHealth / GameManger.instance.player.maxPlayerHealth;
+        // Calc current hp value every frame
+        int temp = (int)Math.Round((GameManger.instance.player.playerHealth / GameManger.instance.player.maxPlayerHealth) * 20);
+        temp = Math.Min(temp, 20);
+        temp = Math.Max(temp, 0);
+
+        // Make progressbar effect if hp changed
+        if (Math.Abs(temp-prevHp)>0)
+        {
+            int gap = temp - prevHp;
+            prevHp = temp;
+
+            // Just add gap amount if effect is alreary in applying
+            if (isHpCalc)
+                targetHpIndex += gap;
+            else
+            {
+                targetHpIndex = gap;
+                StartCoroutine(SetHpBar());
+            }
+        }
     }
+
+    IEnumerator SetHpBar()
+    {
+        isHpCalc = true; 
+        while (targetHpIndex != 0)  // make effect if target amount remains
+        {
+            if (targetHpIndex > 0)
+            {
+                if(currentHpIndex< hpBars.Length - 1)
+                {
+                    var tween = hpBars[currentHpIndex + 1].DOFade(1f, 0.1f);    // fill in progressbar
+                    yield return tween.WaitForCompletion();
+                    currentHpIndex += 1;
+                }
+                targetHpIndex -= 1;
+            }
+            else
+            {
+                if (currentHpIndex >= 0)
+                {
+                    var tween = hpBars[currentHpIndex ].DOFade(0f, 0.1f);       // erase progressbar
+                    yield return tween.WaitForCompletion();
+                    currentHpIndex -= 1;
+                }
+                targetHpIndex += 1;
+            }
+        }
+        isHpCalc = false;
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -163,20 +220,6 @@ public class UiManager : MonoBehaviour
     void SetJem()
     {
         jemCount.text = GameManger.instance.player.playerJem.ToString();
-    }
-    public void AddJem(int num=0)
-    {
-        jemCount.text=(Convert.ToString(num));
-    }
-
-    public void SetRock(int num=0)
-    {
-        goldCount.text = (Convert.ToString(num));
-    }
-
-    public void SetHp(float value=0.0f)
-    {
-        hpScrollbar.value = value;
     }
 
     private void SetPlayerState()
