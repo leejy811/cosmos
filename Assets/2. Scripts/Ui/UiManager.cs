@@ -349,56 +349,44 @@ public class UiManager : MonoBehaviour
 
         for (int i = 0; i < loops; i++)
         {
-            var tween=resultScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            var tween=resultScore.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.1f).SetRelative();
             yield return tween.WaitForCompletion();
             resultScore.text = (i * count).ToString();
-            var tween2=resultScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
-            yield return tween2.WaitForCompletion();
         }
         resultScore.text = waveLevel.text;
-        resultScore.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         value = int.Parse(LocalDatabaseManager.instance.HighScore);
         loops = Math.Min(10, value);
         count = Math.Max(1, (int)Math.Round((float)value / 10));
         for (int i = 0; i < loops; i++)
         {
-            var tween = resultHighScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            var tween = resultHighScore.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.1f).SetRelative();
             yield return tween.WaitForCompletion();
             resultHighScore.text = (i *count).ToString();
-            var tween2 = resultHighScore.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
-            yield return tween2.WaitForCompletion();
         }
         resultHighScore.text = LocalDatabaseManager.instance.HighScore;
-        resultHighScore.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         value = GameManger.instance.player.playerJem;
         loops = Math.Min(10, value);
         count = Math.Max(1, (int)Math.Round((float)value / 10));
         for (int i = 0; i < loops; i++)
         {
-            var tween = resultJem.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            var tween = resultJem.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.1f).SetRelative();
             yield return tween.WaitForCompletion();
             resultJem.text = (i *count).ToString();
-            var tween2 = resultJem.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
-            yield return tween2.WaitForCompletion();
         }
         resultJem.text = value.ToString();
-        resultJem.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         value = GameManger.instance.playTicket;
         loops = Math.Min(10, value);
         count = Math.Max(1, (int)Math.Round((float)value / 10));
         for (int i = 0; i < loops; i++)
         {
-            var tween = resultTicket.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
+            var tween = resultTicket.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.1f).SetRelative();
             yield return tween.WaitForCompletion();
             resultTicket.text = (i *count).ToString();
-            var tween2 = resultTicket.transform.DORotate(new Vector3(-90, 0, 0), 0.1f).SetRelative();
-            yield return tween2.WaitForCompletion();
         }
         resultTicket.text = value.ToString();
-        resultTicket.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         int time = (int)GameManger.instance.playTime;
         string timeString = time < 60 ? time + "s" : time / 60 + "m " + time % 60 + "s";

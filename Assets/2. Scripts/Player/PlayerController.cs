@@ -295,7 +295,9 @@ public class PlayerController : MonoBehaviour
         // 보스 D 레이저 데미지 수정
         if (collision.gameObject.tag == "BossLaser")
         {
-            GetDamage(0.5f);
+            Boss boss = collision.GetComponent<Boss>();
+            float damage = boss.GetLaserDamage();
+            GetDamage(damage);
         }
     }
 }

@@ -27,6 +27,9 @@ public class Boss : MonoBehaviour
     public PlayerController playerController;
     public WaveManager waveManager;
 
+    [SerializeField]
+    private float bossLayerDamage;
+
     private float bossPatternTime;
     private bool enterBossPlayerRange;
     List<GameObject> enemyList = new List<GameObject>();
@@ -188,7 +191,7 @@ public class Boss : MonoBehaviour
         gameObject.tag = "Untagged";
         gameObject.layer = 0;
 
-        Invoke("BossDieEffectEnd", 1.5f);
+        Invoke("BossDieEffectEnd", 4f);
     }
     public void GameOverDie()
     {
@@ -202,10 +205,10 @@ public class Boss : MonoBehaviour
     private void BossDieEffectEnd()
     {
         bossHealth = 0;
-        waveManager.isBossLive = false;
         bossDieEffect.SetActive(false);
         gameObject.tag = "Boss";
         gameObject.layer = 6;
+        waveManager.isBossLive = false;
         Destroy(gameObject);
     }
 
@@ -294,5 +297,10 @@ IEnumerator BossAPattern()
         SoundManager.instance.PlaySFX("BossDLaserSound");
         yield return new WaitForSeconds(1.0f);
         bossDLaser.SetActive(false);
+    }
+
+    public float GetLaserDamage()
+    {
+        return bossLayerDamage;
     }
 }
