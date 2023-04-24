@@ -68,6 +68,7 @@ public class UiManager : MonoBehaviour
     private int targetHpIndex;
     private bool isHpCalc = false;
     private int prevHp;
+    private int curWave;
     #endregion
 
 
@@ -343,8 +344,8 @@ public class UiManager : MonoBehaviour
     // Counting effect, the number is flipped by x-axis while increasing
     IEnumerator ResultCountingEffect()
     {
-        int loops = Math.Min(10, int.Parse(waveLevel.text));
-        int count = Math.Max(1, int.Parse(waveLevel.text) / 10);
+        int loops = Math.Min(10, curWave);
+        int count = Math.Max(1, curWave);
         int value;
 
         for (int i = 0; i < loops; i++)
@@ -353,7 +354,7 @@ public class UiManager : MonoBehaviour
             yield return tween.WaitForCompletion();
             resultScore.text = (i * count).ToString();
         }
-        resultScore.text = waveLevel.text;
+        resultScore.text = curWave.ToString();
 
         value = int.Parse(LocalDatabaseManager.instance.HighScore);
         loops = Math.Min(10, value);
@@ -399,7 +400,7 @@ public class UiManager : MonoBehaviour
         int currentGameJem = GameManger.instance.player.playerJem;
         GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
-        LocalDatabaseManager.instance.HighScore = waveLevel.text;
+        LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
         AchievementManager.instance.SaveAchieve();
@@ -439,9 +440,15 @@ public class UiManager : MonoBehaviour
 
     public void WaveClear(int num)
     {
+        curWave = num;
         if (num == 41)
         {
             waveLevel.text = "Bonus";
+        }
+        else if(num % 10 == 0)
+        {
+            waveLevel.text = "Boss";
+            return;
         }
         else
         {
@@ -453,7 +460,7 @@ public class UiManager : MonoBehaviour
     IEnumerator WaveClearAnim()
     {
         string[] texts =new string[] { "Wave Clear !", "3", "2", "1", "" };
-        texts[texts.Length - 1] = "Wave " + waveLevel.text;
+        texts[texts.Length - 1] = "Wave " + curWave.ToString();
 
         yield return new WaitForSeconds(0.5f);
         waveClearAnimBase.SetActive(true);

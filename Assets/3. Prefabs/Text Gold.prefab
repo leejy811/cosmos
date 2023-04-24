@@ -53,7 +53,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7406479272291650871, guid: 537b62a8636fdb04a87ced79e85b110a, type: 2}
+  - {fileID: 5276284244843499962, guid: 042cc6b3bab28e143b3e278e2fb63f12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7406479272291650871, guid: 537b62a8636fdb04a87ced79e85b110a, type: 2}
+  - {fileID: 5276284244843499962, guid: 042cc6b3bab28e143b3e278e2fb63f12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7406479272291650871, guid: 537b62a8636fdb04a87ced79e85b110a, type: 2}
+  - {fileID: 5276284244843499962, guid: 042cc6b3bab28e143b3e278e2fb63f12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -266,10 +266,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 537b62a8636fdb04a87ced79e85b110a, type: 2}
-  m_sharedMaterial: {fileID: 7406479272291650871, guid: 537b62a8636fdb04a87ced79e85b110a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 042cc6b3bab28e143b3e278e2fb63f12, type: 2}
+  m_sharedMaterial: {fileID: 5276284244843499962, guid: 042cc6b3bab28e143b3e278e2fb63f12, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -293,8 +293,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.5
-  m_fontSizeBase: 7.5
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3699665865677232935}
   - component: {fileID: 5915402331295859867}
   m_Layer: 13
-  m_Name: Damage Text Parts
+  m_Name: Text Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 0.8
+  lifetime: 1
   unscaledTime: 0
   enable3DGame: 0
   faceCameraView: 1
@@ -400,8 +400,8 @@ MonoBehaviour:
     closeScale: 2
     farScale: 0.5
   cameraOverride: {fileID: 0}
-  enableNumber: 1
-  number: 1
+  enableNumber: 0
+  number: 0
   numberSettings:
     bold: 0
     italic: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
     - B
     suffixDigits: 030000000300000003000000
     maxDigits: 4
-  enableLeftText: 0
+  enableLeftText: 1
   leftText: 
   leftTextSettings:
     bold: 0
@@ -527,26 +527,26 @@ MonoBehaviour:
       m_NumAlphaKeys: 2
     fromNumber: 10
     toNumber: 100
-  durationFadeIn: 0.1
-  enableOffsetFadeIn: 0
-  offsetFadeIn: {x: 0.5, y: 0}
-  enableScaleFadeIn: 0
-  scaleFadeIn: {x: 2, y: 2}
-  enableCrossScaleFadeIn: 0
+  durationFadeIn: 0.25
+  enableOffsetFadeIn: 1
+  offsetFadeIn: {x: 0, y: 0.5}
+  enableScaleFadeIn: 1
+  scaleFadeIn: {x: 0.5, y: 2}
+  enableCrossScaleFadeIn: 1
   crossScaleFadeIn: {x: 1, y: 1.5}
-  enableShakeFadeIn: 0
-  shakeOffsetFadeIn: {x: 0, y: 1.5}
+  enableShakeFadeIn: 1
+  shakeOffsetFadeIn: {x: 0, y: 2.5}
   shakeFrequencyFadeIn: 4
-  durationFadeOut: 0.2
+  durationFadeOut: 0.3
   enableOffsetFadeOut: 1
-  offsetFadeOut: {x: 0.05, y: 0}
+  offsetFadeOut: {x: 0, y: -0.2}
   enableScaleFadeOut: 1
-  scaleFadeOut: {x: 1.05, y: -0.1}
-  enableCrossScaleFadeOut: 0
+  scaleFadeOut: {x: 0.8, y: 1.2}
+  enableCrossScaleFadeOut: 1
   crossScaleFadeOut: {x: 1, y: 1.5}
   enableShakeFadeOut: 1
-  shakeOffsetFadeOut: {x: 0, y: -0.2}
-  shakeFrequencyFadeOut: 2
+  shakeOffsetFadeOut: {x: 0, y: 1.5}
+  shakeFrequencyFadeOut: 4
   enableLerp: 1
   lerpSettings:
     speed: 5

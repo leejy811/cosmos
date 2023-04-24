@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
 
     private bool colorEffectOn;
 
-    Color targetColor = new Color(255, 0, 0, 255);
+    Color targetColor = new Color(255, 0, 0, 0);
     Color bossColor;
 
     [SerializeField]
@@ -172,8 +172,8 @@ public class Boss : MonoBehaviour
     }
     private void FloatingDamageEffect(float damage, bool isPartsDamage)
     {
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.3f);
-        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.3f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(targetColor, 0.25f);
+        this.gameObject.transform.GetChild(0).transform.GetComponent<SpriteRenderer>().material.DOColor(bossColor, 0.25f);
         DamageNumber damageNumber;
         if (isPartsDamage)
         {

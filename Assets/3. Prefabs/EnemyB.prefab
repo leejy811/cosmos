@@ -3577,7 +3577,7 @@ ParticleSystem:
     separateAxes: 0
     range: {x: 0, y: 1}
   ColorBySpeedModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -3585,9 +3585,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.39607844}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3602,8 +3602,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 16191
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -3611,7 +3611,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5000,8 +5000,11 @@ MonoBehaviour:
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
   isEnemyLive: 0
-  bulletTextPrefab: {fileID: 3699665865677232935, guid: bd98a82a4766edf4c83b0cc2101c632b, type: 3}
-  partsTextPrefab: {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
+  floatingTextPrefab:
+  - {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
+  - {fileID: 3699665865677232935, guid: bd98a82a4766edf4c83b0cc2101c632b, type: 3}
+  - {fileID: 3699665865677232935, guid: 5992056161aa8c94ea61c2592e0d6247, type: 3}
+  - {fileID: 3699665865677232935, guid: 209919647b38eec45bdefb1989b4021b, type: 3}
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   enemyDieEffect: {fileID: 1444104252188656176}

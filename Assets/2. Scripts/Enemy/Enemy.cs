@@ -29,9 +29,7 @@ public class Enemy : MonoBehaviour
     public WaveManager waveManager;
     public bool isEnemyLive;
     [SerializeField]
-    private DamageNumber bulletTextPrefab;
-    [SerializeField]
-    private DamageNumber partsTextPrefab;
+    private DamageNumber[] floatingTextPrefab;
 
 
     Vector2 playerPos = new Vector2(0.0f, 1.0f);
@@ -174,10 +172,10 @@ public class Enemy : MonoBehaviour
         DamageNumber damageNumber;
         if (isPartsDamage)
         {
-            damageNumber = partsTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 1000) * 0.001f) * 1000));
+            damageNumber = floatingTextPrefab[0].Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round(damage * 1000) * 0.001f) * 1000));
         }
         else
-             damageNumber = bulletTextPrefab.Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round( damage * 10) * 0.1f) * 1000));
+             damageNumber = floatingTextPrefab[1].Spawn(new Vector3(transform.position.x, transform.position.y + 0.5f, 0), (int)((Mathf.Round( damage * 10) * 0.1f) * 1000));
     }
 
     public float GetEnemyDamage()
@@ -254,6 +252,15 @@ public class Enemy : MonoBehaviour
         // 플레이어 닿았을 때 골드나 잼 안올라가게 하기
         if(!EnterPlayer)
         {
+            DamageNumber floatingText;
+            string jemtext = "+" + enemyJem.ToString() + "Jem";
+            string pricetext = "+" + enemyPrice.ToString() + "Gold";
+
+            if (enemyJem != 0)
+                floatingText = floatingTextPrefab[2].Spawn(new Vector3(transform.position.x + 0.5f, transform.position.y + 2.1f, 0), jemtext);
+            if (enemyPrice != 0)
+                floatingText = floatingTextPrefab[3].Spawn(new Vector3(transform.position.x, transform.position.y + 1.5f, 0), pricetext);
+
             GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
 

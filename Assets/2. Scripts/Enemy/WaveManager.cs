@@ -130,15 +130,16 @@ public class WaveManager: MonoBehaviour
         int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;      
         yield return new WaitForSeconds(5);
 
+        if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
+        {
+            yield return new WaitForSeconds(2);
+            BossSpawn(currentWave / 10);
+            yield break;
+        }
         while (true)
         {
             if (GameManger.instance.player.isPlayerDie)
                 break;
-            if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
-            {
-                BossSpawn(currentWave / 10);
-                break;
-            }
 
             string ranType;
             int enemyT = Random.Range(0, 4);

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2066940610605023872
 Transform:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
+      scalar: 1
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
+      scalar: 0.5
       minScalar: 0.4
       maxCurve:
         serializedVersion: 2
@@ -5000,8 +5000,9 @@ MonoBehaviour:
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
   isEnemyLive: 0
-  bulletTextPrefab: {fileID: 3699665865677232935, guid: bd98a82a4766edf4c83b0cc2101c632b, type: 3}
-  partsTextPrefab: {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
+  floatingTextPrefab:
+  - {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
+  - {fileID: 3699665865677232935, guid: bd98a82a4766edf4c83b0cc2101c632b, type: 3}
   targetPos: {x: 0, y: 0}
   moveLerp: 0
   enemyDieEffect: {fileID: 1641198445818840192}

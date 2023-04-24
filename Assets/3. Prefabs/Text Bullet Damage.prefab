@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3699665865677232935}
   - component: {fileID: 5915402331295859867}
   m_Layer: 13
-  m_Name: Damage Text Bullet
+  m_Name: Text Bullet Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
