@@ -22,6 +22,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Image jemIcon;
 
     [Header("parts ui===================================")]
+    [SerializeField] private GameObject[] parts;
     [SerializeField] private Text selectedPartsName;
     [SerializeField] private Text selectedPartsDescription;
     [SerializeField] private GameObject selectedPartsImage;
@@ -51,6 +52,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ticketNum;
     [SerializeField] private GameObject settingsPopup;
     [SerializeField] private GameObject popupPanel;
+    [SerializeField] private GameObject unlockPopup;
+    [SerializeField] private Text unlockConditionText;
 
     #endregion
 
@@ -106,6 +109,11 @@ public class LobbyUiManager : MonoBehaviour
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
         highScore.text =LocalDatabaseManager.instance.HighScore;
         ticket.text = LocalDatabaseManager.instance.Ticket.ToString();
+
+        for (int i = 0; i < 4; i++)       
+            if (int.Parse(LocalDatabaseManager.instance.HighScore) > i * 10)
+                parts[i].GetComponent<PartsElement>().PartsUnlock();
+        
         equipment.text = LocalDatabaseManager.instance.CurrentParts;
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
@@ -160,6 +168,11 @@ public class LobbyUiManager : MonoBehaviour
         // Conduct converting if not exceptional situation
         if (part == null || currentPart==part || isConvertingUi)
             return;
+        if (!part.GetComponent<PartsElement>().IsUnlocked)
+        {
+            OpenUnlockPopup(part.transform.name[5..]);
+            return;
+        }
         isConvertingUi = true;
         SoundManager.instance.PlaySFX("PartsEquipSound");
 
@@ -246,6 +259,7 @@ public class LobbyUiManager : MonoBehaviour
     /// <param name="name"></param>
     public void OpenPartsUpgradeBase(string name)
     {
+        ClosePopupUi();
         isPopupOpen = true;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         currentParts = name;
@@ -283,6 +297,7 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OpenExitPopup()
     {
+        ClosePopupUi();
         isPopupOpen = true;
         exitPopup.SetActive(true);
     }
@@ -307,6 +322,7 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OpenBattlePopup()
     {
+        ClosePopupUi();
         isPopupOpen = true;
         battlePopup.SetActive(true);
         ticketNum.text = LocalDatabaseManager.instance.Ticket + " / 10";
@@ -322,6 +338,7 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OpenSettingsPopup()
     {
+        ClosePopupUi();
         isPopupOpen = true;
         settingsPopup.SetActive(true);
         popupPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
@@ -335,12 +352,47 @@ public class LobbyUiManager : MonoBehaviour
         popupPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
     }
 
+    public void OpenUnlockPopup(string partName)
+    {
+        ClosePopupUi();
+        isPopupOpen = true;
+        unlockPopup.SetActive(true);
+
+        string wave;
+        switch (partName)
+        {
+            case "Laser":
+                wave = "10";
+                break;
+            case "Barrier":
+                wave = "20";
+                break;
+            case "Emp":
+                wave = "30";
+                break;
+            default:
+                wave = "Error";
+                break;
+
+        }
+        unlockConditionText.text = "Clear Wave " +wave+ " to Unlock " + partName;
+    }
+
+    public void CloseUnlockPopup()
+    {
+        if (!unlockPopup.activeSelf)
+            return;
+        isPopupOpen = false;
+        unlockPopup.SetActive(false);
+    }
+
     public void ClosePopupUi()
     {
         ClosePartsUpgradeBase();
         CloseExitPopup();
         CloseBattlePopup();
         CloseSettingsPopup();
+        CloseUnlockPopup();
     }
 
     /// <summary>

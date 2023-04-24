@@ -12,7 +12,7 @@ public class LocalDatabaseManager : MonoBehaviour
 
     #region User Data
     public int JemCount { get; set; } = 0;
-    private string highScore = "0";
+    private string highScore = "1";
     public string HighScore
     {
         get { return highScore; }
