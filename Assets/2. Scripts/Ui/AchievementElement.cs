@@ -63,6 +63,7 @@ public class AchievementElement : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
+            achievementIcon.transform.DOPunchScale(achievementIcon.transform.localScale*0.2f, 0.2f);
             particleBase.DOPunchScale(particleBase.localScale * 0.2f, 0.2f, 0, 1f).OnComplete(() =>
             {
                 isTweening = false;
