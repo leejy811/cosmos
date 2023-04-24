@@ -344,9 +344,9 @@ public class UiManager : MonoBehaviour
     // Counting effect, the number is flipped by x-axis while increasing
     IEnumerator ResultCountingEffect()
     {
-        int loops = Math.Min(10, curWave);
-        int count = Math.Max(1, curWave);
-        int value;
+        int value= curWave;
+        int loops = Math.Min(10, value);
+        int count = Math.Max(1, (int)Math.Round((float)value / 10));
 
         for (int i = 0; i < loops; i++)
         {

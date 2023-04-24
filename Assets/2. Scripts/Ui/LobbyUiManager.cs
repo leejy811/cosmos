@@ -18,7 +18,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text jemCount;
     [SerializeField] private Text highScore;
     [SerializeField] private Text ticket;
-    [SerializeField] private Text equipment;
+    [SerializeField] private Image equipment;
+    [SerializeField] private Sprite[] partsIcons;
     [SerializeField] private Image jemIcon;
     [SerializeField] private GameObject achievementFlag;
 
@@ -115,7 +116,7 @@ public class LobbyUiManager : MonoBehaviour
             if (int.Parse(LocalDatabaseManager.instance.HighScore) > i * 10)
                 parts[i].GetComponent<PartsElement>().PartsUnlock();
         
-        equipment.text = LocalDatabaseManager.instance.CurrentParts;
+        equipment.sprite =partsIcons[selectedParts[LocalDatabaseManager.instance.CurrentParts]];
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
@@ -187,7 +188,7 @@ public class LobbyUiManager : MonoBehaviour
         // Update newly equiped part to the database manager
         LocalDatabaseManager.instance.CurrentParts = part.transform.name.Substring(5);
         LocalDatabaseManager.instance.SavePartsData();
-        equipment.text = LocalDatabaseManager.instance.CurrentParts;
+        equipment.sprite = partsIcons[selectedParts[LocalDatabaseManager.instance.CurrentParts]];
         switch (LocalDatabaseManager.instance.CurrentParts)
         {
             case "Missile":
