@@ -97,6 +97,7 @@ public class Boss : MonoBehaviour
             switch (bossType)
             {
                 case 0:
+                    gameObject.GetComponentInChildren<Animator>().SetBool("IsRange", true);
                     changeSpeed = 0;
                     break;
                 case 1:
