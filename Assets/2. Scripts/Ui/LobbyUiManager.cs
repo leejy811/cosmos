@@ -86,7 +86,7 @@ public class LobbyUiManager : MonoBehaviour
         "Enemies couldn't\r\nGet Close to You!"};
     private string[,,] partsInfo = new string[4, 3, 2]
     {
-        {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Missile Range"} },
+        {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Explosion Range"} },
         {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Make Another Laser"} },
         {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
         {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }

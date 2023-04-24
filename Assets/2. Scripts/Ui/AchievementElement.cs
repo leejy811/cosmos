@@ -9,9 +9,11 @@ public class AchievementElement : MonoBehaviour
     [SerializeField] private Image achievementRateBar;
     [SerializeField] private Text achievementReward;
     [SerializeField] private Image achievementIcon;
+    [SerializeField] private Image rewardButton;
     [SerializeField] private Transform particleBase;
     [SerializeField] private GameObject clearPanel;
     [SerializeField] private Sprite[] iconImages;
+    [SerializeField] private Sprite[] btnImages;
     [SerializeField] private bool isHiddenMission;
 
     private IAchieve achieve;
@@ -40,6 +42,11 @@ public class AchievementElement : MonoBehaviour
             achievementDescription.text =  achieve.achieveDescription+ " " +  achieve.maxCondition[achieve.achieveLevel];
         achievementRateBar.fillAmount = (float)achieve.curValue / achieve.maxCondition[achieve.achieveLevel];
         achievementReward.text = achieve.reward[achieve.achieveLevel].ToString();
+
+        if (achieve.isSuccess())
+            rewardButton.sprite = btnImages[1];
+        else
+            rewardButton.sprite = btnImages[0];
     }
 
     public void OnRewardButton()
@@ -63,7 +70,8 @@ public class AchievementElement : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
-            achievementIcon.transform.DOPunchScale(achievementIcon.transform.localScale*0.2f, 0.2f);
+            if (!isHiddenMission)
+                achievementIcon.transform.DOPunchScale(achievementIcon.transform.localScale*0.2f, 0.2f);
             particleBase.DOPunchScale(particleBase.localScale * 0.2f, 0.2f, 0, 1f).OnComplete(() =>
             {
                 isTweening = false;
@@ -82,5 +90,9 @@ public class AchievementElement : MonoBehaviour
 
         // Reset Clear Info in Lobby UI
         GameManger.instance.lobbyUiManager.SetAchievementFlag();
+        if (achieve.isSuccess())
+            rewardButton.sprite = btnImages[1];
+        else
+            rewardButton.sprite = btnImages[0];
     }
 }

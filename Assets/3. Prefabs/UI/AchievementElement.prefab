@@ -693,6 +693,7 @@ MonoBehaviour:
   achievementRateBar: {fileID: 5387114299672281026}
   achievementReward: {fileID: 5387114285146352834}
   achievementIcon: {fileID: 5387114300116286120}
+  rewardButton: {fileID: 5387114299835693396}
   particleBase: {fileID: 5209560157445375294}
   clearPanel: {fileID: 8104620803931341099}
   iconImages:
@@ -701,6 +702,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a3456269e70384385a29da6c2fb56bff, type: 3}
   - {fileID: 21300000, guid: 3daadf8420370494e875fef51142eae3, type: 3}
   - {fileID: 21300000, guid: bf4d1313712b842a1a9847efedad23cc, type: 3}
+  btnImages:
+  - {fileID: 21300000, guid: 27384b2200b2447cb89b8f691f95eb94, type: 3}
+  - {fileID: 21300000, guid: 5a886322681304beaaf1c4595d6125fb, type: 3}
   isHiddenMission: 0
 --- !u!1 &5428051479975500992
 GameObject:
