@@ -358,24 +358,24 @@ public class LobbyUiManager : MonoBehaviour
         isPopupOpen = true;
         unlockPopup.SetActive(true);
 
-        string wave;
+        string wave="Wave";
         switch (partName)
         {
             case "Laser":
-                wave = "10";
+                wave += " 10";
                 break;
             case "Barrier":
-                wave = "20";
+                wave += " 20";
                 break;
             case "Emp":
-                wave = "30";
+                wave += " 30";
                 break;
             default:
                 wave = "Error";
                 break;
 
         }
-        unlockConditionText.text = "Clear Wave " +wave+ " to Unlock " + partName;
+        unlockConditionText.text = "Clear "+ "<color=#00CEFF><size=70>" + wave +"</size></color>"+ " to Unlock " + "<color=#00CEFF><size=70>" + partName + "</size></color>";
     }
 
     public void CloseUnlockPopup()
