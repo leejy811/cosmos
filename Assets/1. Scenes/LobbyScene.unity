@@ -11803,6 +11803,7 @@ MonoBehaviour:
   ticket: {fileID: 3730413}
   equipment: {fileID: 1845190176}
   jemIcon: {fileID: 1288995336}
+  achievementFlag: {fileID: 345800582}
   parts:
   - {fileID: 1331646116}
   - {fileID: 1056943945}

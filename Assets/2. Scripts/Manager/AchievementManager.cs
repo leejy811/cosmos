@@ -128,4 +128,13 @@ public class AchievementManager : MonoBehaviour
                     if (LocalDatabaseManager.instance.PartsLaser[2] == 1)
                         achieves["World Class Engineer"].curValue = 4;
     }
+
+    //return if any achievement cleared
+    public bool IsNewAchievementCleared()
+    {
+        foreach(IAchieve achieve in achieves.Values)
+            if (achieve.isSuccess())
+                return true;
+        return false;
+    }
 }

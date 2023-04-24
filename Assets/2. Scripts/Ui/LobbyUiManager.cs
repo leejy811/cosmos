@@ -20,6 +20,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Text ticket;
     [SerializeField] private Text equipment;
     [SerializeField] private Image jemIcon;
+    [SerializeField] private GameObject achievementFlag;
 
     [Header("parts ui===================================")]
     [SerializeField] private GameObject[] parts;
@@ -127,6 +128,8 @@ public class LobbyUiManager : MonoBehaviour
 
         bloomToggle.SetSwitch(GameManger.instance.onBloomEffect);
         hitToggle.SetSwitch(GameManger.instance.onHitEffect);
+
+        SetAchievementFlag();
     }
 
 
@@ -477,6 +480,14 @@ public class LobbyUiManager : MonoBehaviour
     private void SetSfxSlider(float value)
     {
         SoundManager.instance.SetSfxVolume(value);
+    }
+
+    public void SetAchievementFlag()
+    {
+        if (AchievementManager.instance.IsNewAchievementCleared())
+            achievementFlag.SetActive(true);
+        else
+            achievementFlag.SetActive(false);
     }
 
     // func for testing

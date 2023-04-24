@@ -79,5 +79,8 @@ public class AchievementElement : MonoBehaviour
         achieve.achieveLevel++;
         SetAchievementValue();
         AchievementManager.instance.SaveAchieve();
+
+        // Reset Clear Info in Lobby UI
+        GameManger.instance.lobbyUiManager.SetAchievementFlag();
     }
 }
