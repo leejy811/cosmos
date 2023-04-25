@@ -68,7 +68,19 @@ public class AchievementElement : MonoBehaviour
     public void OnRewardButton()
     {
         // return if condition not achieved
-        
+        if (!achieve.isSuccess() || achieve.maxAchieveLevel == achieve.achieveLevel)
+        {
+            SoundManager.instance.PlaySFX("ButtonDenied");
+            if (!isTweening)    // Prevent multi-clicking
+            {
+                isTweening = true;
+                particleBase.transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+                {
+                    isTweening = false;
+                });
+            }
+            return;
+        }
 
         // Add button&sound effect
         if (!isTweening)    // Prevent multi-clicking
