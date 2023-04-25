@@ -49016,6 +49016,7 @@ MonoBehaviour:
   partsTextPrefab: {fileID: 3699665865677232935, guid: 76d7c980c31e0f4458f643d38626ba72, type: 3}
   playerController: {fileID: 0}
   waveManager: {fileID: 0}
+  bossLayerDamage: 29
   bossDLaser: {fileID: 7862834121097520348}
   bossDieEffect: {fileID: 605721319824640945}
 --- !u!1 &8822487388815751724
