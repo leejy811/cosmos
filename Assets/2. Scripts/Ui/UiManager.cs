@@ -26,11 +26,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text resultTime;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
-    [SerializeField] private Text waveCleaeAnimText;
-    [SerializeField] private Animation bottomUiAnim;
-    [SerializeField] private Animator waveClearAnim;
     [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private GameObject waveClearAnimBase;
     [SerializeField] private GameObject attackRange;
     [SerializeField] private GameObject safeArea;
     [SerializeField] private Image panel;
@@ -470,7 +466,6 @@ public class UiManager : MonoBehaviour
         {
             waveLevel.text = "Wave " + Convert.ToString(num);
         }
-        //StartCoroutine("WaveClearAnim");
         StartCoroutine("WaveClearEffect");
     }
     IEnumerator BonusWaveEffect()
@@ -484,21 +479,6 @@ public class UiManager : MonoBehaviour
         waveClearEffect.SetActive(true);
         yield return new WaitForSeconds(4f);
         waveClearEffect.SetActive(false);
-    }
-    IEnumerator WaveClearAnim()
-    {
-        string[] texts =new string[] { "Wave Clear !", "3", "2", "1", "" };
-        texts[texts.Length - 1] = "Wave " + curWave.ToString();
-
-        yield return new WaitForSeconds(0.5f);
-        waveClearAnimBase.SetActive(true);
-        foreach (string s in texts)
-        {
-            waveCleaeAnimText.text = s;
-            waveClearAnim.SetTrigger("ChangeString");
-            yield return new WaitForSeconds(1f);
-        }
-        waveClearAnimBase.SetActive(false);
     }
 
     public void SetTimeScale()
