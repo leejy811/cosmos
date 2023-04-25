@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAmount: 4
   rotateAmount: 1800
-  colorSpeed: 0.71
+  colorSpeed: 0.25
 --- !u!1 &9094458718848923054
 GameObject:
   m_ObjectHideFlags: 0
