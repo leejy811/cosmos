@@ -923,7 +923,7 @@ MonoBehaviour:
     expertSkillUpgradeJem: 10000
   - damage: 0.4
     attackSpeed: 0.4
-    expertSkill: 4
+    expertSkill: 3
     damageUpgradeJem: 700
     attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
@@ -1165,7 +1165,7 @@ MonoBehaviour:
     expertSkillUpgradeJem: 10000
   - damage: 0.4
     attackSpeed: 0.15
-    expertSkill: 1
+    expertSkill: 3
     damageUpgradeJem: 700
     attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
@@ -1286,7 +1286,7 @@ MonoBehaviour:
     expertSkillUpgradeJem: 10000
   - damage: 0.175
     attackSpeed: 0.02
-    expertSkill: 1
+    expertSkill: 3
     damageUpgradeJem: 700
     attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
