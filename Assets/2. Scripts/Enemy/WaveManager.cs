@@ -33,8 +33,6 @@ public class WaveManager: MonoBehaviour
         LoadWaveData();
         isBossWave = false;
         bonusWaveTime = 0;
-        //Debug.Log("Stage : " + (currentWave + 1));
-        //GameManger.instance.uiManager.WaveClear(currentWave + 1);
         StartCoroutine("StartWave");
     }
 
@@ -101,7 +99,6 @@ public class WaveManager: MonoBehaviour
     }
     bool CheckBossWaveEnd()
     {
-        Debug.Log("Check Boss Wave End Start ");
         if (currenBossType == 0)
         {
             if (GameManger.instance.poolManager.CheckPool("BossASpawnEnemy"))
@@ -222,7 +219,6 @@ public class WaveManager: MonoBehaviour
         currenBossType = bossType;
         Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
 
-        Debug.Log("Boss" + (char)(bossType + 65));
         SoundManager.instance.PlayBGM("Boss" + (char)(bossType + 65));
         boss.transform.position = spawnPoint[0].position;
         boss.BossLookPlayer();
