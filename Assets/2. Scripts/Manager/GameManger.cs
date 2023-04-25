@@ -60,7 +60,6 @@ public class GameManger : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        SaveAchieveResult();
         uiManager.DoGameOverWorks();
         uiManager.SaveGameResult();
         isPlaying = false;
@@ -96,6 +95,8 @@ public class GameManger : MonoBehaviour
         }
         uiManager.SetBloomIntensity(1.5f);
         uiManager.ActiveGameOverUI();
+        SaveAchieveResult();
+        AchievementManager.instance.SaveAchieve();
     }
 
     public void StartGame()
@@ -165,6 +166,9 @@ public class GameManger : MonoBehaviour
         AchievementManager.instance.achieves["StarWars"].curValue = waveManager.bonusWaveTime;
 
         if(int.Parse(LocalDatabaseManager.instance.HighScore) > 30)
+        {
             AchievementManager.instance.achieves["World Class Engineer"].curValue = 4;
+            Debug.Log(AchievementManager.instance.achieves["World Class Engineer"].curValue = 4);
+        }
     }
 }
