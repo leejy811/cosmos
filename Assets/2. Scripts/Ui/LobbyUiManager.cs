@@ -302,6 +302,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenExitPopup()
     {
         ClosePopupUi();
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         exitPopup.SetActive(true);
     }
@@ -310,6 +311,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!exitPopup.activeSelf)
             return;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         exitPopup.SetActive(false);
     }
@@ -390,7 +392,6 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!unlockPopup.activeSelf)
             return;
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         unlockPopup.SetActive(false);
     }
@@ -480,11 +481,13 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetBgmSlider(float value)
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetBgmVolume(value);
     }
 
     private void SetSfxSlider(float value)
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetSfxVolume(value);
     }
 
@@ -533,7 +536,6 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OnAdsButtonClick()
     {
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         adsManager.ShowRewardedAd();
     }
 
