@@ -53,6 +53,7 @@ public class WaveManager: MonoBehaviour
             if (CheckBossWaveEnd())
             {
                 isBossWave = false;
+                SoundManager.instance.PlayBGM("InGameBGM");
                 GoNextWave();
             }
         }
@@ -117,7 +118,6 @@ public class WaveManager: MonoBehaviour
                 return false;
         }
 
-        SoundManager.instance.PlayBGM("InGameBGM");
         return true;
     }
     public void GoNextWave()
@@ -221,6 +221,8 @@ public class WaveManager: MonoBehaviour
         isBossWave = true;
         currenBossType = bossType;
         Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
+
+        Debug.Log("Boss" + (char)(bossType + 65));
         SoundManager.instance.PlayBGM("Boss" + (char)(bossType + 65));
         boss.transform.position = spawnPoint[0].position;
         boss.BossLookPlayer();
