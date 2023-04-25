@@ -75,7 +75,7 @@ MonoBehaviour:
     reward: 3000
   Waves:
   - enemyACount: 10
-    enemyAHp: 2.4
+    enemyAHp: 1.6
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 12
-    enemyAHp: 2.6
+    enemyAHp: 1.8
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 14
-    enemyAHp: 2.8
+    enemyAHp: 2
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 16
-    enemyAHp: 3
+    enemyAHp: 2.2
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 18
-    enemyAHp: 3.2
+    enemyAHp: 2.4
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 20
-    enemyAHp: 3.4
+    enemyAHp: 2.6
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 22
-    enemyAHp: 3.6
+    enemyAHp: 2.8
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 24
-    enemyAHp: 3.8
+    enemyAHp: 3
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 26
-    enemyAHp: 4
+    enemyAHp: 3.2
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 28
-    enemyAHp: 4.2
+    enemyAHp: 3.4
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 30
-    enemyAHp: 4.4
+    enemyAHp: 3.6
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 32
-    enemyAHp: 4.6
+    enemyAHp: 3.8
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 34
-    enemyAHp: 4.8
+    enemyAHp: 4
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 36
-    enemyAHp: 5
+    enemyAHp: 4.2
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 38
-    enemyAHp: 5.2
+    enemyAHp: 4.4
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 40
-    enemyAHp: 5.4
+    enemyAHp: 4.6
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 42
-    enemyAHp: 5.6
+    enemyAHp: 4.8
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 44
-    enemyAHp: 5.8
+    enemyAHp: 5
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 46
-    enemyAHp: 6
+    enemyAHp: 5.2
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.6
   - enemyACount: 48
-    enemyAHp: 6.2
+    enemyAHp: 5.4
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.6
   - enemyACount: 50
-    enemyAHp: 6.4
+    enemyAHp: 5.6
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 52
-    enemyAHp: 6.6
+    enemyAHp: 5.8
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 54
-    enemyAHp: 6.8
+    enemyAHp: 6
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 56
-    enemyAHp: 7
+    enemyAHp: 6.2
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 58
-    enemyAHp: 7.2
+    enemyAHp: 6.4
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 60
-    enemyAHp: 7.4
+    enemyAHp: 6.6
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 62
-    enemyAHp: 7.6
+    enemyAHp: 6.8
     enemyADamage: 4
     enemyAPrice: 4
     enemyAJem: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 64
-    enemyAHp: 7.8
+    enemyAHp: 7
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 66
-    enemyAHp: 8
+    enemyAHp: 7.2
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 68
-    enemyAHp: 8.2
+    enemyAHp: 7.4
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -768,7 +768,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 70
-    enemyAHp: 8.4
+    enemyAHp: 7.6
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 72
-    enemyAHp: 8.6
+    enemyAHp: 7.8
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -810,7 +810,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 74
-    enemyAHp: 8.8
+    enemyAHp: 8
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -831,7 +831,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 76
-    enemyAHp: 9
+    enemyAHp: 8.2
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -852,7 +852,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 78
-    enemyAHp: 9.2
+    enemyAHp: 8.4
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 80
-    enemyAHp: 9.4
+    enemyAHp: 8.6
     enemyADamage: 8
     enemyAPrice: 8
     enemyAJem: 0
