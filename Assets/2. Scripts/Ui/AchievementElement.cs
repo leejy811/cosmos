@@ -8,7 +8,7 @@ public class AchievementElement : MonoBehaviour
     [SerializeField] private Text achievementDescription;
     [SerializeField] private Image achievementRateBar;
     [SerializeField] private Text achievementReward;
-    [SerializeField] private Image achievementIcon;
+    [SerializeField] private GameObject[] achievementIcon;
     [SerializeField] private Image rewardButton;
     [SerializeField] private Transform particleBase;
     [SerializeField] private GameObject clearPanel;
@@ -18,6 +18,7 @@ public class AchievementElement : MonoBehaviour
 
     private IAchieve achieve;
     private bool isTweening=false;
+    private int achieveLevel;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class AchievementElement : MonoBehaviour
 
     public void SetAchievementValue()
     {
-        int achieveLevel = achieve.achieveLevel;
+        achieveLevel = achieve.achieveLevel;
         bool isClear = false;
 
         if (achieve.achieveLevel >= achieve.maxAchieveLevel)     // Set clear panel if max level
@@ -41,9 +42,9 @@ public class AchievementElement : MonoBehaviour
         if(!isHiddenMission)                                                      // Only show level icon if not hidden mission
         {
             if (isClear)
-                achievementIcon.sprite = iconImages[achieveLevel +1];
+                achievementIcon[achieveLevel +1].SetActive(true);
             else
-                achievementIcon.sprite = iconImages[achieveLevel];
+                achievementIcon[achieveLevel].SetActive(true);
         }
 
         if (isHiddenMission)         // Set Mission description
@@ -67,26 +68,17 @@ public class AchievementElement : MonoBehaviour
     public void OnRewardButton()
     {
         // return if condition not achieved
-        if (!achieve.isSuccess() || achieve.maxAchieveLevel == achieve.achieveLevel)
-        {
-            SoundManager.instance.PlaySFX("ButtonDenied");
-            if (!isTweening)    // Prevent multi-clicking
-            {
-                isTweening = true;
-                particleBase.transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
-                {
-                    isTweening = false;
-                });
-            }
-            return;
-        }
+        
 
         // Add button&sound effect
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
             if (!isHiddenMission)
-                achievementIcon.transform.DOPunchScale(achievementIcon.transform.localScale*0.2f, 0.2f);
+            {
+                achievementIcon[achieveLevel].SetActive(false);
+                achievementIcon[achieveLevel+1].SetActive(true);
+            }
             particleBase.DOPunchScale(particleBase.localScale * 0.2f, 0.2f, 0, 1f).OnComplete(() =>
             {
                 isTweening = false;
