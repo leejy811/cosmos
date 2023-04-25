@@ -71,7 +71,6 @@ public class Boss : MonoBehaviour
 
     public void MoveBoss()
     {
-
         CheckPlayer();
         if (enterBossPlayerRange && bossType == 2)
         {
@@ -88,7 +87,9 @@ public class Boss : MonoBehaviour
     public void CheckPlayer()
     {
         if (enterBossPlayerRange)
+        {
             return;
+        }
 
         float changeSpeed = 0;
 
@@ -117,7 +118,11 @@ public class Boss : MonoBehaviour
     public void FixedUpdate()
     {
         if (GameManger.instance.player.isPlayerDie)
+        {
+            StopAllCoroutines();
             return;
+        }
+
         MoveBoss();
         if(enterBossPlayerRange && bossType == 0 && bossAPattern)
         {
