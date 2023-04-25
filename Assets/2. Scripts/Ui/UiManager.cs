@@ -50,7 +50,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private GameObject bossAppearEffect;
     [SerializeField] private GameObject waveClearEffect;
-
+    [SerializeField] private GameObject bonusWaveEffect;
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
@@ -403,6 +403,8 @@ public class UiManager : MonoBehaviour
         int currentGameJem = GameManger.instance.player.playerJem;
         GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
+        if (curWave > 40)
+            curWave = 40;
         LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
@@ -456,6 +458,8 @@ public class UiManager : MonoBehaviour
         if (num == 41)
         {
             waveLevel.text = "Bonus";
+            StartCoroutine("BonusWaveEffect");
+            return;
         }
         else if(num % 10 == 0)
         {
@@ -464,17 +468,22 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            waveLevel.text = Convert.ToString(num);
+            waveLevel.text = "Wave " + Convert.ToString(num);
         }
         //StartCoroutine("WaveClearAnim");
         StartCoroutine("WaveClearEffect");
+    }
+    IEnumerator BonusWaveEffect()
+    {
+        bonusWaveEffect.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        bonusWaveEffect.SetActive(false);
     }
     IEnumerator WaveClearEffect()
     {
         waveClearEffect.SetActive(true);
         yield return new WaitForSeconds(4f);
         waveClearEffect.SetActive(false);
-
     }
     IEnumerator WaveClearAnim()
     {

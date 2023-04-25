@@ -48,6 +48,19 @@ public class SoundManager : MonoBehaviour
     {
         bgmPlayer.Stop();
     }
+    public void StopSfx(string sfxName)
+    {
+        int idx = sfx.FindIndex(x => x.name == sfxName);
+        if (idx < 0)
+            return;
+        for (int i = 0; i < sfxPlayer.Length; i++)
+        {
+            sfxPlayer[i].clip = sfx[idx].clip;
+            sfxPlayer[i].Stop();
+                return;
+        }
+        return;
+    }
     public void PlaySFX(string sfxName)
     {
         int idx = sfx.FindIndex(x => x.name == sfxName);
