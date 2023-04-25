@@ -390,7 +390,6 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!unlockPopup.activeSelf)
             return;
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         unlockPopup.SetActive(false);
     }
@@ -533,7 +532,6 @@ public class LobbyUiManager : MonoBehaviour
 
     public void OnAdsButtonClick()
     {
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         adsManager.ShowRewardedAd();
     }
 
@@ -546,7 +544,6 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (LocalDatabaseManager.instance.Ticket < 10)
             return;
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
         ChangeScene(true);
