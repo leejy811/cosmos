@@ -19,7 +19,7 @@ public class FloatingTicket : MonoBehaviour
     {
         ticketColor.a = Mathf.Lerp(ticketColor.a, 0, Time.deltaTime * colorSpeed);
         sprite.color = ticketColor;
-        if (ticketColor.a <= 0.1f)
+        if (ticketColor.a <= 0.5f)
         {
             //DOTween.KillAll();
             ticketColor.a = 1;

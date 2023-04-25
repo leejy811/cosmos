@@ -96,7 +96,7 @@ public class AchievementElement : MonoBehaviour
                 isTweening = false;
             });
         }
-        SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        SoundManager.instance.PlaySFX("Reward");
 
         // Add Jems and save to local
         LocalDatabaseManager.instance.JemCount += achieve.reward[achieve.achieveLevel];
