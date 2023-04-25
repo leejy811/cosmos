@@ -116,6 +116,8 @@ public class WaveManager: MonoBehaviour
             if (GameManger.instance.poolManager.CheckPool("BossDSpawnEnemy"))
                 return false;
         }
+
+        SoundManager.instance.PlayBGM("InGameBGM");
         return true;
     }
     public void GoNextWave()
