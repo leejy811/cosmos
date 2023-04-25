@@ -17,6 +17,8 @@ public class IAchieve
     public int maxAchieveLevel;
     public bool isSuccess()
     {
+        if (achieveLevel >= maxAchieveLevel)
+            return false;
         if (maxCondition[achieveLevel] <= curValue)
             return true;
         else
@@ -117,16 +119,6 @@ public class AchievementManager : MonoBehaviour
                 achieves[achieveNames[achieveCount]].reward[achieveLevel] = int.Parse(tempReward[achieveLevel]);
             }
         }
-    }
-
-    //파츠 업적 정보를 저장하는 함수다.
-    public void SavePartsAchieve()
-    {
-        if (LocalDatabaseManager.instance.PartsMissile[2] == 1)
-            if (LocalDatabaseManager.instance.PartsBarrier[2] == 1)
-                if (LocalDatabaseManager.instance.PartsEmp[2] == 1)
-                    if (LocalDatabaseManager.instance.PartsLaser[2] == 1)
-                        achieves["World Class Engineer"].curValue = 4;
     }
 
     //return if any achievement cleared

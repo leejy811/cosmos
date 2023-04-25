@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -162,5 +163,8 @@ public class GameManger : MonoBehaviour
         AchievementManager.instance.achieves["What a good balance"].curValue = Mathf.Min(player.playerDamageLevel, player.playerAttackSpeedLevel, player.playerHealthLevel, player.playerHealthRecorveryLevel);
         AchievementManager.instance.achieves["Alien? Zombie?"].curValue = Mathf.Min(player.playerHealthLevel, player.playerHealthRecorveryLevel);
         AchievementManager.instance.achieves["StarWars"].curValue = waveManager.bonusWaveTime;
+
+        if(int.Parse(LocalDatabaseManager.instance.HighScore) > 30)
+            AchievementManager.instance.achieves["World Class Engineer"].curValue = 4;
     }
 }
