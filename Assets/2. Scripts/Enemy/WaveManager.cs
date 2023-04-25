@@ -132,7 +132,7 @@ public class WaveManager: MonoBehaviour
         {
             SoundManager.instance.PlaySFX("BossAppear");
             GameManger.instance.uiManager.BossWaveEffectOn();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
             SoundManager.instance.StopSfx("BossAppear");
             GameManger.instance.uiManager.BossWaveEffectOff();
             
