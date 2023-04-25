@@ -49,6 +49,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image[] hpBars;
 
     [SerializeField] private GameObject bossAppearEffect;
+    [SerializeField] private GameObject waveClearEffect;
+
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
@@ -464,9 +466,16 @@ public class UiManager : MonoBehaviour
         {
             waveLevel.text = Convert.ToString(num);
         }
-        StartCoroutine("WaveClearAnim");
+        //StartCoroutine("WaveClearAnim");
+        StartCoroutine("WaveClearEffect");
     }
+    IEnumerator WaveClearEffect()
+    {
+        waveClearEffect.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        waveClearEffect.SetActive(false);
 
+    }
     IEnumerator WaveClearAnim()
     {
         string[] texts =new string[] { "Wave Clear !", "3", "2", "1", "" };

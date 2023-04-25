@@ -9683,7 +9683,7 @@ GameObject:
   - component: {fileID: 224000011975927126}
   - component: {fileID: 95000010261136556}
   m_Layer: 5
-  m_Name: MissionClear
+  m_Name: WaveClear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9737,7 +9737,7 @@ Animator:
   m_GameObject: {fileID: 1000011582461244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4fce89dfe15aa214b83c59fa51a37ce5, type: 2}
+  m_Controller: {fileID: 9100000, guid: f89b1cd3899e25346885789949795852, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
