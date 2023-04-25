@@ -33,12 +33,18 @@ public class AchievementElement : MonoBehaviour
         if (achieve.achieveLevel >= achieve.maxAchieveLevel)     // Set clear panel if max level
         {
             clearPanel.SetActive(true);
+
             achieveLevel--;
             isClear = true;
         }
 
         if(!isHiddenMission)                                                      // Only show level icon if not hidden mission
-            achievementIcon.sprite = iconImages[achieveLevel];
+        {
+            if (isClear)
+                achievementIcon.sprite = iconImages[achieveLevel +1];
+            else
+                achievementIcon.sprite = iconImages[achieveLevel];
+        }
 
         if (isHiddenMission)         // Set Mission description
         {
