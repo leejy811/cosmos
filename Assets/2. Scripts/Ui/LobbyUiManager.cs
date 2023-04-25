@@ -327,6 +327,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenBattlePopup()
     {
         ClosePopupUi();
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         battlePopup.SetActive(true);
         ticketNum.text = LocalDatabaseManager.instance.Ticket + " / 10";
@@ -336,6 +337,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!battlePopup.activeSelf)
             return;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         battlePopup.SetActive(false);
     }
@@ -343,6 +345,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenSettingsPopup()
     {
         ClosePopupUi();
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         settingsPopup.SetActive(true);
         popupPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
@@ -352,6 +355,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!settingsPopup.activeSelf)
             return;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         popupPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
     }
@@ -361,8 +365,8 @@ public class LobbyUiManager : MonoBehaviour
         ClosePopupUi();
         isPopupOpen = true;
         unlockPopup.SetActive(true);
-
-        string wave="Wave";
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+        string wave ="Wave";
         switch (partName)
         {
             case "Laser":
