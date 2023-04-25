@@ -131,11 +131,12 @@ public class WaveManager: MonoBehaviour
 
         if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
         {
-            GameManger.instance.uiManager.BossWaveEffectOn();
             SoundManager.instance.PlaySFX("BossAppear");
+            GameManger.instance.uiManager.BossWaveEffectOn();
             yield return new WaitForSeconds(3);
-            //SoundManager.instance.PlaySFX("");
+            SoundManager.instance.StopSfx("BossAppear");
             GameManger.instance.uiManager.BossWaveEffectOff();
+            
             BossSpawn(currentWave / 10);
             yield break;
         }
@@ -218,6 +219,7 @@ public class WaveManager: MonoBehaviour
         isBossWave = true;
         currenBossType = bossType;
         Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
+        SoundManager.instance.PlayBGM("Boss" + (char)(bossType + 65));
         boss.transform.position = spawnPoint[0].position;
         boss.BossLookPlayer();
         boss.playerController = GameManger.instance.player;

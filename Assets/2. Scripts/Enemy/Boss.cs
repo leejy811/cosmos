@@ -222,8 +222,6 @@ IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(2f);
 
-        //enemyList.Clear();
-
         for (int i = 0; i < targetPoints.Length; i++)
         {
             GameObject enemy = GameManger.instance.poolManager.GetPool("BossASpawnEnemy");
@@ -245,6 +243,7 @@ IEnumerator BossAPattern()
     {
         yield return new WaitForSeconds(0.5f);
         GameObject bossCSpawnEnemy = GameManger.instance.poolManager.GetPool("BossCSpawnEnemy");
+        SoundManager.instance.PlaySFX("BossCUnitSound");
         // 보스가 소환하는 적 스텟 관리 (체력, 데미지, 골드, 잼)
         bossCSpawnEnemy.GetComponent<Enemy>().SetEnemyState(80, 15, 0, 0);
         bossCSpawnEnemy.transform.position = this.transform.position;
@@ -278,6 +277,7 @@ IEnumerator BossAPattern()
     IEnumerator BossDSpawnEnemy()
     {
         yield return new WaitForSeconds(0.1f);
+        SoundManager.instance.PlaySFX("BossDMissileSound");
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             GameObject bossDSpawnEnemy = GameManger.instance.poolManager.GetPool("BossDSpawnEnemy");
