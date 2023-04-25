@@ -481,13 +481,11 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetBgmSlider(float value)
     {
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetBgmVolume(value);
     }
 
     private void SetSfxSlider(float value)
     {
-        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetSfxVolume(value);
     }
 
