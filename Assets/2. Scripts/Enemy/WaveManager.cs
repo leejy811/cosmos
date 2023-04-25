@@ -222,6 +222,7 @@ public class WaveManager: MonoBehaviour
         currenBossType = bossType;
         Boss boss = Instantiate(this.boss[bossType]).GetComponent<Boss>();
 
+
         Debug.Log("Boss" + (char)(bossType + 65));
         SoundManager.instance.PlayBGM("Boss" + (char)(bossType + 65));
         boss.transform.position = spawnPoint[0].position;
