@@ -409,7 +409,6 @@ public class UiManager : MonoBehaviour
         LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
-        AchievementManager.instance.SaveAchieve();
     }
 
     public void DoGameOverWorks()
