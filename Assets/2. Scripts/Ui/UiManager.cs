@@ -235,6 +235,7 @@ public class UiManager : MonoBehaviour
 
     public void PauseGame()
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         Time.timeScale = 0;
         GameManger.instance.isPlaying = false;
         pauseUi.SetActive(true);

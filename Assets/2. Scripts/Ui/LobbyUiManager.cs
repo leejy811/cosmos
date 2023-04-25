@@ -302,6 +302,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenExitPopup()
     {
         ClosePopupUi();
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         exitPopup.SetActive(true);
     }
@@ -310,6 +311,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!exitPopup.activeSelf)
             return;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         exitPopup.SetActive(false);
     }
@@ -479,11 +481,13 @@ public class LobbyUiManager : MonoBehaviour
 
     private void SetBgmSlider(float value)
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetBgmVolume(value);
     }
 
     private void SetSfxSlider(float value)
     {
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         SoundManager.instance.SetSfxVolume(value);
     }
 
@@ -544,6 +548,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (LocalDatabaseManager.instance.Ticket < 10)
             return;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
         LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
         ChangeScene(true);
