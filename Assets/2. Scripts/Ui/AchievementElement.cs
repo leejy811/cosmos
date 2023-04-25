@@ -27,21 +27,30 @@ public class AchievementElement : MonoBehaviour
 
     public void SetAchievementValue()
     {
+        int achieveLevel = achieve.achieveLevel;
+        bool isClear = false;
+
         if (achieve.achieveLevel >= achieve.maxAchieveLevel)     // Set clear panel if max level
         {
             clearPanel.SetActive(true);
-            return;
+            achieveLevel--;
+            isClear = true;
         }
 
         if(!isHiddenMission)                                                      // Only show level icon if not hidden mission
-            achievementIcon.sprite = iconImages[achieve.achieveLevel];
+            achievementIcon.sprite = iconImages[achieveLevel];
 
         if (isHiddenMission)         // Set Mission description
-            achievementDescription.text = achieve.achieveDescription;
+        {
+            if (isClear)
+                achievementDescription.text = achieve.achieveDescription;
+            else
+                achievementDescription.text = "?????????????";
+        }
         else
-            achievementDescription.text =  achieve.achieveDescription+ " " +  achieve.maxCondition[achieve.achieveLevel];
-        achievementRateBar.fillAmount = (float)achieve.curValue / achieve.maxCondition[achieve.achieveLevel];
-        achievementReward.text = achieve.reward[achieve.achieveLevel].ToString();
+            achievementDescription.text =  achieve.achieveDescription+ " " +  achieve.maxCondition[achieveLevel];
+        achievementRateBar.fillAmount = (float)achieve.curValue / achieve.maxCondition[achieveLevel];
+        achievementReward.text = achieve.reward[achieveLevel].ToString();
 
         if (achieve.isSuccess())
             rewardButton.sprite = btnImages[1];
