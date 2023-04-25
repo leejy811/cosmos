@@ -127,15 +127,20 @@ public class WaveManager: MonoBehaviour
     IEnumerator StartWave()
     {
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
-        int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;      
-        yield return new WaitForSeconds(5);
+        int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;
 
         if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
         {
-            yield return new WaitForSeconds(2);
+            GameManger.instance.uiManager.BossWaveEffectOn();
+            SoundManager.instance.PlaySFX("BossAppear");
+            yield return new WaitForSeconds(3);
+            //SoundManager.instance.PlaySFX("");
+            GameManger.instance.uiManager.BossWaveEffectOff();
             BossSpawn(currentWave / 10);
             yield break;
         }
+        yield return new WaitForSeconds(5);
+
         while (true)
         {
             if (GameManger.instance.player.isPlayerDie)

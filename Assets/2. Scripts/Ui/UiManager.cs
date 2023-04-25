@@ -48,6 +48,7 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Image[] hpBars;
 
+    [SerializeField] private GameObject bossAppearEffect;
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
     #endregion
@@ -438,6 +439,15 @@ public class UiManager : MonoBehaviour
         GameManger.instance.GoLobby();
     }
 
+    public void BossWaveEffectOn()
+    {
+        bossAppearEffect.SetActive(true);
+    }
+
+    public void BossWaveEffectOff()
+    {
+        bossAppearEffect.SetActive(false);
+    }
     public void WaveClear(int num)
     {
         curWave = num;
