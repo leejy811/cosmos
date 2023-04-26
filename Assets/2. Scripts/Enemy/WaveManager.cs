@@ -39,7 +39,7 @@ public class WaveManager: MonoBehaviour
 
     [SerializeField]
     private Transform[] spawnPoint;
-    public IWave[] waves;
+    public List<WaveDBEntity> waves;
 
     public int currentWave = -1;
 
@@ -259,8 +259,10 @@ public class WaveManager: MonoBehaviour
     private void LoadWaveData()
     {
         waveDB = GameManger.instance.database;
-        waves = new IWave[waveDB.Waves.Count];
+        waves = waveDB.Waves.ToList();
 
+        /*
+        waves = new IWave[waveDB.Waves.Count];
         for(int i = 0; i < waveDB.Waves.Count; i++)
         {
             waves[i].enemyACount = waveDB.Waves[i].enemyACount;
@@ -289,5 +291,6 @@ public class WaveManager: MonoBehaviour
 
             waves[i].spawnCoolTime = waveDB.Waves[i].spawnCoolTime;
         }
+         */
     }
 }
