@@ -24242,7 +24242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossType: 0
-  bossHealth: 150
+  bossHealth: 100
   bossSpeed: 2
   spawnPoints:
   - {fileID: 5690528785660543571}

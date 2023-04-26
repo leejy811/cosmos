@@ -75,7 +75,7 @@ MonoBehaviour:
     reward: 3000
   Waves:
   - enemyACount: 10
-    enemyAHp: 1.6
+    enemyAHp: 2.4
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 12
-    enemyAHp: 1.8
+    enemyAHp: 2.6
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 14
-    enemyAHp: 2
+    enemyAHp: 2.8
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
@@ -138,95 +138,11 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 1
   - enemyACount: 16
-    enemyAHp: 2.2
-    enemyADamage: 1
-    enemyAPrice: 1
-    enemyAJem: 0
-    enemyBCount: 5
-    enemyBHp: 1.2
-    enemyBDamage: 3
-    enemyBPrice: 2
-    enemyBJem: 1
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 1
-  - enemyACount: 18
-    enemyAHp: 2.4
-    enemyADamage: 1
-    enemyAPrice: 1
-    enemyAJem: 0
-    enemyBCount: 7
-    enemyBHp: 1.3
-    enemyBDamage: 3
-    enemyBPrice: 2
-    enemyBJem: 1
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 1
-  - enemyACount: 20
-    enemyAHp: 2.6
-    enemyADamage: 1
-    enemyAPrice: 1
-    enemyAJem: 0
-    enemyBCount: 9
-    enemyBHp: 1.4
-    enemyBDamage: 3
-    enemyBPrice: 2
-    enemyBJem: 1
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 1
-  - enemyACount: 22
-    enemyAHp: 2.8
-    enemyADamage: 1
-    enemyAPrice: 1
-    enemyAJem: 0
-    enemyBCount: 11
-    enemyBHp: 1.5
-    enemyBDamage: 3
-    enemyBPrice: 2
-    enemyBJem: 1
-    enemyCCount: 0
-    enemyCHp: 0
-    enemyCDamage: 0
-    enemyCPrice: 0
-    enemyCJem: 0
-    enemyDCount: 0
-    enemyDHp: 0
-    enemyDDamage: 0
-    enemyDPrice: 0
-    enemyDJem: 0
-    spawnCoolTime: 1
-  - enemyACount: 24
     enemyAHp: 3
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
-    enemyBCount: 13
+    enemyBCount: 5
     enemyBHp: 1.6
     enemyBDamage: 3
     enemyBPrice: 2
@@ -242,13 +158,97 @@ MonoBehaviour:
     enemyDPrice: 0
     enemyDJem: 0
     spawnCoolTime: 1
-  - enemyACount: 26
+  - enemyACount: 18
     enemyAHp: 3.2
     enemyADamage: 1
     enemyAPrice: 1
     enemyAJem: 0
-    enemyBCount: 15
+    enemyBCount: 7
     enemyBHp: 1.7
+    enemyBDamage: 3
+    enemyBPrice: 2
+    enemyBJem: 1
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyCJem: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 1
+  - enemyACount: 20
+    enemyAHp: 3.4
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyAJem: 0
+    enemyBCount: 9
+    enemyBHp: 1.8
+    enemyBDamage: 3
+    enemyBPrice: 2
+    enemyBJem: 1
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyCJem: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 1
+  - enemyACount: 22
+    enemyAHp: 3.6
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyAJem: 0
+    enemyBCount: 11
+    enemyBHp: 1.9
+    enemyBDamage: 3
+    enemyBPrice: 2
+    enemyBJem: 1
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyCJem: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 1
+  - enemyACount: 24
+    enemyAHp: 3.8
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyAJem: 0
+    enemyBCount: 13
+    enemyBHp: 2
+    enemyBDamage: 3
+    enemyBPrice: 2
+    enemyBJem: 1
+    enemyCCount: 0
+    enemyCHp: 0
+    enemyCDamage: 0
+    enemyCPrice: 0
+    enemyCJem: 0
+    enemyDCount: 0
+    enemyDHp: 0
+    enemyDDamage: 0
+    enemyDPrice: 0
+    enemyDJem: 0
+    spawnCoolTime: 1
+  - enemyACount: 26
+    enemyAHp: 4
+    enemyADamage: 1
+    enemyAPrice: 1
+    enemyAJem: 0
+    enemyBCount: 15
+    enemyBHp: 2.1
     enemyBDamage: 3
     enemyBPrice: 2
     enemyBJem: 1
@@ -285,12 +285,12 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 28
-    enemyAHp: 3.4
+    enemyAHp: 4.2
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 15
-    enemyBHp: 1.8
+    enemyBHp: 2.2
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
@@ -306,12 +306,12 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 30
-    enemyAHp: 3.6
+    enemyAHp: 4.4
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 17
-    enemyBHp: 1.9
+    enemyBHp: 2.3
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
@@ -327,18 +327,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 32
-    enemyAHp: 3.8
+    enemyAHp: 4.6
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 19
-    enemyBHp: 2
+    enemyBHp: 2.4
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 2
     enemyCHp: 18
-    enemyCDamage: 5
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -348,18 +348,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 34
-    enemyAHp: 4
+    enemyAHp: 4.8
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 21
-    enemyBHp: 2.1
+    enemyBHp: 2.5
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 3
-    enemyCHp: 20
-    enemyCDamage: 5
+    enemyCHp: 23
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -369,18 +369,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 36
-    enemyAHp: 4.2
+    enemyAHp: 5
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 23
-    enemyBHp: 2.2
+    enemyBHp: 2.6
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 4
-    enemyCHp: 22
-    enemyCDamage: 5
+    enemyCHp: 28
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -390,18 +390,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 38
-    enemyAHp: 4.4
+    enemyAHp: 5.2
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 25
-    enemyBHp: 2.3
+    enemyBHp: 2.7
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 5
-    enemyCHp: 24
-    enemyCDamage: 5
+    enemyCHp: 33
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -411,18 +411,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 40
-    enemyAHp: 4.6
+    enemyAHp: 5.4
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 27
-    enemyBHp: 2.4
+    enemyBHp: 2.8
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 6
-    enemyCHp: 26
-    enemyCDamage: 5
+    enemyCHp: 38
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -432,18 +432,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 42
-    enemyAHp: 4.8
+    enemyAHp: 5.6
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 29
-    enemyBHp: 2.5
+    enemyBHp: 2.9
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 7
-    enemyCHp: 28
-    enemyCDamage: 5
+    enemyCHp: 43
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -453,18 +453,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.8
   - enemyACount: 44
-    enemyAHp: 5
+    enemyAHp: 5.8
     enemyADamage: 2
     enemyAPrice: 2
     enemyAJem: 0
     enemyBCount: 31
-    enemyBHp: 2.6
+    enemyBHp: 3
     enemyBDamage: 4
     enemyBPrice: 4
     enemyBJem: 1
     enemyCCount: 8
-    enemyCHp: 30
-    enemyCDamage: 5
+    enemyCHp: 48
+    enemyCDamage: 8
     enemyCPrice: 30
     enemyCJem: 5
     enemyDCount: 0
@@ -495,18 +495,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 46
-    enemyAHp: 5.2
-    enemyADamage: 4
+    enemyAHp: 6
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 33
-    enemyBHp: 2.7
-    enemyBDamage: 8
+    enemyBHp: 3.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 12
-    enemyCHp: 32
-    enemyCDamage: 10
+    enemyCHp: 55
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 0
@@ -516,18 +516,18 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.6
   - enemyACount: 48
-    enemyAHp: 5.4
-    enemyADamage: 4
+    enemyAHp: 6.2
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 35
-    enemyBHp: 2.8
-    enemyBDamage: 8
+    enemyBHp: 6.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 13
-    enemyCHp: 32
-    enemyCDamage: 10
+    enemyCHp: 62
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 0
@@ -537,149 +537,149 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0.6
   - enemyACount: 50
-    enemyAHp: 5.6
-    enemyADamage: 4
+    enemyAHp: 6.4
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 37
-    enemyBHp: 2.9
-    enemyBDamage: 8
+    enemyBHp: 9.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 14
-    enemyCHp: 32
-    enemyCDamage: 10
+    enemyCHp: 69
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 5
-    enemyDHp: 6
-    enemyDDamage: 6
+    enemyDHp: 10
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 52
-    enemyAHp: 5.8
-    enemyADamage: 4
+    enemyAHp: 6.6
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 39
-    enemyBHp: 3
-    enemyBDamage: 8
+    enemyBHp: 12.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 15
-    enemyCHp: 32
-    enemyCDamage: 10
+    enemyCHp: 76
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 8
-    enemyDHp: 6.2
-    enemyDDamage: 6
+    enemyDHp: 10.5
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 54
-    enemyAHp: 6
-    enemyADamage: 4
+    enemyAHp: 6.8
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 41
-    enemyBHp: 3.1
-    enemyBDamage: 8
+    enemyBHp: 15.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 16
-    enemyCHp: 36
-    enemyCDamage: 10
+    enemyCHp: 83
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 11
-    enemyDHp: 6.4
-    enemyDDamage: 6
+    enemyDHp: 11
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 56
-    enemyAHp: 6.2
-    enemyADamage: 4
+    enemyAHp: 7
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 43
-    enemyBHp: 3.2
-    enemyBDamage: 8
+    enemyBHp: 18.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 17
-    enemyCHp: 36
-    enemyCDamage: 10
+    enemyCHp: 90
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 14
-    enemyDHp: 6.6
-    enemyDDamage: 6
+    enemyDHp: 14
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 58
-    enemyAHp: 6.4
-    enemyADamage: 4
+    enemyAHp: 7.2
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 45
-    enemyBHp: 3.3
-    enemyBDamage: 8
+    enemyBHp: 21.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 18
-    enemyCHp: 36
-    enemyCDamage: 10
+    enemyCHp: 97
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 17
-    enemyDHp: 6.8
-    enemyDDamage: 6
+    enemyDHp: 16
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 60
-    enemyAHp: 6.6
-    enemyADamage: 4
+    enemyAHp: 7.4
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 47
-    enemyBHp: 3.4
-    enemyBDamage: 8
+    enemyBHp: 24.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 19
-    enemyCHp: 36
-    enemyCDamage: 10
+    enemyCHp: 104
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 20
-    enemyDHp: 7
-    enemyDDamage: 6
+    enemyDHp: 18
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
   - enemyACount: 62
-    enemyAHp: 6.8
-    enemyADamage: 4
+    enemyAHp: 7.6
+    enemyADamage: 8
     enemyAPrice: 4
     enemyAJem: 0
     enemyBCount: 49
-    enemyBHp: 3.5
-    enemyBDamage: 8
+    enemyBHp: 27.1
+    enemyBDamage: 10
     enemyBPrice: 8
     enemyBJem: 1
     enemyCCount: 20
-    enemyCHp: 36
-    enemyCDamage: 10
+    enemyCHp: 111
+    enemyCDamage: 15
     enemyCPrice: 40
     enemyCJem: 5
     enemyDCount: 23
-    enemyDHp: 7.2
-    enemyDDamage: 6
+    enemyDHp: 20
+    enemyDDamage: 10
     enemyDPrice: 8
     enemyDJem: 3
     spawnCoolTime: 0.6
@@ -705,191 +705,191 @@ MonoBehaviour:
     enemyDJem: 0
     spawnCoolTime: 0
   - enemyACount: 64
-    enemyAHp: 7
-    enemyADamage: 8
+    enemyAHp: 7.8
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 51
-    enemyBHp: 3.6
-    enemyBDamage: 16
+    enemyBHp: 30.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 24
-    enemyCHp: 40
-    enemyCDamage: 20
+    enemyCHp: 119
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 26
-    enemyDHp: 7.4
-    enemyDDamage: 12
+    enemyDHp: 28
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 66
-    enemyAHp: 7.2
-    enemyADamage: 8
+    enemyAHp: 8
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 53
-    enemyBHp: 3.7
-    enemyBDamage: 16
+    enemyBHp: 33.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 25
-    enemyCHp: 40
-    enemyCDamage: 20
+    enemyCHp: 127
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 29
-    enemyDHp: 7.6
-    enemyDDamage: 12
+    enemyDHp: 36
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 68
-    enemyAHp: 7.4
-    enemyADamage: 8
+    enemyAHp: 8.2
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 55
-    enemyBHp: 3.8
-    enemyBDamage: 16
+    enemyBHp: 36.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 26
-    enemyCHp: 40
-    enemyCDamage: 20
+    enemyCHp: 135
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 32
-    enemyDHp: 7.8
-    enemyDDamage: 12
+    enemyDHp: 44
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 70
-    enemyAHp: 7.6
-    enemyADamage: 8
+    enemyAHp: 8.4
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 57
-    enemyBHp: 3.9
-    enemyBDamage: 16
+    enemyBHp: 39.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 27
-    enemyCHp: 40
-    enemyCDamage: 20
+    enemyCHp: 143
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 35
-    enemyDHp: 8
-    enemyDDamage: 12
+    enemyDHp: 52
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 72
-    enemyAHp: 7.8
-    enemyADamage: 8
+    enemyAHp: 8.6
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 59
-    enemyBHp: 4
-    enemyBDamage: 16
+    enemyBHp: 42.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 28
-    enemyCHp: 40
-    enemyCDamage: 20
+    enemyCHp: 158
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 38
-    enemyDHp: 8.2
-    enemyDDamage: 12
+    enemyDHp: 60
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 74
-    enemyAHp: 8
-    enemyADamage: 8
+    enemyAHp: 8.8
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 61
-    enemyBHp: 4.1
-    enemyBDamage: 16
+    enemyBHp: 45.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 29
-    enemyCHp: 44
-    enemyCDamage: 20
+    enemyCHp: 173
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 41
-    enemyDHp: 8.4
-    enemyDDamage: 12
+    enemyDHp: 68
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 76
-    enemyAHp: 8.2
-    enemyADamage: 8
+    enemyAHp: 9
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 63
-    enemyBHp: 4.2
-    enemyBDamage: 16
+    enemyBHp: 48.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 30
-    enemyCHp: 44
-    enemyCDamage: 20
+    enemyCHp: 188
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 44
-    enemyDHp: 8.6
-    enemyDDamage: 12
+    enemyDHp: 80
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 78
-    enemyAHp: 8.4
-    enemyADamage: 8
+    enemyAHp: 9.2
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 65
-    enemyBHp: 4.3
-    enemyBDamage: 16
+    enemyBHp: 51.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 31
-    enemyCHp: 44
-    enemyCDamage: 20
+    enemyCHp: 203
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 47
-    enemyDHp: 8.8
-    enemyDDamage: 12
+    enemyDHp: 92
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
   - enemyACount: 80
-    enemyAHp: 8.6
-    enemyADamage: 8
+    enemyAHp: 9.4
+    enemyADamage: 16
     enemyAPrice: 8
     enemyAJem: 0
     enemyBCount: 67
-    enemyBHp: 4.4
-    enemyBDamage: 16
+    enemyBHp: 54.1
+    enemyBDamage: 20
     enemyBPrice: 16
     enemyBJem: 1
     enemyCCount: 32
-    enemyCHp: 44
-    enemyCDamage: 20
+    enemyCHp: 218
+    enemyCDamage: 30
     enemyCPrice: 50
     enemyCJem: 5
     enemyDCount: 50
-    enemyDHp: 9
-    enemyDDamage: 12
+    enemyDHp: 104
+    enemyDDamage: 20
     enemyDPrice: 16
     enemyDJem: 3
     spawnCoolTime: 0.4
@@ -899,7 +899,7 @@ MonoBehaviour:
     enemyAPrice: 0
     enemyAJem: 0
     enemyBCount: 0
-    enemyBHp: 0
+    enemyBHp: 57.1
     enemyBDamage: 0
     enemyBPrice: 0
     enemyBJem: 0
@@ -939,116 +939,116 @@ MonoBehaviour:
   - damage: 0.3
     attackSpeed: 0.3
     expertSkill: 0
-    damageUpgradeJem: 500
-    attackSpeedUpgradeJem: 500
+    damageUpgradeJem: 100
+    attackSpeedUpgradeJem: 100
     expertSkillUpgradeJem: 5000
   - damage: 0.4
     attackSpeed: 0.4
     expertSkill: 4
-    damageUpgradeJem: 700
-    attackSpeedUpgradeJem: 700
+    damageUpgradeJem: 200
+    attackSpeedUpgradeJem: 200
     expertSkillUpgradeJem: -1
   - damage: 0.5
     attackSpeed: 0.5
     expertSkill: -1
-    damageUpgradeJem: 900
-    attackSpeedUpgradeJem: 900
+    damageUpgradeJem: 300
+    attackSpeedUpgradeJem: 300
     expertSkillUpgradeJem: -1
   - damage: 0.6
     attackSpeed: 0.6
     expertSkill: -1
-    damageUpgradeJem: 1100
-    attackSpeedUpgradeJem: 1100
+    damageUpgradeJem: 400
+    attackSpeedUpgradeJem: 400
     expertSkillUpgradeJem: -1
   - damage: 0.7
     attackSpeed: 0.7
     expertSkill: -1
-    damageUpgradeJem: 1300
-    attackSpeedUpgradeJem: 1300
+    damageUpgradeJem: 500
+    attackSpeedUpgradeJem: 500
     expertSkillUpgradeJem: -1
   - damage: 0.8
     attackSpeed: 0.8
     expertSkill: -1
-    damageUpgradeJem: 1500
-    attackSpeedUpgradeJem: 1500
+    damageUpgradeJem: 600
+    attackSpeedUpgradeJem: 600
     expertSkillUpgradeJem: -1
   - damage: 0.9
     attackSpeed: 0.9
     expertSkill: -1
-    damageUpgradeJem: 1700
-    attackSpeedUpgradeJem: 1700
+    damageUpgradeJem: 700
+    attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
   - damage: 1
     attackSpeed: 1
     expertSkill: -1
-    damageUpgradeJem: 1900
-    attackSpeedUpgradeJem: 1900
+    damageUpgradeJem: 800
+    attackSpeedUpgradeJem: 800
     expertSkillUpgradeJem: -1
   - damage: 1.1
     attackSpeed: 1.1
     expertSkill: -1
-    damageUpgradeJem: 2100
-    attackSpeedUpgradeJem: 2100
+    damageUpgradeJem: 900
+    attackSpeedUpgradeJem: 900
     expertSkillUpgradeJem: -1
   - damage: 1.2
     attackSpeed: 1.2
     expertSkill: -1
-    damageUpgradeJem: 2300
-    attackSpeedUpgradeJem: 2300
+    damageUpgradeJem: 1000
+    attackSpeedUpgradeJem: 1000
     expertSkillUpgradeJem: -1
   - damage: 1.3
     attackSpeed: 1.3
     expertSkill: -1
-    damageUpgradeJem: 2500
-    attackSpeedUpgradeJem: 2500
+    damageUpgradeJem: 1100
+    attackSpeedUpgradeJem: 1100
     expertSkillUpgradeJem: -1
   - damage: 1.4
     attackSpeed: 1.4
     expertSkill: -1
-    damageUpgradeJem: 2700
-    attackSpeedUpgradeJem: 2700
+    damageUpgradeJem: 1200
+    attackSpeedUpgradeJem: 1200
     expertSkillUpgradeJem: -1
   - damage: 1.5
     attackSpeed: 1.5
     expertSkill: -1
-    damageUpgradeJem: 2900
-    attackSpeedUpgradeJem: 2900
+    damageUpgradeJem: 1300
+    attackSpeedUpgradeJem: 1300
     expertSkillUpgradeJem: -1
   - damage: 1.6
     attackSpeed: 1.6
     expertSkill: -1
-    damageUpgradeJem: 3100
-    attackSpeedUpgradeJem: 3100
+    damageUpgradeJem: 1400
+    attackSpeedUpgradeJem: 1400
     expertSkillUpgradeJem: -1
   - damage: 1.7
     attackSpeed: 1.7
     expertSkill: -1
-    damageUpgradeJem: 3300
-    attackSpeedUpgradeJem: 3300
+    damageUpgradeJem: 1500
+    attackSpeedUpgradeJem: 1500
     expertSkillUpgradeJem: -1
   - damage: 1.8
     attackSpeed: 1.8
     expertSkill: -1
-    damageUpgradeJem: 3500
-    attackSpeedUpgradeJem: 3500
+    damageUpgradeJem: 1600
+    attackSpeedUpgradeJem: 1600
     expertSkillUpgradeJem: -1
   - damage: 1.9
     attackSpeed: 1.9
     expertSkill: -1
-    damageUpgradeJem: 3700
-    attackSpeedUpgradeJem: 3700
+    damageUpgradeJem: 1700
+    attackSpeedUpgradeJem: 1700
     expertSkillUpgradeJem: -1
   - damage: 2
     attackSpeed: 2
     expertSkill: -1
-    damageUpgradeJem: 3900
-    attackSpeedUpgradeJem: 3900
+    damageUpgradeJem: 1800
+    attackSpeedUpgradeJem: 1800
     expertSkillUpgradeJem: -1
   - damage: 2.1
     attackSpeed: 2.1
     expertSkill: -1
-    damageUpgradeJem: 4100
-    attackSpeedUpgradeJem: 4100
+    damageUpgradeJem: 1900
+    attackSpeedUpgradeJem: 1900
     expertSkillUpgradeJem: -1
   - damage: 2.2
     attackSpeed: 2.2
@@ -1060,116 +1060,116 @@ MonoBehaviour:
   - damage: 0.05
     attackSpeed: 0.775
     expertSkill: 0
-    damageUpgradeJem: 500
-    attackSpeedUpgradeJem: 500
+    damageUpgradeJem: 100
+    attackSpeedUpgradeJem: 100
     expertSkillUpgradeJem: 5000
   - damage: 0.075
     attackSpeed: 0.75
     expertSkill: 3
-    damageUpgradeJem: 700
-    attackSpeedUpgradeJem: 700
+    damageUpgradeJem: 200
+    attackSpeedUpgradeJem: 200
     expertSkillUpgradeJem: -1
   - damage: 0.1
     attackSpeed: 0.725
     expertSkill: -1
-    damageUpgradeJem: 900
-    attackSpeedUpgradeJem: 900
+    damageUpgradeJem: 300
+    attackSpeedUpgradeJem: 300
     expertSkillUpgradeJem: -1
   - damage: 0.125
     attackSpeed: 0.7
     expertSkill: -1
-    damageUpgradeJem: 1100
-    attackSpeedUpgradeJem: 1100
+    damageUpgradeJem: 400
+    attackSpeedUpgradeJem: 400
     expertSkillUpgradeJem: -1
   - damage: 0.15
     attackSpeed: 0.675
     expertSkill: -1
-    damageUpgradeJem: 1300
-    attackSpeedUpgradeJem: 1300
+    damageUpgradeJem: 500
+    attackSpeedUpgradeJem: 500
     expertSkillUpgradeJem: -1
   - damage: 0.175
     attackSpeed: 0.65
     expertSkill: -1
-    damageUpgradeJem: 1500
-    attackSpeedUpgradeJem: 1500
+    damageUpgradeJem: 600
+    attackSpeedUpgradeJem: 600
     expertSkillUpgradeJem: -1
   - damage: 0.2
     attackSpeed: 0.625
     expertSkill: -1
-    damageUpgradeJem: 1700
-    attackSpeedUpgradeJem: 1700
+    damageUpgradeJem: 700
+    attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
   - damage: 0.225
     attackSpeed: 0.6
     expertSkill: -1
-    damageUpgradeJem: 1900
-    attackSpeedUpgradeJem: 1900
+    damageUpgradeJem: 800
+    attackSpeedUpgradeJem: 800
     expertSkillUpgradeJem: -1
   - damage: 0.25
     attackSpeed: 0.575
     expertSkill: -1
-    damageUpgradeJem: 2100
-    attackSpeedUpgradeJem: 2100
+    damageUpgradeJem: 900
+    attackSpeedUpgradeJem: 900
     expertSkillUpgradeJem: -1
   - damage: 0.275
     attackSpeed: 0.55
     expertSkill: -1
-    damageUpgradeJem: 2300
-    attackSpeedUpgradeJem: 2300
+    damageUpgradeJem: 1000
+    attackSpeedUpgradeJem: 1000
     expertSkillUpgradeJem: -1
   - damage: 0.3
     attackSpeed: 0.525
     expertSkill: -1
-    damageUpgradeJem: 2500
-    attackSpeedUpgradeJem: 2500
+    damageUpgradeJem: 1100
+    attackSpeedUpgradeJem: 1100
     expertSkillUpgradeJem: -1
   - damage: 0.325
     attackSpeed: 0.5
     expertSkill: -1
-    damageUpgradeJem: 2700
-    attackSpeedUpgradeJem: 2700
+    damageUpgradeJem: 1200
+    attackSpeedUpgradeJem: 1200
     expertSkillUpgradeJem: -1
   - damage: 0.35
     attackSpeed: 0.475
     expertSkill: -1
-    damageUpgradeJem: 2900
-    attackSpeedUpgradeJem: 2900
+    damageUpgradeJem: 1300
+    attackSpeedUpgradeJem: 1300
     expertSkillUpgradeJem: -1
   - damage: 0.375
     attackSpeed: 0.45
     expertSkill: -1
-    damageUpgradeJem: 3100
-    attackSpeedUpgradeJem: 3100
+    damageUpgradeJem: 1400
+    attackSpeedUpgradeJem: 1400
     expertSkillUpgradeJem: -1
   - damage: 0.4
     attackSpeed: 0.425
     expertSkill: -1
-    damageUpgradeJem: 3300
-    attackSpeedUpgradeJem: 3300
+    damageUpgradeJem: 1500
+    attackSpeedUpgradeJem: 1500
     expertSkillUpgradeJem: -1
   - damage: 0.425
     attackSpeed: 0.4
     expertSkill: -1
-    damageUpgradeJem: 3500
-    attackSpeedUpgradeJem: 3500
+    damageUpgradeJem: 1600
+    attackSpeedUpgradeJem: 1600
     expertSkillUpgradeJem: -1
   - damage: 0.45
     attackSpeed: 0.375
     expertSkill: -1
-    damageUpgradeJem: 3700
-    attackSpeedUpgradeJem: 3700
+    damageUpgradeJem: 1700
+    attackSpeedUpgradeJem: 1700
     expertSkillUpgradeJem: -1
   - damage: 0.475
     attackSpeed: 0.35
     expertSkill: -1
-    damageUpgradeJem: 3900
-    attackSpeedUpgradeJem: 3900
+    damageUpgradeJem: 1800
+    attackSpeedUpgradeJem: 1800
     expertSkillUpgradeJem: -1
   - damage: 0.5
     attackSpeed: 0.325
     expertSkill: -1
-    damageUpgradeJem: 4100
-    attackSpeedUpgradeJem: 4100
+    damageUpgradeJem: 1900
+    attackSpeedUpgradeJem: 1900
     expertSkillUpgradeJem: -1
   - damage: 0.525
     attackSpeed: 0.3
@@ -1181,116 +1181,116 @@ MonoBehaviour:
   - damage: 0.3
     attackSpeed: 0.3
     expertSkill: 0
-    damageUpgradeJem: 500
-    attackSpeedUpgradeJem: 500
+    damageUpgradeJem: 100
+    attackSpeedUpgradeJem: 100
     expertSkillUpgradeJem: 5000
   - damage: 0.4
     attackSpeed: 0.4
     expertSkill: 1
-    damageUpgradeJem: 700
-    attackSpeedUpgradeJem: 700
+    damageUpgradeJem: 200
+    attackSpeedUpgradeJem: 200
     expertSkillUpgradeJem: -1
   - damage: 0.5
     attackSpeed: 0.5
     expertSkill: -1
-    damageUpgradeJem: 900
-    attackSpeedUpgradeJem: 900
+    damageUpgradeJem: 300
+    attackSpeedUpgradeJem: 300
     expertSkillUpgradeJem: -1
   - damage: 0.6
     attackSpeed: 0.6
     expertSkill: -1
-    damageUpgradeJem: 1100
-    attackSpeedUpgradeJem: 1100
+    damageUpgradeJem: 400
+    attackSpeedUpgradeJem: 400
     expertSkillUpgradeJem: -1
   - damage: 0.7
     attackSpeed: 0.7
     expertSkill: -1
-    damageUpgradeJem: 1300
-    attackSpeedUpgradeJem: 1300
+    damageUpgradeJem: 500
+    attackSpeedUpgradeJem: 500
     expertSkillUpgradeJem: -1
   - damage: 0.8
     attackSpeed: 0.8
     expertSkill: -1
-    damageUpgradeJem: 1500
-    attackSpeedUpgradeJem: 1500
+    damageUpgradeJem: 600
+    attackSpeedUpgradeJem: 600
     expertSkillUpgradeJem: -1
   - damage: 0.9
     attackSpeed: 0.9
     expertSkill: -1
-    damageUpgradeJem: 1700
-    attackSpeedUpgradeJem: 1700
+    damageUpgradeJem: 700
+    attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
   - damage: 1
     attackSpeed: 1
     expertSkill: -1
-    damageUpgradeJem: 1900
-    attackSpeedUpgradeJem: 1900
+    damageUpgradeJem: 800
+    attackSpeedUpgradeJem: 800
     expertSkillUpgradeJem: -1
   - damage: 1.1
     attackSpeed: 1.1
     expertSkill: -1
-    damageUpgradeJem: 2100
-    attackSpeedUpgradeJem: 2100
+    damageUpgradeJem: 900
+    attackSpeedUpgradeJem: 900
     expertSkillUpgradeJem: -1
   - damage: 1.2
     attackSpeed: 1.2
     expertSkill: -1
-    damageUpgradeJem: 2300
-    attackSpeedUpgradeJem: 2300
+    damageUpgradeJem: 1000
+    attackSpeedUpgradeJem: 1000
     expertSkillUpgradeJem: -1
   - damage: 1.3
     attackSpeed: 1.3
     expertSkill: -1
-    damageUpgradeJem: 2500
-    attackSpeedUpgradeJem: 2500
+    damageUpgradeJem: 1100
+    attackSpeedUpgradeJem: 1100
     expertSkillUpgradeJem: -1
   - damage: 1.4
     attackSpeed: 1.4
     expertSkill: -1
-    damageUpgradeJem: 2700
-    attackSpeedUpgradeJem: 2700
+    damageUpgradeJem: 1200
+    attackSpeedUpgradeJem: 1200
     expertSkillUpgradeJem: -1
   - damage: 1.5
     attackSpeed: 1.5
     expertSkill: -1
-    damageUpgradeJem: 2900
-    attackSpeedUpgradeJem: 2900
+    damageUpgradeJem: 1300
+    attackSpeedUpgradeJem: 1300
     expertSkillUpgradeJem: -1
   - damage: 1.6
     attackSpeed: 1.6
     expertSkill: -1
-    damageUpgradeJem: 3100
-    attackSpeedUpgradeJem: 3100
+    damageUpgradeJem: 1400
+    attackSpeedUpgradeJem: 1400
     expertSkillUpgradeJem: -1
   - damage: 1.7
     attackSpeed: 1.7
     expertSkill: -1
-    damageUpgradeJem: 3300
-    attackSpeedUpgradeJem: 3300
+    damageUpgradeJem: 1500
+    attackSpeedUpgradeJem: 1500
     expertSkillUpgradeJem: -1
   - damage: 1.8
     attackSpeed: 1.8
     expertSkill: -1
-    damageUpgradeJem: 3500
-    attackSpeedUpgradeJem: 3500
+    damageUpgradeJem: 1600
+    attackSpeedUpgradeJem: 1600
     expertSkillUpgradeJem: -1
   - damage: 1.9
     attackSpeed: 1.9
     expertSkill: -1
-    damageUpgradeJem: 3700
-    attackSpeedUpgradeJem: 3700
+    damageUpgradeJem: 1700
+    attackSpeedUpgradeJem: 1700
     expertSkillUpgradeJem: -1
   - damage: 2
     attackSpeed: 2
     expertSkill: -1
-    damageUpgradeJem: 3900
-    attackSpeedUpgradeJem: 3900
+    damageUpgradeJem: 1800
+    attackSpeedUpgradeJem: 1800
     expertSkillUpgradeJem: -1
   - damage: 2.1
     attackSpeed: 2.1
     expertSkill: -1
-    damageUpgradeJem: 4100
-    attackSpeedUpgradeJem: 4100
+    damageUpgradeJem: 1900
+    attackSpeedUpgradeJem: 1900
     expertSkillUpgradeJem: -1
   - damage: 2.2
     attackSpeed: 2.2
@@ -1302,116 +1302,116 @@ MonoBehaviour:
   - damage: 0.15
     attackSpeed: 0.25
     expertSkill: 0
-    damageUpgradeJem: 500
-    attackSpeedUpgradeJem: 500
+    damageUpgradeJem: 100
+    attackSpeedUpgradeJem: 100
     expertSkillUpgradeJem: 5000
   - damage: 0.175
     attackSpeed: 0.255
     expertSkill: 1
-    damageUpgradeJem: 700
-    attackSpeedUpgradeJem: 700
+    damageUpgradeJem: 200
+    attackSpeedUpgradeJem: 200
     expertSkillUpgradeJem: -1
   - damage: 0.2
     attackSpeed: 0.26
     expertSkill: -1
-    damageUpgradeJem: 900
-    attackSpeedUpgradeJem: 900
+    damageUpgradeJem: 300
+    attackSpeedUpgradeJem: 300
     expertSkillUpgradeJem: -1
   - damage: 0.225
     attackSpeed: 0.265
     expertSkill: -1
-    damageUpgradeJem: 1100
-    attackSpeedUpgradeJem: 1100
+    damageUpgradeJem: 400
+    attackSpeedUpgradeJem: 400
     expertSkillUpgradeJem: -1
   - damage: 0.25
     attackSpeed: 0.27
     expertSkill: -1
-    damageUpgradeJem: 1300
-    attackSpeedUpgradeJem: 1300
+    damageUpgradeJem: 500
+    attackSpeedUpgradeJem: 500
     expertSkillUpgradeJem: -1
   - damage: 0.275
     attackSpeed: 0.275
     expertSkill: -1
-    damageUpgradeJem: 1500
-    attackSpeedUpgradeJem: 1500
+    damageUpgradeJem: 600
+    attackSpeedUpgradeJem: 600
     expertSkillUpgradeJem: -1
   - damage: 0.3
     attackSpeed: 0.28
     expertSkill: -1
-    damageUpgradeJem: 1700
-    attackSpeedUpgradeJem: 1700
+    damageUpgradeJem: 700
+    attackSpeedUpgradeJem: 700
     expertSkillUpgradeJem: -1
   - damage: 0.325
     attackSpeed: 0.285
     expertSkill: -1
-    damageUpgradeJem: 1900
-    attackSpeedUpgradeJem: 1900
+    damageUpgradeJem: 800
+    attackSpeedUpgradeJem: 800
     expertSkillUpgradeJem: -1
   - damage: 0.35
     attackSpeed: 0.29
     expertSkill: -1
-    damageUpgradeJem: 2100
-    attackSpeedUpgradeJem: 2100
+    damageUpgradeJem: 900
+    attackSpeedUpgradeJem: 900
     expertSkillUpgradeJem: -1
   - damage: 0.375
     attackSpeed: 0.295
     expertSkill: -1
-    damageUpgradeJem: 2300
-    attackSpeedUpgradeJem: 2300
+    damageUpgradeJem: 1000
+    attackSpeedUpgradeJem: 1000
     expertSkillUpgradeJem: -1
   - damage: 0.4
     attackSpeed: 0.3
     expertSkill: -1
-    damageUpgradeJem: 2500
-    attackSpeedUpgradeJem: 2500
+    damageUpgradeJem: 1100
+    attackSpeedUpgradeJem: 1100
     expertSkillUpgradeJem: -1
   - damage: 0.425
     attackSpeed: 0.305
     expertSkill: -1
-    damageUpgradeJem: 2700
-    attackSpeedUpgradeJem: 2700
+    damageUpgradeJem: 1200
+    attackSpeedUpgradeJem: 1200
     expertSkillUpgradeJem: -1
   - damage: 0.45
     attackSpeed: 0.31
     expertSkill: -1
-    damageUpgradeJem: 2900
-    attackSpeedUpgradeJem: 2900
+    damageUpgradeJem: 1300
+    attackSpeedUpgradeJem: 1300
     expertSkillUpgradeJem: -1
   - damage: 0.475
     attackSpeed: 0.315
     expertSkill: -1
-    damageUpgradeJem: 3100
-    attackSpeedUpgradeJem: 3100
+    damageUpgradeJem: 1400
+    attackSpeedUpgradeJem: 1400
     expertSkillUpgradeJem: -1
   - damage: 0.5
     attackSpeed: 0.32
     expertSkill: -1
-    damageUpgradeJem: 3300
-    attackSpeedUpgradeJem: 3300
+    damageUpgradeJem: 1500
+    attackSpeedUpgradeJem: 1500
     expertSkillUpgradeJem: -1
   - damage: 0.525
     attackSpeed: 0.325
     expertSkill: -1
-    damageUpgradeJem: 3500
-    attackSpeedUpgradeJem: 3500
+    damageUpgradeJem: 1600
+    attackSpeedUpgradeJem: 1600
     expertSkillUpgradeJem: -1
   - damage: 0.55
     attackSpeed: 0.33
     expertSkill: -1
-    damageUpgradeJem: 3700
-    attackSpeedUpgradeJem: 3700
+    damageUpgradeJem: 1700
+    attackSpeedUpgradeJem: 1700
     expertSkillUpgradeJem: -1
   - damage: 0.575
     attackSpeed: 0.335
     expertSkill: -1
-    damageUpgradeJem: 3900
-    attackSpeedUpgradeJem: 3900
+    damageUpgradeJem: 1800
+    attackSpeedUpgradeJem: 1800
     expertSkillUpgradeJem: -1
   - damage: 0.6
     attackSpeed: 0.34
     expertSkill: -1
-    damageUpgradeJem: 4100
-    attackSpeedUpgradeJem: 4100
+    damageUpgradeJem: 1900
+    attackSpeedUpgradeJem: 1900
     expertSkillUpgradeJem: -1
   - damage: 0.625
     attackSpeed: 0.345
