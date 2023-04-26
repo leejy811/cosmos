@@ -156,16 +156,16 @@ public class WaveManager: MonoBehaviour
     {
         currentWave++;
         GameManger.instance.uiManager.WaveClear(currentWave+1);
+        StartCoroutine("StartWave");
+    }
+    IEnumerator StartWave()
+    {
 
         waveACount = waves[currentWave].enemyACount;
         waveBCount = waves[currentWave].enemyBCount;
         waveCCount = waves[currentWave].enemyCCount;
         waveDCount = waves[currentWave].enemyDCount;
 
-        StartCoroutine("StartWave");
-    }
-    IEnumerator StartWave()
-    {
         int currentACount = waves[currentWave].enemyACount, currentBCount = waves[currentWave].enemyBCount;
         int currentCCount = waves[currentWave].enemyCCount, currentDCount = waves[currentWave].enemyDCount;
 
