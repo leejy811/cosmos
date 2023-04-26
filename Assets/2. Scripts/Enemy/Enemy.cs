@@ -214,28 +214,28 @@ public class Enemy : MonoBehaviour
         SoundManager.instance.PlaySFX("MonsterKillSound");
         if (enemyType == "EnemyA")
         {
-            if(waveManager.waves[waveManager.currentWave].enemyACount > 0 && waveManager.currentWave != 40)
-                waveManager.waves[waveManager.currentWave].enemyACount--;
+            if(waveManager.waveACount > 0 && waveManager.currentWave != 40)
+                waveManager.waveACount--;
             waveManager.totalKillEnemyACount++;
         }
         else if(enemyType == "EnemyB")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyBCount > 0 && waveManager.currentWave != 40)
-                waveManager.waves[waveManager.currentWave].enemyBCount--;
+            if (waveManager.waveBCount > 0 && waveManager.currentWave != 40)
+                waveManager.waveBCount--;
             waveManager.totalKillEnemyBCount++;
 
         }
         else if(enemyType == "EnemyC")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyCCount > 0 && waveManager.currentWave != 40)
-                waveManager.waves[waveManager.currentWave].enemyCCount--;
+            if (waveManager.waveCCount > 0 && waveManager.currentWave != 40)
+                waveManager.waveCCount--;
             waveManager.totalKillEnemyCCount++;
 
         }
         else if(enemyType == "EnemyD")
         {
-            if (waveManager.waves[waveManager.currentWave].enemyDCount > 0 && waveManager.currentWave != 40)
-                waveManager.waves[waveManager.currentWave].enemyDCount--;
+            if (waveManager.waveDCount > 0 && waveManager.currentWave != 40)
+                waveManager.waveDCount--;
             waveManager.totalKillEnemyDCount++;
             for (int i=0; i<2; i++)
             {

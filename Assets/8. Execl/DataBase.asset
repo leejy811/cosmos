@@ -914,6 +914,27 @@ MonoBehaviour:
     enemyDPrice: 0
     enemyDJem: 0
     spawnCoolTime: 0
+  - enemyACount: 1
+    enemyAHp: 8.6
+    enemyADamage: 8
+    enemyAPrice: 8
+    enemyAJem: 0
+    enemyBCount: 1
+    enemyBHp: 4.4
+    enemyBDamage: 16
+    enemyBPrice: 16
+    enemyBJem: 1
+    enemyCCount: 1
+    enemyCHp: 44
+    enemyCDamage: 20
+    enemyCPrice: 50
+    enemyCJem: 5
+    enemyDCount: 1
+    enemyDHp: 9
+    enemyDDamage: 12
+    enemyDPrice: 16
+    enemyDJem: 3
+    spawnCoolTime: 0.4
   Missile:
   - damage: 0.3
     attackSpeed: 0.3

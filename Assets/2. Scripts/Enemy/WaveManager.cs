@@ -57,7 +57,12 @@ public class WaveManager: MonoBehaviour
     private int currenBossType;
 
     private DataBase waveDB;
-    
+
+    public int waveACount;
+    public int waveBCount;
+    public int waveCCount;
+    public int waveDCount;
+
     void Start()
     {
         LoadWaveData();
@@ -71,8 +76,8 @@ public class WaveManager: MonoBehaviour
         if (GameManger.instance.player.isPlayerDie)
             return;
 
-        if (waves[currentWave].enemyACount == 0 && waves[currentWave].enemyBCount == 0 
-            && waves[currentWave].enemyCCount == 0 && waves[currentWave].enemyDCount == 0 && !CheckBossWave())
+        if (waveACount == 0 && waveBCount == 0 
+            && waveCCount == 0 && waveDCount == 0 && !CheckBossWave())
         {
             GoNextWave();
         }
@@ -151,6 +156,12 @@ public class WaveManager: MonoBehaviour
     {
         currentWave++;
         GameManger.instance.uiManager.WaveClear(currentWave+1);
+
+        waveACount = waves[currentWave].enemyACount;
+        waveBCount = waves[currentWave].enemyBCount;
+        waveCCount = waves[currentWave].enemyCCount;
+        waveDCount = waves[currentWave].enemyDCount;
+
         StartCoroutine("StartWave");
     }
     IEnumerator StartWave()
@@ -233,7 +244,7 @@ public class WaveManager: MonoBehaviour
         else if (type == "EnemyD")
         {
             enemy.GetComponent<Enemy>().SetEnemyState(waves[currentWave].enemyDHp, waves[currentWave].enemyDDamage, waves[currentWave].enemyDPrice, waves[currentWave].enemyDJem);
-            waves[currentWave].enemyACount += 2;
+            waveACount += 2;
         }
 
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
