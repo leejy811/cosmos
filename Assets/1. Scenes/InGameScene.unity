@@ -11203,11 +11203,7 @@ MonoBehaviour:
   resultTime: {fileID: 317984503}
   currentRecovery: {fileID: 156074754}
   recoveryUpGold: {fileID: 1823540101}
-  waveCleaeAnimText: {fileID: 879419783}
-  bottomUiAnim: {fileID: 0}
-  waveClearAnim: {fileID: 1763044783}
   gameOverUI: {fileID: 440817147}
-  waveClearAnimBase: {fileID: 1763044781}
   attackRange: {fileID: 894511548}
   safeArea: {fileID: 260627905}
   panel: {fileID: 1472476298}
@@ -11249,6 +11245,7 @@ MonoBehaviour:
   bossAppearEffect: {fileID: 1600405635}
   waveClearEffect: {fileID: 559695596}
   bonusWaveEffect: {fileID: 975041559}
+  waveSkipButton: {fileID: 1011557693}
 --- !u!1 &578111936
 GameObject:
   m_ObjectHideFlags: 0
@@ -14678,7 +14675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1011557694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16725,6 +16722,10 @@ MonoBehaviour:
   - {fileID: 8119299994556774598, guid: c32794497f0e4f34ebe44839e59892fd, type: 3}
   - {fileID: 8119299994556774598, guid: ba8911e96cd8d494dbff6885a7654a16, type: 3}
   isBossLive: 0
+  waveACount: 0
+  waveBCount: 0
+  waveCCount: 0
+  waveDCount: 0
 --- !u!4 &1302566967
 Transform:
   m_ObjectHideFlags: 0
