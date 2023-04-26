@@ -4,12 +4,42 @@ using UnityEngine;
 using System.Linq;
 using DataBaseEntity;
 
+[System.Serializable]
+public struct IWave
+{
+    public int enemyACount;
+    public float enemyAHp;
+    public float enemyADamage;
+    public int enemyAPrice;
+    public int enemyAJem;
+
+    public int enemyBCount;
+    public float enemyBHp;
+    public float enemyBDamage;
+    public int enemyBPrice;
+    public int enemyBJem;
+
+    public int enemyCCount;
+    public float enemyCHp;
+    public float enemyCDamage;
+    public int enemyCPrice;
+    public int enemyCJem;
+
+    public int enemyDCount;
+    public float enemyDHp;
+    public float enemyDDamage;
+    public int enemyDPrice;
+    public int enemyDJem;
+
+    public float spawnCoolTime;
+}
+
 public class WaveManager: MonoBehaviour
 {
 
     [SerializeField]
     private Transform[] spawnPoint;
-    public List<WaveDBEntity> waves;
+    public IWave[] waves;
 
     public int currentWave = -1;
 
@@ -229,10 +259,35 @@ public class WaveManager: MonoBehaviour
     private void LoadWaveData()
     {
         waveDB = GameManger.instance.database;
+        waves = new IWave[waveDB.Waves.Count];
 
-        for (int i = 0; i< waveDB.Waves.Count; i++)
+        for(int i = 0; i < waveDB.Waves.Count; i++)
         {
-            waves.Add(waveDB.Waves[i]);
+            waves[i].enemyACount = waveDB.Waves[i].enemyACount;
+            waves[i].enemyAHp = waveDB.Waves[i].enemyAHp;
+            waves[i].enemyADamage = waveDB.Waves[i].enemyADamage;
+            waves[i].enemyAPrice = waveDB.Waves[i].enemyAPrice;
+            waves[i].enemyAJem = waveDB.Waves[i].enemyAJem;
+
+            waves[i].enemyBCount = waveDB.Waves[i].enemyBCount;
+            waves[i].enemyBHp = waveDB.Waves[i].enemyBHp;
+            waves[i].enemyBDamage = waveDB.Waves[i].enemyBDamage;
+            waves[i].enemyBPrice = waveDB.Waves[i].enemyBPrice;
+            waves[i].enemyBJem = waveDB.Waves[i].enemyBJem;
+
+            waves[i].enemyCCount = waveDB.Waves[i].enemyCCount;
+            waves[i].enemyCHp = waveDB.Waves[i].enemyCHp;
+            waves[i].enemyCDamage = waveDB.Waves[i].enemyCDamage;
+            waves[i].enemyCPrice = waveDB.Waves[i].enemyCPrice;
+            waves[i].enemyCJem = waveDB.Waves[i].enemyCJem;
+
+            waves[i].enemyDCount = waveDB.Waves[i].enemyDCount;
+            waves[i].enemyDHp = waveDB.Waves[i].enemyDHp;
+            waves[i].enemyDDamage = waveDB.Waves[i].enemyDDamage;
+            waves[i].enemyDPrice = waveDB.Waves[i].enemyDPrice;
+            waves[i].enemyDJem = waveDB.Waves[i].enemyDJem;
+
+            waves[i].spawnCoolTime = waveDB.Waves[i].spawnCoolTime;
         }
     }
 }
