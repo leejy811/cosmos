@@ -49,6 +49,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject bonusWaveEffect;
     private PostProcessVolume postProcessVolume;
     private Bloom bloom;
+
+    [SerializeField] private GameObject waveSkipButton;
     #endregion
 
     #region Member Variables
@@ -92,7 +94,16 @@ public class UiManager : MonoBehaviour
         currentHpIndex = hpBars.Length-1;
         prevHp = hpBars.Length;
         StartCoroutine(GageAnim());
+
+        CheckPlatform();
     }
+
+    private void CheckPlatform()
+    {
+        if (Application.isEditor)
+            waveSkipButton.SetActive(true);
+    }
+
     private void Update()
     {
         SetHpUI();

@@ -8,7 +8,12 @@ using System;
 public class AdsManager : MonoBehaviour
 {
     RewardedAd rewardedAd;
+
+    #if UNITY_EDITOR
     private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    #elif UNITY_ANDROID
+    private string _adUnitId = "ca-app-pub-2079986244432267/1568243636";
+    #endif
     //ca-app-pub-2079986244432267/1568243636    Real
     //ca-app-pub-3940256099942544/5224354917    Test
 
