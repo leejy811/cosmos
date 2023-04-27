@@ -165,13 +165,8 @@ public class Boss : MonoBehaviour
         }
         else if (other.gameObject.tag == "Emp")
         {
-
-            float damage = other.gameObject.GetComponentInParent<PartsContorller>().GetPartsDamage();
+            float damage = other.gameObject.GetComponent<PartsContorller>().GetPartsDamage();
             GetDamage(damage, true);
-
-            if (other.gameObject.GetComponentInParent<PartsContorller>().partsValue == 0)
-                return;
-
         }
     }
 
