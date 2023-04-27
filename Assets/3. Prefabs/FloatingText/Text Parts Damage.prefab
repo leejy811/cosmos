@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4135783308191791072}
   - component: {fileID: 1016577825234881877}
   - component: {fileID: 5536088225851285861}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: MeshA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4854656188211832978}
   - component: {fileID: 6008043681405315792}
   - component: {fileID: 5437190002361804475}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: MeshB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5415053791960296408}
   - component: {fileID: 3772269692993738913}
   - component: {fileID: 6707202468969502538}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 1396634846705161297}
   - component: {fileID: 3699665865677232935}
   - component: {fileID: 5915402331295859867}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Text Parts Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -208,7 +208,6 @@ public class Enemy : MonoBehaviour
         Invoke("EnemyDieEffect", 1.5f);
     }
 
-    // 게임 EndDIe 함수 하나 더 만들기
     public void EnemyDie(bool EnterPlayer)
     {
         SoundManager.instance.PlaySFX("MonsterKillSound");
@@ -264,13 +263,14 @@ public class Enemy : MonoBehaviour
             GameManger.instance.player.playerJem += enemyJem;
             GameManger.instance.player.playerGold += enemyPrice;
 
-            int ranTicket = Random.Range(0, 500);
+            int ranTicket = Random.Range(0, 2);
             if(ranTicket == 1)
             {
                 GameManger.instance.playTicket += 1;
-                GameObject ticket = GameManger.instance.poolManager.GetPool("Ticket");
-                ticket.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
-                ticket.GetComponent<FloatingTicket>().FloatingEffet();
+                floatingText = floatingTextPrefab[4].Spawn(new Vector3(transform.position.x, transform.position.y, 0), "+1 Ticket!");
+                //GameObject ticket = GameManger.instance.poolManager.GetPool("Ticket");
+                //ticket.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0);
+                //ticket.GetComponent<FloatingTicket>().FloatingEffet();
             }
         }
         if(this.moveLerp)
@@ -287,10 +287,10 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth = 0;
         enemyDieEffect.SetActive(false);
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.SetActive(false);
         gameObject.tag = "Enemy";
         gameObject.layer = 6;
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.localEulerAngles = new Vector3(0, 0, 0);
         this.gameObject.transform.GetComponent<Renderer>().material.color = enemyColor;
     }
