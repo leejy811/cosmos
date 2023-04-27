@@ -22,6 +22,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private Sprite[] partsIcons;
     [SerializeField] private Image jemIcon;
     [SerializeField] private GameObject achievementFlag;
+    [SerializeField] private ParticleSystem bgParticle;
 
     [Header("parts ui===================================")]
     [SerializeField] private GameObject[] parts;
@@ -130,6 +131,7 @@ public class LobbyUiManager : MonoBehaviour
         bloomToggle.SetSwitch(GameManger.instance.onBloomEffect);
         hitToggle.SetSwitch(GameManger.instance.onHitEffect);
 
+        bgParticle.Play();
         SetAchievementFlag();
     }
 
@@ -265,6 +267,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         ClosePopupUi();
         isPopupOpen = true;
+        bgParticle.Stop();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         currentParts = name;
         partsUpgradeBase.SetActive(true);
@@ -302,6 +305,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenExitPopup()
     {
         ClosePopupUi();
+        bgParticle.Stop();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         exitPopup.SetActive(true);
@@ -311,6 +315,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!exitPopup.activeSelf)
             return;
+        bgParticle.Play();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         exitPopup.SetActive(false);
@@ -320,6 +325,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!partsUpgradeBase.activeSelf)
             return;
+        bgParticle.Play();
         isPopupOpen = false;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
@@ -329,6 +335,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenBattlePopup()
     {
         ClosePopupUi();
+        bgParticle.Stop();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         battlePopup.SetActive(true);
@@ -339,6 +346,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!battlePopup.activeSelf)
             return;
+        bgParticle.Play();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         battlePopup.SetActive(false);
@@ -347,6 +355,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenSettingsPopup()
     {
         ClosePopupUi();
+        bgParticle.Stop();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         settingsPopup.SetActive(true);
@@ -357,6 +366,7 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!settingsPopup.activeSelf)
             return;
+        bgParticle.Play();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         popupPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
@@ -365,6 +375,7 @@ public class LobbyUiManager : MonoBehaviour
     public void OpenUnlockPopup(string partName)
     {
         ClosePopupUi();
+        bgParticle.Stop();
         isPopupOpen = true;
         unlockPopup.SetActive(true);
         SoundManager.instance.PlaySFX("BasicButtonSound");
@@ -392,12 +403,15 @@ public class LobbyUiManager : MonoBehaviour
     {
         if (!unlockPopup.activeSelf)
             return;
+        bgParticle.Play();
         isPopupOpen = false;
         unlockPopup.SetActive(false);
     }
 
     public void ClosePopupUi()
     {
+        if (!isPopupOpen)
+            return;
         ClosePartsUpgradeBase();
         CloseExitPopup();
         CloseBattlePopup();
