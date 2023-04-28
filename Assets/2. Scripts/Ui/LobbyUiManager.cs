@@ -57,6 +57,8 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private GameObject unlockPopup;
     [SerializeField] private Text unlockConditionText;
+    [SerializeField] private Text toastMessage;
+    [SerializeField] private GameObject toastBase;
 
     #endregion
 
@@ -559,11 +561,31 @@ public class LobbyUiManager : MonoBehaviour
     public void OnClickUseTicketButton()
     {
         if (LocalDatabaseManager.instance.Ticket < 10)
+        {
+            StartCoroutine(MakeToast("You  have  Insufficient  Tickets"));
             return;
+        }
         SoundManager.instance.PlaySFX("BasicButtonSound");
         LocalDatabaseManager.instance.Ticket -= 10;
         LocalDatabaseManager.instance.SaveGameData();
         ChangeScene(true);
+    }
+
+    public void DoToast(string msg)
+    {
+        StartCoroutine(MakeToast(msg));
+    }
+
+    IEnumerator MakeToast(string msg)
+    {
+        toastBase.SetActive(true);
+        toastMessage.text = msg;
+
+        var tween= toastMessage.DOFade(0, 1f).SetEase(Ease.InExpo);
+        yield return tween.WaitForCompletion();
+
+        toastMessage.DOFade(1, 0);
+        toastBase.SetActive(false);
     }
 
     public void OnExitButton()

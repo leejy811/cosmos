@@ -68,7 +68,7 @@ public class AdsManager : MonoBehaviour
 
         if (!rewardedAd.CanShowAd())
         {
-            //Ads ·Îµå ¾ÈµÊ
+            GameManger.instance.lobbyUiManager.DoToast("AD  is  not  Ready  for  Seconds");
         }
 
         if (rewardedAd != null && rewardedAd.CanShowAd())
