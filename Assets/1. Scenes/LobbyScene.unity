@@ -13937,7 +13937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5387114299568176654, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Text
-      value: Starting from the basic
+      value: Start from the basic
       objectReference: {fileID: 0}
     - target: {fileID: 5387114299835693396, guid: a579d1f39a086e14bbade1ab52c4833b, type: 3}
       propertyPath: m_Sprite
