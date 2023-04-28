@@ -84,16 +84,16 @@ public class LobbyUiManager : MonoBehaviour
         {"Emp",3 }
     };
     private string[] partsDescriptions = new string[4]
-    {   "Destroy all Enemies with\r\nLarge-Range Missiles!",
-        "Nobody can Survive\r\nafter Merciless Laser Attack",
+    {   "Destroy all Enemies with\r\nExplosiove Missiles!",
+        "Nobody can Survive\r\nafter Laser Attack",
         "Barrier will Protects\r\nYour Weakest Part!",
         "Enemies couldn't\r\nGet Close to You!"};
     private string[,,] partsInfo = new string[4, 3, 2]
     {
         {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Explosion Range"} },
-        {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Make Another Laser"} },
-        {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Speed Reduction +"},{ "Abilities","Make Shield Initially"} },
-        {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Cool-Time -"},{ "Abilities","Additional Knock-Back Effect"} }
+        {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Add Random Laser"} },
+        {{"Parts Damage","Barrier Damage +"},{ "Parts Speed","Set Enemy Speed "},{ "Abilities","Make Powerful Shield"} },
+        {{"Parts Damage","Emp Damage +"},{ "Parts Speed","Attack Speed +"},{ "Abilities","Add Knock-Back Effect"} }
     };
 
     [SerializeField] AdsManager adsManager;

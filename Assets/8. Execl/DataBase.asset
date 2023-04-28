@@ -16,13 +16,13 @@ MonoBehaviour:
   - achieveName: Start from the basic
     achieveDescription: Kill Monster A
     maxAchieveLevel: 4
-    maxCondition: 100,200,400,800
-    reward: 1000,2000,3000,4000
+    maxCondition: 100,300,900,2700
+    reward: 500,1000,3000,5000
   - achieveName: Not so fast?
     achieveDescription: Kill Monster B
     maxAchieveLevel: 4
-    maxCondition: 50,100,300,500
-    reward: 1000,2000,3000,4000
+    maxCondition: 50,250,750,1500
+    reward: 500,1000,3000,5000
   - achieveName: Quite Fragile
     achieveDescription: Kill Monster C
     maxAchieveLevel: 4
