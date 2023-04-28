@@ -23,6 +23,7 @@ public class GameManger : MonoBehaviour
     public bool isPlaying { get; set; } = false;
     public int playTicket { get; set; } = 0;
     public float playTime { get; set; } = 0f;
+    public bool isNewRecord { get; set; } = false;
 
     void Awake()
     {
@@ -113,8 +114,14 @@ public class GameManger : MonoBehaviour
 
         SetIngameVar();
         isPlaying = true;
+        ResetGameData();
+    }
+
+    public void ResetGameData()
+    {
         playTime = 0;
         playTicket = 0;
+        isNewRecord = false;
     }
 
     public void GoLobby()

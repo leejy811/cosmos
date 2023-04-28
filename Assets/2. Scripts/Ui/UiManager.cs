@@ -22,7 +22,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text resultJem;
     [SerializeField] private Text resultScore;
     [SerializeField] private Text resultHighScore;
+    [SerializeField] private GameObject newRecordText;
     [SerializeField] private Text resultTicket;
+    [SerializeField] private GameObject jemDoubleText;
     [SerializeField] private Text resultTime;
     [SerializeField] private Text currentRecovery;
     [SerializeField] private Text recoveryUpGold;
@@ -349,6 +351,10 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
+        if (LocalDatabaseManager.instance.isTicketMode)
+            jemDoubleText.SetActive(true);
+        if (GameManger.instance.isNewRecord)
+            newRecordText.SetActive(true);
         StartCoroutine(ResultCountingEffect());
     }
 
@@ -378,6 +384,11 @@ public class UiManager : MonoBehaviour
         }
         resultHighScore.text = LocalDatabaseManager.instance.HighScore;
 
+        int time = (int)GameManger.instance.playTime;
+        string timeString = time < 60 ? time + "s" : time / 60 + "m " + time % 60 + "s";
+        var result=resultTime.DOText(timeString, 1.5f);
+        yield return result.WaitForCompletion();
+
         value = GameManger.instance.player.playerJem;
         loops = Math.Min(10, value);
         count = Math.Max(1, (int)Math.Round((float)value / 10));
@@ -399,20 +410,19 @@ public class UiManager : MonoBehaviour
             resultTicket.text = (i *count).ToString();
         }
         resultTicket.text = value.ToString();
-
-        int time = (int)GameManger.instance.playTime;
-        string timeString = time < 60 ? time + "s" : time / 60 + "m " + time % 60 + "s";
-        resultTime.DOText(timeString, 1.5f);
     }
 
 
     public void SaveGameResult()
     {
         int currentGameJem = GameManger.instance.player.playerJem;
-        GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
-        LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
         if (curWave > 40)
             curWave = 40;
+        if (curWave > int.Parse(LocalDatabaseManager.instance.HighScore))
+            GameManger.instance.isNewRecord = true;
+
+        GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
+        LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
         LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
