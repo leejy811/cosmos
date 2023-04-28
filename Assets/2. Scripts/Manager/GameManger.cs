@@ -160,7 +160,7 @@ public class GameManger : MonoBehaviour
 
     public void SaveAchieveResult()
     {
-        AchievementManager.instance.achieves["Starting from the basic"].curValue += waveManager.totalKillEnemyACount;
+        AchievementManager.instance.achieves["Start from the basic"].curValue += waveManager.totalKillEnemyACount;
         AchievementManager.instance.achieves["Not so fast?"].curValue += waveManager.totalKillEnemyBCount;
         AchievementManager.instance.achieves["Quite Fragile"].curValue += waveManager.totalKillEnemyCCount;
         AchievementManager.instance.achieves["Gross. Go Away"].curValue += waveManager.totalKillEnemyDCount;
