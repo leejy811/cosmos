@@ -53,13 +53,12 @@ public class SoundManager : MonoBehaviour
         int idx = sfx.FindIndex(x => x.name == sfxName);
         if (idx < 0)
             return;
+
         for (int i = 0; i < sfxPlayer.Length; i++)
         {
-            sfxPlayer[i].clip = sfx[idx].clip;
-            sfxPlayer[i].Stop();
-                return;
+            if(sfxPlayer[i].clip==sfx[idx].clip)
+                sfxPlayer[i].Stop();
         }
-        return;
     }
     public void PlaySFX(string sfxName)
     {
