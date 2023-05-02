@@ -11,6 +11,7 @@ public class LocalDatabaseManager : MonoBehaviour
     public static LocalDatabaseManager instance;
 
     #region User Data
+    public int FirstPlay { get; private set; } = 0;
     public int JemCount { get; set; } = 0;
     private string highScore = "1";
     public string HighScore
@@ -110,6 +111,9 @@ public class LocalDatabaseManager : MonoBehaviour
     /// </summary>
     public void LoadData()
     {
+        if (PlayerPrefs.HasKey("FirstPlay"))
+            FirstPlay = PlayerPrefs.GetInt("FirstPlay");
+
         if (PlayerPrefs.HasKey("JemCount"))
             JemCount = PlayerPrefs.GetInt("JemCount");
 
@@ -216,6 +220,12 @@ public class LocalDatabaseManager : MonoBehaviour
         PlayerPrefs.SetInt("JemCount", JemCount);
         PlayerPrefs.SetString("HighScore", HighScore);
         PlayerPrefs.SetInt("Ticket", Ticket);
+    }
+
+    public void SaveFirstTime()
+    {
+        FirstPlay = 1;
+        PlayerPrefs.SetInt("FirstPlay", FirstPlay);
     }
 
     /// <summary>

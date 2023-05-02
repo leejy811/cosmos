@@ -41,6 +41,11 @@ public class GameManger : MonoBehaviour
     {
         SoundManager.instance.PlayBGM("LobbyBGM");
         lobbyUiManager = GameObject.Find("Canvas").GetComponent<LobbyUiManager>();
+        if (LocalDatabaseManager.instance.FirstPlay == 0)
+        {
+            lobbyUiManager.OpenTipsPopup();
+            LocalDatabaseManager.instance.SaveFirstTime();
+        }
     }
 
     private void Update()
