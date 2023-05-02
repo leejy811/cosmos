@@ -96,7 +96,10 @@ public class GameManger : MonoBehaviour
         }
         uiManager.SetBloomIntensity(1.5f);
         if (waveManager.currentWave == 40)
+        {
+            SoundManager.instance.PlayBGM("EndnigCredit");
             StartCoroutine(uiManager.ShowEndingCredit());
+        }
         else
             uiManager.ActiveGameOverUI();
         SaveAchieveResult();

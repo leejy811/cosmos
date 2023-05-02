@@ -363,12 +363,13 @@ public class UiManager : MonoBehaviour
         var endTween = thanksText.DOFade(1, 2);
         yield return endTween.WaitForCompletion();
 
-        endTween = thanksText.DOFade(0, 4);
-        endingImage.DOFade(0, 4);
+        endTween = thanksText.DOFade(0, 5.5f);
+        endingImage.DOFade(0, 5.5f);
         yield return endTween.WaitForCompletion();
         endingCredit.SetActive(false);
 
         ActiveGameOverUI();
+        SoundManager.instance.PlayBGM("InGameBGM");
     }
 
     public void SkipEndingCredit()

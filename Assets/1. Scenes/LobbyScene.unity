@@ -14996,9 +14996,11 @@ MonoBehaviour:
   - name: BossB
     clip: {fileID: 8300000, guid: 162b1eff91d405340b0368560b99c8ce, type: 3}
   - name: BossC
-    clip: {fileID: 8300000, guid: 9ea0ccdcb31b85f4582719aaff5fdbe3, type: 3}
+    clip: {fileID: 8300000, guid: 9145e8da52a567e44a73338213f0ccb9, type: 3}
   - name: BossD
     clip: {fileID: 8300000, guid: e5b7ff87428a70c42828729bef4346e3, type: 3}
+  - name: EndnigCredit
+    clip: {fileID: 8300000, guid: c2a1ce04c030d4b4b9768ffbd8bd8eb7, type: 3}
   bgmPlayer: {fileID: 865386065}
   sfxPlayer:
   - {fileID: 865386064}
