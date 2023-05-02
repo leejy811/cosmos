@@ -53,6 +53,11 @@ public class UiManager : MonoBehaviour
     private Bloom bloom;
 
     [SerializeField] private GameObject waveSkipButton;
+
+    [SerializeField] private GameObject endingCredit;
+    [SerializeField] private GameObject endingCreditText;
+    [SerializeField] private Text thanksText;
+    [SerializeField] private Image endingImage;
     #endregion
 
     #region Member Variables
@@ -348,6 +353,32 @@ public class UiManager : MonoBehaviour
             });
         }
     }
+
+    public IEnumerator ShowEndingCredit()
+    {
+        endingCredit.SetActive(true);
+        var textTween=endingCreditText.GetComponent<RectTransform>().DOAnchorPosY(6336, 70).SetEase(Ease.Linear);
+        yield return textTween.WaitForCompletion();
+
+        var endTween = thanksText.DOFade(1, 2);
+        yield return endTween.WaitForCompletion();
+
+        endTween = thanksText.DOFade(0, 4);
+        endingImage.DOFade(0, 4);
+        yield return endTween.WaitForCompletion();
+        endingCredit.SetActive(false);
+
+        ActiveGameOverUI();
+    }
+
+    public void SkipEndingCredit()
+    {
+        DOTween.KillAll();
+        endingCredit.SetActive(false);
+
+        ActiveGameOverUI();
+    }
+
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);

@@ -95,7 +95,10 @@ public class GameManger : MonoBehaviour
             yield return null;
         }
         uiManager.SetBloomIntensity(1.5f);
-        uiManager.ActiveGameOverUI();
+        if (waveManager.currentWave == 40)
+            StartCoroutine(uiManager.ShowEndingCredit());
+        else
+            uiManager.ActiveGameOverUI();
         SaveAchieveResult();
         AchievementManager.instance.SaveAchieve();
     }
