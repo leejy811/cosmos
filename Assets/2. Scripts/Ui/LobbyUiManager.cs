@@ -54,11 +54,14 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject battlePopup;
     [SerializeField] private Text ticketNum;
     [SerializeField] private GameObject settingsPopup;
-    [SerializeField] private GameObject popupPanel;
+    [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject unlockPopup;
     [SerializeField] private Text unlockConditionText;
     [SerializeField] private Text toastMessage;
     [SerializeField] private GameObject toastBase;
+    [SerializeField] private GameObject tipsPopup;
+    [SerializeField] private GameObject tipsPanel;
+    [SerializeField] private Dropdown tipList;
 
     #endregion
 
@@ -361,7 +364,7 @@ public class LobbyUiManager : MonoBehaviour
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = true;
         settingsPopup.SetActive(true);
-        popupPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
+        settingsPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
     }
 
     public void CloseSettingsPopup()
@@ -371,7 +374,7 @@ public class LobbyUiManager : MonoBehaviour
         bgParticle.Play();
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
-        popupPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
+        settingsPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => settingsPopup.SetActive(false));
     }
 
     public void OpenUnlockPopup(string partName)
@@ -410,6 +413,25 @@ public class LobbyUiManager : MonoBehaviour
         unlockPopup.SetActive(false);
     }
 
+    public void OpenTipsPopup()
+    {
+        ClosePopupUi();
+        bgParticle.Stop();
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+        isPopupOpen = true;
+        tipsPopup.SetActive(true);
+        tipsPanel.transform.DOLocalMoveY(1000f, 0.2f).SetEase(Ease.InBack).SetRelative(true);
+    }
+
+    public void CloseTipsPopup()
+    {
+        if (!tipsPopup.activeSelf)
+            return;
+        bgParticle.Play();
+        isPopupOpen = false;
+        tipsPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => tipsPopup.SetActive(false));
+    }
+
     public void ClosePopupUi()
     {
         if (!isPopupOpen)
@@ -419,6 +441,7 @@ public class LobbyUiManager : MonoBehaviour
         CloseBattlePopup();
         CloseSettingsPopup();
         CloseUnlockPopup();
+        CloseTipsPopup();
     }
 
     /// <summary>
