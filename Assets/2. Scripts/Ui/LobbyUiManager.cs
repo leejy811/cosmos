@@ -62,6 +62,7 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] private GameObject tipsPopup;
     [SerializeField] private GameObject tipsPanel;
     [SerializeField] private Dropdown tipList;
+    [SerializeField] private GameObject[] tips;
 
     #endregion
 
@@ -138,6 +139,8 @@ public class LobbyUiManager : MonoBehaviour
 
         bgParticle.Play();
         SetAchievementFlag();
+
+        tipList.onValueChanged.AddListener(delegate { SetDropdown(tipList.value); });
     }
 
 
@@ -534,6 +537,13 @@ public class LobbyUiManager : MonoBehaviour
             achievementFlag.SetActive(true);
         else
             achievementFlag.SetActive(false);
+    }
+
+    private void SetDropdown(int option)
+    {
+        foreach (GameObject tip in tips)
+            tip.SetActive(false);
+        tips[option].SetActive(true);
     }
 
     // func for testing
