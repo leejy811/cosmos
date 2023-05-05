@@ -69,30 +69,29 @@ public class LobbyUiManager : MonoBehaviour
     #region Member Variables
     private Vector3 originalJemScale;
     private bool isTweening=false;
-    private GameObject target;      // reference to the selected fragment
     private GameObject currentPart; // reference to the currently equiped part obj
     private bool isConvertingUi = false;
     private int currentFragment = 0;
     private float currentTime = 0f;  
-    private float fadeoutTime = 1f;
+    private readonly float fadeoutTime = 1f;
     private int selectedPartsIdx = 0;
     private string currentParts;
     private int[] partsUpgradeInfo;
     private float punchScale = 0.2f;
     public bool isPopupOpen { get; private set; } = false;
-    private Dictionary<string, int> selectedParts = new Dictionary<string, int>()
+    private readonly Dictionary<string, int> selectedParts = new()
     {
         {"Missile",0 },
         {"Laser",1 },
         {"Barrier",2 },
         {"Emp",3 }
     };
-    private string[] partsDescriptions = new string[4]
+    private readonly string[] partsDescriptions = new string[4]
     {   "Destroy all Enemies with\r\nExplosiove Missiles!",
         "Nobody can Survive\r\nafter Laser Attack",
         "Barrier will Protects\r\nYour Weakest Part!",
         "Enemies couldn't\r\nGet Close to You!"};
-    private string[,,] partsInfo = new string[4, 3, 2]
+    private readonly string[,,] partsInfo = new string[4, 3, 2]
     {
         {{"Parts Damage","Missile Damage +"},{ "Parts Speed","Missile Speed +"},{ "Abilities","Increase Explosion Range"} },
         {{"Parts Damage","Laser Damage +"},{ "Parts Speed","Laser Speed +"},{ "Abilities","Add Random Laser"} },
@@ -103,32 +102,31 @@ public class LobbyUiManager : MonoBehaviour
     [SerializeField] AdsManager adsManager;
     #endregion
 
-    #region For Debug
-    [SerializeField] private InputField input;
-    #endregion
-
     private void Start()
     {
         SetUi();
     }
 
+    #region Initiallization
     // Set user data to the Text at the start of the game
     private void SetUi()
     {
+        // Set main panel
         jemCount.text = LocalDatabaseManager.instance.JemCount.ToString()+" J";
         highScore.text =LocalDatabaseManager.instance.HighScore;
         ticket.text = LocalDatabaseManager.instance.Ticket.ToString();
+        equipment.sprite = partsIcons[selectedParts[LocalDatabaseManager.instance.CurrentParts]];
 
+        // Set Parts Unlock&Equipment
         for (int i = 0; i < 4; i++)       
             if (int.Parse(LocalDatabaseManager.instance.HighScore) > i * 10)
                 parts[i].GetComponent<PartsElement>().PartsUnlock();
-        
-        equipment.sprite =partsIcons[selectedParts[LocalDatabaseManager.instance.CurrentParts]];
+       
         currentPart= GameObject.Find("Parts" + LocalDatabaseManager.instance.CurrentParts);
         if (currentPart != null)
             currentPart.GetComponent<Animation>().Play("PartsUiEquipAnim");
-        originalJemScale = jemIcon.transform.localScale;
 
+        // Set Settings&Tips popup
         bgmSlider.value = SoundManager.instance.GetBgmVolume();
         sfxSlider.value = SoundManager.instance.GetSfxVolume();
         bgmSlider.onValueChanged.AddListener(SetBgmSlider);
@@ -137,26 +135,26 @@ public class LobbyUiManager : MonoBehaviour
         bloomToggle.SetSwitch(GameManger.instance.onBloomEffect);
         hitToggle.SetSwitch(GameManger.instance.onHitEffect);
 
-        bgParticle.Play();
+        tipList.onValueChanged.AddListener(delegate { SetDropdown(tipList.value); });
+
+        // Set Achievements
         SetAchievementFlag();
 
-        tipList.onValueChanged.AddListener(delegate { SetDropdown(tipList.value); });
+        // Prepare Ui Effect  settings
+        bgParticle.Play();
+        originalJemScale = jemIcon.transform.localScale;
     }
+    #endregion
 
-
+    #region Goto Play Mode(Start Game)
     /// <summary>
     /// Make Fade-out effect when the 'Battle' button clicked
     /// </summary>
     public void ChangeScene(bool useTicket)
     {
-        LocalDatabaseManager.instance.isTicketMode = useTicket;
+        GameManger.instance.isTicketMode = useTicket;
         SoundManager.instance.PlaySFX("BasicButtonSound");
         StartCoroutine("FadeOut");
-    }
-
-    private void UiConvertingState()
-    {
-        isConvertingUi = !isConvertingUi;
     }
 
     IEnumerator FadeOut()
@@ -172,7 +170,61 @@ public class LobbyUiManager : MonoBehaviour
         }
         GameManger.instance.StartGame();
     }
+    #endregion
 
+    #region Fragment Change
+    // Change the alpha value( 0.3 or 1) to Emphasize the selected fragment button
+    private void ButtonAlphaChange(Image image, float a)
+    {
+        Color alpha = image.color;
+        alpha.a = a;
+        image.color = alpha;
+    }
+
+    /// <summary>
+    /// Convet to each Fragment by setting their parents and activate the animation
+    /// </summary>
+    /// <param name="targetFragment"></param>
+    public void OnClickFragmentChange(int targetFragment)
+    {
+        if (currentFragment == targetFragment || isConvertingUi)
+            return;
+
+        isConvertingUi = true;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+
+        // Set the alpha value of each fragment button(if selected, assign 1)
+        foreach (Image i in fragmentButtons)
+            ButtonAlphaChange(i, 0.15f);
+        switch (targetFragment)
+        {
+            case 0:
+                ButtonAlphaChange(fragmentButtons[0], 1f);
+                break;
+            case 1:
+                ButtonAlphaChange(fragmentButtons[1], 1f);
+                break;
+            case 2:
+                ButtonAlphaChange(fragmentButtons[2], 1f);
+                break;
+        }
+
+        // Calc Gap between current and target fragments
+        float moveAmount = (currentFragment - targetFragment) * 1440;
+        currentFragment = targetFragment;
+        StartCoroutine(MoveFragment(moveAmount));
+    }
+
+    // use Coroutine + DOTween
+    IEnumerator MoveFragment(float distance)
+    {
+        var tween = mainUiContainer.DOLocalMoveX(mainUiContainer.localPosition.x + distance, 1f);
+        yield return tween.WaitForCompletion();
+        isConvertingUi = false; //enable fragment change after converting finished
+    }
+    #endregion
+
+    #region Parts Equipment Animation
     /// <summary>
     /// Converting Parts in Lobby Scene, Parts Fragment
     /// </summary>
@@ -216,57 +268,134 @@ public class LobbyUiManager : MonoBehaviour
         }
         Invoke("UiConvertingState", 0.6f);
     }
-
-    // Change the alpha value( 0.3 or 1) to Emphasize the selected fragment button
-    private void ButtonAlphaChange(Image image, float a)
+    private void UiConvertingState()
     {
-        Color alpha = image.color;
-        alpha.a = a;
-        image.color = alpha;
+        isConvertingUi = !isConvertingUi;
+    }
+    #endregion
+
+    #region When Parts Upgrade button clicked
+    /// <summary>
+    /// On Parts Upgrade Button Clicked
+    /// </summary>
+    /// <param name="index">param indicated 'which' button clicked, the order matters</param>
+    public void OnUpgradeButtonClicked(int index)
+    {
+        bool returnFlag = false;
+        Vector3 originalScale = partsUpgradeButtons[index].transform.localScale;
+
+        // return if current value is already max
+        if (partsUpgradeInfo[index] >= LocalDatabaseManager.instance.MaxUpgradeInfo[index])
+            returnFlag = true;
+        // return if current jem is insufficient
+        else if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
+            returnFlag = true;
+
+        if (returnFlag)
+        {
+            SoundManager.instance.PlaySFX("ButtonDenied");
+            if (!isTweening)    // Prevent multi-clicking
+            {
+                isTweening = true;
+                partsUpgradeButtons[index].transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+                {
+                    isTweening = false;
+                });
+            }
+            return;
+        }
+
+        SoundManager.instance.PlaySFX("PartsUpgradeSound");
+        if (!isTweening)    // Prevent multi-clicking
+        {
+            isTweening = true;
+            partsUpgradeButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
+        }
+
+        // set Local data & UI components
+        LocalDatabaseManager.instance.JemCount -= LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]];
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
+        partsUpgradeInfo[index] += 1;
+        SetPartsUpgradeJemText();
+        LocalDatabaseManager.instance.SavePartsData();
+        LocalDatabaseManager.instance.SaveGameData();
+    }
+
+    private void SetPartsUpgradeJemText()
+    {
+        int description1 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]] * 100);
+        int description2 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]] * 100);
+        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + description1.ToString();
+        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + description2.ToString();
+        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
+
+
+        if (partsUpgradeInfo[0] >= LocalDatabaseManager.instance.MaxUpgradeInfo[0])
+            ability1UpgradeJem.text = "Max";
+        else
+            ability1UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 0, partsUpgradeInfo[0]].ToString() + " J";
+
+        if (partsUpgradeInfo[1] >= LocalDatabaseManager.instance.MaxUpgradeInfo[1])
+            ability2UpgradeJem.text = "Max";
+        else
+            ability2UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 1, partsUpgradeInfo[1]].ToString() + " J";
+
+        if (partsUpgradeInfo[2] >= LocalDatabaseManager.instance.MaxUpgradeInfo[2])
+            ability3UpgradeJem.text = "Max";
+        else
+            ability3UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 2, partsUpgradeInfo[2]].ToString() + " J";
+    }
+    #endregion
+
+    #region Achievement Effect
+    /// <summary>
+    /// Notify User for any new cleared achievements exist by show icon in the bottom Ui
+    /// </summary>
+    public void SetAchievementFlag()
+    {
+        if (AchievementManager.instance.IsNewAchievementCleared())
+            achievementFlag.SetActive(true);
+        else
+            achievementFlag.SetActive(false);
     }
 
     /// <summary>
-    /// Convet to each Fragment by setting their parents and activate the animation
+    /// Used for Jem Gaining effect when achievement reward cleared
     /// </summary>
-    /// <param name="targetFragment"></param>
-    public void OnClickFragmentChange(int targetFragment)
+    /// <param name="startPos"></param>
+    public void SetJem(Transform startPos)
     {
-        if (currentFragment == targetFragment || isConvertingUi)
-            return;
+        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
 
-        isConvertingUi = true;
-        SoundManager.instance.PlaySFX("BasicButtonSound");
+        uiParticleBase.parent = startPos;
+        uiParticleBase.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        uiParticleBase.parent = root;
 
-        // Set the alpha value of each fragment button(if selected, assign 1)
-        foreach (Image i in fragmentButtons)
-            ButtonAlphaChange(i, 0.15f);
-        switch (targetFragment)
+        uiParticle.Stop();
+        uiParticle.Clear();
+        uiParticle.Play();
+    }
+
+    /// <summary>
+    /// for Jem icon in the top Ui, Play punch effect when jem particle touched
+    /// </summary>
+    public void JemParticleEffect()
+    {
+        if (!isTweening)
         {
-            case 0:
-                ButtonAlphaChange(fragmentButtons[0], 1f);
-                break;
-            case 1:
-                ButtonAlphaChange(fragmentButtons[1], 1f);
-                break;
-            case 2:
-                ButtonAlphaChange(fragmentButtons[2], 1f);
-                break;
+            isTweening = true;
+            jemIcon.transform.DOPunchScale(originalJemScale * 0.5f, 0.1f, 0, 1f).OnComplete(() =>
+            {
+                isTweening = false;
+            });
         }
-
-        float moveAmount = (currentFragment - targetFragment) * 1440;
-        currentFragment = targetFragment;
-        StartCoroutine(MoveFragment(moveAmount));
     }
+    #endregion
 
-    // use Coroutine + DOTween
-    IEnumerator MoveFragment(float distance)
-    {
-        var tween = mainUiContainer.DOLocalMoveX(mainUiContainer.localPosition.x+ distance, 1f);
-        yield return tween.WaitForCompletion();
-        isConvertingUi = false; //enable fragment change after converting finished
-    }
-
-
+    #region Manage Popup Ui
     /// <summary>
     /// OnClick Parts Upgrade button
     /// </summary>
@@ -310,6 +439,17 @@ public class LobbyUiManager : MonoBehaviour
         SetPartsUpgradeJemText();
     }
 
+    public void ClosePartsUpgradeBase()
+    {
+        if (!partsUpgradeBase.activeSelf)
+            return;
+        bgParticle.Play();
+        isPopupOpen = false;
+        SoundManager.instance.PlaySFX("BasicButtonSound");
+        selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
+        partsUpgradeBase.SetActive(false);
+    }
+
     public void OpenExitPopup()
     {
         ClosePopupUi();
@@ -327,17 +467,6 @@ public class LobbyUiManager : MonoBehaviour
         SoundManager.instance.PlaySFX("BasicButtonSound");
         isPopupOpen = false;
         exitPopup.SetActive(false);
-    }
-
-    public void ClosePartsUpgradeBase()
-    {
-        if (!partsUpgradeBase.activeSelf)
-            return;
-        bgParticle.Play();
-        isPopupOpen = false;
-        SoundManager.instance.PlaySFX("BasicButtonSound");
-        selectedPartsImage.transform.GetChild(selectedPartsIdx).gameObject.SetActive(false);
-        partsUpgradeBase.SetActive(false);
     }
 
     public void OpenBattlePopup()
@@ -446,81 +575,9 @@ public class LobbyUiManager : MonoBehaviour
         CloseUnlockPopup();
         CloseTipsPopup();
     }
+    #endregion
 
-    /// <summary>
-    /// On Parts Upgrade Button Clicked
-    /// </summary>
-    /// <param name="index">param indicated 'which' button clicked, the order matters</param>
-    public void OnUpgradeButtonClicked(int index)
-    {
-        bool returnFlag = false;
-        Vector3 originalScale= partsUpgradeButtons[index].transform.localScale;
-
-        // return if current value is already max
-        if (partsUpgradeInfo[index] >= LocalDatabaseManager.instance.MaxUpgradeInfo[index])
-            returnFlag=true;
-        // return if current jem is insufficient
-        else if (LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]] > LocalDatabaseManager.instance.JemCount)
-            returnFlag = true;
-
-        if (returnFlag)
-        {
-            SoundManager.instance.PlaySFX("ButtonDenied");
-            if (!isTweening)    // Prevent multi-clicking
-            {
-                isTweening = true;
-                partsUpgradeButtons[index].transform.DOPunchPosition(new Vector3(20, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
-                {
-                    isTweening = false;
-                });
-            }
-            return;
-        }
-
-        SoundManager.instance.PlaySFX("PartsUpgradeSound");
-        if (!isTweening)    // Prevent multi-clicking
-        {
-            isTweening = true;
-            partsUpgradeButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
-            {
-                isTweening = false;
-            });
-        }
-
-        // set Local data & UI components
-        LocalDatabaseManager.instance.JemCount -= LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, index, partsUpgradeInfo[index]];
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
-        partsUpgradeInfo[index] += 1;
-        SetPartsUpgradeJemText();
-        LocalDatabaseManager.instance.SavePartsData();
-        LocalDatabaseManager.instance.SaveGameData();
-    }
-
-    private void SetPartsUpgradeJemText()
-    {
-        int description1 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][0, partsUpgradeInfo[0]] * 100);
-        int description2 = (int)(LocalDatabaseManager.instance.PartsStatInfo[currentParts][1, partsUpgradeInfo[1]] * 100);
-        ability1Description.text = partsInfo[selectedPartsIdx, 0, 1] + description1.ToString();
-        ability2Description.text = partsInfo[selectedPartsIdx, 1, 1] + description2.ToString();
-        ability3Description.text = partsInfo[selectedPartsIdx, 2, 1];
-
-
-        if (partsUpgradeInfo[0] >= LocalDatabaseManager.instance.MaxUpgradeInfo[0])
-            ability1UpgradeJem.text = "Max";
-        else
-            ability1UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 0, partsUpgradeInfo[0]].ToString() + " J";
-
-        if (partsUpgradeInfo[1] >= LocalDatabaseManager.instance.MaxUpgradeInfo[1])
-            ability2UpgradeJem.text = "Max";
-        else
-            ability2UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 1, partsUpgradeInfo[1]].ToString() + " J";
-
-        if (partsUpgradeInfo[2] >= LocalDatabaseManager.instance.MaxUpgradeInfo[2])
-            ability3UpgradeJem.text = "Max";
-        else
-            ability3UpgradeJem.text = LocalDatabaseManager.instance.PartsUpgradeJem[selectedPartsIdx, 2, partsUpgradeInfo[2]].ToString() + " J";
-    }
-
+    #region Set Settings/Tips Popup Ui
     private void SetBgmSlider(float value)
     {
         SoundManager.instance.SetBgmVolume(value);
@@ -531,56 +588,15 @@ public class LobbyUiManager : MonoBehaviour
         SoundManager.instance.SetSfxVolume(value);
     }
 
-    public void SetAchievementFlag()
-    {
-        if (AchievementManager.instance.IsNewAchievementCleared())
-            achievementFlag.SetActive(true);
-        else
-            achievementFlag.SetActive(false);
-    }
-
     private void SetDropdown(int option)
     {
         foreach (GameObject tip in tips)
             tip.SetActive(false);
         tips[option].SetActive(true);
     }
+    #endregion
 
-    // func for testing
-    public void ResetPartsInfo()
-    {
-        LocalDatabaseManager.instance.PartsMissile = new int[3] { 0, 0, 0 };
-        LocalDatabaseManager.instance.PartsLaser = new int[3] { 0, 0, 0 };
-        LocalDatabaseManager.instance.PartsBarrier = new int[3] { 0, 0, 0 };
-        LocalDatabaseManager.instance.PartsEmp = new int[3] { 0, 0, 0 };
-        LocalDatabaseManager.instance.SavePartsData();
-    }
-
-    public void SetJem(Transform startPos)
-    {
-        jemCount.text = LocalDatabaseManager.instance.JemCount.ToString() + " J";
-
-        uiParticleBase.parent = startPos;
-        uiParticleBase.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        uiParticleBase.parent = root;
-
-        uiParticle.Stop();
-        uiParticle.Clear();
-        uiParticle.Play();
-    }
-
-    public void JemParticleEffect()
-    {
-        if (!isTweening)    // Prevent multi-clicking
-        {
-            isTweening = true;
-            jemIcon.transform.DOPunchScale(originalJemScale * 0.5f, 0.1f, 0, 1f).OnComplete(() =>
-            {
-                isTweening = false;
-            });
-        }
-    }
-
+    #region Interactions in the Battle popup (watch AD, use Ticket)
     public void OnAdsButtonClick()
     {
         adsManager.ShowRewardedAd();
@@ -620,9 +636,12 @@ public class LobbyUiManager : MonoBehaviour
         toastMessage.DOFade(1, 0);
         toastBase.SetActive(false);
     }
+    #endregion
 
+    #region System Settings
     public void OnExitButton()
     {
         Application.Quit();
     }
+    #endregion
 }

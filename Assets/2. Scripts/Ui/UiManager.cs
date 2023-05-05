@@ -383,7 +383,7 @@ public class UiManager : MonoBehaviour
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
-        if (LocalDatabaseManager.instance.isTicketMode)
+        if (GameManger.instance.isTicketMode)
             jemDoubleText.SetActive(true);
         if (GameManger.instance.isNewRecord)
             newRecordText.SetActive(true);
@@ -453,7 +453,7 @@ public class UiManager : MonoBehaviour
         if (curWave > int.Parse(LocalDatabaseManager.instance.HighScore))
             GameManger.instance.isNewRecord = true;
 
-        GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
+        GameManger.instance.player.playerJem = GameManger.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
         LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;

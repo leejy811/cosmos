@@ -21,6 +21,7 @@ public class GameManger : MonoBehaviour
 
     // play info in 'each' game
     public bool isPlaying { get; set; } = false;
+    public bool isTicketMode { get; set; } = false;
     public int playTicket { get; set; } = 0;
     public float playTime { get; set; } = 0f;
     public bool isNewRecord { get; set; } = false;

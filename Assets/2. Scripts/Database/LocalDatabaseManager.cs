@@ -32,7 +32,6 @@ public class LocalDatabaseManager : MonoBehaviour
     private DataBase PartsDB;
 
     public int Ticket { get; set; } = 3;
-    public bool isTicketMode { get; set; } = false;
 
     public int[] AchieveCurValue { get; set; }
     public int[] AchieveCurLevel { get; set; }
