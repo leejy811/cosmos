@@ -21,6 +21,7 @@ public class GameManger : MonoBehaviour
 
     // play info in 'each' game
     public bool isPlaying { get; set; } = false;
+    public bool isTicketMode { get; set; } = false;
     public int playTicket { get; set; } = 0;
     public float playTime { get; set; } = 0f;
     public bool isNewRecord { get; set; } = false;
@@ -41,6 +42,11 @@ public class GameManger : MonoBehaviour
     {
         SoundManager.instance.PlayBGM("LobbyBGM");
         lobbyUiManager = GameObject.Find("Canvas").GetComponent<LobbyUiManager>();
+        if (LocalDatabaseManager.instance.FirstPlay == 0)
+        {
+            lobbyUiManager.OpenTipsPopup();
+            LocalDatabaseManager.instance.SaveFirstTime();
+        }
     }
 
     private void Update()
@@ -95,7 +101,13 @@ public class GameManger : MonoBehaviour
             yield return null;
         }
         uiManager.SetBloomIntensity(1.5f);
-        uiManager.ActiveGameOverUI();
+        if (waveManager.currentWave == 40)
+        {
+            SoundManager.instance.PlayBGM("EndnigCredit");
+            StartCoroutine(uiManager.ShowEndingCredit());
+        }
+        else
+            uiManager.ActiveGameOverUI();
         SaveAchieveResult();
         AchievementManager.instance.SaveAchieve();
     }

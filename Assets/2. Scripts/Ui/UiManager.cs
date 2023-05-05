@@ -53,6 +53,11 @@ public class UiManager : MonoBehaviour
     private Bloom bloom;
 
     [SerializeField] private GameObject waveSkipButton;
+
+    [SerializeField] private GameObject endingCredit;
+    [SerializeField] private GameObject endingCreditText;
+    [SerializeField] private Text thanksText;
+    [SerializeField] private Image endingImage;
     #endregion
 
     #region Member Variables
@@ -348,10 +353,37 @@ public class UiManager : MonoBehaviour
             });
         }
     }
+
+    public IEnumerator ShowEndingCredit()
+    {
+        endingCredit.SetActive(true);
+        var textTween=endingCreditText.GetComponent<RectTransform>().DOAnchorPosY(6336, 70).SetEase(Ease.Linear);
+        yield return textTween.WaitForCompletion();
+
+        var endTween = thanksText.DOFade(1, 2);
+        yield return endTween.WaitForCompletion();
+
+        endTween = thanksText.DOFade(0, 5.5f);
+        endingImage.DOFade(0, 5.5f);
+        yield return endTween.WaitForCompletion();
+        endingCredit.SetActive(false);
+
+        ActiveGameOverUI();
+        SoundManager.instance.PlayBGM("InGameBGM");
+    }
+
+    public void SkipEndingCredit()
+    {
+        DOTween.KillAll();
+        endingCredit.SetActive(false);
+
+        ActiveGameOverUI();
+    }
+
     public void ActiveGameOverUI()
     {
         gameOverUI.SetActive(true);
-        if (LocalDatabaseManager.instance.isTicketMode)
+        if (GameManger.instance.isTicketMode)
             jemDoubleText.SetActive(true);
         if (GameManger.instance.isNewRecord)
             newRecordText.SetActive(true);
@@ -421,7 +453,7 @@ public class UiManager : MonoBehaviour
         if (curWave > int.Parse(LocalDatabaseManager.instance.HighScore))
             GameManger.instance.isNewRecord = true;
 
-        GameManger.instance.player.playerJem = LocalDatabaseManager.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
+        GameManger.instance.player.playerJem = GameManger.instance.isTicketMode ? (int)(currentGameJem * 1.5f) : currentGameJem;
         LocalDatabaseManager.instance.JemCount += GameManger.instance.player.playerJem;
         LocalDatabaseManager.instance.HighScore = curWave.ToString();
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
