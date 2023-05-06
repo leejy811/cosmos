@@ -67,7 +67,7 @@ public class GameManger : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        uiManager.DoGameOverWorks();
+        StartCoroutine(uiManager.IResetHpBars());
         uiManager.SaveGameResult();
         isPlaying = false;
 

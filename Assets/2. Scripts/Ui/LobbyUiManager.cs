@@ -564,6 +564,9 @@ public class LobbyUiManager : MonoBehaviour
         tipsPanel.transform.DOLocalMoveY(-1000f, 0.2f).SetEase(Ease.InBack).OnComplete(() => tipsPopup.SetActive(false));
     }
 
+    /// <summary>
+    /// Close All Popup in the Lobby Scene
+    /// </summary>
     public void ClosePopupUi()
     {
         if (!isPopupOpen)

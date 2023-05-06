@@ -172,10 +172,10 @@ public class WaveManager: MonoBehaviour
         if ((currentWave + 1) % 10 == 0 && (currentWave + 1) >= 10)
         {
             SoundManager.instance.PlaySFX("BossAppear");
-            GameManger.instance.uiManager.BossWaveEffectOn();
+            GameManger.instance.uiManager.SetBossWaveEffect();
             yield return new WaitForSeconds(5);
             SoundManager.instance.StopSfx("BossAppear");
-            GameManger.instance.uiManager.BossWaveEffectOff();
+            GameManger.instance.uiManager.SetBossWaveEffect();
             
             BossSpawn(currentWave / 10);
             yield break;
