@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +22,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
+        // make Singleton
         if (instance == null)
         {
             instance = this;
@@ -32,6 +32,7 @@ public class SoundManager : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    #region BGM
     public void PlayBGM(string bgmName)
     {
         foreach (Sound s in bgm) 
@@ -48,18 +49,9 @@ public class SoundManager : MonoBehaviour
     {
         bgmPlayer.Stop();
     }
-    public void StopSfx(string sfxName)
-    {
-        int idx = sfx.FindIndex(x => x.name == sfxName);
-        if (idx < 0)
-            return;
+    #endregion
 
-        for (int i = 0; i < sfxPlayer.Length; i++)
-        {
-            if(sfxPlayer[i].clip==sfx[idx].clip)
-                sfxPlayer[i].Stop();
-        }
-    }
+    #region SFX
     public void PlaySFX(string sfxName)
     {
         int idx = sfx.FindIndex(x => x.name == sfxName);
@@ -77,7 +69,21 @@ public class SoundManager : MonoBehaviour
         //Debug.Log("남아있는 오디오소스가 없습니다");
         return;
     }
+    public void StopSfx(string sfxName)
+    {
+        int idx = sfx.FindIndex(x => x.name == sfxName);
+        if (idx < 0)
+            return;
 
+        for (int i = 0; i < sfxPlayer.Length; i++)
+        {
+            if(sfxPlayer[i].clip==sfx[idx].clip)
+                sfxPlayer[i].Stop();
+        }
+    }
+    #endregion
+
+    # region Volume Settings
     public void SetBgmVolume(float value)
     {
         bgmPlayer.volume = value;
@@ -100,4 +106,5 @@ public class SoundManager : MonoBehaviour
     {
         return sfxPlayer[0].volume;
     }
+    #endregion
 }
