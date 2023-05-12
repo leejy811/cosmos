@@ -10,8 +10,15 @@ public class UiManager : MonoBehaviour
     // Manages all UI component
     // Contains functions for each Button
     #region UI Components
+    [Header("Top UI========================================")]
     [SerializeField] private Text jemCount;
     [SerializeField] private Text goldCount;
+    [Header("Ingame Stats====================================")]
+    [SerializeField] private Image[] statButtons;
+    [SerializeField] private float punchScale = 0.2f;
+    [SerializeField] private float punchPosition = 20f;
+
+    [SerializeField] private Image[] hpBars;
     [SerializeField] private Text waveLevel;
     [SerializeField] private Text currentAtk;
     [SerializeField] private Text atkUpGold;
@@ -19,6 +26,31 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text speedUpGold;
     [SerializeField] private Text currentHp;
     [SerializeField] private Text hpUpGold;
+    [SerializeField] private Text currentRecovery;
+    [SerializeField] private Text recoveryUpGold;
+
+    [Header("Background=====================================")]
+    [SerializeField] private GameObject backgroundBase;
+    [SerializeField] private float backgroundMoveSpeed;
+
+    [Header("Animation Text===================================")]
+    [SerializeField] private GameObject bossAppearEffect;
+    [SerializeField] private GameObject waveClearEffect;
+    [SerializeField] private GameObject bonusWaveEffect;
+
+    [Header("Ingame Effect====================================")]
+    private PostProcessVolume postProcessVolume;
+    private Bloom bloom;
+    [SerializeField] private Image panel;
+    [SerializeField] private Image bloodEffect;
+
+    [Header("Pause UI=======================================")]
+    [SerializeField] private GameObject pauseUi;
+    [SerializeField] private Scrollbar bgmSlider;
+    [SerializeField] private Scrollbar sfxSlider;
+
+    [Header("GameOver UI====================================")]
+    [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Text resultJem;
     [SerializeField] private Text resultScore;
     [SerializeField] private Text resultHighScore;
@@ -26,89 +58,54 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Text resultTicket;
     [SerializeField] private GameObject jemDoubleText;
     [SerializeField] private Text resultTime;
-    [SerializeField] private Text currentRecovery;
-    [SerializeField] private Text recoveryUpGold;
-    [SerializeField] private GameObject gameOverUI;
+
+    [Header("System Settings==================================")]
     [SerializeField] private GameObject attackRange;
     [SerializeField] private GameObject safeArea;
-    [SerializeField] private Image panel;
-    [SerializeField] private Image bloodEffect;
-    [SerializeField] private GameObject backgroundBase;
-    [SerializeField] private float backgroundMoveSpeed;
     [SerializeField] private Text timeScaleText;
-    [SerializeField] private Image[] statButtons;
-    [SerializeField] private float punchScale = 0.2f;
-    [SerializeField] private float punchPosition = 20f;
 
-    [SerializeField] private GameObject pauseUi;
-    [SerializeField] private Scrollbar bgmSlider;
-    [SerializeField] private Scrollbar sfxSlider;
-
-    [SerializeField] private Image[] hpBars;
-
-    [SerializeField] private GameObject bossAppearEffect;
-    [SerializeField] private GameObject waveClearEffect;
-    [SerializeField] private GameObject bonusWaveEffect;
-    private PostProcessVolume postProcessVolume;
-    private Bloom bloom;
-
-    [SerializeField] private GameObject waveSkipButton;
-
+    [Header("Ending Credit====================================")]
     [SerializeField] private GameObject endingCredit;
     [SerializeField] private GameObject endingCreditText;
     [SerializeField] private Text thanksText;
     [SerializeField] private Image endingImage;
+
+    [Header("For Debugging===================================")]
+    [SerializeField] private GameObject waveSkipButton;
     #endregion
 
     #region Member Variables
     private bool isTweening = false;
     private float currentTime = 0f;
     private float fadeInTime = 2f;
+
     private Vector2 moveDir;
     private float moveX=1;
     private float moveY=1;
     private float xScreenHalfSize;
     private float yScreenHalfSize;
+
     float[] times = new float[] {1.0f,1.5f, 2.0f };
     private int timeScaleIdx = 0;
-    private int curAtk = 0;
+
     private int currentHpIndex;
     private int targetHpIndex;
     private bool isHpCalc = false;
     private int prevHp;
+
+    private int curAtk = 0;
     private int curWave;
     #endregion
-
-
    
     private void Start()
     {
-        SetPlayerState();
         StartCoroutine("FadeIn");
-        yScreenHalfSize = Screen.height / 2;
-        xScreenHalfSize = Screen.width  / 2;
-        moveDir=new Vector2(moveX, moveY);
-
-        postProcessVolume = Camera.main.GetComponent<PostProcessVolume>();
-        postProcessVolume.profile.TryGetSettings(out bloom);
-
-        if (!GameManger.instance.onBloomEffect)
-            SetBloomIntensity(0);
-
-        bgmSlider.onValueChanged.AddListener(SetBgmSlider);
-        sfxSlider.onValueChanged.AddListener(SetSfxSlider);
-
-        currentHpIndex = hpBars.Length-1;
-        prevHp = hpBars.Length;
-        StartCoroutine(GageAnim());
-
+        SetPlayerState();
+        SetBgMove();
+        SetHpBar();
+        SetBloomEffect();
+        SetPauseMenu();
         CheckPlatform();
-    }
-
-    private void CheckPlatform()
-    {
-        if (Application.isEditor)
-            waveSkipButton.SetActive(true);
     }
 
     private void Update()
@@ -119,35 +116,20 @@ public class UiManager : MonoBehaviour
         MoveBackground();
     }
 
-    private void MoveBackground()
+    #region Initiallization
+    private void SetPlayerState()
     {
-        float x = backgroundBase.GetComponent<RectTransform>().anchoredPosition.x;
-        float y = backgroundBase.GetComponent<RectTransform>().anchoredPosition.y;
+        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 1000);
+        currentAtk.text = curAtk.ToString();
+        atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
+        currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
+        speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
+        currentHp.text = GameManger.instance.player.playerHealth.ToString();
+        hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
+        currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
+        recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
+    }
 
-        if (x < -xScreenHalfSize)
-            moveX = UnityEngine.Random.Range(0, 1f);
-        else if (x > xScreenHalfSize)
-            moveX = UnityEngine.Random.Range(-1f, 0);
-        if (y < -yScreenHalfSize)
-            moveY = UnityEngine.Random.Range(0, 1f);
-        else if (y > yScreenHalfSize)
-            moveY = UnityEngine.Random.Range(-1f, 0);
-
-        moveDir.x = moveX;
-        moveDir.y = moveY;
-        backgroundBase.GetComponent<RectTransform>().anchoredPosition += backgroundMoveSpeed * Time.deltaTime * moveDir.normalized;
-    }
-    public void StartDamageEffect()
-    {
-        if(GameManger.instance.onHitEffect)
-            StartCoroutine("DamageEffect");
-    }
-    IEnumerator DamageEffect()
-    {
-        bloodEffect.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        bloodEffect.gameObject.SetActive(false);
-    }
     IEnumerator FadeIn()
     {
         Color alpha = panel.color;
@@ -160,64 +142,31 @@ public class UiManager : MonoBehaviour
         }
         panel.gameObject.SetActive(false);
     }
-    void SetGold()
-    {
-        goldCount.text = GameManger.instance.player.playerGold.ToString() + " G";
-    }
-    void SetHpUI()
-    {
-        // Calc current hp value every frame
-        int temp = (int)Math.Round((GameManger.instance.player.playerHealth / GameManger.instance.player.maxPlayerHealth) * 20);
-        temp = Math.Min(temp, 20);
-        temp = Math.Max(temp, 0);
 
-        // Make progressbar effect if hp changed
-        if (Math.Abs(temp-prevHp)>0)
-        {
-            int gap = temp - prevHp;
-            prevHp = temp;
-
-            // Just add gap amount if effect is alreary in applying
-            if (isHpCalc)
-                targetHpIndex += gap;
-            else
-            {
-                targetHpIndex = gap;
-                StartCoroutine(SetHpBar());
-            }
-        }
+    private void SetBgMove()
+    {
+        yScreenHalfSize = Screen.height / 2;
+        xScreenHalfSize = Screen.width / 2;
+        moveDir = new Vector2(moveX, moveY);
     }
 
-    IEnumerator SetHpBar()
+    private void SetBloomEffect()
     {
-        isHpCalc = true; 
-        while (targetHpIndex != 0)  // make effect if target amount remains
-        {
-            if (targetHpIndex > 0)
-            {
-                if(currentHpIndex< hpBars.Length - 1)
-                {
-                    var tween = hpBars[currentHpIndex + 1].DOFade(1f, 0.1f);    // fill in progressbar
-                    yield return tween.WaitForCompletion();
-                    currentHpIndex += 1;
-                }
-                targetHpIndex -= 1;
-            }
-            else
-            {
-                if (currentHpIndex >= 0)
-                {
-                    var tween = hpBars[currentHpIndex ].DOFade(0f, 0.1f);       // erase progressbar
-                    yield return tween.WaitForCompletion();
-                    currentHpIndex -= 1;
-                }
-                targetHpIndex += 1;
-            }
-        }
-        isHpCalc = false;
+        postProcessVolume = Camera.main.GetComponent<PostProcessVolume>();
+        postProcessVolume.profile.TryGetSettings(out bloom);
+
+        if (!GameManger.instance.onBloomEffect)
+            SetBloomIntensity(0);
     }
 
-    IEnumerator GageAnim()      // progressbar anim, show 1 cycle
+    private void SetHpBar()
+    {
+        currentHpIndex = hpBars.Length - 1;
+        prevHp = hpBars.Length;
+        StartCoroutine(GageAnim());
+    }
+
+    IEnumerator GageAnim()      // progressbar anim, show 1 cycle at the start
     {
         yield return new WaitForSeconds(1f);
 
@@ -237,16 +186,154 @@ public class UiManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
     }
 
-    IEnumerator ResetHpBars()
+    private void SetPauseMenu()
     {
-        for (int i = currentHpIndex; i >= 0 ; i--)
-        {
-            hpBars[i].DOKill();
-            var tween=hpBars[i].DOFade(0f, 0.05f).SetEase(Ease.InCubic).SetUpdate(true);
-            yield return tween.WaitForCompletion();
-        }
+        bgmSlider.onValueChanged.AddListener(x=> SoundManager.instance.SetBgmVolume(x));
+        sfxSlider.onValueChanged.AddListener(x => SoundManager.instance.SetSfxVolume(x));
     }
 
+    private void CheckPlatform()
+    {
+        if (Application.isEditor)
+            waveSkipButton.SetActive(true);
+    }
+    #endregion
+
+    #region GameLogic per Frame
+    private void MoveBackground()
+    {
+        float x = backgroundBase.GetComponent<RectTransform>().anchoredPosition.x;
+        float y = backgroundBase.GetComponent<RectTransform>().anchoredPosition.y;
+
+        // Set Bg move direction randomly
+        if (x < -xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(0, 1f);
+        else if (x > xScreenHalfSize)
+            moveX = UnityEngine.Random.Range(-1f, 0);
+        if (y < -yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(0, 1f);
+        else if (y > yScreenHalfSize)
+            moveY = UnityEngine.Random.Range(-1f, 0);
+
+        moveDir.x = moveX;
+        moveDir.y = moveY;
+        backgroundBase.GetComponent<RectTransform>().anchoredPosition += backgroundMoveSpeed * Time.deltaTime * moveDir.normalized;
+    }
+    void SetGold()
+    {
+        goldCount.text = GameManger.instance.player.playerGold.ToString() + " G";
+    }
+    void SetJem()
+    {
+        jemCount.text = GameManger.instance.player.playerJem.ToString();
+    }
+    void SetHpUI()
+    {
+        // Calc current hp value Converting to the range of (0~20, the # of hp bars)
+        int temp = (int)Math.Round((GameManger.instance.player.playerHealth / GameManger.instance.player.maxPlayerHealth) * 20);
+        temp = Math.Min(temp, 20);
+        temp = Math.Max(temp, 0);
+
+        // Make progressbar animation if hp changed
+        if (Math.Abs(temp-prevHp)>0)
+        {
+            int gap = temp - prevHp;
+            prevHp = temp;
+
+            // Just add gap amount if effect is alreary in applying
+            if (isHpCalc)
+                targetHpIndex += gap;
+            else // if not, start new progress bar animation
+            {
+                targetHpIndex = gap;
+                StartCoroutine(IHpAnimation());
+            }
+        }
+    }
+    IEnumerator IHpAnimation()
+    {
+        isHpCalc = true; 
+        while (targetHpIndex != 0)  // make effect if target amount remains
+        {
+            if (targetHpIndex > 0)
+            {
+                if(currentHpIndex< hpBars.Length - 1)
+                {
+                    // make Recovery anim, fill in progressbar
+                    var tween = hpBars[currentHpIndex + 1].DOFade(1f, 0.1f);   
+                    yield return tween.WaitForCompletion();
+                    currentHpIndex += 1;
+                }
+                targetHpIndex -= 1;
+            }
+            else
+            {
+                if (currentHpIndex >= 0)
+                {
+                    // make Get Damage anim, erase progressbar
+                    var tween = hpBars[currentHpIndex ].DOFade(0f, 0.1f);   
+                    yield return tween.WaitForCompletion();
+                    currentHpIndex -= 1;
+                }
+                targetHpIndex += 1;
+            }
+        }
+        isHpCalc = false;
+    }
+    #endregion
+
+    #region Ingame Animation
+    public void StartDamageEffect()
+    {
+        if (GameManger.instance.onHitEffect)
+            StartCoroutine("DamageEffect");
+    }
+    IEnumerator DamageEffect()
+    {
+        bloodEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        bloodEffect.gameObject.SetActive(false);
+    }
+    public void SetBossWaveEffect()
+    {
+        bossAppearEffect.SetActive(!bossAppearEffect.activeSelf);
+    }
+
+    public void WaveClear(int num)
+    {
+        curWave = num;
+        if (num == 41)
+        {
+            waveLevel.text = "Bonus";
+            StartCoroutine("BonusWaveEffect");
+            return;
+        }
+        else if (num % 10 == 0)
+        {
+            waveLevel.text = "Boss";
+            return;
+        }
+        else
+        {
+            waveLevel.text = "Wave " + Convert.ToString(num);
+        }
+        StartCoroutine("WaveClearEffect");
+    }
+    IEnumerator BonusWaveEffect()
+    {
+        bonusWaveEffect.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        bonusWaveEffect.SetActive(false);
+    }
+    IEnumerator WaveClearEffect()
+    {
+        waveClearEffect.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        waveClearEffect.SetActive(false);
+    }
+    #endregion
+
+    #region Ingame Settings
     public void PauseGame()
     {
         SoundManager.instance.PlaySFX("BasicButtonSound");
@@ -256,34 +343,21 @@ public class UiManager : MonoBehaviour
         bgmSlider.value = SoundManager.instance.GetBgmVolume();
         sfxSlider.value = SoundManager.instance.GetSfxVolume();
     }
-    public void SkipButton()
-    {
-        GameManger.instance.waveManager.WaveSkipButton();
-    }
     public void ResumeGame()
     {
         pauseUi.SetActive(false);
         Time.timeScale = times[timeScaleIdx % times.Length];
         GameManger.instance.isPlaying = true;
     }
-
-    void SetJem()
+    public void SetTimeScale()
     {
-        jemCount.text = GameManger.instance.player.playerJem.ToString();
+        float time = times[++timeScaleIdx % times.Length];
+        timeScaleText.text = String.Format("{0:0.0}", time);
+        Time.timeScale = time;
     }
+    #endregion
 
-    private void SetPlayerState()
-    {
-        curAtk = (int)((Mathf.Round(GameManger.instance.player.playerDamage * 10) * 0.1f) * 1000);
-        currentAtk.text = curAtk.ToString();
-        atkUpGold.text = GameManger.instance.player.playerDamageCost.ToString() + " G";
-        currentSpeed.text = GameManger.instance.player.playerAttackSpeed.ToString("F2");
-        speedUpGold.text = GameManger.instance.player.playerAtkSpeedCost.ToString() + " G";
-        currentHp.text = GameManger.instance.player.playerHealth.ToString();
-        hpUpGold.text = GameManger.instance.player.playerMaxHealthCost.ToString() + " G";
-        currentRecovery.text = GameManger.instance.player.playerHealthRecorvery.ToString("F2") + " /sec";
-        recoveryUpGold.text = GameManger.instance.player.playerHealthRecorveryCost.ToString() + " G";
-    }
+    #region Stat Upgrade Button
     public void OnAttackUpButton()
     {
         if(GameManger.instance.player.PlayerDamageLevelUp())
@@ -353,7 +427,9 @@ public class UiManager : MonoBehaviour
             });
         }
     }
+    #endregion
 
+    #region Game Result
     public IEnumerator ShowEndingCredit()
     {
         endingCredit.SetActive(true);
@@ -390,6 +466,7 @@ public class UiManager : MonoBehaviour
         StartCoroutine(ResultCountingEffect());
     }
 
+    // Set GameOver Ui Contents
     // Counting effect, the number is flipped by x-axis while increasing
     IEnumerator ResultCountingEffect()
     {
@@ -444,6 +521,10 @@ public class UiManager : MonoBehaviour
         resultTicket.text = value.ToString();
     }
 
+    public void PushLobbyButton()
+    {
+        GameManger.instance.GoLobby();
+    }
 
     public void SaveGameResult()
     {
@@ -459,16 +540,24 @@ public class UiManager : MonoBehaviour
         LocalDatabaseManager.instance.Ticket += GameManger.instance.playTicket;
         LocalDatabaseManager.instance.SaveGameData();
     }
+    #endregion
 
-    public void DoGameOverWorks()
+    #region GameOver Effect
+    public IEnumerator IResetHpBars()
     {
-        StartCoroutine(ResetHpBars());
+        // Clear all remaining Hp bars when the Game ends
+        for (int i = currentHpIndex; i >= 0; i--)
+        {
+            hpBars[i].DOKill();
+            var tween = hpBars[i].DOFade(0f, 0.05f).SetEase(Ease.InCubic).SetUpdate(true);
+            yield return tween.WaitForCompletion();
+        }
     }
 
     public void CloseCanvas()
     {
-        attackRange.gameObject.SetActive(false);
-        safeArea.gameObject.SetActive(false);
+        attackRange.SetActive(false);
+        safeArea.SetActive(false);
     }
 
     public void AddBloomIntensity(float value)
@@ -486,72 +575,12 @@ public class UiManager : MonoBehaviour
     {
         return bloom.intensity.value;
     }
+    #endregion
 
-    public void PushLobbyButton()
-    {
-        GameManger.instance.GoLobby();
-    }
-
-    public void BossWaveEffectOn()
-    {
-        bossAppearEffect.SetActive(true);
-    }
-
-    public void BossWaveEffectOff()
-    {
-        bossAppearEffect.SetActive(false);
-    }
-    public void WaveClear(int num)
-    {
-        curWave = num;
-        if (num == 41)
-        {
-            waveLevel.text = "Bonus";
-            StartCoroutine("BonusWaveEffect");
-            return;
-        }
-        else if(num % 10 == 0)
-        {
-            waveLevel.text = "Boss";
-            return;
-        }
-        else
-        {
-            waveLevel.text = "Wave " + Convert.ToString(num);
-        }
-        StartCoroutine("WaveClearEffect");
-    }
-    IEnumerator BonusWaveEffect()
-    {
-        bonusWaveEffect.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        bonusWaveEffect.SetActive(false);
-    }
-    IEnumerator WaveClearEffect()
-    {
-        waveClearEffect.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        waveClearEffect.SetActive(false);
-    }
-
-    public void SetTimeScale()
-    {
-        float time = times[++timeScaleIdx % times.Length];
-        timeScaleText.text = String.Format("{0:0.0}", time);
-        Time.timeScale= time;
-    }
-
-    private void SetBgmSlider(float value)
-    {
-        SoundManager.instance.SetBgmVolume(value);
-    }
-    private void SetSfxSlider(float value)
-    {
-        SoundManager.instance.SetSfxVolume(value);
-    }
-
-    public void NextStage()
+    #region For Debugging
+    public void SkipButton()
     {
         GameManger.instance.waveManager.WaveSkipButton();
     }
+    #endregion
 }
