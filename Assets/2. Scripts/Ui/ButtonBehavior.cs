@@ -30,7 +30,7 @@ public class ButtonBehavior : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
-            transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).SetUpdate(true).OnComplete(() =>
             {
                 isTweening = false;
             });
