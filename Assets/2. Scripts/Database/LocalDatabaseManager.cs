@@ -7,7 +7,7 @@ public class LocalDatabaseManager : MonoBehaviour
 {
     // Save and Manage all user data( high score, jem, parts info)
 
-    // used as Singleton pattern
+    // make Singleton pattern
     public static LocalDatabaseManager instance;
 
     #region User Data
@@ -37,12 +37,12 @@ public class LocalDatabaseManager : MonoBehaviour
     public int[] AchieveCurLevel { get; set; }
 
     /// <summary>
-    /// »ç¿ë¹ı(±âº»ÀûÀ¸·Î 3Â÷¿ø ¹è¿­ ÇüÅÂ, ±Ùµ¥ µñ¼Å³Ê¸®¸¦ »ç¿ëÇØ¼­ Ã¹¹øÂ° ¿ø¼Ò´Â ÆÄÃ÷ ÀÌ¸§À¸·Î ½±°Ô ¾Ë¾Æº¼¼ö ÀÖµµ·Ï..)
-    /// ¹Ì»çÀÏ ÆÄÃ÷ÀÇ Ã¹¹øÂ° °­È­ Á¤µµ¸¦ ¾Ë°í ½Í´Ù¸é?
+    /// ì‚¬ìš©ë²•(ê¸°ë³¸ì ìœ¼ë¡œ 3ì°¨ì› ë°°ì—´ í˜•íƒœ, ê·¼ë° ë”•ì…”ë„ˆë¦¬ë¥¼ ì‚¬ìš©í•´ì„œ ì²«ë²ˆì§¸ ì›ì†ŒëŠ” íŒŒì¸  ì´ë¦„ìœ¼ë¡œ ì‰½ê²Œ ì•Œì•„ë³¼ìˆ˜ ìˆë„ë¡..)
+    /// ë¯¸ì‚¬ì¼ íŒŒì¸ ì˜ ì²«ë²ˆì§¸ ê°•í™” ì •ë„ë¥¼ ì•Œê³  ì‹¶ë‹¤ë©´?
     /// LocalDatabaseManager.instance.PartsStatInfo["Missile"][0, LocalDatabaseManager.instance.PartsMissile[0]];
-    /// µÎ¹øÂ° ´É·ÂÀÇ °­È­ Á¤µµ¸¦ ¾Ë°í½Í´Ù¸é?
+    /// ë‘ë²ˆì§¸ ëŠ¥ë ¥ì˜ ê°•í™” ì •ë„ë¥¼ ì•Œê³ ì‹¶ë‹¤ë©´?
     /// LocalDatabaseManager.instance.PartsStatInfo["Missile"][1, LocalDatabaseManager.instance.PartsMissile[1]];
-    /// PartsStatInfo ÀÚÃ¼´Â µ¥ÀÌÅÍ Å×ÀÌºí ´À³¦À¸·Î readonly, PartsMissile¿¡¼­ ÀúÀåÇÏ´Â °­È­ 'Á¤µµ'¸¦ ÀÌ¿ëÇØ¼­ ÇöÀç °­È­ Á¤µµ¿¡ ÇØ´çÇÏ´Â °ª 'ÂüÁ¶'
+    /// PartsStatInfo ìì²´ëŠ” ë°ì´í„° í…Œì´ë¸” ëŠë‚Œìœ¼ë¡œ readonly, PartsMissileì—ì„œ ì €ì¥í•˜ëŠ” ê°•í™” 'ì •ë„'ë¥¼ ì´ìš©í•´ì„œ í˜„ì¬ ê°•í™” ì •ë„ì— í•´ë‹¹í•˜ëŠ” ê°’ 'ì°¸ì¡°'
     /// </summary>
     public Dictionary<string, float[,]> PartsStatInfo { get; set; } = new Dictionary<string, float[,]>
     {
@@ -51,8 +51,8 @@ public class LocalDatabaseManager : MonoBehaviour
 
     /*
          {
-        // °¢ ÆÄÃ÷º°·Î ¼¼ °¡Áö ¼Ó¼º(°ø°İ·Â, °ø°İ ¼Óµµ - °øÅë, Æ¯¼ö ´É·Â ÇØ¹æ ¿©ºÎ)- ¼ø¼­´ë·Î
-        //                                                 °ø°İ·Â                                                      °ø°İ¼Óµµ                                     Æ¯¼ö´É·Â ÇØ¹æ(1ÀÌ¸é ÇØ¹æ)
+        // ê° íŒŒì¸ ë³„ë¡œ ì„¸ ê°€ì§€ ì†ì„±(ê³µê²©ë ¥, ê³µê²© ì†ë„ - ê³µí†µ, íŠ¹ìˆ˜ ëŠ¥ë ¥ í•´ë°© ì—¬ë¶€)- ìˆœì„œëŒ€ë¡œ
+        //                                                 ê³µê²©ë ¥                                                      ê³µê²©ì†ë„                                     íŠ¹ìˆ˜ëŠ¥ë ¥ í•´ë°©(1ì´ë©´ í•´ë°©)
         {"Missile",new float[3,20]{ { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.1f, 2.3f, 3f }, { 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f, 0.55f, 0.575f, 0.6f, 0.625f, 0.65f, 0.675f }, { 0, 4, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
         {"Laser",new float[3,20]{ { 2.4f, 2.5f, 2.6f, 2.7f, 2.8f, 2.9f, 3f, 3.1f, 3.2f, 3.3f, 3.4f, 3.5f, 3.6f, 3.7f, 3.8f, 3.9f, 4f, 4.4f, 4.8f, 5.5f }, { 0.4f, 0.45f, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f, 0.8f, 0.85f, 0.9f, 0.95f, 1.0f, 1.05f, 1.1f, 1.15f, 1.2f, 1.25f, 1.3f, 1.35f }, { 0, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },
         {"Barrier",new float[3,20]{ { 0.05f, 0.075f, 0.1f, 0.125f, 0.15f, 0.175f, 0.2f, 0.225f, 0.25f, 0.275f, 0.3f, 0.325f, 0.35f, 0.375f, 0.4f, 0.425f, 0.45f, 0.475f, 0.5f, 0.525f}, { 0.775f, 0.75f, 0.725f, 0.7f, 0.675f, 0.65f, 0.625f, 0.6f, 0.575f, 0.55f, 0.525f, 0.5f, 0.475f, 0.45f, 0.425f, 0.4f, 0.375f, 0.35f, 0.325f, 0.3f }, { 0, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 } } },

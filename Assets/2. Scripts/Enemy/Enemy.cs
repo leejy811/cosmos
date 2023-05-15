@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using DamageNumbersPro;
-// Àû »ı¼ºÇÏ°í ¹«Àû ½Ã°£ µÎ±â (0.2ÃÊ Á¤µµ)
+// ì  ìƒì„±í•˜ê³  ë¬´ì  ì‹œê°„ ë‘ê¸° (0.2ì´ˆ ì •ë„)
 //
 public class Enemy : MonoBehaviour
 {
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
         while (speed > 0)
         {
             transform.position -= Time.deltaTime * speed *transform.up;
-            speed -= Time.deltaTime * speed / knockBackDistance;
+            speed -= Time.deltaTime / knockBackDistance;
             yield return null;
         }
     }
@@ -248,7 +248,7 @@ public class Enemy : MonoBehaviour
                 enemy.GetComponent<Enemy>().waveManager = this.waveManager;
             }
         }
-        // ÇÃ·¹ÀÌ¾î ´ê¾ÒÀ» ¶§ °ñµå³ª Àë ¾È¿Ã¶ó°¡°Ô ÇÏ±â
+        // í”Œë ˆì´ì–´ ë‹¿ì•˜ì„ ë•Œ ê³¨ë“œë‚˜ ì¼ ì•ˆì˜¬ë¼ê°€ê²Œ í•˜ê¸°
         if(!EnterPlayer)
         {
             DamageNumber floatingText;
