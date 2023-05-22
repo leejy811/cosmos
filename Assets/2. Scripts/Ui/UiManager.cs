@@ -408,7 +408,7 @@ public class UiManager : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
-            statButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).OnComplete(() =>
+            statButtons[index].transform.DOPunchScale(originalScale * punchScale, 0.2f, 0, 1f).SetUpdate(true).OnComplete(() =>
             {
                 isTweening = false;
             });
@@ -421,7 +421,7 @@ public class UiManager : MonoBehaviour
         if (!isTweening)    // Prevent multi-clicking
         {
             isTweening = true;
-            statButtons[index].transform.DOPunchPosition(new Vector3(punchPosition, 0, 0), 0.5f, 10, 1f).OnComplete(() =>
+            statButtons[index].transform.DOPunchPosition(new Vector3(punchPosition, 0, 0), 0.5f, 10, 1f).SetUpdate(true).OnComplete(() =>
             {
                 isTweening = false;
             });

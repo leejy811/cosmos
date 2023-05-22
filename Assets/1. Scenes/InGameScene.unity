@@ -11605,30 +11605,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jemCount: {fileID: 1486779553}
   goldCount: {fileID: 317123097}
-  waveLevel: {fileID: 458069868}
-  currentAtk: {fileID: 720113232}
-  atkUpGold: {fileID: 1475322841}
-  currentSpeed: {fileID: 1693659583}
-  speedUpGold: {fileID: 100316434}
-  currentHp: {fileID: 2043034073}
-  hpUpGold: {fileID: 487558384}
-  resultJem: {fileID: 1284429735}
-  resultScore: {fileID: 1009861389}
-  resultHighScore: {fileID: 234911642}
-  newRecordText: {fileID: 220530466}
-  resultTicket: {fileID: 1978043639}
-  jemDoubleText: {fileID: 36621574}
-  resultTime: {fileID: 317984503}
-  currentRecovery: {fileID: 156074754}
-  recoveryUpGold: {fileID: 1823540101}
-  gameOverUI: {fileID: 440817147}
-  attackRange: {fileID: 894511548}
-  safeArea: {fileID: 260627905}
-  panel: {fileID: 1472476298}
-  bloodEffect: {fileID: 390629662}
-  backgroundBase: {fileID: 1193359825}
-  backgroundMoveSpeed: 50
-  timeScaleText: {fileID: 1874516221}
   statButtons:
   - {fileID: 1335125387}
   - {fileID: 554931967}
@@ -11636,9 +11612,6 @@ MonoBehaviour:
   - {fileID: 189753288}
   punchScale: 0.2
   punchPosition: 20
-  pauseUi: {fileID: 501911986}
-  bgmSlider: {fileID: 2000568456}
-  sfxSlider: {fileID: 922552318}
   hpBars:
   - {fileID: 398754230}
   - {fileID: 1284380743}
@@ -11660,14 +11633,41 @@ MonoBehaviour:
   - {fileID: 640068545}
   - {fileID: 753993270}
   - {fileID: 527358029}
+  waveLevel: {fileID: 458069868}
+  currentAtk: {fileID: 720113232}
+  atkUpGold: {fileID: 1475322841}
+  currentSpeed: {fileID: 1693659583}
+  speedUpGold: {fileID: 100316434}
+  currentHp: {fileID: 2043034073}
+  hpUpGold: {fileID: 487558384}
+  currentRecovery: {fileID: 156074754}
+  recoveryUpGold: {fileID: 1823540101}
+  backgroundBase: {fileID: 1193359825}
+  backgroundMoveSpeed: 50
   bossAppearEffect: {fileID: 1600405635}
   waveClearEffect: {fileID: 559695596}
   bonusWaveEffect: {fileID: 975041559}
-  waveSkipButton: {fileID: 1011557693}
+  panel: {fileID: 1472476298}
+  bloodEffect: {fileID: 390629662}
+  pauseUi: {fileID: 501911986}
+  bgmSlider: {fileID: 2000568456}
+  sfxSlider: {fileID: 922552318}
+  gameOverUI: {fileID: 440817147}
+  resultJem: {fileID: 1284429735}
+  resultScore: {fileID: 1009861389}
+  resultHighScore: {fileID: 234911642}
+  newRecordText: {fileID: 220530466}
+  resultTicket: {fileID: 1978043639}
+  jemDoubleText: {fileID: 36621574}
+  resultTime: {fileID: 317984503}
+  attackRange: {fileID: 894511548}
+  safeArea: {fileID: 260627905}
+  timeScaleText: {fileID: 1874516221}
   endingCredit: {fileID: 1856192512}
   endingCreditText: {fileID: 1326314234}
   thanksText: {fileID: 1445905635}
   endingImage: {fileID: 2079262930}
+  waveSkipButton: {fileID: 1011557693}
 --- !u!1 &578111936
 GameObject:
   m_ObjectHideFlags: 0
@@ -18559,6 +18559,7 @@ GameObject:
   - component: {fileID: 1418690262}
   - component: {fileID: 1418690264}
   - component: {fileID: 1418690263}
+  - component: {fileID: 1418690265}
   m_Layer: 5
   m_Name: PauseBackground
   m_TagString: Untagged
@@ -18624,6 +18625,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418690261}
   m_CullTransparentMesh: 1
+--- !u!114 &1418690265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418690261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1418690263}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 568352306}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1435786023
 GameObject:
   m_ObjectHideFlags: 0
