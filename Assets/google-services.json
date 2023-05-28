@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "64506839685",
+    "project_id": "cosmos-40ee5",
+    "storage_bucket": "cosmos-40ee5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64506839685:android:bde17102c74ffe1bd31fec",
+        "android_client_info": {
+          "package_name": "com.GMCosmos.cosmos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWdXy-JiQIXUBCba8iaZtIFKrUcqnuUPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
